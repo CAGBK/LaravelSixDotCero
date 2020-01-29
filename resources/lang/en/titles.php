@@ -28,7 +28,7 @@ return [
     'adminThemesAdd'    => 'Crear Tema',
 
     'adminLogs'         => 'Logs',
-    'adminActivity'     => 'Activity Log',
+    'adminActivity'     => 'Registro de actividades',
     'adminPHP'          => 'PHP Information',
     'adminRoutes'       => 'Detalles de Rutas',
 

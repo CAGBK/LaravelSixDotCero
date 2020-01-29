@@ -106,14 +106,14 @@
                     <div class="row pt-2">
                         <div class="col-sm-6 mb-2">
                             <a href="/themes/<?php echo e($theme->id); ?>/edit" class="btn btn-small btn-info btn-block">
-                                <i class="fa fa-pencil fa-fw" aria-hidden="true"></i> Edit<span class="hidden-sm"> this</span><span class="hidden-sm"> Theme</span>
+                                <i class="fa fa-pencil fa-fw" aria-hidden="true"></i> Editar<span class="hidden-sm"> este</span><span class="hidden-sm"> Tema</span>
                             </a>
                         </div>
                         <?php echo Form::open(array('url' => 'themes/' . $theme->id, 'class' => 'col-sm-6 mb-2')); ?>
 
                             <?php echo Form::hidden('_method', 'DELETE'); ?>
 
-                            <?php echo Form::button('<i class="fa fa-trash-o fa-fw" aria-hidden="true"></i> Delete<span class="hidden-sm"> this</span><span class="hidden-sm"> Theme</span>', array('class' => 'btn btn-danger btn-block btn-flat','type' => 'button', 'data-toggle' => 'modal', 'data-target' => '#confirmDelete', 'data-title' => trans('themes.confirmDeleteHdr'), 'data-message' => trans('themes.confirmDelete'))); ?>
+                            <?php echo Form::button('<i class="fa fa-trash-o fa-fw" aria-hidden="true"></i> Eliminar<span class="hidden-sm"> este</span><span class="hidden-sm"> Tema</span>', array('class' => 'btn btn-danger btn-block btn-flat','type' => 'button', 'data-toggle' => 'modal', 'data-target' => '#confirmDelete', 'data-title' => trans('themes.confirmDeleteHdr'), 'data-message' => trans('themes.confirmDelete'))); ?>
 
                         <?php echo Form::close(); ?>
 

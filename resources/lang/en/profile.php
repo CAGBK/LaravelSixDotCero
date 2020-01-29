@@ -31,58 +31,58 @@ return [
     'showProfileGitHubUsername'  => 'Github Username',
 
     // USER profile page
-    'showProfileTitle' => ':username\'s Profile',
+    'showProfileTitle' => ':username\'s Perfil',
 
     // USER EDIT profile page
     'editProfileTitle' => 'Configuración de perfil',
 
     // User edit profile form
-    'label-theme' => 'Your theme:',
-    'ph-theme'    => 'Select your theme',
+    'label-theme' => 'Tema:',
+    'ph-theme'    => 'Seleccione su tema',
 
-    'label-location' => 'Your location:',
-    'ph-location'    => 'Enter your location',
+    'label-location' => 'Su Ubicación:',
+    'ph-location'    => 'Ingrese Ubicación',
 
-    'label-bio' => 'Your bio:',
-    'ph-bio'    => 'Enter your bio',
+    'label-bio' => 'Su biografia:',
+    'ph-bio'    => 'Ingrese su biogradfia',
 
-    'label-github_username' => 'Your GitHub username:',
-    'ph-github_username'    => 'Enter your GitHub username',
+    'label-github_username' => 'GitHub:',
+    'ph-github_username'    => 'Ingrese su usuario GitHub',
 
-    'label-twitter_username' => 'Your Twitter username:',
-    'ph-twitter_username'    => 'Enter your Twitter username',
+    'label-twitter_username' => 'Twitter:',
+    'ph-twitter_username'    => 'Ingrese su usuario Twitter',
 
     // User Account Settings Tab
     'editTriggerAlt'        => 'Toggle User Menu',
-    'editAccountTitle'      => 'Account Settings',
-    'editAccountAdminTitle' => 'Account Administration',
-    'updateAccountSuccess'  => 'Your account has been successfully updated',
-    'submitProfileButton'   => 'Save Changes',
+    'editAccountTitle'      => 'Configuración de la cuenta',
+    'editAccountAdminTitle' => 'Administración de la cuenta',
+    'updateAccountSuccess'  => 'Tu cuenta ha sido actualizada exitosamente',
+    'submitProfileButton'   => 'Guardar Cambios',
 
     // User Account Admin Tab
-    'submitPWButton'    => 'Update Password',
-    'changePwTitle'     => 'Change Password',
-    'changePwPill'      => 'Change Password',
-    'deleteAccountPill' => 'Delete Account',
+    'submitPWButton'    => 'Actualizar Contraseña',
+    'changePwTitle'     => 'Cambiar Contraseña',
+    'changePwPill'      => 'Cambiar Contraseña',
+    'deleteAccountPill' => 'Eliminar la cuenta',
     'updatePWSuccess'   => 'Your password has been successfully updated',
 
     // Delete Account Tab
-    'deleteAccountTitle'        => 'Delete Account',
-    'deleteAccountBtn'          => 'Delete My Account',
-    'deleteAccountBtnConfirm'   => 'Delete My Account',
-    'deleteAccountConfirmTitle' => 'Confirm Account Deletion',
-    'deleteAccountConfirmMsg'   => 'Are you sure you want to delete your account?',
-    'confirmDeleteRequired'     => 'Confirm Account Deletion is required',
+    'deleteAccountTitle'        => 'Eliminar Cuentat',
+    'deleteAccountBtn'          => 'Eliminar mi cuenta',
+    'deleteAccountBtnConfirm'   => 'Eliminar mi cuenta',
+    'deleteAccountConfirmTitle' => 'Confirmar eliminación de cuenta',
+    'deleteAccountConfirmMsg'   => '¿Estás seguro de que deseas eliminar tu cuenta??',
+    'confirmDeleteRequired'     => 'Confirmar la eliminación de la cuenta es requerido',
 
-    'errorDeleteNotYour'        => 'You can only delete your own profile',
-    'successUserAccountDeleted' => 'Your account has been deleted',
+    'errorDeleteNotYour'        => 'Solo puedes borrar tu propio perfil',
+    'successUserAccountDeleted' => 'Tu cuenta ha sido eliminada',
 
     // Messages
-    'updateSuccess' => 'Your profile has been successfully updated',
-    'submitButton'  => 'Save Changes',
+    'updateSuccess' => 'Tú perfil ha sido actualizado satisfactoriamente',
+    'submitButton'  => 'Cambios Guardados',
 
     // Restore User Account
-    'errorRestoreUserTime' => 'Sorry, account cannot be restored',
-    'successUserRestore'   => 'Welcome back :username! Account Successfully Restored',
+    'errorRestoreUserTime' => 'Lo sentimos, la cuenta no se puede restaurar',
+    'successUserRestore'   => 'Bienvenido de nuevo :username! Cuenta restaurada con éxito',
 
 ];

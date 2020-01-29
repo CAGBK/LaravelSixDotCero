@@ -10,66 +10,66 @@ return [
     */
 
     // Messages
-    'createSuccess'     => 'Theme created! ',
-    'updateSuccess'     => 'Theme updated! ',
-    'deleteSuccess'     => 'Theme deleted! ',
-    'deleteSelfError'   => 'You cannot delete the default theme. ',
+    'createSuccess'     => 'Tema creado! ',
+    'updateSuccess'     => 'Tema actualizado! ',
+    'deleteSuccess'     => 'Tema eliminado! ',
+    'deleteSelfError'   => 'No puedes eliminar el tema predeterminado. ',
 
     // Shared
-    'statusLabel'       => 'Theme Status',
-    'statusEnabled'     => 'Enabled',
-    'statusDisabled'    => 'Disabled',
+    'statusLabel'       => 'Estado del tema',
+    'statusEnabled'     => 'Habilitado',
+    'statusDisabled'    => 'Deshabilitado',
 
-    'nameLabel'         => 'Theme Name *',
-    'namePlaceholder'   => 'Enter Theme Name',
+    'nameLabel'         => 'Nombre del tema *',
+    'namePlaceholder'   => 'Ingrese el nombre del tema',
 
-    'linkLabel'         => 'Theme CSS Link *',
-    'linkPlaceholder'   => 'Enter CSS Link',
+    'linkLabel'         => 'Enlace CSS del tema *',
+    'linkPlaceholder'   => 'Ingrese el enlace CSS',
 
-    'notesLabel'        => 'Theme Notes',
-    'notesPlaceholder'  => 'Enter Theme Notes',
+    'notesLabel'        => 'Notas temáticas',
+    'notesPlaceholder'  => 'Introducir notas temáticas',
 
-    'themes'            => 'Themes',
+    'themes'            => 'Temas',
 
     // Add Theme
-    'btnAddTheme'       => 'Add Theme',
+    'btnAddTheme'       => 'Agregar tema',
 
     // Edit Theme
-    'editTitle'         => 'Editing Theme:',
-    'editSave'          => 'Save Theme Changes',
-    'themeTitle'        => 'Theme :name',
+    'editTitle'         => 'Edición de tema:',
+    'editSave'          => 'Guardar cambios de tema',
+    'themeTitle'        => 'Tema :name',
 
     // Show Theme
-    'showHeadTitle'     => 'Theme',
-    'showTitle'         => 'Theme Information',
-    'showBackBtn'       => 'Back to Themes',
-    'showUsers'         => 'Theme Users',
-    'showStatus'        => 'Status',
+    'showHeadTitle'     => 'Tema',
+    'showTitle'         => 'Información del tema',
+    'showBackBtn'       => 'Volver a los temas',
+    'showUsers'         => 'Usuarios temáticos',
+    'showStatus'        => 'Estado',
     'showLink'          => 'CSS Link',
-    'showNotes'         => 'Notes',
-    'showAdded'         => 'Added',
-    'showUpdated'       => 'Updated',
-    'confirmDeleteHdr'  => 'Delete Theme',
-    'confirmDelete'     => 'Are you sure you want to delete this theme?',
+    'showNotes'         => 'Notas',
+    'showAdded'         => 'Crear',
+    'showUpdated'       => 'Actualizar',
+    'confirmDeleteHdr'  => 'Eliminar tema',
+    'confirmDelete'     => '¿Estás seguro de que deseas eliminar este tema?',
 
     // Show Themes
-    'themesTitle'       => 'Showing All',
-    'themesStatus'      => 'Status',
-    'themesUsers'       => 'Users',
-    'themesName'        => 'Name',
+    'themesTitle'       => 'Mostrando todo',
+    'themesStatus'      => 'Estado',
+    'themesUsers'       => 'Usuarios',
+    'themesName'        => 'Nombre',
     'themesLink'        => 'CSS Link',
-    'themesActions'     => 'Actions',
-    'themesBtnShow'     => 'Show Theme',
-    'themesBtnEdit'     => 'Edit Theme',
-    'themesBtnDelete'   => '',
-    'themesBtnEdits'    => '',
+    'themesActions'     => 'Acciones',
+    'themesBtnShow'     => 'Mostrar tema',
+    'themesBtnEdit'     => 'Actualizar tema',
+    'themesBtnDelete'   => 'Eliminar este tema',
+    'themesBtnEdits'    => 'Editar este tema',
 
     // Tooltips
-    'backToThemeTt'     => 'Back to Theme',
-    'backToThemesTt'    => 'Back to Themes',
+    'backToThemeTt'     => 'Volver al tema',
+    'backToThemesTt'    => 'Volver a los temas',
 
     // Buttons
-    'backToThemeBtn'    => 'Back  <span class="hidden-xs">to Theme</span>',
-    'backToThemesBtn'   => '<span class="hidden-xs">Back to </span>Themes',
+    'backToThemeBtn'    => 'Voler  <span class="hidden-xs">al Tema</span>',
+    'backToThemesBtn'   => '<span class="hidden-xs">Volver a los </span>Temas',
 
 ];

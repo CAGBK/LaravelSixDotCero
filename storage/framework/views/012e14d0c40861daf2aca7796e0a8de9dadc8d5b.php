@@ -62,12 +62,12 @@
                                                             <div class="row" data-toggle="buttons">
                                                                 <div class="col-6 col-xs-6 right-btn-container">
                                                                     <label class="btn btn-primary <?php if($user->profile->avatar_status == 0): ?> active <?php endif; ?> btn-block btn-sm" data-toggle="collapse" data-target=".collapseOne:not(.show), .collapseTwo.show">
-                                                                        <input type="radio" name="avatar_status" id="option1" autocomplete="off" value="0" <?php if($user->profile->avatar_status == 0): ?> checked <?php endif; ?>> Use Gravatar
+                                                                        <input type="radio" name="avatar_status" id="option1" autocomplete="off" value="0" <?php if($user->profile->avatar_status == 0): ?> checked <?php endif; ?>> Usar Grunenvatar
                                                                     </label>
                                                                 </div>
                                                                 <div class="col-6 col-xs-6 left-btn-container">
                                                                     <label class="btn btn-primary <?php if($user->profile->avatar_status == 1): ?> active <?php endif; ?> btn-block btn-sm" data-toggle="collapse" data-target=".collapseOne.show, .collapseTwo:not(.show)">
-                                                                        <input type="radio" name="avatar_status" id="option2" autocomplete="off" value="1" <?php if($user->profile->avatar_status == 1): ?> checked <?php endif; ?>> Use My Image
+                                                                        <input type="radio" name="avatar_status" id="option2" autocomplete="off" value="1" <?php if($user->profile->avatar_status == 1): ?> checked <?php endif; ?>> Usar Mi Imagen
                                                                     </label>
                                                                 </div>
                                                             </div>
@@ -373,7 +373,7 @@
                                                         </h3>
                                                         <p class="margin-bottom-2 text-center">
                                                             <i class="fa fa-exclamation-triangle fa-fw" aria-hidden="true"></i>
-                                                                <strong>Deleting</strong> your account is <u><strong>permanent</strong></u> and <u><strong>cannot</strong></u> be undone.
+                                                                <strong>Eliminar</strong> su cuenta es <u><strong>permanente</strong></u> y <u><strong>no se puede</strong></u> deshacer.
                                                             <i class="fa fa-exclamation-triangle fa-fw" aria-hidden="true"></i>
                                                         </p>
                                                         <hr>
@@ -388,7 +388,7 @@
                                                                             <input type="checkbox" name='checkConfirmDelete' id="checkConfirmDelete">
                                                                             <i class="fa fa-square-o fa-fw fa-2x"></i>
                                                                             <i class="fa fa-check-square-o fa-fw fa-2x"></i>
-                                                                            <span class="margin-left-2"> Confirm Account Deletion</span>
+                                                                            <span class="margin-left-2"> Confirmar eliminación de cuenta</span>
                                                                         </label>
                                                                     </div>
 

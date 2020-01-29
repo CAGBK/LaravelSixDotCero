@@ -43,6 +43,11 @@
 
                             </a>
                             <div class="dropdown-divider"></div>
+                            <a class="dropdown-item <?php echo e(Request::is('phpinfo') ? 'active' : null); ?>" href="<?php echo e(url('/activity')); ?>">
+                                <?php echo trans('titles.adminActivity'); ?>
+
+                            </a>
+                            <div class="dropdown-divider"></div>
                             <a class="dropdown-item <?php echo e(Request::is('phpinfo') ? 'active' : null); ?>" href="<?php echo e(url('/phpinfo')); ?>">
                                 <?php echo trans('titles.adminPHP'); ?>
 

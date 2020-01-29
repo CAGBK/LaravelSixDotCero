@@ -36,6 +36,10 @@
                                 {!! trans('titles.adminLogs') !!}
                             </a>
                             <div class="dropdown-divider"></div>
+                            <a class="dropdown-item {{ Request::is('phpinfo') ? 'active' : null }}" href="{{ url('/activity') }}">
+                                {!! trans('titles.adminActivity') !!}
+                            </a>
+                            <div class="dropdown-divider"></div>
                             <a class="dropdown-item {{ Request::is('phpinfo') ? 'active' : null }}" href="{{ url('/phpinfo') }}">
                                 {!! trans('titles.adminPHP') !!}
                             </a>
