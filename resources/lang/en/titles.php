@@ -14,6 +14,10 @@ return [
     'editProfile'       => 'Editar Perfil',
     'createProfile'     => 'Crear Perfil',
     'adminDropdownNav'  => 'Administrador',
+    'adminGame'  => 'Juego',
+    'lines'  => 'Lineas - Marcas',
+    'questions'  => 'Preguntas - Respuestas',
+    'challenges'  => 'Desafios',
 
     'activation'        => 'Registration Started  | Activation Required',
     'exceeded'          => 'Activation Error',
