@@ -95,6 +95,18 @@ Route::group(['middleware' => ['auth', 'activated', 'currentUser', 'activity', '
 
     // Route to upload user avatar.
     Route::post('avatar/upload', ['as' => 'avatar.upload', 'uses' => 'ProfilesController@upload']);
+    // Route to Linea and Brand
+    Route::get('lineas-marcas', 'LineasMarcasController@index')->name('lineas_marcas');
+    Route::get('crear/Linea', 'LineasMarcasController@createLine')->name('create_line');
+    Route::get('crear/Marca', 'LineasMarcasController@createBrand')->name('create_brand');
+    Route::get('crear/pregunta-respuesta', 'PreguntasRespuestasController@createQuestionAnswer')->name('create_question_answer');
+    Route::post('new/Linea', 'LineasMarcasController@storeLinea')->name('ruta_new_line');
+    Route::post('new/Marca', 'LineasMarcasController@storeBrand')->name('ruta_new_brand');
+    // Route to Questions
+    Route::get('preguntas-respuestas', 'PreguntasRespuestasController@index')->name('preguntas_respuestas');
+    Route::get('crear/Pregunta', 'PreguntasRespuestasController@createQuestion')->name('create_question');
+    Route::post('new/Pregunta', 'PreguntasRespuestasController@storeQuestion')->name('ruta_new_question');
+
 });
 
 // Registered, activated, and is admin routes.

@@ -64,15 +64,15 @@
                         {!! trans('titles.adminGame') !!}
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item {{ Request::is('blocker') ? 'active' : null }}" href="{{ route('laravelblocker::blocker.index') }}">
+                        <a class="dropdown-item {{ Request::is('lineas-marcas') ? 'active' : null }}" href="{{ url('lineas-marcas') }}">
                             {!! trans('titles.lines') !!}
                         </a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item {{ Request::is('blocker') ? 'active' : null }}" href="{{ route('laravelblocker::blocker.index') }}">
+                        <a class="dropdown-item {{ Request::is('blocker') ? 'active' : null }}" href="{{ url('/preguntas-respuestas') }}">
                             {!! trans('titles.questions') !!}
                         </a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item {{ Request::is('blocker') ? 'active' : null }}" href="{{ route('laravelblocker::blocker.index') }}">
+                        <a class="dropdown-item {{ Request::is('blocker') ? 'active' : null }}" href="{{ url('/lines') }}">
                             {!! trans('titles.challenges') !!}
                         </a>
                     </div>
