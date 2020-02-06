@@ -2,18 +2,18 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-10">
-            <div class="card">
-                <div class="card-header"><?php echo e(__('Login')); ?></div>
+            <div class="card card-login">
+                <div class="card-header login-nav"><?php echo e(__('Login')); ?></div>
 
                 <div class="card-body">
                     <form method="POST" action="<?php echo e(route('login')); ?>">
                         <?php echo csrf_field(); ?>
 
                         <div class="form-group row">
-                            <label for="email" class="col-sm-4 col-form-label text-md-right"><?php echo e(__('E-Mail Address')); ?></label>
+                            <label for="email" class="col-sm-4 col-form-label text-md-right nav-font"><?php echo e(__('E-Mail Address')); ?></label>
 
                             <div class="col-md-6">
-                                <input id="email" type="email" class="form-control<?php echo e($errors->has('email') ? ' is-invalid' : ''); ?>" name="email" value="<?php echo e(old('email')); ?>" required autofocus>
+                                <input id="email" type="email" class="form-control<?php echo e($errors->has('email') ? ' is-invalid' : ''); ?> input-login" name="email" value="<?php echo e(old('email')); ?>" required autofocus>
 
                                 <?php if($errors->has('email')): ?>
                                     <span class="invalid-feedback">
@@ -24,10 +24,10 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right"><?php echo e(__('Password')); ?></label>
+                            <label for="password" class="col-md-4 col-form-label text-md-right nav-font"><?php echo e(__('Password')); ?></label>
 
                             <div class="col-md-6">
-                                <input id="password" type="password" class="form-control<?php echo e($errors->has('password') ? ' is-invalid' : ''); ?>" name="password" required>
+                                <input id="password" type="password" class="form-control<?php echo e($errors->has('password') ? ' is-invalid' : ''); ?> input-login" name="password" required>
 
                                 <?php if($errors->has('password')): ?>
                                     <span class="invalid-feedback">
@@ -50,19 +50,19 @@
 
                         <div class="form-group row mb-4">
                             <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn button-card">
                                     <?php echo e(__('Login')); ?>
 
                                 </button>
 
-                                <a class="btn btn-link" href="<?php echo e(route('password.request')); ?>">
+                                <a class="btn btn-link login-nav" href="<?php echo e(route('password.request')); ?>">
                                     <?php echo e(__('Forgot Your Password?')); ?>
 
                                 </a>
                             </div>
                         </div>
 
-                        <p class="text-center mb-3">
+                        <p class="text-center mb-3 nav-font">
                             Or Login with
                         </p>
 

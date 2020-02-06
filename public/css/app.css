@@ -18397,3 +18397,42 @@ div[data-toggle=buttons] label.active {
   border-radius: 0 0.25rem 0.25rem 0;
 }
 
+.nav-color {
+  background-color: #fff;
+}
+
+.nav-font {
+  color: #009245 !important;
+}
+
+.login-nav {
+  -webkit-text-decoration-line: underline;
+          text-decoration-line: underline;
+  color: #009245 !important;
+}
+
+body {
+  background-color: #d0e0a1;
+}
+
+.card-login {
+  border-radius: 1rem;
+}
+
+.input-login {
+  border-radius: 1rem;
+  border-color: #afd370;
+}
+
+.button-card {
+  color: #009245;
+  background-color: #fff;
+  border-color: #afd370;
+}
+
+.button-card:hover {
+  color: #fff;
+  background-color: #009245;
+  border-color: #009245;
+}
+

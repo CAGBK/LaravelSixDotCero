@@ -18,6 +18,7 @@
                 font-weight: 200;
                 height: 100vh;
                 margin: 0;
+                background-color: #d0e0a1;
             }
 
             .full-height {
@@ -65,6 +66,11 @@
             .m-b-md {
                 margin-bottom: 30px;
             }
+            .nav-font
+            {
+                color: #009245 !important;
+                text-decoration-line: underline !important;
+            }
         </style>
     </head>
     <body>
@@ -72,12 +78,12 @@
             @if (Route::has('login'))
                 <div class="top-right links">
                     @auth
-                        <a href="{{ url('/home') }}">Home</a>
+                        <a href="{{ url('/home') }}" class="nav-font">Home</a>
                     @else
-                        <a href="{{ route('login') }}">Login</a>
+                        <a href="{{ route('login') }}" class="nav-font">Login</a>
 
                         @if (Route::has('register'))
-                            <a href="{{ route('register') }}">Register</a>
+                            <a href="{{ route('register') }}" class="nav-font">Register</a>
                         @endif
                     @endauth
                 </div>
