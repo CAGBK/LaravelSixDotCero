@@ -111,12 +111,11 @@
                             <?php echo e(Auth::user()->name); ?> <span class="caret"></span>
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item <?php echo e(Request::is('profile/'.Auth::user()->name, 'profile/'.Auth::user()->name . '/edit') ? 'active' : null); ?>" href="<?php echo e(url('/profile/'.Auth::user()->name)); ?>">
+                            <a class="dropdown-item nav-font <?php echo e(Request::is('profile/'.Auth::user()->name, 'profile/'.Auth::user()->name . '/edit') ? 'active' : null); ?>" href="<?php echo e(url('/profile/'.Auth::user()->name)); ?>">
                                 <?php echo trans('titles.profile'); ?>
 
                             </a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="<?php echo e(route('logout')); ?>"
+                            <a class="dropdown-item nav-font" href="<?php echo e(route('logout')); ?>"
                                onclick="event.preventDefault();
                                              document.getElementById('logout-form').submit();">
                                 <?php echo e(__('Salir')); ?>

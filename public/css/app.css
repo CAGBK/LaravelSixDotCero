@@ -18405,6 +18405,10 @@ div[data-toggle=buttons] label.active {
   color: #009245 !important;
 }
 
+.header-card {
+  background-color: #009245;
+}
+
 .login-nav {
   -webkit-text-decoration-line: underline;
           text-decoration-line: underline;

@@ -9,8 +9,9 @@
 
 @endphp
 
-<div class="card">
-    <div class="card-header @role('admin', true) bg-secondary text-white @endrole">
+<div class="card card-login">
+
+    <div class="card-header @role('admin', true) header-card text-white @endrole">
 
         Bienvenido {{ Auth::user()->name }}
 
