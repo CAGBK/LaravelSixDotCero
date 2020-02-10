@@ -14,9 +14,12 @@
         <p>¿Eliminar este usuario?</p>
       </div>
       <div class="modal-footer">
-        {!! Form::button('<i class="fa fa-fw fa-close" aria-hidden="true"></i> Cancelar', array('class' => 'btn btn-outline pull-left btn-light', 'type' => 'button', 'data-dismiss' => 'modal' )) !!}
-        {!! Form::button('<i class="fa fa-fw fa-trash-o" aria-hidden="true"></i> Confirmar eliminación', array('class' => 'btn btn-danger pull-right', 'type' => 'button', 'id' => 'confirm' )) !!}
+        <?php echo Form::button('<i class="fa fa-fw fa-close" aria-hidden="true"></i> Cancelar', array('class' => 'btn btn-outline pull-left btn-light', 'type' => 'button', 'data-dismiss' => 'modal' )); ?>
+
+        <?php echo Form::button('<i class="fa fa-fw fa-trash-o" aria-hidden="true"></i> Confirmar eliminación', array('class' => 'btn btn-danger pull-right', 'type' => 'button', 'id' => 'confirm' )); ?>
+
       </div>
     </div>
   </div>
 </div>
+<?php /**PATH C:\Users\dsgut\OneDrive\Escritorio\LaravelSixDotCero\resources\views/modals/modal-delete.blade.php ENDPATH**/ ?>
