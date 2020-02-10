@@ -15,7 +15,7 @@
                                 <div class="row">
                                     <div class="col-12 col-sm-4 col-md-3 profile-sidebar text-white rounded-left-sm-up">
                                         <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                                            <a class="nav-link active" data-toggle="pill" href=".edit-profile-tab" role="tab" aria-controls="edit-profile-tab" aria-selected="true">
+                                            <a class="nav-link active " data-toggle="pill" href=".edit-profile-tab" role="tab" aria-controls="edit-profile-tab" aria-selected="true">
                                                 <?php echo e(trans('profile.editProfileTitle')); ?>
 
                                             </a>
@@ -73,11 +73,11 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="form-group has-feedback <?php echo e($errors->has('theme') ? ' has-error ' : ''); ?>">
+                                                    <div class="form-group has-feedback <?php echo e($errors->has('theme') ? ' has-error ' : ''); ?> nav-font">
                                                         <?php echo Form::label('theme_id', trans('profile.label-theme') , array('class' => 'col-12 control-label'));; ?>
 
                                                         <div class="col-12">
-                                                            <select class="form-control" name="theme_id" id="theme_id">
+                                                            <select class="form-control input-login" name="theme_id" id="theme_id">
                                                                 <?php if($themes->count()): ?>
                                                                     <?php $__currentLoopData = $themes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $theme): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                                                       <option value="<?php echo e($theme->id); ?>"<?php echo e($currentTheme->id == $theme->id ? 'selected="selected"' : ''); ?>><?php echo e($theme->name); ?></option>
@@ -92,11 +92,11 @@
                                                             <?php endif; ?>
                                                         </div>
                                                     </div>
-                                                    <div class="form-group has-feedback <?php echo e($errors->has('location') ? ' has-error ' : ''); ?>">
+                                                    <div class="form-group has-feedback <?php echo e($errors->has('location') ? ' has-error ' : ''); ?> nav-font">
                                                         <?php echo Form::label('location', trans('profile.label-location') , array('class' => 'col-12 control-label'));; ?>
 
                                                         <div class="col-12">
-                                                            <?php echo Form::text('location', old('location'), array('id' => 'location', 'class' => 'form-control', 'placeholder' => trans('profile.ph-location'))); ?>
+                                                            <?php echo Form::text('location', old('location'), array('id' => 'location', 'class' => 'form-control input-login', 'placeholder' => trans('profile.ph-location'))); ?>
 
                                                             <span class="glyphicon <?php echo e($errors->has('location') ? ' glyphicon-asterisk ' : ' glyphicon-pencil '); ?> form-control-feedback" aria-hidden="true"></span>
                                                             <?php if($errors->has('location')): ?>
@@ -106,11 +106,11 @@
                                                             <?php endif; ?>
                                                         </div>
                                                     </div>
-                                                    <div class="form-group has-feedback <?php echo e($errors->has('bio') ? ' has-error ' : ''); ?>">
+                                                    <div class="form-group has-feedback <?php echo e($errors->has('bio') ? ' has-error ' : ''); ?> nav-font">
                                                         <?php echo Form::label('bio', trans('profile.label-bio') , array('class' => 'col-12 control-label'));; ?>
 
                                                         <div class="col-12">
-                                                            <?php echo Form::textarea('bio', old('bio'), array('id' => 'bio', 'class' => 'form-control', 'placeholder' => trans('profile.ph-bio'))); ?>
+                                                            <?php echo Form::textarea('bio', old('bio'), array('id' => 'bio', 'class' => 'form-control input-login', 'placeholder' => trans('profile.ph-bio'))); ?>
 
                                                             <span class="glyphicon glyphicon-pencil form-control-feedback" aria-hidden="true"></span>
                                                             <?php if($errors->has('bio')): ?>
@@ -120,11 +120,11 @@
                                                             <?php endif; ?>
                                                         </div>
                                                     </div>
-                                                    <div class="form-group has-feedback <?php echo e($errors->has('twitter_username') ? ' has-error ' : ''); ?>">
+                                                    <div class="form-group has-feedback <?php echo e($errors->has('twitter_username') ? ' has-error ' : ''); ?> nav-font">
                                                         <?php echo Form::label('twitter_username', trans('profile.label-twitter_username') , array('class' => 'col-12 control-label'));; ?>
 
                                                         <div class="col-12">
-                                                            <?php echo Form::text('twitter_username', old('twitter_username'), array('id' => 'twitter_username', 'class' => 'form-control', 'placeholder' => trans('profile.ph-twitter_username'))); ?>
+                                                            <?php echo Form::text('twitter_username', old('twitter_username'), array('id' => 'twitter_username', 'class' => 'form-control input-login', 'placeholder' => trans('profile.ph-twitter_username'))); ?>
 
                                                             <span class="glyphicon glyphicon-pencil form-control-feedback" aria-hidden="true"></span>
                                                             <?php if($errors->has('twitter_username')): ?>
@@ -134,11 +134,11 @@
                                                             <?php endif; ?>
                                                         </div>
                                                     </div>
-                                                    <div class="margin-bottom-2 form-group has-feedback <?php echo e($errors->has('github_username') ? ' has-error ' : ''); ?>">
+                                                    <div class="margin-bottom-2 form-group has-feedback <?php echo e($errors->has('github_username') ? ' has-error ' : ''); ?> nav-font">
                                                         <?php echo Form::label('github_username', trans('profile.label-github_username') , array('class' => 'col-12 control-label'));; ?>
 
                                                         <div class="col-12">
-                                                            <?php echo Form::text('github_username', old('github_username'), array('id' => 'github_username', 'class' => 'form-control', 'placeholder' => trans('profile.ph-github_username'))); ?>
+                                                            <?php echo Form::text('github_username', old('github_username'), array('id' => 'github_username', 'class' => 'form-control input-login', 'placeholder' => trans('profile.ph-github_username'))); ?>
 
                                                             <span class="glyphicon glyphicon-pencil form-control-feedback" aria-hidden="true"></span>
                                                             <?php if($errors->has('github_username')): ?>
@@ -177,7 +177,7 @@
                                                     <?php echo csrf_field(); ?>
 
 
-                                                    <div class="pt-4 pr-3 pl-2 form-group has-feedback row <?php echo e($errors->has('name') ? ' has-error ' : ''); ?>">
+                                                    <div class="pt-4 pr-3 pl-2 form-group has-feedback row <?php echo e($errors->has('name') ? ' has-error ' : ''); ?> nav-font">
                                                         <?php echo Form::label('name', trans('forms.create_user_label_username'), array('class' => 'col-md-3 control-label'));; ?>
 
                                                         <div class="col-md-9">
@@ -186,7 +186,7 @@
 
                                                                 <div class="input-group-append">
                                                                     <label class="input-group-text" for="name">
-                                                                        <i class="fa fa-fw <?php echo e(trans('forms.create_user_icon_username')); ?>" aria-hidden="true"></i>
+                                                                        <i class="fa fa-fw <?php echo e(trans('forms.create_user_icon_username')); ?> nav-font" aria-hidden="true"></i>
                                                                     </label>
                                                                 </div>
                                                             </div>
@@ -198,7 +198,7 @@
                                                         </div>
                                                     </div>
 
-                                                    <div class="pr-3 pl-2 form-group has-feedback row <?php echo e($errors->has('email') ? ' has-error ' : ''); ?>">
+                                                    <div class="pr-3 pl-2 form-group has-feedback row <?php echo e($errors->has('email') ? ' has-error ' : ''); ?> nav-font">
                                                         <?php echo Form::label('email', trans('forms.create_user_label_email'), array('class' => 'col-md-3 control-label'));; ?>
 
                                                         <div class="col-md-9">
@@ -207,7 +207,7 @@
 
                                                                 <div class="input-group-append">
                                                                     <label for="email" class="input-group-text">
-                                                                        <i class="fa fa-fw <?php echo e(trans('forms.create_user_icon_email')); ?>" aria-hidden="true"></i>
+                                                                        <i class="fa fa-fw <?php echo e(trans('forms.create_user_icon_email')); ?> nav-font" aria-hidden="true"></i>
                                                                     </label>
                                                                 </div>
                                                             </div>
@@ -219,7 +219,7 @@
                                                         </div>
                                                     </div>
 
-                                                    <div class="pr-3 pl-2 form-group has-feedback row <?php echo e($errors->has('first_name') ? ' has-error ' : ''); ?>">
+                                                    <div class="pr-3 pl-2 form-group has-feedback row <?php echo e($errors->has('first_name') ? ' has-error ' : ''); ?> nav-font">
                                                         <?php echo Form::label('first_name', trans('forms.create_user_label_firstname'), array('class' => 'col-md-3 control-label'));; ?>
 
                                                         <div class="col-md-9">
@@ -228,7 +228,7 @@
 
                                                                 <div class="input-group-append">
                                                                     <label class="input-group-text" for="first_name">
-                                                                        <i class="fa fa-fw <?php echo e(trans('forms.create_user_icon_firstname')); ?>" aria-hidden="true"></i>
+                                                                        <i class="fa fa-fw <?php echo e(trans('forms.create_user_icon_firstname')); ?> nav-font" aria-hidden="true"></i>
                                                                     </label>
                                                                 </div>
                                                             </div>
@@ -240,7 +240,7 @@
                                                         </div>
                                                     </div>
 
-                                                    <div class="pr-3 pl-2 form-group has-feedback row <?php echo e($errors->has('last_name') ? ' has-error ' : ''); ?>">
+                                                    <div class="pr-3 pl-2 form-group has-feedback row <?php echo e($errors->has('last_name') ? ' has-error ' : ''); ?> nav-font">
                                                         <?php echo Form::label('last_name', trans('forms.create_user_label_lastname'), array('class' => 'col-md-3 control-label'));; ?>
 
                                                         <div class="col-md-9">
@@ -249,7 +249,7 @@
 
                                                                 <div class="input-group-append">
                                                                     <label class="input-group-text" for="last_name">
-                                                                        <i class="fa fa-fw <?php echo e(trans('forms.create_user_icon_lastname')); ?>" aria-hidden="true"></i>
+                                                                        <i class="fa fa-fw <?php echo e(trans('forms.create_user_icon_lastname')); ?> nav-font" aria-hidden="true"></i>
                                                                     </label>
                                                                 </div>
                                                             </div>
