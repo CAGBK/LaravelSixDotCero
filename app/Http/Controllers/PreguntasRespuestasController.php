@@ -53,6 +53,7 @@ class PreguntasRespuestasController extends Controller
      */
     public function storeQuestion(Request $request)
     {
+        
         $question = new Question;
         $question->question_name = $request->question;
         $question->state_id = $request->state_id;

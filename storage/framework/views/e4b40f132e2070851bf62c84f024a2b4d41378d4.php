@@ -9,8 +9,9 @@
 
 ?>
 
-<div class="card">
-    <div class="card-header <?php if (Auth::check() && Auth::user()->hasRole('admin', true)): ?> bg-secondary text-white <?php endif; ?>">
+<div class="card card-login">
+
+    <div class="card-header <?php if (Auth::check() && Auth::user()->hasRole('admin', true)): ?> header-card text-white <?php endif; ?>">
 
         Bienvenido <?php echo e(Auth::user()->name); ?>
 
