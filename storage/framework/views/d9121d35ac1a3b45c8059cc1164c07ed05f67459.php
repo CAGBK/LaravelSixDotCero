@@ -45,15 +45,19 @@
                   </caption>
                   <thead>
                     <tr>
-                      <th>Numero de Pregunta</th>
-                      <th>Descripcion</th>
-                      <th>Estado</th>
+                      <th>Pregunta</th>
+                      <th>Respuestas</th>
+                      <th>Acción</th>
                     </tr>
                   </thead>
                   <tbody>
                     <tr>
-                      <td>id</td>
-                      <td>name</td>
+                      <td><?php echo e($question->question_name); ?></td>
+                      <td>
+                      <?php $__currentLoopData = $question->answers; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $answer): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        <?php echo e($answer->name); ?>
+
+                      <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?></td>
                       <td>email</td>
                     </tr>
                   </tbody>

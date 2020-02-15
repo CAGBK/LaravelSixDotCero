@@ -46,15 +46,18 @@
                   </caption>
                   <thead>
                     <tr>
-                      <th>Numero de Pregunta</th>
-                      <th>Descripcion</th>
-                      <th>Estado</th>
+                      <th>Pregunta</th>
+                      <th>Respuestas</th>
+                      <th>Acción</th>
                     </tr>
                   </thead>
                   <tbody>
                     <tr>
-                      <td>id</td>
-                      <td>name</td>
+                      <td>{{$question->question_name}}</td>
+                      <td>
+                      @foreach($question->answers as $answer)
+                        {{$answer->name}}
+                      @endforeach</td>
                       <td>email</td>
                     </tr>
                   </tbody>
