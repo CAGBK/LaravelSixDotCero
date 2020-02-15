@@ -18,6 +18,7 @@
                 font-weight: 200;
                 height: 100vh;
                 margin: 0;
+                background-color: #d0e0a1;
             }
 
             .full-height {
@@ -65,6 +66,11 @@
             .m-b-md {
                 margin-bottom: 30px;
             }
+            .nav-font
+            {
+                color: #009245 !important;
+                text-decoration-line: underline !important;
+            }
         </style>
     </head>
     <body>
@@ -72,12 +78,12 @@
             <?php if(Route::has('login')): ?>
                 <div class="top-right links">
                     <?php if(auth()->guard()->check()): ?>
-                        <a href="<?php echo e(url('/home')); ?>">Home</a>
+                        <a href="<?php echo e(url('/home')); ?>" class="nav-font">Home</a>
                     <?php else: ?>
-                        <a href="<?php echo e(route('login')); ?>">Login</a>
+                        <a href="<?php echo e(route('login')); ?>" class="nav-font">Login</a>
 
                         <?php if(Route::has('register')): ?>
-                            <a href="<?php echo e(route('register')); ?>">Register</a>
+                            <a href="<?php echo e(route('register')); ?>" class="nav-font">Register</a>
                         <?php endif; ?>
                     <?php endif; ?>
                 </div>
