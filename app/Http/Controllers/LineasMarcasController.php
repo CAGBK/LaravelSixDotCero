@@ -42,12 +42,9 @@ class LineasMarcasController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function createLine()
-    {
-        $questions = DB::table('questions')
-        ->select('questions.id','questions.question_name','questions.state_id')
-        ->where('questions.state_id' , '=' , '1' )
-        ->get();
-        return \View::make('linebrand/new', compact('questions'));
+    { 
+        $subcategories = Subcategory::all();
+        return \View::make('linebrand/new', compact('subcategories'));
     }
 
     /**
@@ -67,12 +64,21 @@ class LineasMarcasController extends Controller
     }
     public function storeLinea(Request $request)
     {
-        $question = Question::create(['question_name' => $request->question, 
-        'state_id' => $request->state_id ]);
-        $questions = Question::all();
-        $answers = Answer::all();
+        $category = new Category;
+        $category->name = $request->brand;
+        $category->description = $request->description;
+        $category->save();
+        $category = Category::all();
+        $categoryid = $category->last();
+        foreach ($request->subcategories as $subcategory1) {
+            $question = new SubcategoryQuestionDetail;
+            $question->category_id = $categoryid->id;
+            $question->subcategory_id = $subcategory1;
+
+        $question->save();    
+        }
+
         return redirect('lineas-marcas');
-        return View::make('', compact('questions','answers','states'));
     }
 
 
