@@ -1,73 +1,123 @@
-@extends('home')
+@extends('layouts.app')
+
+@section('template_title')
+    Todas las preguntas
+@endsection
+
+@section('template_linked_css')
+    @if(config('usersmanagement.enabledDatatablesJs'))
+        <link rel="stylesheet" type="text/css" href="{{ config('usersmanagement.datatablesCssCDN') }}">
+    @endif
+    <style type="text/css" media="screen">
+        .users-table {
+            border: 0;
+        }
+        .users-table tr td:first-child {
+            padding-left: 15px;
+        }
+        .users-table tr td:last-child {
+            padding-right: 15px;
+        }
+        .users-table.table-responsive,
+        .users-table.table-responsive table {
+            margin-bottom: 0;
+        }
+    </style>
+@endsection
+
 @section('content')
-<div class="container">
-  <section class="text-center col-md-12 col-sm-12">
-    <h2>Preguntas y Respuestas</h2>
-  </section>
-  <hr>
-  <div class="row">
-    <div class="col-md-12">
-      <div class="card">
-        <div class="card-header bg-default">
-          <div style="display: flex; justify-content: space-between; align-items: center;">
-            <span id="card_title">
-              Preguntas 
-            </span>
-            <span class="">
-              <a href="{{ route('create_question')}}"><i class="fas fa-plus"></i> Crear Pregunta y Respuestas</a>
-            </span>
-          </div>
-        </div>
-        <div class="list-group-flush flex-fill">
-          <ul class="list-group list-group-flush">
-            @foreach ($questions as $question)
-            <li id="accordion_roles_1" class="list-group-item accordion list-group-item-action accordion-item collapsed" data-toggle="collapse" href="#collapse_roles_1">
-              <div class="d-flex justify-content-between align-items-center" data-toggle="tooltip" title="Show">
-                <span class="badge badge-light">
-                    Pregunta: <strong>{{$question->question_name}}</strong>
-                </span>
-                <div class="text-right">
-                  <span class="badge badge-pill badge-success">
-                    <small>
-                      1 Pregunta
-                    </small>
-                  </span>
-                  <span class="badge badge-pill badge-primary">
-                    <small>
-                      # permisos
-                    </small>
-                  </span>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="card card-login">
+                    <div class="card-header header-card text-white">
+
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+
+                            <span id="card_title">
+                                Todas las preguntas
+                            </span>
+
+                            <div class="btn-group pull-right btn-group-xs">
+                                <button type="button" class="btn btn-default dropdown-toggle text-white" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="fa fa-ellipsis-v fa-fw" aria-hidden="true"></i>
+                                    <span class="sr-only">
+                                        {!! trans('usersmanagement.users-menu-alt') !!}
+                                    </span>
+                                </button>
+                                <div class="dropdown-menu dropdown-menu-right">
+                                    <a class="dropdown-item nav-font" href="{{ route('create_question')}}">
+                                        <i class="fa fa-fw fa-user-plus" aria-hidden="true"></i>
+                                        Crear Pregunta
+                                    </a>
+                                    <a class="dropdown-item nav-font" href="/users/deleted">
+                                        <i class="fa fa-fw fa-group" aria-hidden="true"></i>
+                                        Preguntas Inactivas
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+
+                        @if(config('usersmanagement.enableSearchUsers'))
+                            @include('partials.search-users-form')
+                        @endif
+                        <div class="table-responsive users-table">
+                            <table class="table table-striped table-sm data-table">
+                                <caption id="user_count" class="nav-font">
+                                    {{ trans_choice('questionsmanagement.questions-table.caption', 1, ['questionscount' => $questions->count()]) }}
+                                </caption>
+                                <thead class="thead">
+                                    <tr>
+                                        <th>Pregunta</th>
+                                        <th>Respuestas</th>
+                                        <th>Creado</th>
+                                        <th>Modificado</th>
+                                        <th>Acción</th>
+                                        <th class="no-search no-sort"></th>
+                                        <th class="no-search no-sort"></th>
+                                    </tr>
+                                </thead>
+                                <tbody id="users_table">
+                                    @foreach($questions as $question)
+                                        <tr>
+                                            <td>{{$question->question_name}}</td>
+                                            <td>
+                                            @foreach($question->answers as $answer)
+                                              <span class="badge text-white" style="background-color:{{$answer->state->color}}">{{$answer->name}}</span>
+                                            @endforeach</td>
+                                            </td>
+                                            <td class="hidden-sm hidden-xs hidden-md">{{$question->created_at}}</td>
+                                            <td class="hidden-sm hidden-xs hidden-md">{{$question->updated_at}}</td>
+                                            <td>
+                                                {!! Form::open(array('url' => 'users/' . $question->id, 'class' => '', 'data-toggle' => 'tooltip', 'title' => 'Delete')) !!}
+                                                    {!! Form::hidden('_method', 'DELETE') !!}
+                                                    {!! Form::button(trans('usersmanagement.buttons.delete'), array('class' => 'btn btn-danger btn-sm','type' => 'button', 'style' =>'width: 100%;' ,'data-toggle' => 'modal', 'data-target' => '#confirmDelete', 'data-title' => 'Delete User', 'data-message' => 'Are you sure you want to delete this user ?')) !!}
+                                                {!! Form::close() !!}
+                                            </td>
+                                            <td>
+                                                <a class="btn btn-sm btn-success btn-block" href="{{ URL::to('users/' . $question->id) }}" data-toggle="tooltip" title="Show">
+                                                    {!! trans('usersmanagement.buttons.show') !!}
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <a class="btn btn-sm btn-info btn-block" href="{{ URL::to('users/' . $question->id . '/edit') }}" data-toggle="tooltip" title="Edit">
+                                                    {!! trans('usersmanagement.buttons.edit') !!}
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+
+                            </table>
+                        </div>
+                    </div>                        
                 </div>
-              </div>
-              <div id="collapse_roles_1" class="collapse" data-parent="#accordion_roles_1" >
-                <table class="table table-striped table-sm mt-3">
-                  <caption>
-                    Nombre
-                  </caption>
-                  <thead>
-                    <tr>
-                      <th>Pregunta</th>
-                      <th>Respuestas</th>
-                      <th>Acción</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>{{$question->question_name}}</td>
-                      <td>
-                      @foreach($question->answers as $answer)
-                        {{$answer->name}}
-                      @endforeach</td>
-                      <td>email</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-              </li>
-              @endforeach 
-            </ul>
-          </div>
+            </div>
         </div>
-      </div>
-</div>
+    </div>
+
+    @include('modals.modal-delete')
+
 @endsection

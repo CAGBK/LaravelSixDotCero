@@ -21,9 +21,7 @@ class PreguntasRespuestasController extends Controller
     public function index()
     {
         $questions = Question::all();
-        $answers = Answer::all();
-        $states = State::all();
-        return View::make('questionanswer/list', compact('questions','answers'));
+        return View::make('questionanswer/list', compact('questions'));
     }
 
     /**
@@ -53,7 +51,6 @@ class PreguntasRespuestasController extends Controller
      */
     public function storeQuestion(Request $request)
     {
-        
         $question = new Question;
         $question->question_name = $request->question;
         $question->state_id = $request->state_id;

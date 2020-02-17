@@ -28,8 +28,8 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-12">
-                <div class="card">
-                    <div class="card-header">
+                <div class="card card-login">
+                    <div class="card-header header-card text-white">
 
                         <div style="display: flex; justify-content: space-between; align-items: center;">
 
@@ -39,7 +39,7 @@
                             </span>
 
                             <div class="btn-group pull-right btn-group-xs">
-                                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <button type="button" class="btn btn-default dropdown-toggle text-white" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <i class="fa fa-ellipsis-v fa-fw" aria-hidden="true"></i>
                                     <span class="sr-only">
                                         <?php echo trans('usersmanagement.users-menu-alt'); ?>
@@ -47,12 +47,12 @@
                                     </span>
                                 </button>
                                 <div class="dropdown-menu dropdown-menu-right">
-                                    <a class="dropdown-item" href="/users/create">
+                                    <a class="dropdown-item nav-font" href="/users/create">
                                         <i class="fa fa-fw fa-user-plus" aria-hidden="true"></i>
                                         <?php echo trans('usersmanagement.buttons.create-new'); ?>
 
                                     </a>
-                                    <a class="dropdown-item" href="/users/deleted">
+                                    <a class="dropdown-item nav-font" href="/users/deleted">
                                         <i class="fa fa-fw fa-group" aria-hidden="true"></i>
                                         <?php echo trans('usersmanagement.show-deleted-users'); ?>
 
@@ -70,7 +70,7 @@
 
                         <div class="table-responsive users-table">
                             <table class="table table-striped table-sm data-table">
-                                <caption id="user_count">
+                                <caption id="user_count" class="nav-font">
                                     <?php echo e(trans_choice('usersmanagement.users-table.caption', 1, ['userscount' => $users->count()])); ?>
 
                                 </caption>

@@ -84,7 +84,7 @@
                                         </div>
                                         @foreach ($statesanswer as $state)
                                             <div class="form-check ">
-                                            <input type="radio" class="form-check-input" name="state[]" id="state[]" value="3">
+                                            <input type="radio" class="form-check-input" name="state[]" id="state[]" value="0">
                                                 <label class="form-check-label" for="{{$state->state}}">{{$state->state}}</label>
                                             </div>
                                         @endforeach
@@ -108,7 +108,7 @@
                                         </div>
                                         @foreach ($statesanswer as $state)
                                             <div class="form-check ">
-                                            <input type="radio" class="form-check-input" name="state[]" id="state[]" value="3">
+                                            <input type="radio" class="form-check-input" name="state[]" id="state[]" value="1">
                                                 <label class="form-check-label" for="{{$state->state}}">{{$state->state}}</label>
                                             </div>
                                         @endforeach
@@ -132,7 +132,7 @@
                                         </div>
                                         @foreach ($statesanswer as $state)
                                             <div class="form-check ">
-                                            <input type="radio" class="form-check-input" name="state[]" id="state[]" value="3">
+                                            <input type="radio" class="form-check-input" name="state[]" id="state[]" value="2">
                                                 <label class="form-check-label" for="{{$state->state}}">{{$state->state}}</label>
                                             </div>
                                         @endforeach
