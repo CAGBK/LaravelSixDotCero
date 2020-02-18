@@ -17,6 +17,8 @@ use App\Models\Subcategory;
 
 use App\Models\Question;
 
+use App\Models\CategorySubcategoryDetail;
+
 use App\Models\SubcategoryQuestionDetail;
 
 use Illuminate\Support\Facades\DB;
@@ -71,7 +73,7 @@ class LineasMarcasController extends Controller
         $category = Category::all();
         $categoryid = $category->last();
         foreach ($request->subcategories as $subcategory1) {
-            $question = new SubcategoryQuestionDetail;
+            $question = new CategorySubcategoryDetail;
             $question->category_id = $categoryid->id;
             $question->subcategory_id = $subcategory1;
 

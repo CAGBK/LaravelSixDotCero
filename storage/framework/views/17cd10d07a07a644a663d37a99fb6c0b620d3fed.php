@@ -130,11 +130,9 @@
               <?php $__currentLoopData = $categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
               <tr>
                 <td><?php echo e($category->id); ?></td>
-                <td><?php echo e($category->question_name); ?></td>
+                <td><?php echo e($category->name); ?></td>
                 <td>
-                   <?php $__currentLoopData = $category->answers; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                    <span style="background-color:<?php echo e($subcategory->state->color); ?>!important;" class="badge badge-primary"><?php echo e($item->name); ?></span>
-                  <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                  
                 </td>
               </tr>
               <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>             
