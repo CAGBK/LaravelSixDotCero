@@ -67,7 +67,7 @@
                   </caption>
                   <thead class="thead">
                       <tr>
-                          <th>Nombre Linea</th>
+                          <th><i class = "fa fa-user"> </i>Nombre Linea</th>
                           <th>Marcas</th>
                           <th>Creado</th>
                           <th>Modificado</th>
