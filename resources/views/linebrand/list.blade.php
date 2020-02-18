@@ -131,11 +131,9 @@
               @foreach ($categories as $category)
               <tr>
                 <td>{{$category->id}}</td>
-                <td>{{$category->question_name}}</td>
+                <td>{{$category->name}}</td>
                 <td>
-                   @foreach ($category->answers as $item)
-                    <span style="background-color:{{$subcategory->state->color}}!important;" class="badge badge-primary">{{$item->name}}</span>
-                  @endforeach
+                  
                 </td>
               </tr>
               @endforeach             
