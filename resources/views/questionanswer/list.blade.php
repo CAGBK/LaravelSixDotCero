@@ -102,7 +102,7 @@
                                                 </a>
                                             </td>
                                             <td>
-                                                <a class="btn btn-sm btn-info btn-block" href="{{ URL::to('users/' . $question->id . '/edit') }}" data-toggle="tooltip" title="Edit">
+                                                <a class="btn btn-sm btn-info btn-block" href="{{ URL::to('question/' . $question->id . '/edit') }}" data-toggle="tooltip" title="Edit">
                                                     {!! trans('questionsmanagement.buttons.edit') !!}
                                                 </a>
                                             </td>

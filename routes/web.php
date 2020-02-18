@@ -107,6 +107,9 @@ Route::group(['middleware' => ['auth', 'activated', 'currentUser', 'activity', '
     Route::get('crear/Pregunta', 'PreguntasRespuestasController@createQuestion')->name('create_question');
     Route::post('new/Pregunta', 'PreguntasRespuestasController@storeQuestion')->name('ruta_new_question');
     Route::get('question/{id}', 'PreguntasRespuestasController@showQuestion')->name('show_question');
+    Route::get('line/{id}', 'LineasMarcasController@showLine')->name('show_line');
+    Route::get('brand/{id}', 'LineasMarcasController@showBrand')->name('show_brand');
+    Route::get('question/{id}/edit', 'PreguntasRespuestasController@edit')->name('edit_brand');
 
 });
 
@@ -141,6 +144,11 @@ Route::group(['middleware' => ['auth', 'activated', 'role:admin', 'activity', 't
             'destroy' => 'question.destroy',
         ],
     ]);
+
+    Route::delete('line/{id}', 'LineasMarcasController@destroy')->name('line_destroy');
+
+    Route::delete('brand/{id}', 'LineasMarcasController@destroyBrand')->name('brand_destroy');
+
 
     Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
     Route::get('routes', 'AdminDetailsController@listRoutes');

@@ -82,20 +82,22 @@
                               <td>{{$category->name}}</td>
                               <td>
                                 @foreach ($category->subcategories as $subcategory)
+                                @if($subcategory)
                                 <span class="badge " >{{$subcategory->name}}</span>
+                                @endif
                                 @endforeach
                               </td>
                               </td>
                               <td class="hidden-sm hidden-xs hidden-md">{{$category->created_at}}</td>
                               <td class="hidden-sm hidden-xs hidden-md">{{$category->updated_at}}</td>
                               <td>
-                                  {!! Form::open(array('url' => 'question/' . $category->id, 'class' => '', 'data-toggle' => 'tooltip', 'title' => 'Delete')) !!}
+                                  {!! Form::open(array('url' => 'line/' . $category->id, 'class' => '', 'data-toggle' => 'tooltip', 'title' => 'Delete')) !!}
                                       {!! Form::hidden('_method', 'DELETE') !!}
                                       {!! Form::button(trans('linebrandmanagement.buttons.delete'), array('class' => 'btn btn-danger btn-sm','type' => 'button', 'style' =>'width: 100%;' ,'data-toggle' => 'modal', 'data-target' => '#confirmDelete', 'data-title' => 'Borrar Linea', 'data-message' => '¿Estás seguro de que deseas eliminar a esta Linea?')) !!}
                                   {!! Form::close() !!}
                               </td>
                               <td>
-                                  <a class="btn btn-sm btn-success btn-block" href="{{ route('show_question',['id' => $category->id]) }}" data-toggle="tooltip" title="Show">
+                                  <a class="btn btn-sm btn-success btn-block" href="{{ route('show_line',['id' => $category->id]) }}" data-toggle="tooltip" title="Show">
                                       {!! trans('linebrandmanagement.buttons.show') !!}
                                   </a>
                               </td>
@@ -177,13 +179,13 @@
                               <td class="hidden-sm hidden-xs hidden-md">{{$subcategory->created_at}}</td>
                               <td class="hidden-sm hidden-xs hidden-md">{{$subcategory->updated_at}}</td>
                               <td>
-                                  {!! Form::open(array('url' => 'question/' . $subcategory->id, 'class' => '', 'data-toggle' => 'tooltip', 'title' => 'Delete')) !!}
+                                  {!! Form::open(array('url' => 'brand/' . $subcategory->id, 'class' => '', 'data-toggle' => 'tooltip', 'title' => 'Delete')) !!}
                                       {!! Form::hidden('_method', 'DELETE') !!}
                                       {!! Form::button(trans('linebrandmanagement.buttonsbrand.delete'), array('class' => 'btn btn-danger btn-sm','type' => 'button', 'style' =>'width: 100%;' ,'data-toggle' => 'modal', 'data-target' => '#confirmDelete', 'data-title' => 'Borrar Marca', 'data-message' => '¿Estás seguro de que deseas eliminar a esta Marca?')) !!}
                                   {!! Form::close() !!}
                               </td>
                               <td>
-                                  <a class="btn btn-sm btn-success btn-block" href="{{ route('show_question',['id' => $subcategory->id]) }}" data-toggle="tooltip" title="Show">
+                                  <a class="btn btn-sm btn-success btn-block" href="{{ route('show_brand',['id' => $subcategory->id]) }}" data-toggle="tooltip" title="Show">
                                       {!! trans('linebrandmanagement.buttonsbrand.show') !!}
                                   </a>
                               </td>

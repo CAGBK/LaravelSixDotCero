@@ -71,13 +71,15 @@ class LineasMarcasController extends Controller
         $category->save();
         $category = Category::all();
         $categoryid = $category->last();
-        foreach ($request->subcategories as $subcategory1) {
-            $question = new CategorySubcategoryDetail;
-            $question->category_id = $categoryid->id;
-            $question->subcategory_id = $subcategory1;
-
-        $question->save();    
+        if ($request->subcategories) {
+            foreach ($request->subcategories as $subcategory1) {
+                $question = new CategorySubcategoryDetail;
+                $question->category_id = $categoryid->id;
+                $question->subcategory_id = $subcategory1;
+            }
+            $question->save();
         }
+            
 
         return redirect('lineas-marcas');
     }
@@ -152,8 +154,33 @@ class LineasMarcasController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($category)
     {
-        //
+        $category = Category::find($category);
+        $category->delete();
+
+        return redirect('lineas-marcas')->with('success', trans('Linea eliminada satisfactoriamente'));
+        
+    }
+
+    public function destroyBrand($subcategory)
+    { 
+        $subcategory = Subcategory::find($subcategory);
+        $subcategory->delete();
+
+        return redirect('lineas-marcas')->with('success', trans('Marca eliminada satisfactoriamente'));
+        
+    }
+
+    public function showLine(Request $request, $id)
+    {
+        $category = Category::find($id);
+        return \View::make('linebrand/show-lines',compact('category'));
+    }
+
+    public function showBrand(Request $request, $id)
+    {
+        $subcategory = Subcategory::find($id);
+        return \View::make('linebrand/show-brands',compact('subcategory'));
     }
 }

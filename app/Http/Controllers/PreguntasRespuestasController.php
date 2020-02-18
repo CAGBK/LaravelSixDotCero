@@ -176,7 +176,13 @@ class PreguntasRespuestasController extends Controller
      */
     public function edit($id)
     {
-        //
+        $question = Question::find($id);
+        $states = State::all();
+        $statesanswer = DB::table('states')
+        ->select('states.id','states.state','states.color')
+        ->where('states.id', [4])
+        ->get();
+        return \View::make('questionanswer/edit-question',compact('question','states','statesanswer'));
     }
 
     /**
@@ -206,4 +212,6 @@ class PreguntasRespuestasController extends Controller
         return redirect('preguntas-respuestas')->with('success', trans('questionsmanagement.deleteSuccess'));
         
     }
+
+    
 }

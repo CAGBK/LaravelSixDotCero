@@ -107,7 +107,7 @@
                                                 </a>
                                             </td>
                                             <td>
-                                                <a class="btn btn-sm btn-info btn-block" href="<?php echo e(URL::to('users/' . $question->id . '/edit')); ?>" data-toggle="tooltip" title="Edit">
+                                                <a class="btn btn-sm btn-info btn-block" href="<?php echo e(URL::to('question/' . $question->id . '/edit')); ?>" data-toggle="tooltip" title="Edit">
                                                     <?php echo trans('questionsmanagement.buttons.edit'); ?>
 
                                                 </a>
