@@ -19,5 +19,8 @@ class CategorySubcategoryDetail extends Model
         return $this->belongsTo('App\Models\Subcategory');
     }
 }
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 1e0ee7e18fc57e7aa376f346a82965299cbf3f1c
