@@ -186,9 +186,10 @@ class PreguntasRespuestasController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function showQuestion(Request $request, $id)
     {
-        //
+        $question = Question::find($id);
+        return \View::make('questionanswer/show-question',compact('question'));
     }
 
     /**
@@ -197,8 +198,12 @@ class PreguntasRespuestasController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Question $question)
     {
-        //
+
+        $question->delete();
+
+        return redirect('preguntas-respuestas')->with('success', trans('questionsmanagement.deleteSuccess'));
+        
     }
 }

@@ -106,6 +106,7 @@ Route::group(['middleware' => ['auth', 'activated', 'currentUser', 'activity', '
     Route::get('preguntas-respuestas', 'PreguntasRespuestasController@index')->name('preguntas_respuestas');
     Route::get('crear/Pregunta', 'PreguntasRespuestasController@createQuestion')->name('create_question');
     Route::post('new/Pregunta', 'PreguntasRespuestasController@storeQuestion')->name('ruta_new_question');
+    Route::get('question/{id}', 'PreguntasRespuestasController@showQuestion')->name('show_question');
 
 });
 
@@ -135,9 +136,16 @@ Route::group(['middleware' => ['auth', 'activated', 'role:admin', 'activity', 't
         ],
     ]);
 
+    Route::resource('question', 'PreguntasRespuestasController', [
+        'names' => [
+            'destroy' => 'question.destroy',
+        ],
+    ]);
+
     Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
     Route::get('routes', 'AdminDetailsController@listRoutes');
     Route::get('active-users', 'AdminDetailsController@activeUsers');
 });
 
 Route::redirect('/php', '/phpinfo', 301);
+
