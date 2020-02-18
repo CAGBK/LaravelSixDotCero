@@ -91,19 +91,19 @@
                                             <td class="hidden-sm hidden-xs hidden-md">{{$question->created_at}}</td>
                                             <td class="hidden-sm hidden-xs hidden-md">{{$question->updated_at}}</td>
                                             <td>
-                                                {!! Form::open(array('url' => 'users/' . $question->id, 'class' => '', 'data-toggle' => 'tooltip', 'title' => 'Delete')) !!}
+                                                {!! Form::open(array('url' => 'question/' . $question->id, 'class' => '', 'data-toggle' => 'tooltip', 'title' => 'Delete')) !!}
                                                     {!! Form::hidden('_method', 'DELETE') !!}
-                                                    {!! Form::button(trans('usersmanagement.buttons.delete'), array('class' => 'btn btn-danger btn-sm','type' => 'button', 'style' =>'width: 100%;' ,'data-toggle' => 'modal', 'data-target' => '#confirmDelete', 'data-title' => 'Delete User', 'data-message' => 'Are you sure you want to delete this user ?')) !!}
+                                                    {!! Form::button(trans('questionsmanagement.buttons.delete'), array('class' => 'btn btn-danger btn-sm','type' => 'button', 'style' =>'width: 100%;' ,'data-toggle' => 'modal', 'data-target' => '#confirmDelete', 'data-title' => 'Borrar Pregunta', 'data-message' => '¿Estás seguro de que deseas eliminar a esta pregunta?')) !!}
                                                 {!! Form::close() !!}
                                             </td>
                                             <td>
-                                                <a class="btn btn-sm btn-success btn-block" href="{{ URL::to('users/' . $question->id) }}" data-toggle="tooltip" title="Show">
-                                                    {!! trans('usersmanagement.buttons.show') !!}
+                                                <a class="btn btn-sm btn-success btn-block" href="{{ route('show_question',['id' => $question->id]) }}" data-toggle="tooltip" title="Show">
+                                                    {!! trans('questionsmanagement.buttons.show') !!}
                                                 </a>
                                             </td>
                                             <td>
                                                 <a class="btn btn-sm btn-info btn-block" href="{{ URL::to('users/' . $question->id . '/edit') }}" data-toggle="tooltip" title="Edit">
-                                                    {!! trans('usersmanagement.buttons.edit') !!}
+                                                    {!! trans('questionsmanagement.buttons.edit') !!}
                                                 </a>
                                             </td>
                                         </tr>
@@ -119,5 +119,13 @@
     </div>
 
     @include('modals.modal-delete')
+
+@endsection
+
+@section('footer_scripts')
+
+    @include('scripts.delete-modal-script')
+    @include('scripts.save-modal-script')
+    @include('scripts.tooltips')
 
 @endsection
