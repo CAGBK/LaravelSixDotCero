@@ -16,6 +16,11 @@ class Subcategory extends Model
     } 
     public function questions()
     {
-        return $this->hasMany('App\Models\Question');
+        return $this->belongsToMany('App\Models\Question');
     }
+    public function subcategoryquestiondetail()
+    {
+        return $this->hasMany('App\Models\SubcategoryQuestionDetail');
+    }
+    
 }

@@ -1,5 +1,0 @@
-<<<<<<< HEAD
-a:3:{s:6:"_token";s:40:"tGBiPLMpmUwyZileAYFzNYnvUxPTyEb5bDQdWvS1";s:9:"_previous";a:1:{s:3:"url";s:21:"http://localhost:8000";}s:6:"_flash";a:2:{s:3:"old";a:0:{}s:3:"new";a:0:{}}}
-=======
-a:5:{s:6:"_token";s:40:"Hifa3Pbp8hTQv0RB0y0AcCo4p9QpqjwHkGAHW6vS";s:9:"_previous";a:1:{s:3:"url";s:35:"http://localhost:8000/lineas-marcas";}s:6:"_flash";a:2:{s:3:"old";a:0:{}s:3:"new";a:0:{}}s:50:"login_web_59ba36addc2b2f9401580f014c7f58ea4e30989d";i:1;s:7:"nextUri";s:30:"http://localhost/lineas-marcas";}
->>>>>>> 1e0ee7e18fc57e7aa376f346a82965299cbf3f1c

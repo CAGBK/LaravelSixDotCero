@@ -14,4 +14,13 @@ class Category extends Model
     {
         return $this->hasMany('App\Models\Challenge');
     } 
+    public function categorysubcategory()
+    {
+        return $this->hasMany('App\Models\CategorySubcategoryDetail');
+    }
+    public function subcategories()
+    {
+        return $this->belongsToMany('App\Models\Subcategory');
+    }
+    
 }

@@ -33,9 +33,8 @@ class LineasMarcasController extends Controller
     public function index()
     {
         $categories = Category::all();
-        $questions = Question::all();
         $subcategories = Subcategory::all();
-        return View::make('linebrand/list', compact('categories','subcategories', 'questions'));
+        return View::make('linebrand/list', compact('categories','subcategories'));
     }
 
     /**

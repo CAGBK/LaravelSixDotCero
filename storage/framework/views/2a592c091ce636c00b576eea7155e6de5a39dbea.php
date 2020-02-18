@@ -91,24 +91,24 @@
                                             <td class="hidden-sm hidden-xs hidden-md"><?php echo e($question->created_at); ?></td>
                                             <td class="hidden-sm hidden-xs hidden-md"><?php echo e($question->updated_at); ?></td>
                                             <td>
-                                                <?php echo Form::open(array('url' => 'users/' . $question->id, 'class' => '', 'data-toggle' => 'tooltip', 'title' => 'Delete')); ?>
+                                                <?php echo Form::open(array('url' => 'question/' . $question->id, 'class' => '', 'data-toggle' => 'tooltip', 'title' => 'Delete')); ?>
 
                                                     <?php echo Form::hidden('_method', 'DELETE'); ?>
 
-                                                    <?php echo Form::button(trans('usersmanagement.buttons.delete'), array('class' => 'btn btn-danger btn-sm','type' => 'button', 'style' =>'width: 100%;' ,'data-toggle' => 'modal', 'data-target' => '#confirmDelete', 'data-title' => 'Delete User', 'data-message' => 'Are you sure you want to delete this user ?')); ?>
+                                                    <?php echo Form::button(trans('questionsmanagement.buttons.delete'), array('class' => 'btn btn-danger btn-sm','type' => 'button', 'style' =>'width: 100%;' ,'data-toggle' => 'modal', 'data-target' => '#confirmDelete', 'data-title' => 'Borrar Pregunta', 'data-message' => '¿Estás seguro de que deseas eliminar a esta pregunta?')); ?>
 
                                                 <?php echo Form::close(); ?>
 
                                             </td>
                                             <td>
-                                                <a class="btn btn-sm btn-success btn-block" href="<?php echo e(URL::to('users/' . $question->id)); ?>" data-toggle="tooltip" title="Show">
-                                                    <?php echo trans('usersmanagement.buttons.show'); ?>
+                                                <a class="btn btn-sm btn-success btn-block" href="<?php echo e(route('show_question',['id' => $question->id])); ?>" data-toggle="tooltip" title="Show">
+                                                    <?php echo trans('questionsmanagement.buttons.show'); ?>
 
                                                 </a>
                                             </td>
                                             <td>
                                                 <a class="btn btn-sm btn-info btn-block" href="<?php echo e(URL::to('users/' . $question->id . '/edit')); ?>" data-toggle="tooltip" title="Edit">
-                                                    <?php echo trans('usersmanagement.buttons.edit'); ?>
+                                                    <?php echo trans('questionsmanagement.buttons.edit'); ?>
 
                                                 </a>
                                             </td>
@@ -128,4 +128,11 @@
 
 <?php $__env->stopSection(); ?>
 
+<?php $__env->startSection('footer_scripts'); ?>
+
+    <?php echo $__env->make('scripts.delete-modal-script', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+    <?php echo $__env->make('scripts.save-modal-script', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+    <?php echo $__env->make('scripts.tooltips', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+
+<?php $__env->stopSection(); ?>
 <?php echo $__env->make('layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\ca.gonzalezb1\Desktop\LaravelSixDotCero\resources\views/questionanswer/list.blade.php ENDPATH**/ ?>
