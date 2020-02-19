@@ -102,12 +102,15 @@ class LineasMarcasController extends Controller
         $subcategory = Subcategory::all();
         $subcategoryid = $subcategory->last();
         
-        foreach ($request->question as $question1) {
-            $question = new SubcategoryQuestionDetail;
-            $question->subcategory_id = $subcategoryid->id;
-            $question->question_id = $question1;
+        if($request->question)
+        {
+            foreach ($request->question as $question1) {
+                $question = new SubcategoryQuestionDetail;
+                $question->subcategory_id = $subcategoryid->id;
+                $question->question_id = $question1;
 
-        $question->save();    
+            $question->save();    
+            }
         }
 
         return redirect('lineas-marcas');

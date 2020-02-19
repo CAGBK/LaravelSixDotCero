@@ -26,7 +26,7 @@
                     </div>
                     <div class="card-body">
                         <div class="card-body">
-                            <form action="{{ route('ruta_new_question') }}" method="POST">
+                            {!! Form::model($question,['route' => ['update_question', $question->id], 'method' => 'put']) !!}
                                 @csrf
                                 <div class="form-group has-feedback row {{ $errors->has('question') ? ' has-error ' : '' }} nav-font">
                                     {!! Form::label('question', 'Pregunta', array('class' => 'col-md-3 control-label')); !!}
@@ -71,23 +71,23 @@
                                         @endif
                                     </div>
                                 </div>
+                                @foreach($question->answers as $answer)
                                 <div class="form-group has-feedback row {{ $errors->has('answer[]') ? ' has-error ' : '' }} nav-font">
-                                    {!! Form::label('answer[]', 'Respuesta 1', array('class' => 'col-md-3 control-label')); !!}
+                                    {!! Form::label('answer[]', 'Respuesta '. $loop->index, array('class' => 'col-md-3 control-label')); !!}
                                     <div class="col-md-9">
                                         <div class="input-group">
-                                            {!! Form::text('answer[]', NULL, array('id' => 'answer[]', 'class' => 'form-control', 'placeholder' => 'Pregunta...')) !!}
+                                            <input type="hidden" name="id[]" value="{{$answer->id}}" placeholder="">
+                                            {!! Form::text('answer[]', $answer->name, array('id' => 'answer[]', 'class' => 'form-control')) !!}
                                             <div class="input-group-append">
                                                 <label for="answer[]" class="input-group-text">
                                                     <i class="fa fa-fw {{ trans('forms.create_user_icon_email') }} nav-font" aria-hidden="true"></i>
                                                 </label>
                                             </div>
                                         </div>
-                                        @foreach ($statesanswer as $state)
-                                            <div class="form-check ">
-                                            <input type="radio" class="form-check-input" name="state[]" id="state[]" value="0">
-                                                <label class="form-check-label" for="{{$state->state}}">{{$state->state}}</label>
-                                            </div>
-                                        @endforeach
+                                        <div class="form-check ">
+                                        <input type="radio" class="form-check-input" name="state[]" id="state[]" value="{{$loop->index}}"@if($answer->state->id === 4) checked @endif>
+                                            <label class="form-check-label" for="">Correcto</label>
+                                        </div>
                                         @if ($errors->has('answer[]'))
                                             <span class="help-block">
                                                 <strong>{{ $errors->first('answer[]') }}</strong>
@@ -95,82 +95,11 @@
                                         @endif
                                     </div>
                                 </div>
-                                <div class="form-group has-feedback row {{ $errors->has('answer[]') ? ' has-error ' : '' }} nav-font">
-                                    {!! Form::label('answer[]', 'Respuesta 2', array('class' => 'col-md-3 control-label')); !!}
-                                    <div class="col-md-9">
-                                        <div class="input-group">
-                                            {!! Form::text('answer[]', NULL, array('id' => 'answer[]', 'class' => 'form-control', 'placeholder' => 'Respuesta 2')) !!}
-                                            <div class="input-group-append">
-                                                <label for="answer[]" class="input-group-text">
-                                                    <i class="fa fa-fw {{ trans('forms.create_user_icon_email') }} nav-font" aria-hidden="true"></i>
-                                                </label>
-                                            </div>
-                                        </div>
-                                        @foreach ($statesanswer as $state)
-                                            <div class="form-check ">
-                                            <input type="radio" class="form-check-input" name="state[]" id="state[]" value="1">
-                                                <label class="form-check-label" for="{{$state->state}}">{{$state->state}}</label>
-                                            </div>
-                                        @endforeach
-                                        @if ($errors->has('answer[]'))
-                                            <span class="help-block">
-                                                <strong>{{ $errors->first('answer[]') }}</strong>
-                                            </span>
-                                        @endif
-                                    </div>
-                                </div>
-                                <div class="form-group has-feedback row {{ $errors->has('answer[]') ? ' has-error ' : '' }} nav-font">
-                                    {!! Form::label('answer[]', 'Respuesta 3', array('class' => 'col-md-3 control-label')); !!}
-                                    <div class="col-md-9">
-                                        <div class="input-group">
-                                            {!! Form::text('answer[]', NULL, array('id' => 'answer[]', 'class' => 'form-control', 'placeholder' => 'Respuesta 3')) !!}
-                                            <div class="input-group-append">
-                                                <label for="answer[]" class="input-group-text">
-                                                    <i class="fa fa-fw {{ trans('forms.create_user_icon_email') }} nav-font" aria-hidden="true"></i>
-                                                </label>
-                                            </div>
-                                        </div>
-                                        @foreach ($statesanswer as $state)
-                                            <div class="form-check ">
-                                            <input type="radio" class="form-check-input" name="state[]" id="state[]" value="2">
-                                                <label class="form-check-label" for="{{$state->state}}">{{$state->state}}</label>
-                                            </div>
-                                        @endforeach
-                                        @if ($errors->has('answer[]'))
-                                            <span class="help-block">
-                                                <strong>{{ $errors->first('answer[]') }}</strong>
-                                            </span>
-                                        @endif
-                                    </div>
-                                </div>
-                                <div class="form-group has-feedback row {{ $errors->has('answer[]') ? ' has-error ' : '' }} nav-font">
-                                    {!! Form::label('answer[]', 'Respuesta 4', array('class' => 'col-md-3 control-label')); !!}
-                                    <div class="col-md-9">
-                                        <div class="input-group">
-                                            {!! Form::text('answer[]', NULL, array('id' => 'answer[]', 'class' => 'form-control', 'placeholder' => 'Respuesta 4')) !!}
-                                            <div class="input-group-append">
-                                                <label for="answer[]" class="input-group-text">
-                                                    <i class="fa fa-fw {{ trans('forms.create_user_icon_email') }} nav-font" aria-hidden="true"></i>
-                                                </label>
-                                            </div>
-                                        </div>
-                                        @foreach ($statesanswer as $state)
-                                            <div class="form-check ">
-                                            <input type="radio" class="form-check-input" name="state[]" id="state[]" value="3">
-                                                <label class="form-check-label" for="{{$state->state}}">{{$state->state}}</label>
-                                            </div>
-                                        @endforeach
-                                        @if ($errors->has('answer[]'))
-                                            <span class="help-block">
-                                                <strong>{{ $errors->first('answer[]') }}</strong>
-                                            </span>
-                                        @endif
-                                    </div>
-                                </div>
+                                @endforeach
                                 <button type="submit" class="btn btn-success margin-bottom-1 mb-1 float-right">
-                                    Crear Nueva Pregunta
+                                    Actualizar Pregunta
                                 </button>  
-                            </form>
+                            {!! Form::close() !!}
                         </div>        
                     </div>
                 </div>

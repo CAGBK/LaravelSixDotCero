@@ -49,37 +49,7 @@ class PreguntasRespuestasController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function storeQuestion(Request $request)
-    {
-        $question = new Question;
-        $question->question_name = $request->question;
-        $question->state_id = $request->state_id;
-        $question->save();
-        $question = Question::all();
-        $questionid = $question->last(); 
-        $i = 0; 
-        foreach ($request->answer as $answer1) {
-            $answer = new Answer;
-            $answer->name = $answer1;
-
-            if($request->state[0] == $i){
-                $answer->state_id = 4;
-            }else{
-                $answer->state_id = 5;
-            }
-            $answer->save();
-            $answer = Answer::all();
-            $answer_id = $answer->last();
-            $qadetail = new QADetail;
-            $qadetail->question_id = $questionid->id;
-            $qadetail->answer_id = $answer_id->id;
-            $qadetail->save();    
-            $i ++;
-        }
-        
-        
-        return redirect('preguntas-respuestas');
-    }
+    
     /**
      * Show the form for creating a new resource.
      *
@@ -177,12 +147,52 @@ class PreguntasRespuestasController extends Controller
     public function edit($id)
     {
         $question = Question::find($id);
-        $states = State::all();
-        $statesanswer = DB::table('states')
-        ->select('states.id','states.state','states.color')
-        ->where('states.id', [4])
-        ->get();
+        $states = State::whereBetween('states.id',[1,2])->get();
         return \View::make('questionanswer/edit-question',compact('question','states','statesanswer'));
+    }
+
+    public function storeQuestion(Request $request)
+    {
+        $question = new Question;
+        $question->question_name = $request->question;
+        $question->state_id = $request->state_id;
+        $question->save();
+        $question = Question::all();
+        $questionid = $question->last(); 
+        $i = 0; 
+        foreach ($request->answer as $answer1) {
+            $answer = new Answer;
+            $answer->name = $answer1;
+
+            if($request->state[0] == $i){
+                $answer->state_id = 4;
+            }else{
+                $answer->state_id = 5;
+            }
+            $answer->save();
+            $answer = Answer::all();
+            $answer_id = $answer->last();
+            $qadetail = new QADetail;
+            $qadetail->question_id = $questionid->id;
+            $qadetail->answer_id = $answer_id->id;
+            $qadetail->save();    
+            $i ++;
+        }
+        
+        
+        return redirect('preguntas-respuestas');
+    }
+
+    public function updateQuestion(Request $request, $id)
+    {
+        $question = Question::find($id);
+        $question->question_name = $request->question;
+        $question->state_id = $request->state_id;
+        $question->save();
+        $i = 0; 
+        
+        
+        return redirect('preguntas-respuestas');
     }
 
     /**

@@ -24,7 +24,8 @@
                     </div>
                     <div class="card-body">
                         <div class="card-body">
-                            <form action="<?php echo e(route('ruta_new_question')); ?>" method="POST">
+                            <?php echo Form::model($question,['route' => ['update_question', $question->id], 'method' => 'put']); ?>
+
                                 <?php echo csrf_field(); ?>
                                 <div class="form-group has-feedback row <?php echo e($errors->has('question') ? ' has-error ' : ''); ?> nav-font">
                                     <?php echo Form::label('question', 'Pregunta', array('class' => 'col-md-3 control-label'));; ?>
@@ -72,12 +73,14 @@
                                         <?php endif; ?>
                                     </div>
                                 </div>
+                                <?php $__currentLoopData = $question->answers; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $answer): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                 <div class="form-group has-feedback row <?php echo e($errors->has('answer[]') ? ' has-error ' : ''); ?> nav-font">
-                                    <?php echo Form::label('answer[]', 'Respuesta 1', array('class' => 'col-md-3 control-label'));; ?>
+                                    <?php echo Form::label('answer[]', 'Respuesta '. $loop->index, array('class' => 'col-md-3 control-label'));; ?>
 
                                     <div class="col-md-9">
                                         <div class="input-group">
-                                            <?php echo Form::text('answer[]', NULL, array('id' => 'answer[]', 'class' => 'form-control', 'placeholder' => 'Pregunta...')); ?>
+                                            <input type="hidden" name="id[]" value="<?php echo e($answer->id); ?>" placeholder="">
+                                            <?php echo Form::text('answer[]', $answer->name, array('id' => 'answer[]', 'class' => 'form-control')); ?>
 
                                             <div class="input-group-append">
                                                 <label for="answer[]" class="input-group-text">
@@ -85,38 +88,10 @@
                                                 </label>
                                             </div>
                                         </div>
-                                        <?php $__currentLoopData = $statesanswer; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $state): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                            <div class="form-check ">
-                                            <input type="radio" class="form-check-input" name="state[]" id="state[]" value="0">
-                                                <label class="form-check-label" for="<?php echo e($state->state); ?>"><?php echo e($state->state); ?></label>
-                                            </div>
-                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                                        <?php if($errors->has('answer[]')): ?>
-                                            <span class="help-block">
-                                                <strong><?php echo e($errors->first('answer[]')); ?></strong>
-                                            </span>
-                                        <?php endif; ?>
-                                    </div>
-                                </div>
-                                <div class="form-group has-feedback row <?php echo e($errors->has('answer[]') ? ' has-error ' : ''); ?> nav-font">
-                                    <?php echo Form::label('answer[]', 'Respuesta 2', array('class' => 'col-md-3 control-label'));; ?>
-
-                                    <div class="col-md-9">
-                                        <div class="input-group">
-                                            <?php echo Form::text('answer[]', NULL, array('id' => 'answer[]', 'class' => 'form-control', 'placeholder' => 'Respuesta 2')); ?>
-
-                                            <div class="input-group-append">
-                                                <label for="answer[]" class="input-group-text">
-                                                    <i class="fa fa-fw <?php echo e(trans('forms.create_user_icon_email')); ?> nav-font" aria-hidden="true"></i>
-                                                </label>
-                                            </div>
+                                        <div class="form-check ">
+                                        <input type="radio" class="form-check-input" name="state[]" id="state[]" value="<?php echo e($loop->index); ?>"<?php if($answer->state->id === 4): ?> checked <?php endif; ?>>
+                                            <label class="form-check-label" for="">Correcto</label>
                                         </div>
-                                        <?php $__currentLoopData = $statesanswer; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $state): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                            <div class="form-check ">
-                                            <input type="radio" class="form-check-input" name="state[]" id="state[]" value="1">
-                                                <label class="form-check-label" for="<?php echo e($state->state); ?>"><?php echo e($state->state); ?></label>
-                                            </div>
-                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                         <?php if($errors->has('answer[]')): ?>
                                             <span class="help-block">
                                                 <strong><?php echo e($errors->first('answer[]')); ?></strong>
@@ -124,62 +99,12 @@
                                         <?php endif; ?>
                                     </div>
                                 </div>
-                                <div class="form-group has-feedback row <?php echo e($errors->has('answer[]') ? ' has-error ' : ''); ?> nav-font">
-                                    <?php echo Form::label('answer[]', 'Respuesta 3', array('class' => 'col-md-3 control-label'));; ?>
-
-                                    <div class="col-md-9">
-                                        <div class="input-group">
-                                            <?php echo Form::text('answer[]', NULL, array('id' => 'answer[]', 'class' => 'form-control', 'placeholder' => 'Respuesta 3')); ?>
-
-                                            <div class="input-group-append">
-                                                <label for="answer[]" class="input-group-text">
-                                                    <i class="fa fa-fw <?php echo e(trans('forms.create_user_icon_email')); ?> nav-font" aria-hidden="true"></i>
-                                                </label>
-                                            </div>
-                                        </div>
-                                        <?php $__currentLoopData = $statesanswer; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $state): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                            <div class="form-check ">
-                                            <input type="radio" class="form-check-input" name="state[]" id="state[]" value="2">
-                                                <label class="form-check-label" for="<?php echo e($state->state); ?>"><?php echo e($state->state); ?></label>
-                                            </div>
-                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                                        <?php if($errors->has('answer[]')): ?>
-                                            <span class="help-block">
-                                                <strong><?php echo e($errors->first('answer[]')); ?></strong>
-                                            </span>
-                                        <?php endif; ?>
-                                    </div>
-                                </div>
-                                <div class="form-group has-feedback row <?php echo e($errors->has('answer[]') ? ' has-error ' : ''); ?> nav-font">
-                                    <?php echo Form::label('answer[]', 'Respuesta 4', array('class' => 'col-md-3 control-label'));; ?>
-
-                                    <div class="col-md-9">
-                                        <div class="input-group">
-                                            <?php echo Form::text('answer[]', NULL, array('id' => 'answer[]', 'class' => 'form-control', 'placeholder' => 'Respuesta 4')); ?>
-
-                                            <div class="input-group-append">
-                                                <label for="answer[]" class="input-group-text">
-                                                    <i class="fa fa-fw <?php echo e(trans('forms.create_user_icon_email')); ?> nav-font" aria-hidden="true"></i>
-                                                </label>
-                                            </div>
-                                        </div>
-                                        <?php $__currentLoopData = $statesanswer; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $state): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                            <div class="form-check ">
-                                            <input type="radio" class="form-check-input" name="state[]" id="state[]" value="3">
-                                                <label class="form-check-label" for="<?php echo e($state->state); ?>"><?php echo e($state->state); ?></label>
-                                            </div>
-                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                                        <?php if($errors->has('answer[]')): ?>
-                                            <span class="help-block">
-                                                <strong><?php echo e($errors->first('answer[]')); ?></strong>
-                                            </span>
-                                        <?php endif; ?>
-                                    </div>
-                                </div>
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                 <button type="submit" class="btn btn-success margin-bottom-1 mb-1 float-right">
-                                    Crear Nueva Pregunta
+                                    Actualizar Pregunta
                                 </button>  
-                            </form>
+                            <?php echo Form::close(); ?>
+
                         </div>        
                     </div>
                 </div>
