@@ -67,7 +67,7 @@
                   </caption>
                   <thead class="thead">
                       <tr>
-                          <th><i class = "fa fa-user"> </i>Nombre Linea</th>
+                          <th>Nombre Linea</th>
                           <th>Marcas</th>
                           <th>Creado</th>
                           <th>Modificado</th>
@@ -82,14 +82,16 @@
                               <td><?php echo e($category->name); ?></td>
                               <td>
                                 <?php $__currentLoopData = $category->subcategories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $subcategory): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                <?php if($subcategory): ?>
                                 <span class="badge " ><?php echo e($subcategory->name); ?></span>
+                                <?php endif; ?>
                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                               </td>
                               </td>
                               <td class="hidden-sm hidden-xs hidden-md"><?php echo e($category->created_at); ?></td>
                               <td class="hidden-sm hidden-xs hidden-md"><?php echo e($category->updated_at); ?></td>
                               <td>
-                                  <?php echo Form::open(array('url' => 'question/' . $category->id, 'class' => '', 'data-toggle' => 'tooltip', 'title' => 'Delete')); ?>
+                                  <?php echo Form::open(array('url' => 'line/' . $category->id, 'class' => '', 'data-toggle' => 'tooltip', 'title' => 'Delete')); ?>
 
                                       <?php echo Form::hidden('_method', 'DELETE'); ?>
 
@@ -99,13 +101,13 @@
 
                               </td>
                               <td>
-                                  <a class="btn btn-sm btn-success btn-block" href="<?php echo e(route('show_question',['id' => $category->id])); ?>" data-toggle="tooltip" title="Show">
+                                  <a class="btn btn-sm btn-success btn-block" href="<?php echo e(route('show_line',['id' => $category->id])); ?>" data-toggle="tooltip" title="Show">
                                       <?php echo trans('linebrandmanagement.buttons.show'); ?>
 
                                   </a>
                               </td>
                               <td>
-                                  <a class="btn btn-sm btn-info btn-block" href="<?php echo e(URL::to('users/' . $category->id . '/edit')); ?>" data-toggle="tooltip" title="Edit">
+                                  <a class="btn btn-sm btn-info btn-block" href="<?php echo e(URL::to('line/' . $category->id . '/edit')); ?>" data-toggle="tooltip" title="Edit">
                                       <?php echo trans('linebrandmanagement.buttons.edit'); ?>
 
                                   </a>
@@ -185,7 +187,7 @@
                               <td class="hidden-sm hidden-xs hidden-md"><?php echo e($subcategory->created_at); ?></td>
                               <td class="hidden-sm hidden-xs hidden-md"><?php echo e($subcategory->updated_at); ?></td>
                               <td>
-                                  <?php echo Form::open(array('url' => 'question/' . $subcategory->id, 'class' => '', 'data-toggle' => 'tooltip', 'title' => 'Delete')); ?>
+                                  <?php echo Form::open(array('url' => 'brand/' . $subcategory->id, 'class' => '', 'data-toggle' => 'tooltip', 'title' => 'Delete')); ?>
 
                                       <?php echo Form::hidden('_method', 'DELETE'); ?>
 
@@ -195,13 +197,13 @@
 
                               </td>
                               <td>
-                                  <a class="btn btn-sm btn-success btn-block" href="<?php echo e(route('show_question',['id' => $subcategory->id])); ?>" data-toggle="tooltip" title="Show">
+                                  <a class="btn btn-sm btn-success btn-block" href="<?php echo e(route('show_brand',['id' => $subcategory->id])); ?>" data-toggle="tooltip" title="Show">
                                       <?php echo trans('linebrandmanagement.buttonsbrand.show'); ?>
 
                                   </a>
                               </td>
                               <td>
-                                  <a class="btn btn-sm btn-info btn-block" href="<?php echo e(URL::to('users/' . $subcategory->id . '/edit')); ?>" data-toggle="tooltip" title="Edit">
+                                  <a class="btn btn-sm btn-info btn-block" href="<?php echo e(URL::to('brand/' . $subcategory->id . '/edit')); ?>" data-toggle="tooltip" title="Edit">
                                       <?php echo trans('linebrandmanagement.buttonsbrand.edit'); ?>
 
                                   </a>

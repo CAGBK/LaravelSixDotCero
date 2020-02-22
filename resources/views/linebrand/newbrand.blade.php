@@ -66,8 +66,6 @@
                                     <option value="">Seleccione Preguntas</option>
                                     
                                     @if ($questions)
-                                    
-                                    
                                         @foreach($questions as $question)
                                             <option value="{{ $question->id }}">{{ $question->question_name }}</option>
                                         @endforeach

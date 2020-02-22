@@ -102,7 +102,7 @@
                                   </a>
                               </td>
                               <td>
-                                  <a class="btn btn-sm btn-info btn-block" href="{{ URL::to('users/' . $category->id . '/edit') }}" data-toggle="tooltip" title="Edit">
+                                  <a class="btn btn-sm btn-info btn-block" href="{{ URL::to('line/' . $category->id . '/edit') }}" data-toggle="tooltip" title="Edit">
                                       {!! trans('linebrandmanagement.buttons.edit') !!}
                                   </a>
                               </td>
@@ -190,7 +190,7 @@
                                   </a>
                               </td>
                               <td>
-                                  <a class="btn btn-sm btn-info btn-block" href="{{ URL::to('users/' . $subcategory->id . '/edit') }}" data-toggle="tooltip" title="Edit">
+                                  <a class="btn btn-sm btn-info btn-block" href="{{ URL::to('brand/' . $subcategory->id . '/edit') }}" data-toggle="tooltip" title="Edit">
                                       {!! trans('linebrandmanagement.buttonsbrand.edit') !!}
                                   </a>
                               </td>

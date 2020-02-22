@@ -148,7 +148,7 @@ class PreguntasRespuestasController extends Controller
     {
         $question = Question::find($id);
         $states = State::whereBetween('states.id',[1,2])->get();
-        return \View::make('questionanswer/edit-question',compact('question','states','statesanswer'));
+        return \View::make('questionanswer/edit-question',compact('question','states'));
     }
 
     public function storeQuestion(Request $request)
@@ -183,13 +183,25 @@ class PreguntasRespuestasController extends Controller
         return redirect('preguntas-respuestas');
     }
 
-    public function updateQuestion(Request $request, $id)
+    public function updateQuestion(Request $request, $id )
     {
         $question = Question::find($id);
         $question->question_name = $request->question;
         $question->state_id = $request->state_id;
         $question->save();
-        $i = 0; 
+        $i = 0;
+        foreach ($request->id  as $key => $value ) {
+            $answer = Answer::find($request->id[$key]);
+            $answer->name = $request->answer[$i];
+                if($request->state[0] == $i){
+                    $answer->state_id = 4;
+                }else{
+                    $answer->state_id = 5;
+                }
+         
+                $answer->save();   
+            $i ++;
+        }
         
         
         return redirect('preguntas-respuestas');

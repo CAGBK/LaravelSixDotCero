@@ -64,7 +64,7 @@
                         <?php endif; ?>
                         <div class="table-responsive users-table">
                             <table class="table table-striped table-sm data-table">
-                                <caption id="user_count" class="nav-font">
+                                <caption id="user_count" class="nav-fonct">
                                     <?php echo e(trans_choice('questionsmanagement.questions-table.caption', 1, ['questionscount' => $questions->count()])); ?>
 
                                 </caption>
@@ -107,7 +107,7 @@
                                                 </a>
                                             </td>
                                             <td>
-                                                <a class="btn btn-sm btn-info btn-block" href="<?php echo e(URL::to('users/' . $question->id . '/edit')); ?>" data-toggle="tooltip" title="Edit">
+                                                <a class="btn btn-sm btn-info btn-block" href="<?php echo e(URL::to('question/' . $question->id . '/edit')); ?>" data-toggle="tooltip" title="Edit">
                                                     <?php echo trans('questionsmanagement.buttons.edit'); ?>
 
                                                 </a>
