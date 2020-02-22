@@ -24,7 +24,7 @@
                       {!! Form::label('brand', 'Linea', array('class' => 'col-md-3 control-label')); !!}
                       <div class="col-md-9">
                           <div class="input-group">
-                              {!! Form::text('brand', NULL, array('id' => 'brand', 'class' => 'form-control', 'placeholder' => 'Nombre de Linea...')) !!}
+                              {!! Form::text('brand', $category->name, array('id' => 'brand', 'class' => 'form-control', 'placeholder' => 'Nombre de Linea...')) !!}
                               <div class="input-group-append">
                                   <label for="brand" class="input-group-text">
                                       <i class="fa fa-fw {{ trans('forms.create_user_icon_email') }} nav-font" aria-hidden="true"></i>
@@ -42,7 +42,7 @@
                         {!! Form::label('description', 'Descripción', array('class' => 'col-md-3 control-label')); !!}
                         <div class="col-md-9">
                             <div class="input-group">
-                                {!! Form::text('description', NULL, array('id' => 'description', 'class' => 'form-control', 'placeholder' => 'Descripción de Linea...')) !!}
+                                {!! Form::text('description', $category->description, array('id' => 'description', 'class' => 'form-control', 'placeholder' => 'Descripción de Linea...')) !!}
                                 <div class="input-group-append">
                                     <label for="description" class="input-group-text">
                                         <i class="fa fa-fw {{ trans('forms.create_user_icon_email') }} nav-font" aria-hidden="true"></i>
@@ -62,12 +62,16 @@
                             <div class="input-group">
                                 <select class="custom-select form-control js-example-basic-multiple" name="subcategories[]" id="subcategories"  multiple="multiple" >
                                     <option value="">Seleccione una Marca</option>
-                                    
+                                    @if ($states)
+                                                @foreach($states as $state)
+                                                    <option value="{{ $state->id }}" {{ $question->state_id == $state->id ? 'selected="selected"' : '' }}>{{ $state->state }}</option>
+                                                @endforeach
+                                            @endif
                                     @if ($subcategories)
                                     
                                     
                                         @foreach($subcategories as $subcategory)
-                                            <option value="{{ $subcategory->id }}">{{ $subcategory->name }}</option>
+                                            <option value="{{ $subcategory->id }}" {{$subcategory}}>{{ $subcategory->name }}</option>
                                         @endforeach
                                     @endif
                                 </select>

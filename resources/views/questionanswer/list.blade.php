@@ -65,7 +65,7 @@
                         @endif
                         <div class="table-responsive users-table">
                             <table class="table table-striped table-sm data-table">
-                                <caption id="user_count" class="nav-font">
+                                <caption id="user_count" class="nav-fonct">
                                     {{ trans_choice('questionsmanagement.questions-table.caption', 1, ['questionscount' => $questions->count()]) }}
                                 </caption>
                                 <thead class="thead">

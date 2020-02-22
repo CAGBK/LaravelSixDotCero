@@ -186,4 +186,51 @@ class LineasMarcasController extends Controller
         $subcategory = Subcategory::find($id);
         return \View::make('linebrand/show-brands',compact('subcategory'));
     }
+    public function editBrand($id)
+    {
+        $questions = Question::all();
+        $brand = Subcategory::find($id);
+        return \View::make('linebrand/edit-brand',compact('questions','brand'));
+    }
+    public function editLine($id)
+    {
+        $category = Category::find($id);
+        $subcategories = Subcategory::all();
+        return \View::make('linebrand/edit',compact('category','subcategories'));
+    }
+    public function updateBrand(Request $request, $id )
+    {
+        $brand = Subcategory::find($id);
+        $brand->name = $request->name;
+        $brand->description = $request->description;
+        $brand->save();
+        $i = 0;
+        
+        if($request->question){
+        foreach ($request->question  as $key => $value ) {
+            $question = SubcategoryQuestionDetail::find($request->question[$key]);
+            if ($question){
+
+            }else{
+               
+                    $question = new SubcategoryQuestionDetail;
+                    $question->subcategory_id = $id;
+                    $question->question_id = $request->question[$i];
+    
+                $question->save();   
+            
+        }
+            $question->subcategory_id = $brand->id;
+                $question->question_id =  $request->question[$i];
+                $question->save();   
+                $i ++;
+            }
+        }else {
+            $question = SubcategoryQuestionDetail::where('subcategory_id', '=' , $id)->delete();
+            
+        }
+        
+        
+        return redirect('lineas-marcas');
+    }
 }

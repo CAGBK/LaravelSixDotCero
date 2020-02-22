@@ -102,6 +102,10 @@ Route::group(['middleware' => ['auth', 'activated', 'currentUser', 'activity', '
     Route::get('crear/pregunta-respuesta', 'PreguntasRespuestasController@createQuestionAnswer')->name('create_question_answer');
     Route::post('new/Linea', 'LineasMarcasController@storeLinea')->name('ruta_new_line');
     Route::post('new/Marca', 'LineasMarcasController@storeBrand')->name('ruta_new_brand');
+    Route::get('brand/{id}/edit', 'LineasMarcasController@editBrand')->name('edit_brand');
+    Route::get('line/{id}/edit', 'LineasMarcasController@editLine')->name('edit_line');
+    Route::put('brand/update/{id}', 'LineasMarcasController@updateBrand')->name('update_brand');
+    Route::put('line/update/{id}', 'LineasMarcasController@updateLine')->name('update_line');
     // Route to Questions
     Route::get('preguntas-respuestas', 'PreguntasRespuestasController@index')->name('preguntas_respuestas');
     Route::get('crear/Pregunta', 'PreguntasRespuestasController@createQuestion')->name('create_question');
@@ -109,7 +113,7 @@ Route::group(['middleware' => ['auth', 'activated', 'currentUser', 'activity', '
     Route::get('question/{id}', 'PreguntasRespuestasController@showQuestion')->name('show_question');
     Route::get('line/{id}', 'LineasMarcasController@showLine')->name('show_line');
     Route::get('brand/{id}', 'LineasMarcasController@showBrand')->name('show_brand');
-    Route::get('question/{id}/edit', 'PreguntasRespuestasController@edit')->name('edit_brand');
+    Route::get('question/{id}/edit', 'PreguntasRespuestasController@edit')->name('edit_question');
     Route::put('question/update/{id}', 'PreguntasRespuestasController@updateQuestion')->name('update_question');
 
 });
