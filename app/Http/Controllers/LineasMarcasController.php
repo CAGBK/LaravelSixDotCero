@@ -190,7 +190,24 @@ class LineasMarcasController extends Controller
     {
         $questions = Question::all();
         $brand = Subcategory::find($id);
-        return \View::make('linebrand/edit-brand',compact('questions','brand'));
+        foreach($questions as $question) 
+                    {
+                    $questionList[]=$question->id;
+                    }
+                    //dd($eventlist)//first perform this dd() 
+                    $brandsi = DB::table('question_subcategory')->select('question_id')->where('subcategory_id' ,'=' , $id)->get();  
+                    $list = [];
+                    foreach($brandsi as $brandq) 
+                    {//getting all the teams who already played in first round
+                        $list[]=$brandq->question_id;
+                    }    
+                    $questionbrand = array_diff ($questionList,$list) ;
+                    
+                    
+                    
+        //dd($list);//comment out first dd() , then test this dd()
+        $questionids = Question::all();
+        return \View::make('linebrand/edit-brand',compact('questions','brand', 'questionbrand', 'list'));
     }
     public function editLine($id)
     {
@@ -204,31 +221,76 @@ class LineasMarcasController extends Controller
         $brand->name = $request->name;
         $brand->description = $request->description;
         $brand->save();
-        $i = 0;
+        $brandsi = DB::table('question_subcategory')->select('id', 'question_id')->where('subcategory_id' ,'=' , $id)->get(); 
+        
+        
+        
         
         if($request->question){
-        foreach ($request->question  as $key => $value ) {
-            $question = SubcategoryQuestionDetail::find($request->question[$key]);
-            if ($question){
-
-            }else{
-               
-                    $question = new SubcategoryQuestionDetail;
-                    $question->subcategory_id = $id;
-                    $question->question_id = $request->question[$i];
-    
-                $question->save();   
-            
-        }
-            $question->subcategory_id = $brand->id;
-                $question->question_id =  $request->question[$i];
-                $question->save();   
-                $i ++;
+            $brandsids = DB::table('question_subcategory')->select('question_id')->where('subcategory_id' ,'=' , $id)->get();
+            $valores =  [];
+            $valores2 =  [];
+            foreach ($brandsids as $valor) {
+                $valores2[] = $valor->question_id;
             }
-        }else {
-            $question = SubcategoryQuestionDetail::where('subcategory_id', '=' , $id)->delete();
+           
+            foreach ( $request->question as $valorq) {
+                $valorc = (int)$valorq;
+                $valores[] = $valorc;
+            }
+            $result = array_diff_key($valores2, $valores);
+            $result2  = array_intersect($valores2, $valores);
             
-        }
+            $i = 0;
+            
+            foreach ($request->question  as $key => $value ) {
+                //dd($request->question[$key]);
+                
+                if (empty($brandsi) != true){
+                    $int = (int)$value;
+                    //dd(in_array($int , $result) == true);
+                    
+                    if (isset($brandsi[$i])){
+                        
+                        
+                        if (in_array($int , $result) == true){ 
+                            $question = new SubcategoryQuestionDetail;
+                            $question->subcategory_id = $id;
+                            $question->question_id = $value;
+                            $question->save();
+                        }
+                        else {
+                            
+                            if (in_array($request->question[$i], $result2) == true){
+                                $question = SubcategoryQuestionDetail::find($brandsi[$i]->id);
+                                dd($question);
+                                $question = SubcategoryQuestionDetail::where('question_id', '=' , $question->id )->delete();
+                                
+                                
+                            }else{
+                                $question = SubcategoryQuestionDetail::find($brandsi[$i]->id);
+                                $question->subcategory_id = $brand->id;
+                                $question->question_id = $request->question[$i];
+                                $question->save();
+                                
+                            }
+                        } 
+                          
+                    }
+                            else {
+                            $question = new SubcategoryQuestionDetail;
+                            $question->subcategory_id = $id;
+                            $question->question_id = $request->question[$i];
+                            $question->save(); 
+                            
+                        } 
+                }                   
+                  $i ++;  
+            }   
+            }else{
+                $question = SubcategoryQuestionDetail::where('subcategory_id', '=' , $id)->delete();
+                
+            }
         
         
         return redirect('lineas-marcas');
