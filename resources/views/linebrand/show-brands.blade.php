@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('template_title')
-  Ver Pregunta
+  Ver Marca
 @endsection
 
 
@@ -15,11 +15,11 @@
 
           <div class="card-header text-white bg-success">
             <div style="display: flex; justify-content: space-between; align-items: center;">
-              Detalle Pregunta
+              Detalle Marca
               <div class="float-right">
-                <a href="{{ route('preguntas_respuestas') }}" class="btn btn-light btn-sm float-right" data-toggle="tooltip" data-placement="left" title="Volver a las preguntas">
+                <a href="{{ route('lineas_marcas') }}" class="btn btn-light btn-sm float-right" data-toggle="tooltip" data-placement="left" title="Volver a las preguntas">
                   <i class="fa fa-fw fa-mail-reply" aria-hidden="true"></i>
-                  Volver a las preguntas
+                  Volver a las Marcas
                 </a>
               </div>
             </div>
@@ -34,7 +34,7 @@
               </strong>
             </div>
             <div class="col-sm-7">
-              {{$question->question_name}}
+              {{$subcategory->name}}
             </div>
 
             <div class="clearfix"></div>
@@ -47,8 +47,8 @@
             </div>
 
             <div class="col-sm-7">
-                @foreach($question->answers as $answer)
-                  <span class="badge text-white" style="background-color: {{$answer->state->color}}">{{$answer->name}}</span>
+                @foreach($subcategory->questions as $question)
+                  <span class="badge text-white" style="background-color: {{$question->state->color}}">{{$question->question_name}}</span>
                 @endforeach
             </div>
 
@@ -62,7 +62,7 @@
             </div>
 
             <div class="col-sm-7">
-              {{$question->created_at}}
+              {{$subcategory->created_at}}
             </div>
 
             <div class="clearfix"></div>
@@ -75,20 +75,7 @@
             </div>
 
             <div class="col-sm-7">
-              {{$question->updated_at}}
-            </div>
-
-            <div class="clearfix"></div>
-            <div class="border-bottom"></div>
-
-            <div class="col-sm-5 col-6 text-larger">
-              <strong>
-                Estado:
-              </strong>
-            </div>
-
-            <div class="col-sm-7">
-                  <span class="badge text-white" style="background-color: {{$question->state->color}}">{{$question->state->state}}</span>
+              {{$subcategory->updated_at}}
             </div>
 
             <div class="clearfix"></div>

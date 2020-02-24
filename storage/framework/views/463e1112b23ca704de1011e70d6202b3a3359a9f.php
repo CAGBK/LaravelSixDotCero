@@ -17,25 +17,26 @@
               </div>
 
               <div class="card-body">
-                  <form action="<?php echo e(route('ruta_new_line')); ?>" method="POST" enctype="multipart/form-data">
+                <?php echo Form::model($category,['route' => ['update_line', $category->id], 'method' => 'put']); ?>
+
                       <?php echo csrf_field(); ?>
 
-                    <div class="form-group has-feedback row <?php echo e($errors->has('brand') ? ' has-error ' : ''); ?> nav-font">
-                      <?php echo Form::label('brand', 'Linea', array('class' => 'col-md-3 control-label'));; ?>
+                    <div class="form-group has-feedback row <?php echo e($errors->has('line') ? ' has-error ' : ''); ?> nav-font">
+                      <?php echo Form::label('line', 'Linea', array('class' => 'col-md-3 control-label'));; ?>
 
                       <div class="col-md-9">
                           <div class="input-group">
-                              <?php echo Form::text('brand', $category->name, array('id' => 'brand', 'class' => 'form-control', 'placeholder' => 'Nombre de Linea...')); ?>
+                              <?php echo Form::text('line', $category->name, array('id' => 'line', 'class' => 'form-control', 'placeholder' => 'Nombre de Linea...')); ?>
 
                               <div class="input-group-append">
-                                  <label for="brand" class="input-group-text">
+                                  <label for="line" class="input-group-text">
                                       <i class="fa fa-fw <?php echo e(trans('forms.create_user_icon_email')); ?> nav-font" aria-hidden="true"></i>
                                   </label>
                               </div>
                           </div>
-                          <?php if($errors->has('brand')): ?>
+                          <?php if($errors->has('line')): ?>
                               <span class="help-block">
-                                  <strong><?php echo e($errors->first('brand')); ?></strong>
+                                  <strong><?php echo e($errors->first('line')); ?></strong>
                               </span>
                           <?php endif; ?>
                       </div>
@@ -67,13 +68,14 @@
                             <div class="input-group">
                                 <select class="custom-select form-control js-example-basic-multiple" name="subcategories[]" id="subcategories"  multiple="multiple" >
                                     <option value="">Seleccione una Marca</option>
-                                    
-                                    <?php if($subcategories): ?>
-                                    
-                                    
-                                        <?php $__currentLoopData = $subcategories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $subcategory): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                            <option value="<?php echo e($subcategory->id); ?>"><?php echo e($subcategory->name); ?></option>
-                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                    <?php if($category->subcategories): ?>
+                                    <?php $__currentLoopData = $subcategories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $subcategory): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                           <option value="<?php echo e($subcategory->id); ?>"><?php echo e($subcategory->name); ?></option>
+                                       <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                   <?php else: ?> 
+                                       <?php $__currentLoopData = $subcategories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $subcategory): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                           <option value="<?php echo e($subcategory->id); ?>"><?php echo e($subcategory->name); ?></option>
+                                       <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>    
                                     <?php endif; ?>
                                 </select>
                                 <div class="input-group-append">
@@ -92,7 +94,8 @@
                     <button type="submit" class="btn btn-success margin-bottom-1 mb-1 float-right">
                       Crear Nueva Linea
                     </button>
-                  </form>
+                    <?php echo Form::close(); ?>
+
               </div>
           </div>
       </div>
@@ -104,10 +107,32 @@
 $(document).ready(function() {
 $('.js-example-basic-single').select2();
 });
-
+<?php if($subcategorycat): ?>
+        <?php $__currentLoopData = $subcategorycat; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $subcategory): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+        <?php $subcategory2[] = $subcategory ;?>
+        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+        
+        var arrayJSs=<?php echo json_encode($subcategory2);?>;
+        console.log(arrayJSs)
+        
+            $('#subcategories').val(arrayJSs).trigger('select2:clearing');
+    <?php endif; ?>    
 $(document).ready(function() {
-$('.js-example-basic-multiple').select2();
+    <?php $subcategory2 = array(); ?>
+    $('.js-example-basic-multiple').select2();
+    <?php if($category->subcategories): ?>
+        <?php $__currentLoopData = $category->subcategories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $subcategory): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+        <?php $subcategory2[] = $subcategory->id ;?>
+        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+        
+        var arrayJS=<?php echo json_encode($subcategory2);?>;
+        console.log(arrayJS)
+        
+            $('#subcategories').val(arrayJS).trigger('change.select2');
+    <?php endif; ?>
+
 });
+
 </script>
 <?php $__env->stopSection(); ?>
 
