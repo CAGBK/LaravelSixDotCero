@@ -17,23 +17,23 @@
               </div>
 
               <div class="card-body">
-                  <form action="{{ route('ruta_new_line') }}" method="POST" enctype="multipart/form-data">
+                {!! Form::model($category,['route' => ['update_line', $category->id], 'method' => 'put']) !!}
                       @csrf
 
-                    <div class="form-group has-feedback row {{ $errors->has('brand') ? ' has-error ' : '' }} nav-font">
-                      {!! Form::label('brand', 'Linea', array('class' => 'col-md-3 control-label')); !!}
+                    <div class="form-group has-feedback row {{ $errors->has('line') ? ' has-error ' : '' }} nav-font">
+                      {!! Form::label('line', 'Linea', array('class' => 'col-md-3 control-label')); !!}
                       <div class="col-md-9">
                           <div class="input-group">
-                              {!! Form::text('brand', $category->name, array('id' => 'brand', 'class' => 'form-control', 'placeholder' => 'Nombre de Linea...')) !!}
+                              {!! Form::text('line', $category->name, array('id' => 'line', 'class' => 'form-control', 'placeholder' => 'Nombre de Linea...')) !!}
                               <div class="input-group-append">
-                                  <label for="brand" class="input-group-text">
+                                  <label for="line" class="input-group-text">
                                       <i class="fa fa-fw {{ trans('forms.create_user_icon_email') }} nav-font" aria-hidden="true"></i>
                                   </label>
                               </div>
                           </div>
-                          @if ($errors->has('brand'))
+                          @if ($errors->has('line'))
                               <span class="help-block">
-                                  <strong>{{ $errors->first('brand') }}</strong>
+                                  <strong>{{ $errors->first('line') }}</strong>
                               </span>
                           @endif
                       </div>
@@ -62,17 +62,14 @@
                             <div class="input-group">
                                 <select class="custom-select form-control js-example-basic-multiple" name="subcategories[]" id="subcategories"  multiple="multiple" >
                                     <option value="">Seleccione una Marca</option>
-                                    @if ($states)
-                                                @foreach($states as $state)
-                                                    <option value="{{ $state->id }}" {{ $question->state_id == $state->id ? 'selected="selected"' : '' }}>{{ $state->state }}</option>
-                                                @endforeach
-                                            @endif
-                                    @if ($subcategories)
-                                    
-                                    
-                                        @foreach($subcategories as $subcategory)
-                                            <option value="{{ $subcategory->id }}" {{$subcategory}}>{{ $subcategory->name }}</option>
-                                        @endforeach
+                                    @if ($category->subcategories)
+                                    @foreach($subcategories as $subcategory)
+                                           <option value="{{ $subcategory->id }}">{{ $subcategory->name }}</option>
+                                       @endforeach
+                                   @else 
+                                       @foreach($subcategories as $subcategory)
+                                           <option value="{{ $subcategory->id }}">{{ $subcategory->name }}</option>
+                                       @endforeach    
                                     @endif
                                 </select>
                                 <div class="input-group-append">
@@ -91,7 +88,7 @@
                     <button type="submit" class="btn btn-success margin-bottom-1 mb-1 float-right">
                       Crear Nueva Linea
                     </button>
-                  </form>
+                    {!! Form::close() !!}
               </div>
           </div>
       </div>
@@ -103,9 +100,31 @@
 $(document).ready(function() {
 $('.js-example-basic-single').select2();
 });
-
+@if($subcategorycat)
+        @foreach($subcategorycat as $subcategory)
+        <?php $subcategory2[] = $subcategory ;?>
+        @endforeach
+        
+        var arrayJSs=<?php echo json_encode($subcategory2);?>;
+        console.log(arrayJSs)
+        
+            $('#subcategories').val(arrayJSs).trigger('select2:clearing');
+    @endif    
 $(document).ready(function() {
-$('.js-example-basic-multiple').select2();
+    <?php $subcategory2 = array(); ?>
+    $('.js-example-basic-multiple').select2();
+    @if($category->subcategories)
+        @foreach($category->subcategories as $subcategory)
+        <?php $subcategory2[] = $subcategory->id ;?>
+        @endforeach
+        
+        var arrayJS=<?php echo json_encode($subcategory2);?>;
+        console.log(arrayJS)
+        
+            $('#subcategories').val(arrayJS).trigger('change.select2');
+    @endif
+
 });
+
 </script>
 @endsection

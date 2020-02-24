@@ -71,8 +71,6 @@
                                     <option value="">Seleccione Preguntas</option>
                                     
                                     <?php if($questions): ?>
-                                    
-                                    
                                         <?php $__currentLoopData = $questions; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $question): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                             <option value="<?php echo e($question->id); ?>"><?php echo e($question->question_name); ?></option>
                                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>

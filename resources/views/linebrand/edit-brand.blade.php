@@ -57,27 +57,22 @@
                           @endif
                       </div>
                     </div>
-
+                    
                     <div class="form-group has-feedback row {{ $errors->has('question[]') ? ' has-error ' : '' }} nav-font">
                         {!! Form::label('question[]', 'Preguntas', array('class' => 'col-md-3 control-label')); !!}
                         <div class="col-md-9">
-                                                   
                             <div class="input-group">
                                 <select class="custom-select form-control js-example-basic-multiple" name="question[]" id="question"  multiple="multiple" >
                                     <option value="">Seleccione Preguntas</option>
                                     @if ($brand->questions)
-                                        @foreach($brand->questions as $question)
-                                            <option value="{{ $question->id }}" >{{ $question->question_name }}</option>
-                                        @endforeach
+                                         @foreach($questions as $question)
+                                                <option value="{{ $question->id }}">{{ $question->question_name }}</option>
+                                            @endforeach
                                         @else 
                                             @foreach($questions as $question)
                                                 <option value="{{ $question->id }}">{{ $question->question_name }}</option>
-                                            @endforeach
-                                    
-                                        
+                                            @endforeach    
                                     @endif
-                                    
-                                     
                                 </select>
                                 <div class="input-group-append">
                                     <label class="input-group-text" for="question[]">
@@ -107,7 +102,16 @@
 $(document).ready(function() {
 $('.js-example-basic-single').select2();
 });
-
+@if($questionbrand)
+        @foreach($questionbrand as $question)
+        <?php $question2[] = $question ;?>
+        @endforeach
+        
+        var arrayJSs=<?php echo json_encode($question2);?>;
+        console.log(arrayJSs)
+        
+            $('#question').val(arrayJSs).trigger('select2:clearing');
+    @endif    
 $(document).ready(function() {
     <?php $question2 = array(); ?>
     $('.js-example-basic-multiple').select2();
@@ -117,9 +121,11 @@ $(document).ready(function() {
         @endforeach
         
         var arrayJS=<?php echo json_encode($question2);?>;
+        console.log(arrayJS)
         
             $('#question').val(arrayJS).trigger('change.select2');
     @endif
+
 });
 </script>
 @endsection

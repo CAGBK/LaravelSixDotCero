@@ -1,5 +1,5 @@
 <?php $__env->startSection('template_title'); ?>
-  Ver Pregunta
+  Ver Marca
 <?php $__env->stopSection(); ?>
 
 
@@ -13,11 +13,11 @@
 
           <div class="card-header text-white bg-success">
             <div style="display: flex; justify-content: space-between; align-items: center;">
-              Detalle Pregunta
+              Detalle Marca
               <div class="float-right">
-                <a href="<?php echo e(route('preguntas_respuestas')); ?>" class="btn btn-light btn-sm float-right" data-toggle="tooltip" data-placement="left" title="Volver a las preguntas">
+                <a href="<?php echo e(route('lineas_marcas')); ?>" class="btn btn-light btn-sm float-right" data-toggle="tooltip" data-placement="left" title="Volver a las preguntas">
                   <i class="fa fa-fw fa-mail-reply" aria-hidden="true"></i>
-                  Volver a las preguntas
+                  Volver a las Marcas
                 </a>
               </div>
             </div>
@@ -32,7 +32,7 @@
               </strong>
             </div>
             <div class="col-sm-7">
-              <?php echo e($question->question_name); ?>
+              <?php echo e($subcategory->name); ?>
 
             </div>
 
@@ -46,8 +46,8 @@
             </div>
 
             <div class="col-sm-7">
-                <?php $__currentLoopData = $question->answers; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $answer): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                  <span class="badge text-white" style="background-color: <?php echo e($answer->state->color); ?>"><?php echo e($answer->name); ?></span>
+                <?php $__currentLoopData = $subcategory->questions; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $question): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                  <span class="badge text-white" style="background-color: <?php echo e($question->state->color); ?>"><?php echo e($question->question_name); ?></span>
                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
             </div>
 
@@ -61,7 +61,7 @@
             </div>
 
             <div class="col-sm-7">
-              <?php echo e($question->created_at); ?>
+              <?php echo e($subcategory->created_at); ?>
 
             </div>
 
@@ -75,21 +75,8 @@
             </div>
 
             <div class="col-sm-7">
-              <?php echo e($question->updated_at); ?>
+              <?php echo e($subcategory->updated_at); ?>
 
-            </div>
-
-            <div class="clearfix"></div>
-            <div class="border-bottom"></div>
-
-            <div class="col-sm-5 col-6 text-larger">
-              <strong>
-                Estado:
-              </strong>
-            </div>
-
-            <div class="col-sm-7">
-                  <span class="badge text-white" style="background-color: <?php echo e($question->state->color); ?>"><?php echo e($question->state->state); ?></span>
             </div>
 
             <div class="clearfix"></div>

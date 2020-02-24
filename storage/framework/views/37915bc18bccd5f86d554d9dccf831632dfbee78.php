@@ -62,28 +62,23 @@
                           <?php endif; ?>
                       </div>
                     </div>
-
+                    
                     <div class="form-group has-feedback row <?php echo e($errors->has('question[]') ? ' has-error ' : ''); ?> nav-font">
                         <?php echo Form::label('question[]', 'Preguntas', array('class' => 'col-md-3 control-label'));; ?>
 
                         <div class="col-md-9">
-                                                   
                             <div class="input-group">
                                 <select class="custom-select form-control js-example-basic-multiple" name="question[]" id="question"  multiple="multiple" >
                                     <option value="">Seleccione Preguntas</option>
                                     <?php if($brand->questions): ?>
-                                        <?php $__currentLoopData = $brand->questions; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $question): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                            <option value="<?php echo e($question->id); ?>" ><?php echo e($question->question_name); ?></option>
-                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                         <?php $__currentLoopData = $questions; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $question): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                <option value="<?php echo e($question->id); ?>"><?php echo e($question->question_name); ?></option>
+                                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                         <?php else: ?> 
                                             <?php $__currentLoopData = $questions; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $question): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                                 <option value="<?php echo e($question->id); ?>"><?php echo e($question->question_name); ?></option>
-                                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                                    
-                                        
+                                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>    
                                     <?php endif; ?>
-                                    
-                                     
                                 </select>
                                 <div class="input-group-append">
                                     <label class="input-group-text" for="question[]">
@@ -114,7 +109,16 @@
 $(document).ready(function() {
 $('.js-example-basic-single').select2();
 });
-
+<?php if($questionbrand): ?>
+        <?php $__currentLoopData = $questionbrand; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $question): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+        <?php $question2[] = $question ;?>
+        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+        
+        var arrayJSs=<?php echo json_encode($question2);?>;
+        console.log(arrayJSs)
+        
+            $('#question').val(arrayJSs).trigger('select2:clearing');
+    <?php endif; ?>    
 $(document).ready(function() {
     <?php $question2 = array(); ?>
     $('.js-example-basic-multiple').select2();
@@ -124,9 +128,11 @@ $(document).ready(function() {
         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
         
         var arrayJS=<?php echo json_encode($question2);?>;
+        console.log(arrayJS)
         
             $('#question').val(arrayJS).trigger('change.select2');
     <?php endif; ?>
+
 });
 </script>
 <?php $__env->stopSection(); ?>
