@@ -166,8 +166,10 @@ class PreguntasRespuestasController extends Controller
 
             if($request->state[0] == $i){
                 $answer->state_id = 4;
+                $answer->puntos = 5;
             }else{
                 $answer->state_id = 5;
+                $answer->puntos = 0;
             }
             $answer->save();
             $answer = Answer::all();
@@ -195,8 +197,10 @@ class PreguntasRespuestasController extends Controller
             $answer->name = $request->answer[$i];
                 if($request->state[0] == $i){
                     $answer->state_id = 4;
+                    $answer->puntos = 5;    
                 }else{
                     $answer->state_id = 5;
+                    $answer->puntos = 0;                    
                 }
          
                 $answer->save();   

@@ -97,6 +97,7 @@ Route::group(['middleware' => ['auth', 'activated', 'currentUser', 'activity', '
     Route::post('avatar/upload', ['as' => 'avatar.upload', 'uses' => 'ProfilesController@upload']);
     // Route to Linea and Brand
     Route::get('lineas-marcas', 'LineasMarcasController@index')->name('lineas_marcas');
+    Route::get('challenge', 'DesafiosController@index')->name('challenge');
     Route::get('crear/Linea', 'LineasMarcasController@createLine')->name('create_line');
     Route::get('crear/Marca', 'LineasMarcasController@createBrand')->name('create_brand');
     Route::get('crear/pregunta-respuesta', 'PreguntasRespuestasController@createQuestionAnswer')->name('create_question_answer');

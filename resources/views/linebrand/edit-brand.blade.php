@@ -6,7 +6,7 @@
       <div class="col-md-8">
           <div class="card card-login">
               <div class="card-header header-card  text-white">
-                Crear Marca
+                Actualizar Marca
                 <div class="pull-right">
                   <a href="{{ route('lineas_marcas') }}" class="btn button-card" data-toggle="tooltip" data-placement="left" title="{{ trans('usersmanagement.tooltips.back-users') }}">
                       <i class="fa fa-fw fa-reply-all" aria-hidden="true"></i>
@@ -88,7 +88,7 @@
                         </div>
                     </div>
                     <button type="submit" class="btn btn-success margin-bottom-1 mb-1 float-right">
-                      Crear Nueva Marca
+                      Actualizar Marca
                     </button>  
                     {!! Form::close() !!}
                 </div>

@@ -107,7 +107,7 @@
                                   </a>
                               </td>
                               <td>
-                                  <a class="btn btn-sm btn-info btn-block" href="<?php echo e(URL::to('users/' . $category->id . '/edit')); ?>" data-toggle="tooltip" title="Edit">
+                                  <a class="btn btn-sm btn-info btn-block" href="<?php echo e(URL::to('line/' . $category->id . '/edit')); ?>" data-toggle="tooltip" title="Edit">
                                       <?php echo trans('linebrandmanagement.buttons.edit'); ?>
 
                                   </a>
@@ -203,7 +203,7 @@
                                   </a>
                               </td>
                               <td>
-                                  <a class="btn btn-sm btn-info btn-block" href="<?php echo e(URL::to('users/' . $subcategory->id . '/edit')); ?>" data-toggle="tooltip" title="Edit">
+                                  <a class="btn btn-sm btn-info btn-block" href="<?php echo e(URL::to('brand/' . $subcategory->id . '/edit')); ?>" data-toggle="tooltip" title="Edit">
                                       <?php echo trans('linebrandmanagement.buttonsbrand.edit'); ?>
 
                                   </a>

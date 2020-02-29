@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Answer extends Model
 {
     protected $table = "answers";
-    protected $fillable = ['name', 'state_id'];
+    protected $fillable = ['name', 'puntos', 'state_id'];
     protected $guarded = ['id'];
 
     public function qadetails()
