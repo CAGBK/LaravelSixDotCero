@@ -86,7 +86,7 @@
 
                         </a>
                         
-                        <a class="dropdown-item nav-font <?php echo e(Request::is('blocker') ? 'active' : null); ?>" href="<?php echo e(url('/lines')); ?>">
+                        <a class="dropdown-item nav-font <?php echo e(Request::is('blocker') ? 'active' : null); ?>" href="<?php echo e(url('/challenge')); ?>">
                             <?php echo trans('titles.challenges'); ?>
 
                         </a>

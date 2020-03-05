@@ -116,6 +116,8 @@ Route::group(['middleware' => ['auth', 'activated', 'currentUser', 'activity', '
     Route::get('brand/{id}', 'LineasMarcasController@showBrand')->name('show_brand');
     Route::get('question/{id}/edit', 'PreguntasRespuestasController@edit')->name('edit_question');
     Route::put('question/update/{id}', 'PreguntasRespuestasController@updateQuestion')->name('update_question');
+    Route::get('brandByLinea/{id}', 'DesafiosController@byLinea');
+
 
 });
 

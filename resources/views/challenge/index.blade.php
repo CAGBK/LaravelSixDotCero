@@ -39,48 +39,106 @@
 	                                    <h2 class="fs-title">Selecciona participantes a los que desea invitar</h2>
 	                                </div>
 	                                <div class="col-5">
-	                                    <h2 class="steps">Paso 1 - 3</h2>
+	                                    <h2 class="steps">Paso 1 - 4</h2>
 	                                </div>
 	                            </div> 
-	                            <label class="fieldlabels">Email: *</label> 
-	                            <input type="email" name="email" placeholder="Email Id" /> 
-	                            <label class="fieldlabels">Username: *</label> 
-	                            <input type="text" name="uname" placeholder="UserName" /> 
-	                            <label class="fieldlabels">Password: *</label> 
-	                            <input type="password" name="pwd" placeholder="Password" /> 
-	                            <label class="fieldlabels">Confirm Password: *</label> 
-	                            <input type="password" name="cpwd" placeholder="Confirm Password" />
+	                            <div class="form-group has-feedback row {{ $errors->has('user_id') ? ' has-error ' : '' }} nav-font">
+			                        <div class="col-md-12">
+			                            <div class="input-group">
+			                                <select class="custom-select form-control select-user"  name="users[]" id="users"  multiple="multiple" >
+			                                    <option value="" disabled="disabled">Seleccione una Usuarios</option>
+			                                    
+			                                    @if ($users)
+			                                    
+			                    
+			                                        @foreach($users as $user)
+			                                            <option value="{{ $user->id }}">{{ $user->name }}</option>
+			                                        @endforeach
+			                                    @endif
+			                                </select>
+			                                <div class="input-group-append">
+			                                    <label class="input-group-text" for="user_id">
+			                                        <i class="fa fa-fw fa-user-plus nav-font" aria-hidden="true"></i>
+			                                    </label>
+			                                </div>
+			                            </div>
+			                            @if ($errors->has('user_id'))
+			                                <span class="help-block">
+			                                    <strong>{{ $errors->first('user_id') }}</strong>
+			                                </span>
+			                            @endif
+			                        </div>
+			                    </div>
 	                        </div> 
 	                        <input type="button" name="next" class="next action-button" value="Siguiente" />
 	                    </fieldset>
-	                    <fieldset>
+	                   <fieldset>
 	                        <div class="form-card">
 	                            <div class="row">
 	                                <div class="col-7">
-	                                    <h2 class="fs-title">Seleccione las lineas:</h2>
+	                                    <h2 class="fs-title">Selecciona Lineas</h2>
 	                                </div>
 	                                <div class="col-5">
-	                                    <h2 class="steps">Paso 2 - 3</h2>
+	                                    <h2 class="steps">Paso 2 - 4</h2>
 	                                </div>
 	                            </div> 
-	                            <label class="fieldlabels">First Name: *</label> <input type="text" name="fname" placeholder="First Name" /> 
-	                            <label class="fieldlabels">Last Name: *</label> <input type="text" name="lname" placeholder="Last Name" /> 
-	                            <label class="fieldlabels">Contact No.: *</label> <input type="text" name="phno" placeholder="Contact No." /> 
-	                            <label class="fieldlabels">Alternate Contact No.: *</label> <input type="text" name="phno_2" placeholder="Alternate Contact No." />
-	                        </div> <input type="button" name="next" class="next action-button" value="Siguiente" /> <input type="button" name="previous" class="previous action-button-previous" value="Atras" />
+	                            <div class="form-group has-feedback row {{ $errors->has('line_id') ? ' has-error ' : '' }} nav-font">
+			                        <div class="col-md-12">
+			                            <div class="input-group">
+			                                <select class="custom-select form-control select-line" name="lines[]" id="lines"  multiple="multiple" >
+			                                    
+			                                    @if ($categories)
+			                                    
+			                                        @foreach($categories as $category)
+			                                            <option value="{{ $category->id }}">{{ $category->name }}</option>
+			                                        @endforeach
+			                                    @endif
+			                                </select>
+			                                <div class="input-group-append">
+			                                    <label class="input-group-text" for="line_id">
+			                                        <i class="fa fa-fw fa-user-plus nav-font" aria-hidden="true"></i>
+			                                    </label>
+			                                </div>
+			                            </div>
+			                            @if ($errors->has('line_id'))
+			                                <span class="help-block">
+			                                    <strong>{{ $errors->first('line_id') }}</strong>
+			                                </span>
+			                            @endif
+			                        </div>
+			                    </div>
+	                        </div> 
+	                        <input type="button" name="next" class="next action-button" value="Siguiente" /> <input type="button" name="previous" class="previous action-button-previous" value="Atras" />
 	                    </fieldset>
 	                    <fieldset>
 	                        <div class="form-card">
 	                            <div class="row">
 	                                <div class="col-7">
-	                                    <h2 class="fs-title">Seleccione marcas</h2>
+	                                    <h2 class="fs-title">Seleccióne Marcas</h2>
 	                                </div>
 	                                <div class="col-5">
-	                                    <h2 class="steps">Paso 3 - 3</h2>
+	                                    <h2 class="steps">Paso 3 - 4</h2>
 	                                </div>
 	                            </div> 
-	                            <label class="fieldlabels">Upload Your Photo:</label> <input type="file" name="pic" accept="image/*"> 
-	                            <label class="fieldlabels">Upload Signature Photo:</label> <input type="file" name="pic" accept="image/*">
+	                            <div class="form-group has-feedback row {{ $errors->has('brand_id') ? ' has-error ' : '' }} nav-font">
+			                        <div class="col-md-12">
+			                            <div class="input-group">
+			                                <select class="custom-select form-control select-brand" name="brands[]" id="brands"  multiple="multiple" >
+			                                    <option value="">Seleccione marcas</option>
+			                                </select>
+			                                <div class="input-group-append">
+			                                    <label class="input-group-text" for="brand_id">
+			                                        <i class="fa fa-fw fa-user-plus nav-font" aria-hidden="true"></i>
+			                                    </label>
+			                                </div>
+			                            </div>
+			                            @if ($errors->has('role'))
+			                                <span class="help-block">
+			                                    <strong>{{ $errors->first('role') }}</strong>
+			                                </span>
+			                            @endif
+			                        </div>
+			                    </div>
 	                        </div> 
 	                        <input type="button" name="next" class="next action-button" value="Siguiente" /> <input type="button" name="previous" class="previous action-button-previous" value="Atras" />
 	                    </fieldset>
@@ -105,16 +163,23 @@
         </div>
     </div>
 </div>
-
-@include('modals.modal-delete')
-
+<link href="https://cdn.jsdelivr.net/npm/select2@4.0.12/dist/css/select2.min.css" rel="stylesheet" />
+<script  type="application/javascript" src="https://cdn.jsdelivr.net/npm/select2@4.0.12/dist/js/select2.min.js"></script>
+<script type="application/javascript">
+$(document).ready(function() {
+$('.select-user').select2();
+});
+$(document).ready(function() {
+$('.select-brand').select2();
+});
+$(document).ready(function() {
+$('.select-line').select2();
+});
+</script>
 @endsection
 
 @section('footer_scripts')
 
-    @include('scripts.delete-modal-script')
-    @include('scripts.save-modal-script')
-    @include('scripts.tooltips')
     @include('scripts.challenge')
 
 @endsection

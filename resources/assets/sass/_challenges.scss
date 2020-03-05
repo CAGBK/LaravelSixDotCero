@@ -29,30 +29,6 @@
     display: none
 }
 
-#msform input,
-#msform textarea {
-    padding: 8px 15px 8px 15px;
-    border: 1px solid #ccc;
-    border-radius: 0px;
-    margin-bottom: 25px;
-    margin-top: 2px;
-    width: 100%;
-    box-sizing: border-box;
-    font-family: montserrat;
-    color: #2C3E50;
-    background-color: #ECEFF1;
-    font-size: 16px;
-    letter-spacing: 1px
-}
-
-#msform input:focus,
-#msform textarea:focus {
-    -moz-box-shadow: none !important;
-    -webkit-box-shadow: none !important;
-    box-shadow: none !important;
-    border: 1px solid #28a745;
-    outline-width: 0
-}
 
 #msform .action-button {
     width: 100px;
@@ -211,4 +187,7 @@
 .fit-image {
     width: 100%;
     object-fit: cover
+}
+select + .select2-container {
+  width: 90% !important;
 }
