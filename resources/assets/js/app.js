@@ -12,6 +12,10 @@ var password = require('password-strength-meter');
 
 window.Vue = require('vue');
 
+require('./imports/Winwheel.min.js');
+require('./imports/TweenMax.min.js');
+
+
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

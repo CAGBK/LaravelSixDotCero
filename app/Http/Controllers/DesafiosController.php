@@ -18,6 +18,11 @@ class DesafiosController extends Controller
     	$subcategories= Subcategory::all();
         return View::make('challenge/index', compact('users','categories','subcategories'));
     }
+    public function ruleta()
+    {
+
+        return View::make('challenge/ruleta');
+    }
     public function byLinea($id)
     {
         dd(Category::find($id));
