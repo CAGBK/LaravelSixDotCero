@@ -7,7 +7,7 @@
 
         {{-- CSRF Token --}}
         <meta name="csrf-token" content="{{ csrf_token() }}">
-
+        
         <title>@if (trim($__env->yieldContent('template_title')))@yield('template_title') | @endif {{ config('app.name', Lang::get('titles.app')) }}</title>
         <meta name="description" content="">
         <meta name="author" content="Jeremy Kenedy">
@@ -76,6 +76,7 @@
 
         {{-- Scripts --}}
         <script src="{{ mix('/js/app.js') }}"></script>
+        
 
         @if(config('settings.googleMapsAPIStatus'))
             {!! HTML::script('//maps.googleapis.com/maps/api/js?key='.config("settings.googleMapsAPIKey").'&libraries=places&dummy=.js', array('type' => 'text/javascript')) !!}
