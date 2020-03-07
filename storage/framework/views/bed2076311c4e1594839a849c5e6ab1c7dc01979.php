@@ -82,30 +82,14 @@
                     <?php else: ?>
                         <a href="<?php echo e(route('login')); ?>" class="nav-font">Login</a>
 
-                        <?php if(Route::has('register')): ?>
-                            <a href="<?php echo e(route('register')); ?>" class="nav-font">Register</a>
-                        <?php endif; ?>
+                        
                     <?php endif; ?>
                 </div>
             <?php endif; ?>
             <div class="content">
-                <div class="title m-b-md">
-                    <?php echo trans('titles.app'); ?><br />
-                    <small>
-                        <?php echo e(trans('titles.app2', ['version' => config('settings.app_project_version')])); ?>
-
-                    </small>
-                </div>
-                <div class="links">
-                    <a href="https://laravel.com/docs">Docs</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://blog.laravel.com">Blog</a>
-                    <a href="https://nova.laravel.com">Nova</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://vapor.laravel.com">Vapor</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
-                </div>
+                <a class="navbar-brand" >
+                    <img src="/images/logo.png">
+                </a>
             </div>
         </div>
     </body>

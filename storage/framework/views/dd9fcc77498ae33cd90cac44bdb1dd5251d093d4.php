@@ -7,7 +7,7 @@
 
         
         <meta name="csrf-token" content="<?php echo e(csrf_token()); ?>">
-
+        
         <title><?php if(trim($__env->yieldContent('template_title'))): ?><?php echo $__env->yieldContent('template_title'); ?> | <?php endif; ?> <?php echo e(config('app.name', Lang::get('titles.app'))); ?></title>
         <meta name="description" content="">
         <meta name="author" content="Jeremy Kenedy">
@@ -76,6 +76,7 @@
 
         
         <script src="<?php echo e(mix('/js/app.js')); ?>"></script>
+        
 
         <?php if(config('settings.googleMapsAPIStatus')): ?>
             <?php echo HTML::script('//maps.googleapis.com/maps/api/js?key='.config("settings.googleMapsAPIKey").'&libraries=places&dummy=.js', array('type' => 'text/javascript')); ?>

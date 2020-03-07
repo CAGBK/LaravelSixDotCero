@@ -98052,8 +98052,8 @@ function winwheelLoadedImage() {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\d.gutierrezg\Desktop\LaravelSixDotCero\resources\assets\js\app.js */"./resources/assets/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\d.gutierrezg\Desktop\LaravelSixDotCero\resources\assets\sass\app.scss */"./resources/assets/sass/app.scss");
+__webpack_require__(/*! C:\Users\ca.gonzalezb1\Desktop\LaravelSixDotCero\resources\assets\js\app.js */"./resources/assets/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\ca.gonzalezb1\Desktop\LaravelSixDotCero\resources\assets\sass\app.scss */"./resources/assets/sass/app.scss");
 
 
 /***/ })

@@ -166,15 +166,32 @@
 <link href="https://cdn.jsdelivr.net/npm/select2@4.0.12/dist/css/select2.min.css" rel="stylesheet" />
 <script  type="application/javascript" src="https://cdn.jsdelivr.net/npm/select2@4.0.12/dist/js/select2.min.js"></script>
 <script type="application/javascript">
-$(document).ready(function() {
-$('.select-user').select2();
-});
-$(document).ready(function() {
-$('.select-brand').select2();
-});
-$(document).ready(function() {
-$('.select-line').select2();
-});
+		$(document).ready(function() {
+		var lines = $(".select-line");
+		var brands = $(".select-brand");
+			$.ajax({
+				type: 'GET',
+				url: '/brandByLinea/' + lines
+			}).then(function (data) {
+				
+				// create the option and append to Select2
+				var option = new Option(data.name, data.id, true, true);
+				console.log(option, "hola");
+				lines.append(option).trigger('change');
+
+				// manually trigger the `select2:select` event
+				lines.trigger({
+					type: 'select2:select',
+					params: {
+						data: data
+					}
+				});
+			});
+			
+			$('.select-user').select2();
+			$('.select-brand').select2();
+			$('.select-line').select2();
+		});
 </script>
 @endsection
 
