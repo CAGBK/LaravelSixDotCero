@@ -179,7 +179,7 @@
 .progress {
     height: 20px
 }
-
+ 
 .progress-bar {
     background-color: #28a745
 }
@@ -190,4 +190,9 @@
 }
 select + .select2-container {
   width: 90% !important;
+}
+
+canvas {
+  width: 100%;
+  height: auto;
 }

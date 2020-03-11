@@ -18635,3 +18635,8 @@ select + .select2-container {
   width: 90% !important;
 }
 
+canvas {
+  width: 100%;
+  height: auto;
+}
+
