@@ -99,7 +99,6 @@
                 
                 <?php if(auth()->guard()->guest()): ?>
                     <li><a class="nav-link login-nav" href="<?php echo e(route('login')); ?>"><?php echo e(trans('titles.login')); ?></a></li>
-                    <li><a class="nav-link login-nav" href="<?php echo e(route('register')); ?>"><?php echo e(trans('titles.register')); ?></a></li>
                 <?php else: ?>
                     <li class="nav-item dropdown">
                         <a id="navbarDropdown" class="nav-link dropdown-toggle nav-font" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>

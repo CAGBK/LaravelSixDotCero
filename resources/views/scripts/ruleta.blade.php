@@ -26,14 +26,12 @@
 	});
 	function Mensaje() {
 	  segmentoSeleccionado = miRuleta.getIndicatedSegment();
-	  SonidoFinal();
 	  alert("Elemento seleccionado: " + segmentoSeleccionado.text + "!");
 	  miRuleta.stopAnimation(false);
 	  miRuleta.rotationAngle = 0;
 	  miRuleta.draw();
 	  dibujarIndicador();
-	  
-}
+	}
 
    function dibujarIndicador() {
 	   distnaciaX = 150;
@@ -50,15 +48,5 @@
 	   ctx.stroke();
 	   ctx.fill();
    }
-
-
-   
-	dibujarIndicador();
-  var audio = new Audio('alarma.mp3');  // Create audio object and load desired file.
-  function SonidoFinal()
-  {
-	audio.pause();
-	audio.currentTime = 0;
-	audio.play();
-  }
+   dibujarIndicador();
 </script>
