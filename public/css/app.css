@@ -18635,8 +18635,15 @@ select + .select2-container {
   width: 90% !important;
 }
 
-canvas {
-  width: 100%;
-  height: auto;
+.container-canvas {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#canvasContainer {
+  background-image: url(/images/logo.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  cursor: pointer;
 }
 
