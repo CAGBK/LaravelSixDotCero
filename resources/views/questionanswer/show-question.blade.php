@@ -57,6 +57,32 @@
 
             <div class="col-sm-5 col-6 text-larger">
               <strong>
+                Estado:
+              </strong>
+            </div>
+
+            <div class="col-sm-7">
+                  <span class="badge text-white" style="background-color: {{$question->state->color}}">{{$question->state->state}}</span>
+            </div>
+
+            <div class="clearfix"></div>
+            <div class="border-bottom"></div>
+
+            <div class="col-sm-5 col-6 text-larger">
+              <strong>
+                Categoria de Pregunta:
+              </strong>
+            </div>
+
+            <div class="col-sm-7">
+              <span class="badge text-white" style="background-color: {{$question->cquestion->color}}">{{$question->cquestion->name}}</span>
+            </div>
+
+            <div class="clearfix"></div>
+            <div class="border-bottom"></div>
+
+            <div class="col-sm-5 col-6 text-larger">
+              <strong>
                 Creado:
               </strong>
             </div>
@@ -76,19 +102,6 @@
 
             <div class="col-sm-7">
               {{$question->updated_at}}
-            </div>
-
-            <div class="clearfix"></div>
-            <div class="border-bottom"></div>
-
-            <div class="col-sm-5 col-6 text-larger">
-              <strong>
-                Estado:
-              </strong>
-            </div>
-
-            <div class="col-sm-7">
-                  <span class="badge text-white" style="background-color: {{$question->state->color}}">{{$question->state->state}}</span>
             </div>
 
             <div class="clearfix"></div>

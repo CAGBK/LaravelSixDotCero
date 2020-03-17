@@ -1,5 +1,10 @@
-<!--This allows the view o take the layout the home view has in order to use it.-->
-@extends('home')
+@extends('layouts.app')
+
+@section('template_title')
+  Nueva Linea
+@endsection
+
+
 @section('content')
 <div class="container">
   <div class="row justify-content-center">
@@ -61,7 +66,7 @@
                         <div class="col-md-9">
                             <div class="input-group">
                                 <select class="custom-select form-control js-example-basic-multiple" name="subcategories[]" id="subcategories"  multiple="multiple" >
-                                    <option value="">Seleccione una Marca</option>
+                                    <option value="" disabled="disabled">Seleccione una Marca</option>
                                     
                                     @if ($subcategories)
                                     
@@ -73,6 +78,34 @@
                                 </select>
                                 <div class="input-group-append">
                                     <label class="input-group-text" for="state_id">
+                                        <i class="{{ trans('forms.create_user_icon_role') }} nav-font" aria-hidden="true"></i>
+                                    </label>
+                                </div>
+                            </div>
+                            @if ($errors->has('role'))
+                                <span class="help-block">
+                                    <strong>{{ $errors->first('role') }}</strong>
+                                </span>
+                            @endif
+                        </div>
+                    </div>
+                    <div class="form-group has-feedback row {{ $errors->has('users_id') ? ' has-error ' : '' }} nav-font">
+                        {!! Form::label('users_id', 'Usuarios', array('class' => 'col-md-3 control-label')); !!}
+                        <div class="col-md-9">
+                            <div class="input-group">
+                                <select class="custom-select form-control js-user" name="users[]" id="users"  multiple="multiple" >
+                                    <option value="" disabled="disabled">Seleccione Usuarios</option>
+                                    
+                                    @if ($users)
+                                    
+                                    
+                                        @foreach($users as $user)
+                                            <option value="{{ $user->id }}">{{ $user->name }}</option>
+                                        @endforeach
+                                    @endif
+                                </select>
+                                <div class="input-group-append">
+                                    <label class="input-group-text" for="users_id">
                                         <i class="{{ trans('forms.create_user_icon_role') }} nav-font" aria-hidden="true"></i>
                                     </label>
                                 </div>
@@ -97,7 +130,7 @@
 <script  type="application/javascript" src="https://cdn.jsdelivr.net/npm/select2@4.0.12/dist/js/select2.min.js"></script>
 <script type="application/javascript">
 $(document).ready(function() {
-$('.js-example-basic-single').select2();
+$('.js-user').select2();
 });
 
 $(document).ready(function() {

@@ -167,6 +167,31 @@
                                         @endif
                                     </div>
                                 </div>
+                                <div class="form-group has-feedback row {{ $errors->has('cquestion_id') ? ' has-error ' : '' }} nav-font">
+                                    {!! Form::label('cquestion_id', 'Categoria de Pregunta', array('class' => 'col-md-3 control-label')); !!}
+                                    <div class="col-md-9">
+                                        <div class="input-group">
+                                            <select class="custom-select form-control" name="cquestion_id" id="cquestion_id">
+                                                <option value="">Seleccione categoria de pregunta</option>
+                                                @if ($cquestions)
+                                                    @foreach($cquestions as $cquestion)
+                                                        <option value="{{ $cquestion->id }}">{{ $cquestion->name }}</option>
+                                                    @endforeach
+                                                @endif
+                                            </select>
+                                            <div class="input-group-append">
+                                                <label class="input-group-text" for="cquestion_id">
+                                                    <i class="{{ trans('forms.create_user_icon_role') }} nav-font" aria-hidden="true"></i>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        @if ($errors->has('role'))
+                                            <span class="help-block">
+                                                <strong>{{ $errors->first('role') }}</strong>
+                                            </span>
+                                        @endif
+                                    </div>
+                                </div>
                                 <button type="submit" class="btn btn-success margin-bottom-1 mb-1 float-right">
                                     Crear Nueva Pregunta
                                 </button>  

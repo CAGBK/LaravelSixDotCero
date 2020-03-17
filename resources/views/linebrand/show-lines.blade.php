@@ -59,6 +59,25 @@
 
             <div class="col-sm-5 col-6 text-larger">
               <strong>
+                Usuarios:
+              </strong>
+            </div>
+
+            <div class="col-sm-7">
+              @if ($category->user)
+              @foreach($users as $user)
+                <span class="badge badge-info text-white">{{ $user->name }}</span>
+              @endforeach
+              @else
+                No hay usuarios asignados
+              @endif
+            </div>
+
+            <div class="clearfix"></div>
+            <div class="border-bottom"></div>
+
+            <div class="col-sm-5 col-6 text-larger">
+              <strong>
                 Creado:
               </strong>
             </div>

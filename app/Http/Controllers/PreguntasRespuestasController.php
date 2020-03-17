@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
 use App\Models\Question;
-use App\Models\ SubcategoryQuestionDetail;
+use App\Models\CQuestion;
 use App\Models\State;
 use App\Models\Answer;
 use App\Models\QADetail;
@@ -40,7 +40,8 @@ class PreguntasRespuestasController extends Controller
         ->select('states.id','states.state','states.color')
         ->where('states.id', [4])
         ->get();
-        return \View::make('questionanswer/new', compact('statesanswer', 'states'));
+        $cquestions = CQuestion::all();
+        return \View::make('questionanswer/new', compact('statesanswer', 'states','cquestions'));
     }
 
     /**
@@ -91,21 +92,6 @@ class PreguntasRespuestasController extends Controller
         $states = State::all();
         return \View::make('questionanswer/newquestionask',compact('questions','answers', 'states'));
     }
-    public function storeQuestionAnswer(Request $request)
-    {
-        
-        
-        foreach ($request->answer as $answer) {
-            $question = new QADetail ;
-            $question->question_id = $request->question;
-            $question->answer_id = $answer;
-        $question->save();    
-        }
-        
-        
-
-        return redirect('preguntas-respuestas');
-    }
     /*public function assQuestion($id)
     {
         $users = DB::table('users')
@@ -148,7 +134,8 @@ class PreguntasRespuestasController extends Controller
     {
         $question = Question::find($id);
         $states = State::whereBetween('states.id',[1,2])->get();
-        return \View::make('questionanswer/edit-question',compact('question','states'));
+        $cquestions = CQuestion::all();
+        return \View::make('questionanswer/edit-question',compact('question','states','cquestions'));
     }
 
     public function storeQuestion(Request $request)
@@ -156,6 +143,7 @@ class PreguntasRespuestasController extends Controller
         $question = new Question;
         $question->question_name = $request->question;
         $question->state_id = $request->state_id;
+        $question->cquestion_id = $request->cquestion_id;
         $question->save();
         $question = Question::all();
         $questionid = $question->last(); 
@@ -190,6 +178,7 @@ class PreguntasRespuestasController extends Controller
         $question = Question::find($id);
         $question->question_name = $request->question;
         $question->state_id = $request->state_id;
+        $question->cquestion_id = $request->cquestion_id;
         $question->save();
         $i = 0;
         foreach ($request->id  as $key => $value ) {

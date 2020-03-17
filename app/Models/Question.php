@@ -30,4 +30,8 @@ class Question extends Model
     {
         return $this->belongsToMany('App\Models\Answer');
     }
+    public function cquestion()
+    {
+        return $this->belongsTo('App\Models\CQuestion');
+    }
 }

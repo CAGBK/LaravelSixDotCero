@@ -1,6 +1,12 @@
-<!--This allows the view o take the layout the home view has in order to use it.-->
-@extends('home')
+@extends('layouts.app')
+
+@section('template_title')
+  Nueva Marca
+@endsection
+
+
 @section('content')
+    
 <div class="container">
   <div class="row justify-content-center">
       <div class="col-md-8">
@@ -105,4 +111,3 @@ $('.js-example-basic-multiple').select2();
 });
 </script>
 @endsection
-
