@@ -81,11 +81,8 @@
                           <tr>
                               <td>{{$category->name}}</td>
                               <td>
-                                @foreach ($category->subcategories as $subcategory)
-                                @if($subcategory)
-                                <span class="badge " >{{$subcategory->name}}</span>
+                                @if($category)
                                 @endif
-                                @endforeach
                               </td>
                               </td>
                               <td class="hidden-sm hidden-xs hidden-md">{{$category->created_at}}</td>
@@ -170,10 +167,8 @@
                           <tr>
                               <td>{{$subcategory->name}}</td>
                               <td>
-    
-                                @foreach ($subcategory->questions as $question)
-                                <span class="badge text-white" style="background-color:{{$question->state->color}}">{{$question->question_name}}</span>
-                                @endforeach
+                                  @if($subcategory)
+                                  @endif
                               </td>
                               </td>
                               <td class="hidden-sm hidden-xs hidden-md">{{$subcategory->created_at}}</td>

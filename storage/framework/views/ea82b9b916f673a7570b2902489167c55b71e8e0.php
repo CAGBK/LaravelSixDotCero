@@ -69,8 +69,8 @@
                         <div class="col-md-9">
                             <div class="input-group">
                                 <select class="custom-select form-control js-example-basic-multiple" name="subcategories[]" id="subcategories"  multiple="multiple" >
-                                    <option value="" disabled="disbled">Seleccione una Marca</option>
-                                    <?php if($category->subcategories): ?>
+                                    <option value="0" disabled="disbled">Seleccione una Marca</option>
+                                    <?php if($category->subcategory): ?>
                                     <?php $__currentLoopData = $subcategories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $subcategory): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                            <option value="<?php echo e($subcategory->id); ?>"><?php echo e($subcategory->name); ?></option>
                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
@@ -141,33 +141,17 @@ $(document).ready(function() {
     <?php if($category->user): ?>
         
         var arrayJS=<?php echo $category->user;?>;
-        console.log(arrayJS)
         
         $('#users').val(arrayJS).trigger('change.select2');
     <?php endif; ?>
 });
-<?php if($subcategorycat): ?>
-        <?php $__currentLoopData = $subcategorycat; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $subcategory): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-        <?php $subcategory2[] = $subcategory ;?>
-        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-        
-        var arrayJSs=<?php echo json_encode($subcategory2);?>;
-        console.log(arrayJSs)
-        
-            $('#subcategories').val(arrayJSs).trigger('select2:clearing');
-    <?php endif; ?>    
 $(document).ready(function() {
-    <?php $subcategory2 = array(); ?>
     $('.js-example-basic-multiple').select2();
-    <?php if($category->subcategories): ?>
-        <?php $__currentLoopData = $category->subcategories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $subcategory): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-        <?php $subcategory2[] = $subcategory->id ;?>
-        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+    <?php if($category->subcategory): ?>
+
+        var arrayJS=<?php echo $category->subcategory;?>;
         
-        var arrayJS=<?php echo json_encode($subcategory2);?>;
-        console.log(arrayJS)
-        
-            $('#subcategories').val(arrayJS).trigger('change.select2');
+        $('#subcategories').val(arrayJS).trigger('change.select2');
     <?php endif; ?>
 
 });

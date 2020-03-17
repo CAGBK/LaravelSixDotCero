@@ -10,10 +10,6 @@ class Question extends Model
     protected $fillable = ['question_name', 'state_id', 'asnwer_id'];
     protected $guarded = ['id'];
 
-    public function challenge_details()
-    {
-        return $this->hasMany('App\Models\ChallengeDetail');
-    }
     public function qadetails()
     {
         return $this->hasMany('App\Models\QADetail');
@@ -22,7 +18,7 @@ class Question extends Model
     {
         return $this->belongsTo('App\Models\State');
     }
-    public function subcategory()
+    public function subcategories()
     {
         return $this->belongsTo('App\Models\Subcategory');
     }

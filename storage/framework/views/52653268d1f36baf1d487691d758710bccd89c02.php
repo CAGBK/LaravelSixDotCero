@@ -81,11 +81,8 @@
                           <tr>
                               <td><?php echo e($category->name); ?></td>
                               <td>
-                                <?php $__currentLoopData = $category->subcategories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $subcategory): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                <?php if($subcategory): ?>
-                                <span class="badge " ><?php echo e($subcategory->name); ?></span>
+                                <?php if($category): ?>
                                 <?php endif; ?>
-                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                               </td>
                               </td>
                               <td class="hidden-sm hidden-xs hidden-md"><?php echo e($category->created_at); ?></td>
@@ -178,10 +175,8 @@
                           <tr>
                               <td><?php echo e($subcategory->name); ?></td>
                               <td>
-    
-                                <?php $__currentLoopData = $subcategory->questions; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $question): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                <span class="badge text-white" style="background-color:<?php echo e($question->state->color); ?>"><?php echo e($question->question_name); ?></span>
-                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                  <?php if($subcategory): ?>
+                                  <?php endif; ?>
                               </td>
                               </td>
                               <td class="hidden-sm hidden-xs hidden-md"><?php echo e($subcategory->created_at); ?></td>

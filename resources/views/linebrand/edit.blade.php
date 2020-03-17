@@ -65,8 +65,8 @@
                         <div class="col-md-9">
                             <div class="input-group">
                                 <select class="custom-select form-control js-example-basic-multiple" name="subcategories[]" id="subcategories"  multiple="multiple" >
-                                    <option value="" disabled="disbled">Seleccione una Marca</option>
-                                    @if ($category->subcategories)
+                                    <option value="0" disabled="disbled">Seleccione una Marca</option>
+                                    @if ($category->subcategory)
                                     @foreach($subcategories as $subcategory)
                                            <option value="{{ $subcategory->id }}">{{ $subcategory->name }}</option>
                                        @endforeach
@@ -135,33 +135,17 @@ $(document).ready(function() {
     @if($category->user)
         
         var arrayJS=<?php echo $category->user;?>;
-        console.log(arrayJS)
         
         $('#users').val(arrayJS).trigger('change.select2');
     @endif
 });
-@if($subcategorycat)
-        @foreach($subcategorycat as $subcategory)
-        <?php $subcategory2[] = $subcategory ;?>
-        @endforeach
-        
-        var arrayJSs=<?php echo json_encode($subcategory2);?>;
-        console.log(arrayJSs)
-        
-            $('#subcategories').val(arrayJSs).trigger('select2:clearing');
-    @endif    
 $(document).ready(function() {
-    <?php $subcategory2 = array(); ?>
     $('.js-example-basic-multiple').select2();
-    @if($category->subcategories)
-        @foreach($category->subcategories as $subcategory)
-        <?php $subcategory2[] = $subcategory->id ;?>
-        @endforeach
+    @if($category->subcategory)
+
+        var arrayJS=<?php echo $category->subcategory;?>;
         
-        var arrayJS=<?php echo json_encode($subcategory2);?>;
-        console.log(arrayJS)
-        
-            $('#subcategories').val(arrayJS).trigger('change.select2');
+        $('#subcategories').val(arrayJS).trigger('change.select2');
     @endif
 
 });

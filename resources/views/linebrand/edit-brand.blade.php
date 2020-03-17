@@ -3,6 +3,8 @@
 @section('template_title')
     Editar Marca
 @endsection
+@section('content')
+    
 <div class="container">
   <div class="row justify-content-center">
       <div class="col-md-8">
@@ -65,8 +67,8 @@
                         <div class="col-md-9">
                             <div class="input-group">
                                 <select class="custom-select form-control js-example-basic-multiple" name="question[]" id="question"  multiple="multiple" >
-                                    <option value="">Seleccione Preguntas</option>
-                                    @if ($brand->questions)
+                                    <option value="0">Seleccione Preguntas</option>
+                                    @if ($brand->question)
                                          @foreach($questions as $question)
                                                 <option value="{{ $question->id }}">{{ $question->question_name }}</option>
                                             @endforeach
@@ -102,30 +104,12 @@
 <script  type="application/javascript" src="https://cdn.jsdelivr.net/npm/select2@4.0.12/dist/js/select2.min.js"></script>
 <script type="application/javascript">
 $(document).ready(function() {
-$('.js-example-basic-single').select2();
-});
-@if($questionbrand)
-        @foreach($questionbrand as $question)
-        <?php $question2[] = $question ;?>
-        @endforeach
-        
-        var arrayJSs=<?php echo json_encode($question2);?>;
-        console.log(arrayJSs)
-        
-            $('#question').val(arrayJSs).trigger('select2:clearing');
-    @endif    
-$(document).ready(function() {
-    <?php $question2 = array(); ?>
     $('.js-example-basic-multiple').select2();
-    @if($brand->questions)
-        @foreach($brand->questions as $question)
-        <?php $question2[] = $question->id ;?>
-        @endforeach
+    @if($brand->question)
+
+        var arrayJS=<?php echo $brand->question;?>;
         
-        var arrayJS=<?php echo json_encode($question2);?>;
-        console.log(arrayJS)
-        
-            $('#question').val(arrayJS).trigger('change.select2');
+        $('#question').val(arrayJS).trigger('change.select2');
     @endif
 
 });

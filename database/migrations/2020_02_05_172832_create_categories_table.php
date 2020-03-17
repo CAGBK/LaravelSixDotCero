@@ -18,7 +18,7 @@ class CreateCategoriesTable extends Migration
             $table->string('name');
             $table->string('description');
             $table->json('user');
-            //$table->json('subcategories');
+            $table->json('subcategory');
             $table->timestamps();
         });
     }

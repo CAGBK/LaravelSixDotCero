@@ -69,7 +69,7 @@
                         <div class="col-md-9">
                             <div class="input-group">
                                 <select class="custom-select form-control js-example-basic-multiple" name="question[]" id="question"  multiple="multiple" >
-                                    <option value="">Seleccione Preguntas</option>
+                                    <option value="" disabled="disabled">Seleccione Preguntas</option>
                                     
                                     @if ($questions)
                                         @foreach($questions as $question)
