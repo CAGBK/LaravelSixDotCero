@@ -92,6 +92,11 @@ class User extends Authenticatable
         return $this->belongsToMany('App\Models\Profile')->withTimestamps();
     }
 
+    public function categories()
+    {
+        return $this->belongsTo('App\Models\Category');
+    }
+
     public function hasProfile($name)
     {
         foreach ($this->profiles as $profile) {

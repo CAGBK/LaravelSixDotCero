@@ -11,6 +11,8 @@ use Illuminate\Support\Facades\Hash;
 
 use App\Models\Category;
 
+use App\Models\User;
+
 use App\Models\QADetail;
 
 use App\Models\Subcategory;
@@ -45,7 +47,8 @@ class LineasMarcasController extends Controller
     public function createLine()
     { 
         $subcategories = Subcategory::all();
-        return \View::make('linebrand/new', compact('subcategories'));
+        $users = User::all();
+        return \View::make('linebrand/new', compact('subcategories','users'));
     }
 
     /**
@@ -65,9 +68,11 @@ class LineasMarcasController extends Controller
     }
     public function storeLinea(Request $request)
     {
+        $jsonData = json_encode($request->users);
         $category = new Category;
         $category->name = $request->brand;
         $category->description = $request->description;
+        $category->user = $jsonData;
         $category->save();
         $category = Category::all();
         $categoryid = $category->last();
@@ -178,7 +183,8 @@ class LineasMarcasController extends Controller
     public function showLine(Request $request, $id)
     {
         $category = Category::find($id);
-        return \View::make('linebrand/show-lines',compact('category'));
+        $users = User::all();
+        return \View::make('linebrand/show-lines',compact('category','users'));
     }
 
     public function showBrand(Request $request, $id)
@@ -213,9 +219,10 @@ class LineasMarcasController extends Controller
     {
         $category = Category::find($id);
         $subcategories = Subcategory::all();
+        $users = User::all();
         foreach($subcategories as $subcategory) 
         {
-        $subcategoryList[]=$subcategory->id;
+            $subcategoryList[]=$subcategory->id;
         }
         //dd($eventlist)//first perform this dd() 
         $linesi = DB::table('category_subcategory')->select('subcategory_id')->where('category_id' ,'=' , $id)->get();  
@@ -225,41 +232,8 @@ class LineasMarcasController extends Controller
             $list[]=$linec->subcategory_id;
         }    
         $subcategorycat = array_diff ($subcategoryList,$list) ;
-        return \View::make('linebrand/edit',compact('category','subcategories', 'subcategorycat' , 'list' ));
+        return \View::make('linebrand/edit',compact('category','subcategories', 'subcategorycat' , 'list', 'users'));
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     public function updateBrand(Request $request, $id )
     {
@@ -279,7 +253,6 @@ class LineasMarcasController extends Controller
             foreach ( $request->question as $value_id_request) {
                 $question_request_id[] = (int)$value_id_request;  
             }
-            $array_intersect_request_bd = array_intersect($request_question, $question_request_id);
             
             $array_diff_request_bd  = array_diff($question_request_id, $request_question);
             
@@ -334,10 +307,11 @@ class LineasMarcasController extends Controller
     }
     public function updateLine(Request $request, $id )
     {
-        
+        $jsonData = json_encode($request->users);
         $line = Category::find($id);
         $line->name = $request->line;
         $line->description = $request->description;
+        $line->user = $jsonData;
         $line->save();
 
         $linesi = DB::table('category_subcategory')->select('id', 'subcategory_id')->where('category_id' ,'=' , $id)->get(); 
@@ -352,7 +326,6 @@ class LineasMarcasController extends Controller
             foreach ( $request->subcategories as $value_id_request) {
                 $subcategory_request_id[] = (int)$value_id_request;  
             }
-            $array_intersect_request_bd = array_intersect($request_subcategory, $subcategory_request_id);
             
             $array_diff_request_bd  = array_diff($subcategory_request_id, $request_subcategory);
             

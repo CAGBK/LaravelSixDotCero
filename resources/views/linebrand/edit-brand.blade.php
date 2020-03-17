@@ -1,6 +1,8 @@
-<!--This allows the view o take the layout the home view has in order to use it.-->
-@extends('home')
-@section('content')
+@extends('layouts.app')
+
+@section('template_title')
+    Editar Marca
+@endsection
 <div class="container">
   <div class="row justify-content-center">
       <div class="col-md-8">

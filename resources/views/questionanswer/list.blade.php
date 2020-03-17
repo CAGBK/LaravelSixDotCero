@@ -71,7 +71,9 @@
                                 <thead class="thead">
                                     <tr>
                                         <th>Pregunta</th>
+                                        <th>Estado</th>
                                         <th>Respuestas</th>
+                                        <th>Categoria de Pregunta</th>
                                         <th>Creado</th>
                                         <th>Modificado</th>
                                         <th>Acción</th>
@@ -84,9 +86,15 @@
                                         <tr>
                                             <td>{{$question->question_name}}</td>
                                             <td>
+                                                {{ $question->state->state }}
+                                            </td>
+                                            <td>
                                             @foreach($question->answers as $answer)
                                               <span class="badge text-white" style="background-color:{{$answer->state->color}}">{{$answer->name}}</span>
                                             @endforeach</td>
+                                            </td>
+                                            <td>
+                                                <span class="badge text-white" style="background-color:{{$question->cquestion->color}}">{{$question->cquestion->name}}</span>
                                             </td>
                                             <td class="hidden-sm hidden-xs hidden-md">{{$question->created_at}}</td>
                                             <td class="hidden-sm hidden-xs hidden-md">{{$question->updated_at}}</td>
