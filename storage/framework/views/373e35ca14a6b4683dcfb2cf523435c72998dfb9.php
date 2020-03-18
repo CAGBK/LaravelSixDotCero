@@ -3,14 +3,17 @@
     <div class="row justify-content-center">
         <div class="col-md-10">
             <div class="card card-login">
-                <div class="card-header login-nav"><?php echo e(__('Login')); ?></div>
+                <div class="card-header nav-color text-white"><?php echo e(__('Login')); ?></div>
 
                 <div class="card-body">
                     <form method="POST" action="<?php echo e(route('login')); ?>">
                         <?php echo csrf_field(); ?>
-
+                        <div class="text-center">
+                            <h1><strong>Hola!</strong></h1>
+                            <p>Ingresa con tu correo y contraseña para este sitio</p>
+                        </div>
                         <div class="form-group row">
-                            <label for="email" class="col-sm-4 col-form-label text-md-right nav-font"><?php echo e(__('E-Mail Address')); ?></label>
+                            <label for="email" class="col-sm-4 col-form-label text-md-right nav-font"><?php echo e(__('Correo')); ?></label>
 
                             <div class="col-md-6">
                                 <input id="email" type="email" class="form-control<?php echo e($errors->has('email') ? ' is-invalid' : ''); ?> input-login" name="email" value="<?php echo e(old('email')); ?>" required autofocus>
@@ -24,7 +27,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right nav-font"><?php echo e(__('Password')); ?></label>
+                            <label for="password" class="col-md-4 col-form-label text-md-right nav-font"><?php echo e(__('Contraseña')); ?></label>
 
                             <div class="col-md-6">
                                 <input id="password" type="password" class="form-control<?php echo e($errors->has('password') ? ' is-invalid' : ''); ?> input-login" name="password" required>
@@ -41,7 +44,7 @@
                             <div class="col-md-6 offset-md-4">
                                 <div class="checkbox">
                                     <label>
-                                        <input type="checkbox" name="remember" <?php echo e(old('remember') ? 'checked' : ''); ?>> <?php echo e(__('Remember Me')); ?>
+                                        <input type="checkbox" name="remember" <?php echo e(old('remember') ? 'checked' : ''); ?>> <?php echo e(__('Recordarme')); ?>
 
                                     </label>
                                 </div>
@@ -51,23 +54,16 @@
                         <div class="form-group row mb-4">
                             <div class="col-md-8 offset-md-4">
                                 <button type="submit" class="btn button-card">
-                                    <?php echo e(__('Login')); ?>
+                                    <?php echo e(__('Ingresar')); ?>
 
                                 </button>
 
                                 <a class="btn btn-link login-nav" href="<?php echo e(route('password.request')); ?>">
-                                    <?php echo e(__('Forgot Your Password?')); ?>
+                                    <?php echo e(__('Recuperar Contraseña?')); ?>
 
                                 </a>
                             </div>
                         </div>
-
-                        <p class="text-center mb-3 nav-font">
-                            Or Login with
-                        </p>
-
-                        <?php echo $__env->make('partials.socials-icons', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
-
                     </form>
                 </div>
             </div>

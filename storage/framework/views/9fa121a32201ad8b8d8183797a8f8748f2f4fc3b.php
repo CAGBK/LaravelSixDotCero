@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-md navbar-light navbar-laravel nav-color">
     <div class="container">
         <a class="navbar-brand" href="<?php echo e(url('/')); ?>">
-            <img src="/images/logo.png" width="80px" height="80px" alt="">
+            <img src="/images/logo.png" width="150px" height="80px" alt="">
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -12,7 +12,7 @@
             <ul class="navbar-nav mr-auto">
                 <?php if (Auth::check() && Auth::user()->hasRole('admin')): ?>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle nav-font" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <?php echo trans('titles.adminDropdownNav'); ?>
 
                         </a>
@@ -71,7 +71,7 @@
                 <?php endif; ?>
                 <?php if (Auth::check() && Auth::user()->hasRole('admin')): ?>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle nav-font" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <?php echo trans('titles.adminGame'); ?>
 
                     </a>
@@ -98,10 +98,10 @@
             <ul class="navbar-nav ml-auto">
                 
                 <?php if(auth()->guard()->guest()): ?>
-                    <li><a class="nav-link login-nav" href="<?php echo e(route('login')); ?>"><?php echo e(trans('titles.login')); ?></a></li>
+                    <li><a class="nav-link text-white" style="text-decoration: underline" href="<?php echo e(route('login')); ?>"><?php echo e(trans('titles.login')); ?></a></li>
                 <?php else: ?>
                     <li class="nav-item dropdown">
-                        <a id="navbarDropdown" class="nav-link dropdown-toggle nav-font" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                        <a id="navbarDropdown" class="nav-link dropdown-toggle text-white" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                             <?php if((Auth::User()->profile) && Auth::user()->profile->avatar_status == 1): ?>
                                 <img src="<?php echo e(Auth::user()->profile->avatar); ?>" alt="<?php echo e(Auth::user()->name); ?>" class="user-avatar-nav">
                             <?php else: ?>

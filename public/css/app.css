@@ -18398,11 +18398,18 @@ div[data-toggle=buttons] label.active {
 }
 
 .nav-color {
-  background-color: #fff;
+  background-color: #93bf1c;
 }
 
 .nav-font {
   color: #009245 !important;
+}
+
+.nav-font.active,
+.nav-fon:active {
+  color: #ffffff !important;
+  text-decoration: none;
+  background-color: #93bf1c;
 }
 
 .header-card {
@@ -18416,7 +18423,7 @@ div[data-toggle=buttons] label.active {
 }
 
 body {
-  background-color: #d0e0a1;
+  background-color: #f1f1f1;
 }
 
 .card-login {
@@ -18635,13 +18642,21 @@ select + .select2-container {
   width: 90% !important;
 }
 
+.card-question {
+  border-radius: 1rem;
+}
+
+.pregunta-text {
+  font-size: 40px;
+}
+
 .container-canvas {
   margin-left: auto;
   margin-right: auto;
 }
 
 #canvasContainer {
-  background-image: url(/images/logo.png);
+  background-image: url(/images/ruleta.png);
   background-repeat: no-repeat;
   background-position: center;
   cursor: pointer;
