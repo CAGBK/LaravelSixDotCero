@@ -80,7 +80,9 @@
                     @auth
                         <a href="{{ url('/home') }}" class="nav-font">Home</a>
                     @else
-                        <a href="{{ route('login') }}" class="nav-font">Login</a>
+                        <a href="{{ route('0.
+                        
+                        ') }}" class="nav-font">Login</a>
 
                         
                     @endauth

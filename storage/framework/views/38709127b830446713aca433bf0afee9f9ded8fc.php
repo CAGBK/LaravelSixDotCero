@@ -1,6 +1,10 @@
-<!--This allows the view o take the layout the home view has in order to use it.-->
+<?php $__env->startSection('template_title'); ?>
+  Nueva Marca
+<?php $__env->stopSection(); ?>
+
 
 <?php $__env->startSection('content'); ?>
+    
 <div class="container">
   <div class="row justify-content-center">
       <div class="col-md-8">
@@ -68,7 +72,7 @@
                         <div class="col-md-9">
                             <div class="input-group">
                                 <select class="custom-select form-control js-example-basic-multiple" name="question[]" id="question"  multiple="multiple" >
-                                    <option value="">Seleccione Preguntas</option>
+                                    <option value="" disabled="disabled">Seleccione Preguntas</option>
                                     
                                     <?php if($questions): ?>
                                         <?php $__currentLoopData = $questions; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $question): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
@@ -110,6 +114,4 @@ $('.js-example-basic-multiple').select2();
 });
 </script>
 <?php $__env->stopSection(); ?>
-
-
-<?php echo $__env->make('home', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\ca.gonzalezb1\Desktop\LaravelSixDotCero\resources\views/linebrand/newbrand.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\ca.gonzalezb1\Desktop\LaravelSixDotCero\resources\views/linebrand/newbrand.blade.php ENDPATH**/ ?>

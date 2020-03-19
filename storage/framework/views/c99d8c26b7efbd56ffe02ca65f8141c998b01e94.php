@@ -165,30 +165,39 @@
 <script  type="application/javascript" src="https://cdn.jsdelivr.net/npm/select2@4.0.12/dist/js/select2.min.js"></script>
 <script type="application/javascript">
 		$(document).ready(function() {
-		var lines = $(".select-line");
-		var brands = $(".select-brand");
-			$.ajax({
-				type: 'GET',
-				url: '/brandByLinea/' + lines
-			}).then(function (data) {
-				
-				// create the option and append to Select2
-				var option = new Option(data.name, data.id, true, true);
-				console.log(option, "hola");
-				lines.append(option).trigger('change');
-
-				// manually trigger the `select2:select` event
-				lines.trigger({
-					type: 'select2:select',
-					params: {
-						data: data
-					}
-				});
-			});
+		
 			
 			$('.select-user').select2();
 			$('.select-brand').select2();
-			$('.select-line').select2();
+			
+			$('.select-line').select2({
+				
+				minimumInputLength: 2,
+				tags: [],
+				ajax: {
+					url: '/brandByLinea/' + lines,
+					dataType: 'json',
+					type: "GET",
+					quietMillis: 50,
+					data: function (term) {
+						return {
+							term: term
+						};
+					},
+					results: function (data) {
+						return {
+							results: $.map(data, function (item) {
+								return {
+									text: item.completeName,
+									slug: item.slug,
+									id: item.id
+								}
+							})
+						};
+					}
+				}
+			});
+			
 		});
 </script>
 <?php $__env->stopSection(); ?>

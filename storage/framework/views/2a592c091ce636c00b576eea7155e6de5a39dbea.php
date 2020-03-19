@@ -71,7 +71,9 @@
                                 <thead class="thead">
                                     <tr>
                                         <th>Pregunta</th>
+                                        <th>Estado</th>
                                         <th>Respuestas</th>
+                                        <th>Categoria de Pregunta</th>
                                         <th>Creado</th>
                                         <th>Modificado</th>
                                         <th>Acción</th>
@@ -84,9 +86,16 @@
                                         <tr>
                                             <td><?php echo e($question->question_name); ?></td>
                                             <td>
+                                                <?php echo e($question->state->state); ?>
+
+                                            </td>
+                                            <td>
                                             <?php $__currentLoopData = $question->answers; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $answer): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                               <span class="badge text-white" style="background-color:<?php echo e($answer->state->color); ?>"><?php echo e($answer->name); ?></span>
                                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?></td>
+                                            </td>
+                                            <td>
+                                                <span class="badge text-white" style="background-color:<?php echo e($question->cquestion->color); ?>"><?php echo e($question->cquestion->name); ?></span>
                                             </td>
                                             <td class="hidden-sm hidden-xs hidden-md"><?php echo e($question->created_at); ?></td>
                                             <td class="hidden-sm hidden-xs hidden-md"><?php echo e($question->updated_at); ?></td>

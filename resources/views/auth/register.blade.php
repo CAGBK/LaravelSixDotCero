@@ -12,7 +12,7 @@
                         @csrf
 
                         <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right nav-font nav-font">{{ __('Username') }}</label>
+                            <label for="name" class="col-md-4 col-form-label text-md-right nav-font nav-font">{{ __('Nombre') }}</label>
 
                             <div class="col-md-6">
                                 <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" required autofocus>
@@ -26,7 +26,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="first_name" class="col-md-4 col-form-label text-md-right nav-font">{{ __('First Name') }}</label>
+                            <label for="first_name" class="col-md-4 col-form-label text-md-right nav-font">{{ __('Primer Nombre') }}</label>
 
                             <div class="col-md-6">
                                 <input id="first_name" type="text" class="form-control{{ $errors->has('first_name') ? ' is-invalid' : '' }}" name="first_name" value="{{ old('first_name') }}" required autofocus>
@@ -40,7 +40,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="last_name" class="col-md-4 col-form-label text-md-right nav-font">{{ __('Last Name') }}</label>
+                            <label for="last_name" class="col-md-4 col-form-label text-md-right nav-font">{{ __('Apellidos') }}</label>
 
                             <div class="col-md-6">
                                 <input id="last_name" type="text" class="form-control{{ $errors->has('last_name') ? ' is-invalid' : '' }}" name="last_name" value="{{ old('last_name') }}" required autofocus>
@@ -54,7 +54,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right nav-font">{{ __('E-Mail Address') }}</label>
+                            <label for="email" class="col-md-4 col-form-label text-md-right nav-font">{{ __('Correo Electrónico') }}</label>
 
                             <div class="col-md-6">
                                 <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required>
@@ -68,7 +68,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right nav-font">{{ __('Password') }}</label>
+                            <label for="password" class="col-md-4 col-form-label text-md-right nav-font">{{ __('Contraseña') }}</label>
 
                             <div class="col-md-6">
                                 <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
@@ -82,22 +82,12 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right nav-font">{{ __('Confirm Password') }}</label>
+                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right nav-font">{{ __('Confirme contraseña') }}</label>
 
                             <div class="col-md-6">
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
                             </div>
                         </div>
-
-
-                        @if(config('settings.reCaptchStatus'))
-                            <div class="form-group">
-                                <div class="col-sm-6 col-sm-offset-4">
-                                    <div class="g-recaptcha" data-sitekey="{{ config('settings.reCaptchSite') }}"></div>
-                                </div>
-                            </div>
-                        @endif
-
                         <div class="form-group row mb-4">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn button-card">
@@ -105,16 +95,6 @@
                                 </button>
                             </div>
                         </div>
-
-                        <div class="row">
-                            <div class="col-12 col-lg-10 offset-lg-1 col-xl-8 offset-xl-2">
-                                <p class="text-center mb-4 nav-font">
-                                    Or Use Social Logins to Register
-                                </p>
-                                @include('partials.socials')
-                            </div>
-                        </div>
-
                     </form>
                 </div>
             </div>
@@ -123,8 +103,3 @@
 </div>
 @endsection
 
-@section('footer_scripts')
-    @if(config('settings.reCaptchStatus'))
-        <script src='https://www.google.com/recaptcha/api.js'></script>
-    @endif
-@endsection

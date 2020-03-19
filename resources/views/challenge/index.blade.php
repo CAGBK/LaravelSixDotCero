@@ -85,7 +85,7 @@
 	                            <div class="form-group has-feedback row {{ $errors->has('line_id') ? ' has-error ' : '' }} nav-font">
 			                        <div class="col-md-12">
 			                            <div class="input-group">
-			                                <select class="custom-select form-control select-line" name="lines[]" id="lines"  multiple="multiple" >
+			                                <select class="custom-select form-control select-line js-lines-ajax" name="lines[]" id="lines"  multiple="multiple" >
 			                                    
 			                                    @if ($categories)
 			                                    
@@ -166,32 +166,21 @@
 <link href="https://cdn.jsdelivr.net/npm/select2@4.0.12/dist/css/select2.min.css" rel="stylesheet" />
 <script  type="application/javascript" src="https://cdn.jsdelivr.net/npm/select2@4.0.12/dist/js/select2.min.js"></script>
 <script type="application/javascript">
-		$(document).ready(function() {
-		var lines = $(".select-line");
-		var brands = $(".select-brand");
-			$.ajax({
-				type: 'GET',
-				url: '/brandByLinea/' + lines
-			}).then(function (data) {
-				
-				// create the option and append to Select2
-				var option = new Option(data.name, data.id, true, true);
-				console.log(option, "hola");
-				lines.append(option).trigger('change');
+	
+	$('#mySelect2').select2({
+  ajax: {
+    url: 'https://api.github.com/orgs/select2/repos',
+    data: function (params) {
+      var query = {
+        search: params.term,
+        type: 'public'
+      }
 
-				// manually trigger the `select2:select` event
-				lines.trigger({
-					type: 'select2:select',
-					params: {
-						data: data
-					}
-				});
-			});
-			
-			$('.select-user').select2();
-			$('.select-brand').select2();
-			$('.select-line').select2();
-		});
+      // Query parameters will be ?search=[term]&type=public
+      return query;
+    }
+  }
+});
 </script>
 @endsection
 
