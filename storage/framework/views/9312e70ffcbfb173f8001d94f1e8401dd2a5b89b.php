@@ -176,6 +176,32 @@
                                         <?php endif; ?>
                                     </div>
                                 </div>
+                                <div class="form-group has-feedback row <?php echo e($errors->has('cquestion_id') ? ' has-error ' : ''); ?> nav-font">
+                                    <?php echo Form::label('cquestion_id', 'Categoria de Pregunta', array('class' => 'col-md-3 control-label'));; ?>
+
+                                    <div class="col-md-9">
+                                        <div class="input-group">
+                                            <select class="custom-select form-control" name="cquestion_id" id="cquestion_id">
+                                                <option value="">Seleccione categoria de pregunta</option>
+                                                <?php if($cquestions): ?>
+                                                    <?php $__currentLoopData = $cquestions; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $cquestion): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                        <option value="<?php echo e($cquestion->id); ?>"><?php echo e($cquestion->name); ?></option>
+                                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                                <?php endif; ?>
+                                            </select>
+                                            <div class="input-group-append">
+                                                <label class="input-group-text" for="cquestion_id">
+                                                    <i class="<?php echo e(trans('forms.create_user_icon_role')); ?> nav-font" aria-hidden="true"></i>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <?php if($errors->has('role')): ?>
+                                            <span class="help-block">
+                                                <strong><?php echo e($errors->first('role')); ?></strong>
+                                            </span>
+                                        <?php endif; ?>
+                                    </div>
+                                </div>
                                 <button type="submit" class="btn btn-success margin-bottom-1 mb-1 float-right">
                                     Crear Nueva Pregunta
                                 </button>  

@@ -1,4 +1,6 @@
-<!--This allows the view o take the layout the home view has in order to use it.-->
+<?php $__env->startSection('template_title'); ?>
+    Editar Linea
+<?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('content'); ?>
 <div class="container">
@@ -67,8 +69,8 @@
                         <div class="col-md-9">
                             <div class="input-group">
                                 <select class="custom-select form-control js-example-basic-multiple" name="subcategories[]" id="subcategories"  multiple="multiple" >
-                                    <option value="">Seleccione una Marca</option>
-                                    <?php if($category->subcategories): ?>
+                                    <option value="0" disabled="disbled">Seleccione una Marca</option>
+                                    <?php if($category->subcategory): ?>
                                     <?php $__currentLoopData = $subcategories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $subcategory): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                            <option value="<?php echo e($subcategory->id); ?>"><?php echo e($subcategory->name); ?></option>
                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
@@ -80,6 +82,36 @@
                                 </select>
                                 <div class="input-group-append">
                                     <label class="input-group-text" for="state_id">
+                                        <i class="<?php echo e(trans('forms.create_user_icon_role')); ?> nav-font" aria-hidden="true"></i>
+                                    </label>
+                                </div>
+                            </div>
+                            <?php if($errors->has('role')): ?>
+                                <span class="help-block">
+                                    <strong><?php echo e($errors->first('role')); ?></strong>
+                                </span>
+                            <?php endif; ?>
+                        </div>
+                    </div>
+                    <div class="form-group has-feedback row <?php echo e($errors->has('users') ? ' has-error ' : ''); ?> nav-font">
+                        <?php echo Form::label('users', 'Usuarios', array('class' => 'col-md-3 control-label'));; ?>
+
+                        <div class="col-md-9">
+                            <div class="input-group">
+                                <select class="custom-select form-control js-user" name="users[]" id="users"  multiple="multiple" >
+                                    <option value="0" disabled="disabled">Seleccione Usuarios</option>
+                                    <?php if($category->user): ?>
+                                    <?php $__currentLoopData = $users; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $user): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                           <option value="<?php echo e($user->id); ?>"><?php echo e($user->name); ?></option>
+                                       <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                   <?php else: ?> 
+                                       <?php $__currentLoopData = $users; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $user): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                           <option value="<?php echo e($user->id); ?>"><?php echo e($user->name); ?></option>
+                                       <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>    
+                                    <?php endif; ?>
+                                </select>
+                                <div class="input-group-append">
+                                    <label class="input-group-text" for="users">
                                         <i class="<?php echo e(trans('forms.create_user_icon_role')); ?> nav-font" aria-hidden="true"></i>
                                     </label>
                                 </div>
@@ -105,30 +137,21 @@
 <script  type="application/javascript" src="https://cdn.jsdelivr.net/npm/select2@4.0.12/dist/js/select2.min.js"></script>
 <script type="application/javascript">
 $(document).ready(function() {
-$('.js-example-basic-single').select2();
+    $('.js-user').select2();
+    <?php if($category->user): ?>
+        
+        var arrayJS=<?php echo $category->user;?>;
+        
+        $('#users').val(arrayJS).trigger('change.select2');
+    <?php endif; ?>
 });
-<?php if($subcategorycat): ?>
-        <?php $__currentLoopData = $subcategorycat; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $subcategory): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-        <?php $subcategory2[] = $subcategory ;?>
-        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-        
-        var arrayJSs=<?php echo json_encode($subcategory2);?>;
-        console.log(arrayJSs)
-        
-            $('#subcategories').val(arrayJSs).trigger('select2:clearing');
-    <?php endif; ?>    
 $(document).ready(function() {
-    <?php $subcategory2 = array(); ?>
     $('.js-example-basic-multiple').select2();
-    <?php if($category->subcategories): ?>
-        <?php $__currentLoopData = $category->subcategories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $subcategory): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-        <?php $subcategory2[] = $subcategory->id ;?>
-        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+    <?php if($category->subcategory): ?>
+
+        var arrayJS=<?php echo $category->subcategory;?>;
         
-        var arrayJS=<?php echo json_encode($subcategory2);?>;
-        console.log(arrayJS)
-        
-            $('#subcategories').val(arrayJS).trigger('change.select2');
+        $('#subcategories').val(arrayJS).trigger('change.select2');
     <?php endif; ?>
 
 });
@@ -136,4 +159,4 @@ $(document).ready(function() {
 </script>
 <?php $__env->stopSection(); ?>
 
-<?php echo $__env->make('home', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\ca.gonzalezb1\Desktop\LaravelSixDotCero\resources\views/linebrand/edit.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\ca.gonzalezb1\Desktop\LaravelSixDotCero\resources\views/linebrand/edit.blade.php ENDPATH**/ ?>

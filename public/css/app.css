@@ -18398,7 +18398,7 @@ div[data-toggle=buttons] label.active {
 }
 
 .nav-color {
-  background-color: #fff;
+  background-color: #f3f3f3a6;
 }
 
 .nav-font {
@@ -18412,20 +18412,26 @@ div[data-toggle=buttons] label.active {
 .login-nav {
   -webkit-text-decoration-line: underline;
           text-decoration-line: underline;
-  color: #009245 !important;
 }
 
 body {
-  background-color: #d0e0a1;
+  background-color: #f3f3f3a6;
+
 }
 
 .card-login {
   border-radius: 1rem;
+ 
 }
+
 
 .input-login {
   border-radius: 1rem;
-  border-color: #afd370;
+  border-color: #4e504a;
+  display: inline-block;
+  border: 1.5px solid grey;
+  font-size: 10pt;
+    font-weight: bolder;
 }
 
 .button-card {
@@ -18646,4 +18652,49 @@ select + .select2-container {
   background-position: center;
   cursor: pointer;
 }
+.text-login {
+  align-self: center;
+  text-align-last: center;
+  font-size: 8pt;
+  color: black !important;
+  width: 224px;
+  letter-spacing: 0pt;
+}
+.header-login{
+  font-size: 39pt;
+  color: black;
+  text-decoration: blink;
+  text-align: center;
+  font-family: inherit;
+  font-weight: 500;
+  margin-bottom: -1rem;
+  letter-spacing: -1.5px;
+  text-shadow: 1.5px 0px 0px rgba(0,0,0,0.92);  
+}
+.btn-login{
+  background: transparent;
+  border: transparent;
+  font-size: 19pt;
+  font-weight: bold;
+  color: #2cab66;
+  -webkit-text-emphasis-color: #93bf1c;
+  -webkit-text-emphasis-style: circle;
+  -webkit-text-emphasis-position: under;
+}
+.content-align{
+  text-align: -webkit-center;
+}
+.custom-link{
+  text-decoration: none;
+  font-size: 13pt;
+  color: #93bf1c;
+  font-weight: 800;
+  padding: 0;
+  margin: 0;
+}
 
+.background-login{
+  background-image: url(/images/fondo.png);
+    background-size: cover;
+    background-position-y: bottom;
+}

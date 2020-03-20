@@ -1,4 +1,7 @@
-<!--This allows the view o take the layout the home view has in order to use it.-->
+<?php $__env->startSection('template_title'); ?>
+  Nueva Linea
+<?php $__env->stopSection(); ?>
+
 
 <?php $__env->startSection('content'); ?>
 <div class="container">
@@ -66,7 +69,7 @@
                         <div class="col-md-9">
                             <div class="input-group">
                                 <select class="custom-select form-control js-example-basic-multiple" name="subcategories[]" id="subcategories"  multiple="multiple" >
-                                    <option value="">Seleccione una Marca</option>
+                                    <option value="" disabled="disabled">Seleccione una Marca</option>
                                     
                                     <?php if($subcategories): ?>
                                     
@@ -78,6 +81,35 @@
                                 </select>
                                 <div class="input-group-append">
                                     <label class="input-group-text" for="state_id">
+                                        <i class="<?php echo e(trans('forms.create_user_icon_role')); ?> nav-font" aria-hidden="true"></i>
+                                    </label>
+                                </div>
+                            </div>
+                            <?php if($errors->has('role')): ?>
+                                <span class="help-block">
+                                    <strong><?php echo e($errors->first('role')); ?></strong>
+                                </span>
+                            <?php endif; ?>
+                        </div>
+                    </div>
+                    <div class="form-group has-feedback row <?php echo e($errors->has('users_id') ? ' has-error ' : ''); ?> nav-font">
+                        <?php echo Form::label('users_id', 'Usuarios', array('class' => 'col-md-3 control-label'));; ?>
+
+                        <div class="col-md-9">
+                            <div class="input-group">
+                                <select class="custom-select form-control js-user" name="users[]" id="users"  multiple="multiple" >
+                                    <option value="" disabled="disabled">Seleccione Usuarios</option>
+                                    
+                                    <?php if($users): ?>
+                                    
+                                    
+                                        <?php $__currentLoopData = $users; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $user): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                            <option value="<?php echo e($user->id); ?>"><?php echo e($user->name); ?></option>
+                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                    <?php endif; ?>
+                                </select>
+                                <div class="input-group-append">
+                                    <label class="input-group-text" for="users_id">
                                         <i class="<?php echo e(trans('forms.create_user_icon_role')); ?> nav-font" aria-hidden="true"></i>
                                     </label>
                                 </div>
@@ -102,7 +134,7 @@
 <script  type="application/javascript" src="https://cdn.jsdelivr.net/npm/select2@4.0.12/dist/js/select2.min.js"></script>
 <script type="application/javascript">
 $(document).ready(function() {
-$('.js-example-basic-single').select2();
+$('.js-user').select2();
 });
 
 $(document).ready(function() {
@@ -111,4 +143,4 @@ $('.js-example-basic-multiple').select2();
 </script>
 <?php $__env->stopSection(); ?>
 
-<?php echo $__env->make('home', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\ca.gonzalezb1\Desktop\LaravelSixDotCero\resources\views/linebrand/new.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\ca.gonzalezb1\Desktop\LaravelSixDotCero\resources\views/linebrand/new.blade.php ENDPATH**/ ?>

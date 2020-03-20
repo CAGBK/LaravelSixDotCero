@@ -20,7 +20,7 @@ class DatabaseSeeder extends Seeder
         $this->call(ThemesTableSeeder::class);
         $this->call(UsersTableSeeder::class);
         $this->call(StatesTableSeeder::class);
-
+        $this->call(RouletteTableSeeder::class);
         Model::reguard();
     }
 }
