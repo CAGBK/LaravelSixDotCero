@@ -88,7 +88,7 @@
             <?php endif; ?>
             <div class="content">
                 <a class="navbar-brand" >
-                    <img src="/images/logo.png">
+                    <img src="/images/logo-verde.png" >
                 </a>
             </div>
         </div>

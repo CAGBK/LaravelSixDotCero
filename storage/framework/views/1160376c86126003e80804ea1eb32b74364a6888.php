@@ -12,7 +12,7 @@
             <ul class="navbar-nav mr-auto">
                 <?php if (Auth::check() && Auth::user()->hasRole('admin')): ?>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle nav-font" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <?php echo trans('titles.adminDropdownNav'); ?>
 
                         </a>
@@ -71,7 +71,7 @@
                 <?php endif; ?>
                 <?php if (Auth::check() && Auth::user()->hasRole('admin')): ?>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle nav-font" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <?php echo trans('titles.adminGame'); ?>
 
                     </a>
@@ -101,7 +101,7 @@
                     
                 <?php else: ?>
                     <li class="nav-item dropdown">
-                        <a id="navbarDropdown" class="nav-link dropdown-toggle nav-font" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                        <a id="navbarDropdown" class="nav-link dropdown-toggle text-white" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                             <?php if((Auth::User()->profile) && Auth::user()->profile->avatar_status == 1): ?>
                                 <img src="<?php echo e(Auth::user()->profile->avatar); ?>" alt="<?php echo e(Auth::user()->name); ?>" class="user-avatar-nav">
                             <?php else: ?>

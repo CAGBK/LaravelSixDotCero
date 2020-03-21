@@ -1,4 +1,5 @@
 <script>
+	
 	var miRuleta;
 	var segmentoSeleccionado;
 	var distnaciaX = 150;
@@ -6,14 +7,13 @@
 	var ctx ;
 	 miRuleta = new Winwheel({
 	  'canvasId': 'Ruleta',
-	  'numSegments': 4,
+	  'numSegments': <?php echo $cquestions->count() ?>,
 	  'outerRadius': 270,
 	  'innerRadius': 80,
 	  'segments': [
-		{'fillStyle': '#f1c40f', 'text': 'Patologia'},
-		{'fillStyle': '#2ecc71', 'text': 'Producto'},
-		{'fillStyle': '#367e22', 'text': 'Competencia'},
-		{'fillStyle': '#8e44ad', 'text': 'POA'},
+		  <?php $__currentLoopData = $cquestions; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $question): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+			{'fillStyle': '<?php echo e($question->color); ?>', 'text': '<?php echo e($question->name); ?>'},
+		  <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 	  ],
 	  'animation':
 	  {
@@ -26,11 +26,8 @@
 	});
 	function Mensaje() {
 	  segmentoSeleccionado = miRuleta.getIndicatedSegment();
-	  alert("Elemento seleccionado: " + segmentoSeleccionado.text + "!");
 	  miRuleta.stopAnimation(false);
-	  miRuleta.rotationAngle = 0;
-	  miRuleta.draw();
-	  dibujarIndicador();
+	  window.location= "question-game/" + segmentoSeleccionado.text;
 	}
 
    function dibujarIndicador() {
