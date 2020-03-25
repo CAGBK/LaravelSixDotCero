@@ -2,7 +2,13 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-6">
+            
             <div class="card card-login background-login">
+                <div style=" display: inline-block; text-align: center; margin-bottom: 2rem;">
+                    <a class=""  href="<?php echo e(url('/')); ?>">
+                        <img id="nav-image" src="/images/logo.png" width="160px" height="80px" alt="">
+                    </a>
+                </div>
                 <div class="header-login login-nav col-md-12"><?php echo e(__('Hola!')); ?>
 
                 </div>
