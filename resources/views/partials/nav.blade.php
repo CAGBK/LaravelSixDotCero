@@ -119,7 +119,6 @@
     </div>
 </nav>
 <script type="application/javascript">
-
     var URLactual = window.location;
     var host = location.hostname;
     var element = document.getElementById("main-nav");

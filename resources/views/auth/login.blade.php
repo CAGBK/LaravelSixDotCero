@@ -6,7 +6,7 @@
         <div class="col-md-6">
             
             <div class="card card-login background-login">
-                <div style=" display: inline-block; text-align: center; margin-bottom: 2rem;">
+                <div style="display: inline-block; text-align: center; margin-bottom: 2rem;">
                     <a class=""  href="{{ url('/') }}">
                         <img id="nav-image" src="/images/logo.png" width="160px" height="80px" alt="">
                     </a>
