@@ -1,8 +1,8 @@
-<nav class="navbar navbar-expand-md navbar-light navbar-laravel nav-color">
-    <div class="container" style="text-align:center; display:inline-block;">
-        <a class="navbar-brand"  href="<?php echo e(url('/')); ?>">
-            <img src="/images/logo.png" width="160px" height="80px" alt="">
-        </a>
+<nav id="main-nav" class="navbar navbar-expand-md navbar-light navbar-laravel nav-color">
+    <div class="container" >
+        <div class="row justify-content-center" >
+           
+        </div>
         <button class="navbar-toggler" style="display:none;" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
             <span class="sr-only"><?php echo trans('titles.toggleNav'); ?></span>
@@ -94,6 +94,11 @@
                 </li>
                 <?php endif; ?>
             </ul>
+            <div style=" display: inline-block; text-align: center;">
+                <a class=""  href="<?php echo e(url('/')); ?>">
+                    <img id="nav-image" src="/images/logo.png" width="160px" height="80px" alt="">
+                </a>
+            </div>
             
             <ul class="navbar-nav ml-auto">
                 
@@ -129,4 +134,18 @@
             </ul>
         </div>
     </div>
-</nav><?php /**PATH C:\Users\ca.gonzalezb1\Desktop\LaravelSixDotCero\resources\views/partials/nav.blade.php ENDPATH**/ ?>
+</nav>
+<script type="application/javascript">
+
+    var URLactual = window.location;
+    var host = location.hostname;
+    var element = document.getElementById("main-nav");
+    if(URLactual=="http://"+host+"/login" || URLactual=="http://"+host+":8000/"){
+        document.getElementById("nav-image").src = "/images/logoB.png";
+        document.getElementById("nav-image").style.display = "none";
+    }else{
+        document.getElementById("nav-image").src = "/images/logoB.png";
+        element.classList.add("nav-color-home");
+    }
+</script>
+<?php /**PATH C:\Users\ca.gonzalezb1\Desktop\LaravelSixDotCero\resources\views/partials/nav.blade.php ENDPATH**/ ?>
