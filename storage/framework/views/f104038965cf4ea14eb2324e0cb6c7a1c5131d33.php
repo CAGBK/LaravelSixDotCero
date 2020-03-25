@@ -10,16 +10,18 @@
 	  'numSegments': <?php echo $cquestions->count() ?>,
 	  'outerRadius': 270,
 	  'innerRadius': 80,
+	  'rotationAngle'   : -60, 
+	  'responsive'   : true,  // This wheel is responsive!
 	  'segments': [
 		  <?php $__currentLoopData = $cquestions; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $question): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-			{'fillStyle': '<?php echo e($question->color); ?>', 'text': '<?php echo e($question->name); ?>'},
+			{'fillStyle': '<?php echo e($question->color); ?>', 'text': '<?php echo e($question->name); ?>', 'id': '<?php echo e($question->id); ?>'},
 		  <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 	  ],
 	  'animation':
 	  {
 		'type': 'spinToStop',
-		'duration':4,
-		'spins': 15,
+		'duration':5,
+		'spins': 8,
 		'callbackFinished': 'Mensaje()',
 		'callbackAfter': 'dibujarIndicador()' 
 	  }, 
@@ -27,7 +29,7 @@
 	function Mensaje() {
 	  segmentoSeleccionado = miRuleta.getIndicatedSegment();
 	  miRuleta.stopAnimation(false);
-	  window.location= "question-game/" + segmentoSeleccionado.text;
+	  window.location= "question-game/" + segmentoSeleccionado.id;
 	}
 
    function dibujarIndicador() {

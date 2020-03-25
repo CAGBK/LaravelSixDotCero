@@ -10,16 +10,18 @@
 	  'numSegments': <?php echo $cquestions->count() ?>,
 	  'outerRadius': 270,
 	  'innerRadius': 80,
+	  'rotationAngle'   : -60, 
+	  'responsive'   : true,  // This wheel is responsive!
 	  'segments': [
 		  @foreach($cquestions as $question)
-			{'fillStyle': '{{ $question->color }}', 'text': '{{ $question->name }}'},
+			{'fillStyle': '{{ $question->color }}', 'text': '{{ $question->name }}', 'id': '{{ $question->id }}'},
 		  @endforeach
 	  ],
 	  'animation':
 	  {
 		'type': 'spinToStop',
-		'duration':4,
-		'spins': 15,
+		'duration':5,
+		'spins': 8,
 		'callbackFinished': 'Mensaje()',
 		'callbackAfter': 'dibujarIndicador()' 
 	  }, 
@@ -27,7 +29,7 @@
 	function Mensaje() {
 	  segmentoSeleccionado = miRuleta.getIndicatedSegment();
 	  miRuleta.stopAnimation(false);
-	  window.location= "question-game/" + segmentoSeleccionado.text;
+	  window.location= "question-game/" + segmentoSeleccionado.id;
 	}
 
    function dibujarIndicador() {

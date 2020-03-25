@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
 use App\Models\Category;
+use App\Models\Question;
+use Faker\Factory as Faker;
 use App\Models\Subcategory;
 use App\Models\CQuestion;
 use App\Models\User;
@@ -27,12 +29,15 @@ class DesafiosController extends Controller
 
     public function questionGame(Request $request, $id)
     {
-        return View::make('challenge.preguntas');
+        $faker = Faker::create();
+        $questions = Question::select('id')->where('cquestion_id','=',$id)->get();
+        $random_question = $faker->randomElement($questions);
+        $question = Question::find($random_question);
+        return View::make('challenge.preguntas', compact('question'));
     }
 
     public function byLinea($id)
     {
-        dd(Category::find($id));
-		
+        dd(Category::find($id));		
 	}
 }
