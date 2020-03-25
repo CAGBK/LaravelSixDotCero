@@ -7,24 +7,18 @@
   <div class="row">
     <div class="col-sm-12">
       <div class="card card-question">
-        <div class="card-header text-white text-center" style="background-color: red">
-          <span style="font-size: 40px">¿Cuál es la dosís recomendada para Adorlan?</span>
+        <?php $__currentLoopData = $question; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $questiona): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+      <div class="card-header text-white text-center" style="background-color: <?php echo e($questiona->cquestion->color); ?>">
+          <span style="font-size: 40px"><?php echo e($questiona->question_name); ?></span>
         </div>
         <div class="card-body">
-          <div style="border-radius: 1rem;border: 1px red solid;opacity: .5; margin: 5px" class="col-md-12 text-center">
-            <p class="pregunta-text"><strong>a)</strong> Hola</p>
-          </div>
-          <div style="border-radius: 1rem;border: 1px red solid;opacity: .5; margin: 5px" class="col-md-12 text-center">
-            <p class="pregunta-text"><strong>b)</strong> Hola</p>
-          </div>
-        
-          <div style="border-radius: 1rem;border: 1px red solid;opacity: .5; margin: 5px" class="col-md-12 text-center">
-            <p class="pregunta-text"><strong>c)</strong> Hola</p>
-          </div>
-          <div style="border-radius: 1rem;border: 1px red solid;opacity: .5; margin: 5px" class="col-md-12 text-center">
-            <p class="pregunta-text"><strong>d)</strong> Hola</p>
-          </div>
-        </div>                        
+          <?php $__currentLoopData = $questiona->answers; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $answer): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+          <div style="border-radius: 1rem;border: 1px <?php echo e($questiona->cquestion->color); ?> solid;opacity: .5; margin: 5px;" class="col-md-12 text-center"><a href="<?php echo e(URL::to('answer/' . $answer->id )); ?>" style="text-decoration:none;color:#000;">
+            <p class="pregunta-text"><?php echo e($answer->name); ?></p>
+          </a></div>
+          <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+        </div>
+        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>                        
       </div>
     </div>
   </div>

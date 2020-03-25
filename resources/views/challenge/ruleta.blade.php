@@ -11,7 +11,7 @@
   <div class="container-fluid">
     <div class="row">
         <div id="canvasContainer" class="container-canvas" onclick="miRuleta.startAnimation()">
-          <canvas id='Ruleta' width='700' height='690'>
+          <canvas id='Ruleta' width='700' height='690' data-responsiveMinWidth="180" data-responsiveScaleHeight="true" data-responsiveMargin="50">
             Canvas not supported, use another browser.
           </canvas> 
         </div>
