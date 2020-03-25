@@ -1,0 +1,54 @@
+.text-login {
+    align-self: center;
+    text-align-last: center;
+    font-size: 8pt;
+    color: black !important;
+    width: 224px;
+    letter-spacing: 0pt;
+  }
+  .header-login{
+    font-size: 39pt;
+    color: black !important;
+    text-decoration: blink;
+    text-align: center;
+    font-family: inherit;
+    font-weight: 500;
+    margin-bottom: -1rem;
+    letter-spacing: -1.5px;
+    text-shadow: 1.5px 0px 0px rgba(0,0,0,0.92);  
+  }
+  .btn-login{
+    background: transparent;
+    border: transparent;
+    font-size: 19pt;
+    font-weight: bold;
+    color: #2cab66;
+    -webkit-text-emphasis-color: #93bf1c;
+    -webkit-text-emphasis-style: circle;
+    -webkit-text-emphasis-position: under;
+  }
+  .content-align{
+    text-align: -webkit-center;
+  }
+  a.btn.btn-link.login-nav {
+    font-size: 10pt;
+    margin-top: 2em;
+    color: black !important;
+}
+  .custom-link{
+    font-weight: 800;
+    padding: 0;
+    margin: 0;
+  }
+  a.btn.btn-link.login-nav.custom-link {
+    text-decoration: none;
+    color: #93bf1c !important;
+}
+  .background-login{
+    background-image: url(/images/fondo.png);
+      background-size: cover;
+      background-position-y: bottom;
+  }
+  .nav-color-home{
+    background-color: #93bf1c;
+  }
