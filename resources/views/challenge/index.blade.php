@@ -166,21 +166,12 @@
 <link href="https://cdn.jsdelivr.net/npm/select2@4.0.12/dist/css/select2.min.css" rel="stylesheet" />
 <script  type="application/javascript" src="https://cdn.jsdelivr.net/npm/select2@4.0.12/dist/js/select2.min.js"></script>
 <script type="application/javascript">
+	$(document).ready(function() {
+				$('.select-user').select2();	
+			$('.select-brand').select2();	
+			$('.select-line').select2();	
+		});	
 	
-	$('#mySelect2').select2({
-  ajax: {
-    url: 'https://api.github.com/orgs/select2/repos',
-    data: function (params) {
-      var query = {
-        search: params.term,
-        type: 'public'
-      }
-
-      // Query parameters will be ?search=[term]&type=public
-      return query;
-    }
-  }
-});
 </script>
 @endsection
 
