@@ -20,10 +20,7 @@
   </div>
 </section>
 
-
-
 @endsection
-
 @section('footer_scripts')
 
     @include('scripts.Winwheel')

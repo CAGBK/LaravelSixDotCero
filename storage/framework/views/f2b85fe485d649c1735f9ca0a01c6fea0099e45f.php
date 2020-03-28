@@ -18,10 +18,7 @@
   </div>
 </section>
 
-
-
 <?php $__env->stopSection(); ?>
-
 <?php $__env->startSection('footer_scripts'); ?>
 
     <?php echo $__env->make('scripts.Winwheel', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>

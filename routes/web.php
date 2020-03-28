@@ -99,6 +99,7 @@ Route::group(['middleware' => ['auth', 'activated', 'currentUser', 'activity', '
     Route::get('lineas-marcas', 'LineasMarcasController@index')->name('lineas_marcas');
     Route::get('challenge', 'DesafiosController@index')->name('challenge');
     Route::get('ruleta', 'DesafiosController@ruleta')->name('ruleta');
+    Route::get('answer/{id}', 'DesafiosController@anwers')->name('answers');
     Route::get('question-game/{id}', 'DesafiosController@questionGame')->name('question_game');
     Route::get('crear/Linea', 'LineasMarcasController@createLine')->name('create_line');
     Route::get('crear/Marca', 'LineasMarcasController@createBrand')->name('create_brand');

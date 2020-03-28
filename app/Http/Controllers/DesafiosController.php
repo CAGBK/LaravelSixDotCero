@@ -8,6 +8,8 @@ use App\Models\Category;
 use App\Models\Question;
 use Faker\Factory as Faker;
 use App\Models\Subcategory;
+use App\Models\Challenge;
+use App\Models\Answer;
 use App\Models\CQuestion;
 use App\Models\User;
 
@@ -39,5 +41,16 @@ class DesafiosController extends Controller
     public function byLinea($id)
     {
         dd(Category::find($id));		
-	}
+    }
+    public function anwers(Request $request, $id)
+    {
+        $ansnwer = Answer::find($id);
+        if ($ansnwer->state_id === 4) {
+            return redirect()->route('ruleta')->with('success','Su respuesta fue correta!');
+        }
+        elseif ($ansnwer->state_id === 5)
+        {
+            return redirect()->route('ruleta')->with('error','Su respuesta fue incorrecta!');
+        }
+    }
 }
