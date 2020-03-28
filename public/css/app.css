@@ -18671,6 +18671,10 @@ select + .select2-container {
   cursor: pointer;
 }
 
+#Ruleta {
+  width: 100%;
+}
+
 .text-login {
   align-self: center;
   -moz-text-align-last: center;

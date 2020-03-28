@@ -91,7 +91,10 @@ class User extends Authenticatable
     {
         return $this->belongsToMany('App\Models\Profile')->withTimestamps();
     }
-
+    public function challenges()
+    {
+        return $this->hasMany('App\Models\Challenge');
+    }
     public function categories()
     {
         return $this->belongsTo('App\Models\Category');

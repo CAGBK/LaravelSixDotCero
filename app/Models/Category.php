@@ -19,5 +19,8 @@ class Category extends Model
     {
         return $this->belongsToMany('App\Models\Subcategory');
     }
-    
+    public function challenge()
+    {
+        return $this->belongsTo('App\Models\Challenge');
+    }
 }

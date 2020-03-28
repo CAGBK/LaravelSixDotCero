@@ -14,8 +14,6 @@ use App\Models\Subcategory;
 
 use App\Models\Question;
 
-use Illuminate\Support\Facades\DB;
-
 class LineasMarcasController extends Controller
 {
     /* Lista de Categorias y Subcategorias */
