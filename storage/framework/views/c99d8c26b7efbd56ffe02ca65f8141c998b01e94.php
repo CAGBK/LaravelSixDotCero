@@ -83,7 +83,7 @@
 	                            <div class="form-group has-feedback row <?php echo e($errors->has('line_id') ? ' has-error ' : ''); ?> nav-font">
 			                        <div class="col-md-12">
 			                            <div class="input-group">
-			                                <select class="custom-select form-control select-line" name="lines[]" id="lines"  multiple="multiple" >
+			                                <select class="custom-select form-control select-line js-lines-ajax" name="lines[]" id="lines"  multiple="multiple" >
 			                                    
 			                                    <?php if($categories): ?>
 			                                    
@@ -164,41 +164,12 @@
 <link href="https://cdn.jsdelivr.net/npm/select2@4.0.12/dist/css/select2.min.css" rel="stylesheet" />
 <script  type="application/javascript" src="https://cdn.jsdelivr.net/npm/select2@4.0.12/dist/js/select2.min.js"></script>
 <script type="application/javascript">
-		$(document).ready(function() {
-		
-			
-			$('.select-user').select2();
-			$('.select-brand').select2();
-			
-			$('.select-line').select2({
-				
-				minimumInputLength: 2,
-				tags: [],
-				ajax: {
-					url: '/brandByLinea/' + lines,
-					dataType: 'json',
-					type: "GET",
-					quietMillis: 50,
-					data: function (term) {
-						return {
-							term: term
-						};
-					},
-					results: function (data) {
-						return {
-							results: $.map(data, function (item) {
-								return {
-									text: item.completeName,
-									slug: item.slug,
-									id: item.id
-								}
-							})
-						};
-					}
-				}
-			});
-			
-		});
+	$(document).ready(function() {
+				$('.select-user').select2();	
+			$('.select-brand').select2();	
+			$('.select-line').select2();	
+					});	
+	
 </script>
 <?php $__env->stopSection(); ?>
 
