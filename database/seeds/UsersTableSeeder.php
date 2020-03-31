@@ -5,6 +5,7 @@ use App\Models\User;
 use Illuminate\Database\Seeder;
 use jeremykenedy\LaravelRoles\Models\Role;
 
+
 class UsersTableSeeder extends Seeder
 {
     /**
@@ -54,6 +55,7 @@ class UsersTableSeeder extends Seeder
                 'signup_ip_address'              => $faker->ipv4,
                 'signup_confirmation_ip_address' => $faker->ipv4,
             ]);
+            
 
             $user->profile()->save(new Profile());
             $user->attachRole($userRole);
@@ -61,12 +63,12 @@ class UsersTableSeeder extends Seeder
         }
 
         // Seed test users
-        // $user = factory(App\Models\Profile::class, 5)->create();
-        // $users = User::All();
-        // foreach ($users as $user) {
-        //     if (!($user->isAdmin()) && !($user->isUnverified())) {
-        //         $user->attachRole($userRole);
-        //     }
-        // }
+        $user = factory(App\Models\Profile::class, 7)->create();
+         $users = User::All();
+         foreach ($users as $user) {
+             if (!($user->isAdmin()) && !($user->isUnverified())) {
+                 $user->attachRole($userRole);
+             }
+         }
     }
 }

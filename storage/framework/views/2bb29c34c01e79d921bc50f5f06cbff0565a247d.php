@@ -118,7 +118,7 @@
 
                                                     <?php echo Form::hidden('_method', 'DELETE'); ?>
 
-                                                    <?php echo Form::button(trans('usersmanagement.buttons.delete'), array('class' => 'btn btn-danger btn-sm','type' => 'button', 'style' =>'width: 100%;' ,'data-toggle' => 'modal', 'data-target' => '#confirmDelete', 'data-title' => 'Delete User', 'data-message' => 'Are you sure you want to delete this user ?')); ?>
+                                                    <?php echo Form::button(trans('usersmanagement.buttons.delete'), array('class' => 'btn btn-danger btn-sm','type' => 'button', 'style' =>'width: 100%;' ,'data-toggle' => 'modal', 'data-target' => '#confirmDelete', 'data-title' => 'Borrar Usuario', 'data-message' => '¿Estás seguro de que deseas eliminar a este usuario?')); ?>
 
                                                 <?php echo Form::close(); ?>
 

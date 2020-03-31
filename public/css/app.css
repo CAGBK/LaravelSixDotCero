@@ -17982,6 +17982,46 @@ div[data-toggle=buttons] label.active {
   user-select: none;
 }
 
+.user-avatar-challenge {
+  margin-top: -3px;
+  margin-right: 1em;
+  float: left;
+  width: 30px;
+  height: 30px;
+  margin-top: -3px;
+  margin-right: 1em;
+  float: left;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  -webkit-user-drag: none;
+  -moz-user-drag: none;
+  -ms-user-drag: none;
+  -o-user-drag: none;
+  user-drag: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+  border-radius: 50%;
+  -webkit-user-drag: none;
+  -moz-user-drag: none;
+  -ms-user-drag: none;
+  -o-user-drag: none;
+  user-drag: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+}
+
+.user-challenge {
+  width: 5rem;
+  height: 80px;
+}
+
 #avatar_container {
   height: 202px;
 }
