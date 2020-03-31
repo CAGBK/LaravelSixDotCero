@@ -92,7 +92,7 @@
 	                            </div> 
 	                            <div class="form-group has-feedback row {{ $errors->has('brand_id') ? ' has-error ' : '' }} nav-font">
 			                        <div class="col-md-12">
-										<table id="brands-check" class="table ">
+										<table id="brands-checkgit " class="table ">
 											<thead>
 												<tr>
 													<th>
