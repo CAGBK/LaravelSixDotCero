@@ -25,7 +25,6 @@
                     <!-- progressbar -->
 	                    <ul id="progressbar">
 	                        <li class="active" id="account"><strong>Participantes</strong></li>
-	                        <li id="personal"><strong>Lineas</strong></li>
 	                        <li id="payment"><strong>Marcas</strong></li>
 	                        <li id="confirm"><strong>Save</strong></li>
 	                    </ul>
@@ -39,76 +38,47 @@
 	                                    <h2 class="fs-title">Selecciona participantes a los que desea invitar</h2>
 	                                </div>
 	                                <div class="col-5">
-	                                    <h2 class="steps">Paso 1 - 4</h2>
+	                                    <h2 class="steps">Paso 1 - 3</h2>
 	                                </div>
 	                            </div> 
 	                            <div class="form-group has-feedback row {{ $errors->has('user_id') ? ' has-error ' : '' }} nav-font">
 			                        <div class="col-md-12">
-			                            <div class="input-group">
-			                                <select class="custom-select form-control select-user"  name="users[]" id="users"  multiple="multiple" >
-			                                    <option value="" disabled="disabled">Seleccione una Usuarios</option>
-			                                    
-			                                    @if ($users)
-			                                    
-			                    
-			                                        @foreach($users as $user)
-			                                            <option value="{{ $user->id }}">{{ $user->name }}</option>
-			                                        @endforeach
-			                                    @endif
-			                                </select>
-			                                <div class="input-group-append">
-			                                    <label class="input-group-text" for="user_id">
-			                                        <i class="fa fa-fw fa-user-plus nav-font" aria-hidden="true"></i>
+										<table id="users-check" class="table ">
+											<thead>
+												<tr>
+													<th>
+														a
+													</th>
+												</tr>
+											</thead>
+											@if ($users)
+												<tbody>
+													@foreach($users as $user)
+														<tr>
+															<td>
+																<input id="{{ $user->id }}" name="check-user" type="checkbox" value="{{ $user->id }}" >
+																@if ((Auth::User()->profile) && Auth::user()->profile->avatar_status == 1 )
+																<img name="img-user" src="{{ $user->profile->avatar}}" alt="{{ $user->name}}" class="user-avatar-nav user-challenge">
+																@else
+																<img class="user-avatar-nav user-challenge">
+																@endif
+																<label name="name-user" class="label-challenge" for="">{{ $user->name }} </label>		
+															</td>
+														</tr>
+													@endforeach
+												</tbody>
+													@endif
 			                                    </label>
-			                                </div>
-			                            </div>
-			                            @if ($errors->has('user_id'))
-			                                <span class="help-block">
-			                                    <strong>{{ $errors->first('user_id') }}</strong>
-			                                </span>
-			                            @endif
+											</table>
+												@if ($errors->has('user_id'))
+													<span class="help-block">
+														<strong>{{ $errors->first('user_id') }}</strong>
+													</span>
+												@endif
 			                        </div>
 			                    </div>
 	                        </div> 
 	                        <input type="button" name="next" class="next action-button" value="Siguiente" />
-	                    </fieldset>
-	                   <fieldset>
-	                        <div class="form-card">
-	                            <div class="row">
-	                                <div class="col-7">
-	                                    <h2 class="fs-title">Selecciona Lineas</h2>
-	                                </div>
-	                                <div class="col-5">
-	                                    <h2 class="steps">Paso 2 - 4</h2>
-	                                </div>
-	                            </div> 
-	                            <div class="form-group has-feedback row {{ $errors->has('line_id') ? ' has-error ' : '' }} nav-font">
-			                        <div class="col-md-12">
-			                            <div class="input-group">
-			                                <select class="custom-select form-control select-line js-lines-ajax" name="lines[]" id="lines"  multiple="multiple" >
-			                                    
-			                                    @if ($categories)
-			                                    
-			                                        @foreach($categories as $category)
-			                                            <option value="{{ $category->id }}">{{ $category->name }}</option>
-			                                        @endforeach
-			                                    @endif
-			                                </select>
-			                                <div class="input-group-append">
-			                                    <label class="input-group-text" for="line_id">
-			                                        <i class="fa fa-fw fa-user-plus nav-font" aria-hidden="true"></i>
-			                                    </label>
-			                                </div>
-			                            </div>
-			                            @if ($errors->has('line_id'))
-			                                <span class="help-block">
-			                                    <strong>{{ $errors->first('line_id') }}</strong>
-			                                </span>
-			                            @endif
-			                        </div>
-			                    </div>
-	                        </div> 
-	                        <input type="button" name="next" class="next action-button" value="Siguiente" /> <input type="button" name="previous" class="previous action-button-previous" value="Atras" />
 	                    </fieldset>
 	                    <fieldset>
 	                        <div class="form-card">
@@ -117,21 +87,38 @@
 	                                    <h2 class="fs-title">Seleccióne Marcas</h2>
 	                                </div>
 	                                <div class="col-5">
-	                                    <h2 class="steps">Paso 3 - 4</h2>
+	                                    <h2 class="steps">Paso 2 - 3</h2>
 	                                </div>
 	                            </div> 
 	                            <div class="form-group has-feedback row {{ $errors->has('brand_id') ? ' has-error ' : '' }} nav-font">
 			                        <div class="col-md-12">
-			                            <div class="input-group">
-			                                <select class="custom-select form-control select-brand" name="brands[]" id="brands"  multiple="multiple" >
-			                                    <option value="">Seleccione marcas</option>
-			                                </select>
-			                                <div class="input-group-append">
-			                                    <label class="input-group-text" for="brand_id">
-			                                        <i class="fa fa-fw fa-user-plus nav-font" aria-hidden="true"></i>
+										<table id="brands-check" class="table ">
+											<thead>
+												<tr>
+													<th>
+														a
+													</th>
+												</tr>
+											</thead>
+											@if ($subcategories)
+												<tbody>
+													@foreach($subcategories as $subcategory)
+														<tr>
+															<td>
+																<input id="{{ $subcategory->id }}" name="check-subcategory" type="checkbox" value="{{ $subcategory->id }}" >
+																@if ((Auth::User()->profile) && Auth::user()->profile->avatar_status == 1 )
+																<img name="img-subcategory" src="{{ $subcategory->profile->avatar}}" alt="{{ $subcategory->name}}" class="subcategory-avatar-nav subcategory-challenge">
+																@else
+																<img class="subcategory-avatar-nav subcategory-challenge">
+																@endif
+																<label name="name-subcategory" class="label-challenge" for="">{{ $subcategory->name }} </label>		
+															</td>
+														</tr>
+													@endforeach
+												</tbody>
+													@endif
 			                                    </label>
-			                                </div>
-			                            </div>
+											</table>
 			                            @if ($errors->has('role'))
 			                                <span class="help-block">
 			                                    <strong>{{ $errors->first('role') }}</strong>
@@ -163,6 +150,9 @@
         </div>
     </div>
 </div>
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.20/datatables.min.css"/>
+ 
+<script type="application/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.20/datatables.min.js"></script>
 <link href="https://cdn.jsdelivr.net/npm/select2@4.0.12/dist/css/select2.min.css" rel="stylesheet" />
 <script  type="application/javascript" src="https://cdn.jsdelivr.net/npm/select2@4.0.12/dist/js/select2.min.js"></script>
 <script type="application/javascript">

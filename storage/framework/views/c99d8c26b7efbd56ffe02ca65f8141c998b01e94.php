@@ -23,7 +23,6 @@
                     <!-- progressbar -->
 	                    <ul id="progressbar">
 	                        <li class="active" id="account"><strong>Participantes</strong></li>
-	                        <li id="personal"><strong>Lineas</strong></li>
 	                        <li id="payment"><strong>Marcas</strong></li>
 	                        <li id="confirm"><strong>Save</strong></li>
 	                    </ul>
@@ -37,76 +36,47 @@
 	                                    <h2 class="fs-title">Selecciona participantes a los que desea invitar</h2>
 	                                </div>
 	                                <div class="col-5">
-	                                    <h2 class="steps">Paso 1 - 4</h2>
+	                                    <h2 class="steps">Paso 1 - 3</h2>
 	                                </div>
 	                            </div> 
 	                            <div class="form-group has-feedback row <?php echo e($errors->has('user_id') ? ' has-error ' : ''); ?> nav-font">
 			                        <div class="col-md-12">
-			                            <div class="input-group">
-			                                <select class="custom-select form-control select-user"  name="users[]" id="users"  multiple="multiple" >
-			                                    <option value="" disabled="disabled">Seleccione una Usuarios</option>
-			                                    
-			                                    <?php if($users): ?>
-			                                    
-			                    
-			                                        <?php $__currentLoopData = $users; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $user): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-			                                            <option value="<?php echo e($user->id); ?>"><?php echo e($user->name); ?></option>
-			                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-			                                    <?php endif; ?>
-			                                </select>
-			                                <div class="input-group-append">
-			                                    <label class="input-group-text" for="user_id">
-			                                        <i class="fa fa-fw fa-user-plus nav-font" aria-hidden="true"></i>
+										<table id="users-check" class="table ">
+											<thead>
+												<tr>
+													<th>
+														a
+													</th>
+												</tr>
+											</thead>
+											<?php if($users): ?>
+												<tbody>
+													<?php $__currentLoopData = $users; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $user): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+														<tr>
+															<td>
+																<input id="<?php echo e($user->id); ?>" name="check-user" type="checkbox" value="<?php echo e($user->id); ?>" >
+																<?php if((Auth::User()->profile) && Auth::user()->profile->avatar_status == 1 ): ?>
+																<img name="img-user" src="<?php echo e($user->profile->avatar); ?>" alt="<?php echo e($user->name); ?>" class="user-avatar-nav user-challenge">
+																<?php else: ?>
+																<img class="user-avatar-nav user-challenge">
+																<?php endif; ?>
+																<label name="name-user" class="label-challenge" for=""><?php echo e($user->name); ?> </label>		
+															</td>
+														</tr>
+													<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+												</tbody>
+													<?php endif; ?>
 			                                    </label>
-			                                </div>
-			                            </div>
-			                            <?php if($errors->has('user_id')): ?>
-			                                <span class="help-block">
-			                                    <strong><?php echo e($errors->first('user_id')); ?></strong>
-			                                </span>
-			                            <?php endif; ?>
+											</table>
+												<?php if($errors->has('user_id')): ?>
+													<span class="help-block">
+														<strong><?php echo e($errors->first('user_id')); ?></strong>
+													</span>
+												<?php endif; ?>
 			                        </div>
 			                    </div>
 	                        </div> 
 	                        <input type="button" name="next" class="next action-button" value="Siguiente" />
-	                    </fieldset>
-	                   <fieldset>
-	                        <div class="form-card">
-	                            <div class="row">
-	                                <div class="col-7">
-	                                    <h2 class="fs-title">Selecciona Lineas</h2>
-	                                </div>
-	                                <div class="col-5">
-	                                    <h2 class="steps">Paso 2 - 4</h2>
-	                                </div>
-	                            </div> 
-	                            <div class="form-group has-feedback row <?php echo e($errors->has('line_id') ? ' has-error ' : ''); ?> nav-font">
-			                        <div class="col-md-12">
-			                            <div class="input-group">
-			                                <select class="custom-select form-control select-line js-lines-ajax" name="lines[]" id="lines"  multiple="multiple" >
-			                                    
-			                                    <?php if($categories): ?>
-			                                    
-			                                        <?php $__currentLoopData = $categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-			                                            <option value="<?php echo e($category->id); ?>"><?php echo e($category->name); ?></option>
-			                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-			                                    <?php endif; ?>
-			                                </select>
-			                                <div class="input-group-append">
-			                                    <label class="input-group-text" for="line_id">
-			                                        <i class="fa fa-fw fa-user-plus nav-font" aria-hidden="true"></i>
-			                                    </label>
-			                                </div>
-			                            </div>
-			                            <?php if($errors->has('line_id')): ?>
-			                                <span class="help-block">
-			                                    <strong><?php echo e($errors->first('line_id')); ?></strong>
-			                                </span>
-			                            <?php endif; ?>
-			                        </div>
-			                    </div>
-	                        </div> 
-	                        <input type="button" name="next" class="next action-button" value="Siguiente" /> <input type="button" name="previous" class="previous action-button-previous" value="Atras" />
 	                    </fieldset>
 	                    <fieldset>
 	                        <div class="form-card">
@@ -115,21 +85,38 @@
 	                                    <h2 class="fs-title">Seleccióne Marcas</h2>
 	                                </div>
 	                                <div class="col-5">
-	                                    <h2 class="steps">Paso 3 - 4</h2>
+	                                    <h2 class="steps">Paso 2 - 3</h2>
 	                                </div>
 	                            </div> 
 	                            <div class="form-group has-feedback row <?php echo e($errors->has('brand_id') ? ' has-error ' : ''); ?> nav-font">
 			                        <div class="col-md-12">
-			                            <div class="input-group">
-			                                <select class="custom-select form-control select-brand" name="brands[]" id="brands"  multiple="multiple" >
-			                                    <option value="">Seleccione marcas</option>
-			                                </select>
-			                                <div class="input-group-append">
-			                                    <label class="input-group-text" for="brand_id">
-			                                        <i class="fa fa-fw fa-user-plus nav-font" aria-hidden="true"></i>
+										<table id="brands-check" class="table ">
+											<thead>
+												<tr>
+													<th>
+														a
+													</th>
+												</tr>
+											</thead>
+											<?php if($subcategories): ?>
+												<tbody>
+													<?php $__currentLoopData = $subcategories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $subcategory): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+														<tr>
+															<td>
+																<input id="<?php echo e($subcategory->id); ?>" name="check-subcategory" type="checkbox" value="<?php echo e($subcategory->id); ?>" >
+																<?php if((Auth::User()->profile) && Auth::user()->profile->avatar_status == 1 ): ?>
+																<img name="img-subcategory" src="<?php echo e($subcategory->profile->avatar); ?>" alt="<?php echo e($subcategory->name); ?>" class="subcategory-avatar-nav subcategory-challenge">
+																<?php else: ?>
+																<img class="subcategory-avatar-nav subcategory-challenge">
+																<?php endif; ?>
+																<label name="name-subcategory" class="label-challenge" for=""><?php echo e($subcategory->name); ?> </label>		
+															</td>
+														</tr>
+													<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+												</tbody>
+													<?php endif; ?>
 			                                    </label>
-			                                </div>
-			                            </div>
+											</table>
 			                            <?php if($errors->has('role')): ?>
 			                                <span class="help-block">
 			                                    <strong><?php echo e($errors->first('role')); ?></strong>
@@ -161,6 +148,9 @@
         </div>
     </div>
 </div>
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.20/datatables.min.css"/>
+ 
+<script type="application/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.20/datatables.min.js"></script>
 <link href="https://cdn.jsdelivr.net/npm/select2@4.0.12/dist/css/select2.min.css" rel="stylesheet" />
 <script  type="application/javascript" src="https://cdn.jsdelivr.net/npm/select2@4.0.12/dist/js/select2.min.js"></script>
 <script type="application/javascript">
@@ -168,7 +158,7 @@
 				$('.select-user').select2();	
 			$('.select-brand').select2();	
 			$('.select-line').select2();	
-					});	
+					});	//validar todo con el auth y llamar las lienas de un usuario, otro campo para la fecha del desafio.
 	
 </script>
 <?php $__env->stopSection(); ?>
