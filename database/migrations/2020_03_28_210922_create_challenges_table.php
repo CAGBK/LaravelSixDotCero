@@ -15,12 +15,11 @@ class CreateChallengesTable extends Migration
     {
         Schema::create('challenges', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('nombre');
-            $table->json('usuarios');
-            $table->json('categorias');
-            $table->json('subcategorias');
-            $table->date('fecha_inicio');
-            $table->date('fecha_fin');
+            $table->string('name');
+            $table->json('users');
+            $table->json('subcategories');
+            $table->date('start_date');
+            $table->date('end_date');
             $table->timestamps();
         });
     }
