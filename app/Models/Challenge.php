@@ -19,4 +19,8 @@ class Challenge extends Model
     {
         return $this->hasMany('App\Models\Category');
     }
+    public function users()
+    {
+        return $this->belongsToMany('App\Models\User');
+    }
 }
