@@ -9,6 +9,7 @@ use App\Models\Question;
 use Faker\Factory as Faker;
 use App\Models\Subcategory;
 use App\Models\Challenge;
+use App\Models\Point;
 use App\Models\Answer;
 use App\Models\CQuestion;
 use App\Models\User;
@@ -29,7 +30,9 @@ class DesafiosController extends Controller
     public function ruleta()
     {
         $cquestions = CQuestion::all();
-        return View::make('challenge/ruleta', compact('cquestions'));
+        $challenge = Challenge::find(1);
+        $points = Point::where('challenge_id','=',1)->get();
+        return View::make('challenge/ruleta', compact('cquestions','challenge','points'));
     }
 
     public function questionGame(Request $request, $id)
@@ -45,9 +48,14 @@ class DesafiosController extends Controller
     {
         dd(Category::find($id));		
     }
+    
     public function anwers(Request $request, $id)
     {
+        
         $ansnwer = Answer::find($id);
+        $points = Point::find(1);
+        $points->score = $points->score + $ansnwer->puntos;
+        $points->save();
         if ($ansnwer->state_id === 4) {
             return redirect()->route('ruleta')->with('success','Su respuesta fue correta!');
         }

@@ -74,5 +74,36 @@
 	return false;
 	})
 
+	//table search
+    $('#users-check').DataTable({
+		"columns": [
+            { "data": "check-user" }
+        ],
+		"language": {
+            "lengthMenu": "Mostrar _MENU_ datos por pagina",
+            "zeroRecords": "Nothing found - sorry",
+            "info": "Mostrando pagina _PAGE_ de _PAGES_",
+            "infoEmpty": "No records available",
+			"infoFiltered": "(filtered from _MAX_ total records)",
+			"search" : "Buscar",
+
+        },
+        "lengthMenu": [[8, 16, 24, -1], [8, 16, 24, "All"]]
+	});
+	$('#brands-check').DataTable({
+		"columns": [
+            { "data": "check-user" }
+        ],
+		"language": {
+            "lengthMenu": "Mostrar _MENU_ datos por pagina",
+            "zeroRecords": "Nothing found - sorry",
+            "info": "Mostrando pagina _PAGE_ de _PAGES_",
+            "infoEmpty": "No records available",
+			"infoFiltered": "(filtered from _MAX_ total records)",
+			"search" : "Buscar",
+
+        },
+        "lengthMenu": [[8, 16, 24, -1], [8, 16, 24, "All"]]
+    });
 	});
 </script><?php /**PATH C:\Users\dsgut\OneDrive\Escritorio\LaravelSixDotCero\resources\views/scripts/challenge.blade.php ENDPATH**/ ?>

@@ -93,7 +93,7 @@ class User extends Authenticatable
     }
     public function challenges()
     {
-        return $this->hasMany('App\Models\Challenge');
+        return $this->belongsToMany('App\Models\Challenge');
     }
     public function categories()
     {
