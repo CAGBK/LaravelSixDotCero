@@ -1,9 +1,11 @@
 <nav id="main-nav" class="navbar navbar-expand-md navbar-light navbar-laravel nav-color">
-    <div class="container" >
-        <div class="row justify-content-center" >
-           
+    <div class="container">
+        <div style=" display: inline-block; text-align: center;">
+            <a class=""  href="{{ url('/') }}">
+                <img id="nav-image" src="/images/logo.png" width="160px" height="80px" alt="">
+            </a>
         </div>
-        <button class="navbar-toggler" style="display:none;" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
             <span class="sr-only">{!! trans('titles.toggleNav') !!}</span>
         </button>
@@ -78,12 +80,27 @@
                     </div>
                 </li>
                 @endrole
+                @role('user')
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        {!! trans('titles.adminGame') !!}
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item nav-font {{ Request::is('lineas-marcas') ? 'active' : null }}" href="{{ url('lineas-marcas') }}">
+                            {!! trans('titles.lines') !!}
+                        </a>
+                        
+                        <a class="dropdown-item nav-font {{ Request::is('blocker') ? 'active' : null }}" href="{{ url('/preguntas-respuestas') }}">
+                            {!! trans('titles.questions') !!}
+                        </a>
+                        
+                        <a class="dropdown-item nav-font {{ Request::is('blocker') ? 'active' : null }}" href="{{ url('/challenge') }}">
+                            {!! trans('titles.challenges') !!}
+                        </a>
+                    </div>
+                </li>
+                @endrole
             </ul>
-            <div style=" display: inline-block; text-align: center;">
-                <a class=""  href="{{ url('/') }}">
-                    <img id="nav-image" src="/images/logo.png" width="160px" height="80px" alt="">
-                </a>
-            </div>
             {{-- Right Side Of Navbar --}}
             <ul class="navbar-nav ml-auto">
                 {{-- Authentication Links --}}

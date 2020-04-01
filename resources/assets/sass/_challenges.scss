@@ -11,14 +11,13 @@
 }
 
 #msform fieldset {
-    background: white;
+    background: transparent;
     border: 0 none;
     border-radius: 0.5rem;
     box-sizing: border-box;
     width: 100%;
     margin: 0;
     padding-bottom: 20px;
-    position: relative
 }
 
 .form-card {
@@ -75,7 +74,13 @@
     margin: 10px 0px 10px 5px;
     float: right
 }
-
+.banner-challenge{
+    background: #272727;
+    height: 245px;
+    margin-top: -44px;
+    position: absolute;
+    width: -webkit-fill-available;
+}
 .card {
     z-index: 0;
     border: none;
@@ -84,12 +89,21 @@
 
 .fs-title {
     font-size: 25px;
-    color: #28a745;
-    margin-bottom: 15px;
+    color: #2cab66;
+    font-weight: bolder;
+    margin-left: 1.5rem;
+    font-size: 22pt;
+    text-align: left;
+}
+
+.fs-title-text {
+    font-size: 25px;
+    color: #fff;
+    margin-left: 1.5rem;
+    margin-bottom: 9rem;
     font-weight: normal;
     text-align: left
 }
-
 .purple-text {
     color: #28a745;
     font-weight: normal
@@ -110,12 +124,16 @@
 
 #progressbar {
     margin-bottom: 30px;
+    padding-top: 150px;
     overflow: hidden;
+    margin-left: 5%;
+    position: sticky;
+    box-shadow: 2px 0px 0px 0px #93bf1c;
     color: lightgrey
 }
 
 #progressbar .active {
-    color: #28a745
+    color: #93bf1c;
 }
 
 #progressbar li {
@@ -129,9 +147,18 @@
 
 #progressbar #account:before {
     font-family: FontAwesome;
-    content: "\f007"
+    content: "\f007";
+    margin-left: 0px;
 }
-
+#account{
+    width: 40.5% !important;
+}
+#payment {
+    width: 0%  !important;
+}
+#confirm{
+    width: 48% !important;
+}
 #progressbar #personal:before {
     font-family: FontAwesome;
     content: "\f005"
@@ -139,12 +166,13 @@
 
 #progressbar #payment:before {
     font-family: FontAwesome;
-    content: "\f004"
+    content: "\f004";
 }
 
 #progressbar #confirm:before {
     font-family: FontAwesome;
-    content: "\f00c"
+    content: "\f00c";
+    margin-right:0px;
 }
 
 #progressbar li:before {
@@ -161,19 +189,20 @@
 }
 
 #progressbar li:after {
-    content: '';
+    content: "";
     width: 100%;
-    height: 2px;
+    height: 20px;
     background: lightgray;
     position: absolute;
-    left: 0;
-    top: 25px;
-    z-index: -1
+    left: 2px;
+    top: 15px;
+    z-index: -1;
 }
 
 #progressbar li.active:before,
 #progressbar li.active:after {
-    background: #28a745
+    background: #93bf1c;
+    border: 0px solid #93bf1c;
 }
 
 .progress {
@@ -201,4 +230,15 @@ select + .select2-container {
 .pregunta-text
 {
     font-size: 40px;
+}
+
+@media (max-width: 560px) {
+     .fs-title-text {
+    font-size: 15px;
+    color: #fff;
+    margin-left: 1.5rem;
+    margin-bottom: 9rem;
+    font-weight: normal;
+    text-align: left;
+} 
 }

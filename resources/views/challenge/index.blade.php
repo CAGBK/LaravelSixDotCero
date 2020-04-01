@@ -7,38 +7,27 @@
 
 @section('content')
 
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-11">
-            <div class="card card-login">
-            	<div class="card-header header-card  text-white">
-	                Creación de Desafios
-	                <div class="pull-right">
-	                  <a href="{{ route('lineas_marcas') }}" class="btn button-card" data-toggle="tooltip" data-placement="left" title="{{ trans('usersmanagement.tooltips.back-users') }}">
-	                      <i class="fa fa-fw fa-reply-all" aria-hidden="true"></i>
-	                      Voler a la Lista de Desafios
-	                  </a>
-	                </div>
-              	</div>
-              	<div class="card-body">
+<div class="">
+    <div class="">
+        <div class="">
+            <div class="">
+              	<div class="">
               		<form action="{{ route('ruta_new_line') }}" method="POST" id="msform">
-                    <!-- progressbar -->
+					<!-- progressbar -->
+					<div class="banner-challenge ">
 	                    <ul id="progressbar">
-	                        <li class="active" id="account"><strong>Participantes</strong></li>
-	                        <li id="payment"><strong>Marcas</strong></li>
-	                        <li id="confirm"><strong>Save</strong></li>
-	                    </ul>
-	                    <div class="progress">
-	                        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
-	                    </div> <br> <!-- fieldsets -->
-	                    <fieldset>
-	                        <div class="form-card">
+	                        <li class="active" id="account"><strong></strong></li>
+	                        <li id="payment"><strong></strong></li>
+	                        <li id="confirm"><strong></strong></li>
+	                	</ul>
+					</div>
+					<div class="container">
+						<fieldset>
+							<div class="form-card">
 	                            <div class="row">
-	                                <div class="col-7">
-	                                    <h2 class="fs-title">Selecciona participantes a los que desea invitar</h2>
-	                                </div>
-	                                <div class="col-5">
-	                                    <h2 class="steps">Paso 1 - 3</h2>
+	                                <div class="col-12">
+										<h2 class="fs-title">Crear Desafío</h2>
+										<h2 class="fs-title-text">Selecciona participantes a los que invitar.</h2>
 	                                </div>
 	                            </div> 
 	                            <div class="form-group has-feedback row {{ $errors->has('user_id') ? ' has-error ' : '' }} nav-font">
@@ -84,10 +73,8 @@
 	                        <div class="form-card">
 	                            <div class="row">
 	                                <div class="col-7">
-	                                    <h2 class="fs-title">Seleccióne Marcas</h2>
-	                                </div>
-	                                <div class="col-5">
-	                                    <h2 class="steps">Paso 2 - 3</h2>
+										<h2 class="fs-title">Tipo de Desafío</h2>
+										<h2 class="fs-title-text">Seleccione la marca.</h2>
 	                                </div>
 	                            </div> 
 	                            <div class="form-group has-feedback row {{ $errors->has('brand_id') ? ' has-error ' : '' }} nav-font">
@@ -133,17 +120,41 @@
 	                        <div class="form-card">
 	                            <div class="row">
 	                                <div class="col-7">
-	                                    <h2 class="fs-title">Seleccione marcas</h2>
-	                                </div>
-	                                <div class="col-5">
-	                                    <h2 class="steps">Paso 3 - 4</h2>
+										<h2 class="fs-title">Confirmación del Desafío</h2>
+										<h2 class="fs-title-text">Seleccione la marca.</h2>
 	                                </div>
 	                            </div> 
-	                            <label class="fieldlabels">Upload Your Photo:</label> <input type="file" name="pic" accept="image/*"> 
-	                            <label class="fieldlabels">Upload Signature Photo:</label> <input type="file" name="pic" accept="image/*">
+	                            <table id="brands-checkgit " class="table ">
+									<thead>
+										<tr>
+											<th>
+												a
+											</th>
+										</tr>
+									</thead>
+									@if ($subcategories)
+										<tbody>
+											@foreach($subcategories as $subcategory)
+												<tr>
+													<td>
+														<input id="{{ $subcategory->id }}" name="check-subcategory" type="checkbox" value="{{ $subcategory->id }}" >
+														@if ((Auth::User()->profile) && Auth::user()->profile->avatar_status == 1 )
+														<img name="img-subcategory" src="{{ $subcategory->profile->avatar}}" alt="{{ $subcategory->name}}" class="subcategory-avatar-nav subcategory-challenge">
+														@else
+														<img class="subcategory-avatar-nav subcategory-challenge">
+														@endif
+														<label name="name-subcategory" class="label-challenge" for="">{{ $subcategory->name }} </label>		
+													</td>
+												</tr>
+											@endforeach
+										</tbody>
+											@endif
+										</label>
+									</table>
 	                        </div> 
 	                          <button type="submit" class="btn next action-button">Confirmar!</button> <input type="button" name="previous" class="previous action-button-previous" value="Atras" />
 	                    </fieldset>
+					</div>
 	                </form>
               	</div>
             </div>
