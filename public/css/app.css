@@ -18509,14 +18509,13 @@ body {
 }
 
 #msform fieldset {
-  background: white;
+  background: transparent;
   border: 0 none;
   border-radius: 0.5rem;
   box-sizing: border-box;
   width: 100%;
   margin: 0;
   padding-bottom: 20px;
-  position: relative;
 }
 
 .form-card {
@@ -18573,6 +18572,14 @@ body {
   float: right;
 }
 
+.banner-challenge {
+  background: #272727;
+  height: 245px;
+  margin-top: -44px;
+  position: absolute;
+  width: -webkit-fill-available;
+}
+
 .card {
   z-index: 0;
   border: none;
@@ -18581,8 +18588,18 @@ body {
 
 .fs-title {
   font-size: 25px;
-  color: #28a745;
-  margin-bottom: 15px;
+  color: #2cab66;
+  font-weight: bolder;
+  margin-left: 1.5rem;
+  font-size: 22pt;
+  text-align: left;
+}
+
+.fs-title-text {
+  font-size: 25px;
+  color: #fff;
+  margin-left: 1.5rem;
+  margin-bottom: 9rem;
   font-weight: normal;
   text-align: left;
 }
@@ -18607,12 +18624,17 @@ body {
 
 #progressbar {
   margin-bottom: 30px;
+  padding-top: 150px;
   overflow: hidden;
+  margin-left: 5%;
+  position: -webkit-sticky;
+  position: sticky;
+  box-shadow: 2px 0px 0px 0px #93bf1c;
   color: lightgrey;
 }
 
 #progressbar .active {
-  color: #28a745;
+  color: #93bf1c;
 }
 
 #progressbar li {
@@ -18627,6 +18649,19 @@ body {
 #progressbar #account:before {
   font-family: FontAwesome;
   content: "\F007";
+  margin-left: 0px;
+}
+
+#account {
+  width: 40.5% !important;
+}
+
+#payment {
+  width: 0% !important;
+}
+
+#confirm {
+  width: 48% !important;
 }
 
 #progressbar #personal:before {
@@ -18642,6 +18677,7 @@ body {
 #progressbar #confirm:before {
   font-family: FontAwesome;
   content: "\F00C";
+  margin-right: 0px;
 }
 
 #progressbar li:before {
@@ -18660,17 +18696,18 @@ body {
 #progressbar li:after {
   content: "";
   width: 100%;
-  height: 2px;
+  height: 20px;
   background: lightgray;
   position: absolute;
-  left: 0;
-  top: 25px;
+  left: 2px;
+  top: 15px;
   z-index: -1;
 }
 
 #progressbar li.active:before,
 #progressbar li.active:after {
-  background: #28a745;
+  background: #93bf1c;
+  border: 0px solid #93bf1c;
 }
 
 .progress {
@@ -18697,6 +18734,17 @@ select + .select2-container {
 
 .pregunta-text {
   font-size: 40px;
+}
+
+@media (max-width: 560px) {
+  .fs-title-text {
+    font-size: 15px;
+    color: #fff;
+    margin-left: 1.5rem;
+    margin-bottom: 9rem;
+    font-weight: normal;
+    text-align: left;
+  }
 }
 
 .container-canvas {
