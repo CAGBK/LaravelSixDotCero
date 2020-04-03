@@ -4,8 +4,16 @@
 
 
 <?php $__env->startSection('content'); ?>
-
+<div style="background-color:#272727" class="md-12">
+  <h1 style="color:#2cab66; margin: -24px 0px -15px 45px;" class="font-weight-bold"><?php echo e($challenge->name); ?></h1>
+  <br>
+  <?php $__currentLoopData = $points; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $point): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+    <h1 style="color:#2cab66; margin: 0px 0px 0px 45px;" class="font-weight-bold text-white">Puntos: <?php echo e($point->score); ?></h1>
+  <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+  <br>
+</div>
 <section class="cotainer">
+  
   <div class="container-fluid">
     <div class="row">
         <div id="canvasContainer" class="container-canvas" onclick="miRuleta.startAnimation()">
@@ -18,10 +26,7 @@
   </div>
 </section>
 
-
-
 <?php $__env->stopSection(); ?>
-
 <?php $__env->startSection('footer_scripts'); ?>
 
     <?php echo $__env->make('scripts.Winwheel', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>

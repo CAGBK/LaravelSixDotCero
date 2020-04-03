@@ -32,10 +32,7 @@ class PreguntasRespuestasController extends Controller
     public function createQuestion()
     {
 
-        $states = DB::table('states')
-        ->select('states.id','states.state','states.color')
-        ->whereBetween('states.id', [1,2])
-        ->get();
+       
         $statesanswer = DB::table('states')
         ->select('states.id','states.state','states.color')
         ->where('states.id', [4])

@@ -88,7 +88,7 @@
 
                         </a>
                         
-                        <a class="dropdown-item nav-font <?php echo e(Request::is('blocker') ? 'active' : null); ?>" href="<?php echo e(url('/challenge')); ?>">
+                        <a class="dropdown-item nav-font <?php echo e(Request::is('blocker') ? 'active' : null); ?>" href="<?php echo e(url('/challenge-list')); ?>">
                             <?php echo trans('titles.challenges'); ?>
 
                         </a>
@@ -112,7 +112,7 @@
 
                         </a>
                         
-                        <a class="dropdown-item nav-font <?php echo e(Request::is('blocker') ? 'active' : null); ?>" href="<?php echo e(url('/challenge')); ?>">
+                        <a class="dropdown-item nav-font <?php echo e(Request::is('blocker') ? 'active' : null); ?>" href="<?php echo e(url('/challenge-list')); ?>">
                             <?php echo trans('titles.challenges'); ?>
 
                         </a>

@@ -13,19 +13,34 @@ use App\Models\Point;
 use App\Models\Answer;
 use App\Models\CQuestion;
 use App\Models\User;
+use App\Models\State;
 use jeremykenedy\LaravelRoles\Models\Role;
+use Illuminate\Support\Facades\DB;
 
 
 class DesafiosController extends Controller
 {
-    public function index()
+    public function listChallenge()
     {
         $roles = Role::all();
         $users= User::all();
         $data = User::paginate(8);
     	$categories= Category::all();
     	$subcategories= Subcategory::all();
-        return View::make('challenge/index', compact('users','categories','subcategories', 'data'));
+        return View::make('challenge.list', compact('users','categories','subcategories'));
+    }
+    public function index()
+    {
+        $states = DB::table('states')
+        ->select('states.id','states.state','states.color')
+        ->whereBetween('states.id', [1,2])
+        ->get();
+        $roles = Role::all();
+        $users= User::all();
+        $data = User::paginate(8);
+    	$categories= Category::all();
+    	$subcategories= Subcategory::all();
+        return View::make('challenge/index', compact('users','categories','subcategories', 'data', 'states'));
     }
     public function ruleta()
     {
@@ -63,5 +78,24 @@ class DesafiosController extends Controller
         {
             return redirect()->route('ruleta')->with('error','Su respuesta fue incorrecta!');
         }
+    }
+    public function storeChallenge(Request $request){
+       
+        $dateconvert = $request->end_date; 
+        $newDate = date("Y-m-d , g:i a" , strtotime($dateconvert));
+        $jsonUsers = json_encode($request->check_user);
+        $jsonBrands = json_encode($request->check_subcategory);
+        $challenge = new Challenge;
+        $challenge->name = $request->name;
+        $challenge->users = $jsonUsers;
+        $challenge->subcategories = $jsonBrands;
+        $challenge->number_questions = $request->number_questions;
+        $challenge->state_id = $request->state_id;
+        $challenge->end_date = $newDate;
+        $start_date = new \DateTime();
+        $challenge->start_date = $start_date;
+        $challenge->save();
+    
+        return redirect('challenge-list');
     }
 }

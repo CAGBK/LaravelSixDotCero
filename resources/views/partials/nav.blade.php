@@ -74,7 +74,7 @@
                             {!! trans('titles.questions') !!}
                         </a>
                         
-                        <a class="dropdown-item nav-font {{ Request::is('blocker') ? 'active' : null }}" href="{{ url('/challenge') }}">
+                        <a class="dropdown-item nav-font {{ Request::is('blocker') ? 'active' : null }}" href="{{ url('/challenge-list') }}">
                             {!! trans('titles.challenges') !!}
                         </a>
                     </div>
@@ -94,7 +94,7 @@
                             {!! trans('titles.questions') !!}
                         </a>
                         
-                        <a class="dropdown-item nav-font {{ Request::is('blocker') ? 'active' : null }}" href="{{ url('/challenge') }}">
+                        <a class="dropdown-item nav-font {{ Request::is('blocker') ? 'active' : null }}" href="{{ url('/challenge-list') }}">
                             {!! trans('titles.challenges') !!}
                         </a>
                     </div>

@@ -18,6 +18,8 @@ class CreateChallengesTable extends Migration
             $table->string('name');
             $table->json('users');
             $table->json('subcategories');
+            $table->string('number_questions');
+            $table->integer('state_id')->unsigned();
             $table->date('start_date');
             $table->date('end_date');
             $table->timestamps();

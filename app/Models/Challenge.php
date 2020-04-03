@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Challenge extends Model
 {
     protected $table = "challenges";
-    protected $fillable = ['nombre', 'categorias', 'subcategorias', 'fecha_inicio', 'fecha_fin'];
+    protected $fillable = ['nombre', 'categorias', 'subcategorias', 'fecha_inicio', 'fecha_fin', 'estado'];
     protected $guarded = ['id'];
 
     public function user()

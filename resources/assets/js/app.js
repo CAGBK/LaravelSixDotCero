@@ -29,6 +29,8 @@ Vue.component('users-count', require('./components/UsersCount.vue').default);
 const app = new Vue({
     el: '#app'
 });
+window.moment = require('moment');
+window.datetimepicker = require('tempusdominus-bootstrap-4');
 
 $.fn.extend({
     toggleText: function(a, b){
