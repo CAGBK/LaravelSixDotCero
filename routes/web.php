@@ -98,6 +98,8 @@ Route::group(['middleware' => ['auth', 'activated', 'currentUser', 'activity', '
     // Route to Linea and Brand
     Route::get('lineas-marcas', 'LineasMarcasController@index')->name('lineas_marcas');
     Route::get('challenge', 'DesafiosController@index')->name('challenge');
+    Route::post('crear/Desafio', 'DesafiosController@storeChallenge')->name('create_challenge');
+    Route::get('challenge-list', 'DesafiosController@listChallenge')->name('challenge_list');
     Route::get('ruleta', 'DesafiosController@ruleta')->name('ruleta');
     Route::get('answer/{id}', 'DesafiosController@anwers')->name('answers');
     Route::get('question-game/{id}', 'DesafiosController@questionGame')->name('question_game');

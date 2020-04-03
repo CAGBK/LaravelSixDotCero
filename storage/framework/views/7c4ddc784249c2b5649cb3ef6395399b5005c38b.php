@@ -74,20 +74,23 @@
 	return false;
 	})
 
-	//table search
+	
     $('#users-check').DataTable({
+
+		
 		"columns": [
             { "data": "check-user" }
         ],
 		"language": {
-            "lengthMenu": "Mostrar _MENU_ datos por pagina",
             "zeroRecords": "Nothing found - sorry",
-            "info": "Mostrando pagina _PAGE_ de _PAGES_",
             "infoEmpty": "No records available",
 			"infoFiltered": "(filtered from _MAX_ total records)",
-			"search" : "Buscar",
+			"search" : "Buscar Desafío",
 
-        },
+		},
+		"scrollY":        "400px",
+        "scrollCollapse": true,
+        "paging":         false,
         "lengthMenu": [[8, 16, 24, -1], [8, 16, 24, "All"]]
 	});
 	$('#brands-check').DataTable({
@@ -104,6 +107,14 @@
 
         },
         "lengthMenu": [[8, 16, 24, -1], [8, 16, 24, "All"]]
-    });
 	});
+	$('#challenge-check').DataTable({
+	});
+	});
+	$(function () {
+    $('#datetime').datetimepicker({
+        inline: true,
+        sideBySide: true,
+    });
+});
 </script><?php /**PATH C:\Users\ca.gonzalezb1\Desktop\LaravelSixDotCero\resources\views/scripts/challenge.blade.php ENDPATH**/ ?>

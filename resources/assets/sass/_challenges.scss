@@ -20,6 +20,7 @@
     padding-bottom: 20px;
 }
 
+
 .form-card {
     text-align: left
 }
@@ -88,12 +89,14 @@
 }
 
 .fs-title {
+    margin-top: 2rem;
     font-size: 25px;
     color: #2cab66;
     font-weight: bolder;
     margin-left: 1.5rem;
     font-size: 22pt;
     text-align: left;
+    margin-bottom: 2px;
 }
 
 .fs-title-text {
@@ -204,6 +207,26 @@
     background: #93bf1c;
     border: 0px solid #93bf1c;
 }
+div#users-check_info {
+    display: none !important;
+}
+div#users-check_filter {
+    margin-top: 1rem;
+}
+.nav-button-ch{
+    padding-bottom: 0px;
+    margin-top: 123px;
+    margin-bottom: 0rem;
+    margin-left: 15%;
+    z-index: auto;
+    font-size: 15pt;
+    color: #272727;
+    background-color: #93bf1c;
+    border-radius: 5px;
+    border: none;
+    height: 34px;
+    font-weight: 700;
+}
 
 .progress {
     height: 20px
@@ -231,6 +254,69 @@ select + .select2-container {
 {
     font-size: 40px;
 }
+
+.column-list-challenge{
+    width: 156px;
+    display: inline-flex;
+    position: relative;
+    margin-left: 14%;
+    margin-top: 2%;
+    padding: 1%;
+}
+input[type="search"] {
+    border-radius: 1rem;
+    padding-right: 6rem;
+    margin-right: 6rem;
+    height: 33px;
+    box-shadow: darkkhaki;
+}
+
+.dataTables_scrollBody{
+    border: none !important;
+}
+.nav-lchallenge{
+    background-color: #272727;
+    height: 247px;
+    margin-top: -24px;
+}
+.ch-text-two{
+    margin-left: 7rem;
+}
+.ch-text{
+    margin-left: 7rem;
+}
+.tr-challenge{
+    width: 156px;
+    display: -webkit-inline-box;
+    display: inline-flex;
+    position: relative;
+    margin-left: 14%;
+    margin-top: 2%;
+    padding: 1%;
+}
+.tr-challenge-two{
+    width: 156px;
+    display: -webkit-inline-box;
+    display: inline-flex;
+    position: relative;
+    margin-left: 14%;
+    margin-top: 2%;
+    padding: 1%;
+}
+.tr-challenge-three{
+    width: 156px;
+    display: -webkit-inline-box;
+    display: inline-flex;
+    position: relative;
+    margin-left: 14%;
+    margin-top: 2%;
+    padding: 1%;
+}
+div#challenge-check_wrapper > div {
+    border: 1px solid red;
+    display: none;
+}
+
 
 @media (max-width: 560px) {
      .fs-title-text {

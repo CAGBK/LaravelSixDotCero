@@ -3,8 +3,6 @@
 @section('template_title')
   Crear Desafio
 @endsection
-
-
 @section('content')
 
 <div class="">
@@ -12,7 +10,8 @@
         <div class="">
             <div class="">
               	<div class="">
-              		<form action="{{ route('ruta_new_line') }}" method="POST" id="msform">
+					  <form action="{{ route('create_challenge') }}" method="POST" id="msform">
+						@csrf	
 					<!-- progressbar -->
 					<div class="banner-challenge ">
 	                    <ul id="progressbar">
@@ -43,9 +42,9 @@
 											@if ($users)
 												<tbody>
 													@foreach($users as $user)
-														<tr>
+														<tr class="tr-challenge">
 															<td>
-																<input id="{{ $user->id }}" name="check-user" type="checkbox" value="{{ $user->id }}" >
+																<input id="{{ $user->id }}" name="check_user[]" type="checkbox" value="{{ $user->id }}" >
 																@if ((Auth::User()->profile) && Auth::user()->profile->avatar_status == 1 )
 																<img name="img-user" src="{{ $user->profile->avatar}}" alt="{{ $user->name}}" class="user-avatar-nav user-challenge">
 																@else
@@ -79,10 +78,10 @@
 	                            </div> 
 	                            <div class="form-group has-feedback row {{ $errors->has('brand_id') ? ' has-error ' : '' }} nav-font">
 			                        <div class="col-md-12">
-										<table id="brands-checkgit " class="table ">
+										<table id="brands-check" class="table ">
 											<thead>
-												<tr>
-													<th>
+												<tr >
+													<th style="display:none;">
 														a
 													</th>
 												</tr>
@@ -90,9 +89,9 @@
 											@if ($subcategories)
 												<tbody>
 													@foreach($subcategories as $subcategory)
-														<tr>
+														<tr class="tr-challenge-two">
 															<td>
-																<input id="{{ $subcategory->id }}" name="check-subcategory" type="checkbox" value="{{ $subcategory->id }}" >
+																<input id="{{ $subcategory->id }}" name="check-subcategory[]" type="checkbox" value="{{ $subcategory->id }}" >
 																@if ((Auth::User()->profile) && Auth::user()->profile->avatar_status == 1 )
 																<img name="img-subcategory" src="{{ $subcategory->profile->avatar}}" alt="{{ $subcategory->name}}" class="subcategory-avatar-nav subcategory-challenge">
 																@else
@@ -123,10 +122,95 @@
 										<h2 class="fs-title">Confirmación del Desafío</h2>
 										<h2 class="fs-title-text">Seleccione la marca.</h2>
 	                                </div>
-	                            </div> 
-	                            <table id="brands-checkgit " class="table ">
+								</div> 
+								<div class="form-group has-feedback row {{ $errors->has('name') ? ' has-error ' : '' }} nav-font">
+                                    {!! Form::label('name', 'Nombre de Desafío', array('class' => 'col-md-3 control-label')); !!}
+                                    <div class="col-md-9">
+                                        <div class="input-group">
+                                            {!! Form::text('name', NULL, array('id' => 'name', 'class' => 'form-control', 'placeholder' => 'Pregunta...')) !!}
+                                            <div class="input-group-append">
+                                                <label for="name" class="input-group-text">
+                                                    <i class="fa fa-fw {{ trans('forms.create_user_icon_email') }} nav-font" aria-hidden="true"></i>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        @if ($errors->has('name'))
+                                            <span class="help-block">
+                                                <strong>{{ $errors->first('name') }}</strong>
+                                            </span>
+                                        @endif
+                                    </div>
+								</div>
+								<div class="form-group has-feedback row {{ $errors->has('number_questions') ? ' has-error ' : '' }} nav-font">
+                                    {!! Form::label('number_questions', 'Cantidad de Preguntas', array('class' => 'col-md-3 control-label')); !!}
+                                    <div class="col-md-9">
+                                        <div class="input-group">
+                                            {!! Form::text('number_questions', NULL, array('id' => 'number_questions', 'class' => 'form-control', 'placeholder' => 'Pregunta...')) !!}
+                                            <div class="input-group-append">
+                                                <label for="number_questions" class="input-group-text">
+                                                    <i class="fa fa-fw {{ trans('forms.create_user_icon_email') }} nav-font" aria-hidden="true"></i>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        @if ($errors->has('number_questions'))
+                                            <span class="help-block">
+                                                <strong>{{ $errors->first('number_questions') }}</strong>
+                                            </span>
+                                        @endif
+                                    </div>
+								</div>
+								<div class="form-group has-feedback row {{ $errors->has('challenge_time') ? ' has-error ' : '' }} nav-font">
+                                    {!! Form::label('challenge_time', 'Duración del Desafío', array('class' => 'col-md-3 date-time-ch control-label')); !!}
+                                    <div class="col-md-9">
+                                        <div class="input-group">
+                                            <div class="input-group date" id="datetimepicker1" data-target-input="nearest">
+												<input type="text" class="form-control datetimepicker-input" name="end_date" data-target="#datetimepicker1" required/>
+												<div class="input-group-append" data-target="#datetimepicker1" data-toggle="datetimepicker">
+													<div class="input-group-text"><i class="fa fa-calendar"></i></div>
+												</div>
+											</div>
+                                        </div>
+                                        @if ($errors->has('challenge_time'))
+                                            <span class="help-block">
+                                                <strong>{{ $errors->first('challenge_time') }}</strong>
+                                            </span>
+                                        @endif
+                                    </div>
+                                </div>
+								<div class="form-group has-feedback row {{ $errors->has('state_id') ? ' has-error ' : '' }} nav-font">
+                                    {!! Form::label('state_id', 'Estado', array('class' => 'col-md-3 control-label')); !!}
+                                    <div class="col-md-9">
+                                        <div class="input-group">
+                                            <select class="custom-select form-control" name="state_id" id="state_id">
+                                                <option value="">Seleccione estado</option>
+                                                @if ($states)
+                                                    @foreach($states as $state)
+                                                        <option value="{{ $state->id }}">{{ $state->state }}</option>
+                                                    @endforeach
+                                                @endif
+                                            </select>
+                                            <div class="input-group-append">
+                                                <label class="input-group-text" for="state_id">
+                                                    <i class="{{ trans('forms.create_user_icon_role') }} nav-font" aria-hidden="true"></i>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        @if ($errors->has('role'))
+                                            <span class="help-block">
+                                                <strong>{{ $errors->first('role') }}</strong>
+                                            </span>
+                                        @endif
+                                    </div>
+                                </div>
+								@if ($errors->has('name'))
+									<span class="help-block">
+										<strong>{{ $errors->first('name') }}</strong>
+									</span>
+								@endif
+
+	                            <table id="challenge-check" class="table ">
 									<thead>
-										<tr>
+										<tr style="display:none;">
 											<th>
 												a
 											</th>
@@ -135,9 +219,9 @@
 									@if ($subcategories)
 										<tbody>
 											@foreach($subcategories as $subcategory)
-												<tr>
+												<tr class="tr-challenge-three">
 													<td>
-														<input id="{{ $subcategory->id }}" name="check-subcategory" type="checkbox" value="{{ $subcategory->id }}" >
+														<input id="{{ $subcategory->id }}" name="check_subcategory" type="checkbox" value="{{ $subcategory->id }}" >
 														@if ((Auth::User()->profile) && Auth::user()->profile->avatar_status == 1 )
 														<img name="img-subcategory" src="{{ $subcategory->profile->avatar}}" alt="{{ $subcategory->name}}" class="subcategory-avatar-nav subcategory-challenge">
 														@else
@@ -163,17 +247,15 @@
 </div>
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.20/datatables.min.css"/>
  
-<script type="application/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.20/datatables.min.js"></script>
+
 <link href="https://cdn.jsdelivr.net/npm/select2@4.0.12/dist/css/select2.min.css" rel="stylesheet" />
 <script  type="application/javascript" src="https://cdn.jsdelivr.net/npm/select2@4.0.12/dist/js/select2.min.js"></script>
-<script type="application/javascript">
-	$(document).ready(function() {
-				$('.select-user').select2();	
-			$('.select-brand').select2();	
-			$('.select-line').select2();	
-		});	
-	
-</script>
+   <!-- jQuery -->
+   <script type="application/javascript"  src="//code.jquery.com/jquery.js"></script>
+   <!-- DataTables -->
+   <script   type="application/javascript" src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
+   <!-- Bootstrap JavaScript -->
+   <script  type="application/javascript"  src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 @endsection
 
 @section('footer_scripts')
