@@ -7,6 +7,7 @@ use App\Http\Requests\UpdateUserPasswordRequest;
 use App\Http\Requests\UpdateUserProfile;
 use App\Models\Profile;
 use App\Models\Theme;
+use App\Models\Category;
 use App\Models\User;
 use App\Notifications\SendGoodbyeEmail;
 use App\Traits\CaptureIpTrait;
@@ -18,6 +19,8 @@ use Image;
 use jeremykenedy\Uuid\Uuid;
 use Validator;
 use View;
+use Auth;
+
 
 class ProfilesController extends Controller
 {
@@ -68,8 +71,11 @@ class ProfilesController extends Controller
             'user'         => $user,
             'currentTheme' => $currentTheme,
         ];
+        $idUser = Auth::user()->id;
+        $categories = Category::where('user','LIKE','%"'. $idUser .'"%')->get();
+        
 
-        return view('profiles.show')->with($data);
+        return view('profiles.show',compact('categories'))->with($data);
     }
 
     /**

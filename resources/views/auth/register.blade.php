@@ -12,8 +12,12 @@
                         
                         <div class="form-group row">
                             <div class="col-md-12 content-align">
+<<<<<<< HEAD
                                 <button type="button" data-toggle="modal" data-target="#confirmSelectImg" data-title="Cambiar imagen" class="btn btn-camera-register" style="width: 10%;"><i aria-hidden="true" class="fas fa fa-camera"></i> <span class="hidden-xs hidden-sm"></button>
                                 <img id="data-img"  src="/images/Perfil.png" class="user-avatar-register">
+=======
+                                <img id="data-img" name="image_progile" src="/images/Perfil.png" class="user-avatar-register">
+>>>>>>> 6b0e06a5b869bb300425277dacdb1188ea70e0f9
                             </div>
                         </div>
                         <div class="form-group row">
