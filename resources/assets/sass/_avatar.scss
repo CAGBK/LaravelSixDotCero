@@ -6,6 +6,23 @@
     @include vendor(border-radius, 50%);
     @include draggless();
 }
+.user-avatar-register{
+    width: 100px;
+    height: 100px;
+    margin: 0em auto;
+    display: block;
+    border-radius: 0;
+    -webkit-user-drag: none;
+    -moz-user-drag: none;
+    -ms-user-drag: none;
+    -o-user-drag: none;
+    user-drag: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+}    
 .user-avatar-nav {
     margin-top: -3px;
     margin-right: 1em;

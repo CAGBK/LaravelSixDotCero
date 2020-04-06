@@ -2,7 +2,6 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-6">
-            
             <div class="card card-login background-login">
                 <div style="display: inline-block; text-align: center; margin-bottom: 2rem;">
                     <a class=""  href="<?php echo e(url('/')); ?>">
@@ -14,7 +13,7 @@
                 </div>
                 <label class="col-md-6 text-login col-form-label text-md-right nav-font"><?php echo e(__('registrate con un correo electrónico y contraseña para la aplicación')); ?></label>
                 
-                <div class="">
+                <div class=""> 
                     <form method="POST" action="<?php echo e(route('login')); ?>">
                         <?php echo csrf_field(); ?>
                         <div class="form-group">

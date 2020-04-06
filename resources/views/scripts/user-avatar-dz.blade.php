@@ -1,5 +1,5 @@
-<script src="{{{ config('settings.dropZoneJsCDN') }}}"></script>
-<script type="text/javascript">
+<script  type="application/javascript" src="{{{ config('settings.dropZoneJsCDN') }}}"></script>
+<script type="application/javascript">
 
 Dropzone.autoDiscover = false;
 
@@ -42,7 +42,7 @@ $(function() {
                 setTimeout(function() {
                     $('.dz-message').text('Drop files here to upload').show();
                 }, 2000);
-                $('#user_selected_avatar, .user-avatar-nav').attr('src', '/images/profile/{{ $user->id }}/avatar/avatar.jpg?' + new Date().getTime());
+                
             });
             this.on("error", function(file, res) {
                 var html = '<div class="progress">';
