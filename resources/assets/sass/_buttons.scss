@@ -1,3 +1,23 @@
+.btn-camera-register {
+    right: 41.5%;
+    top: 5%;
+    position: absolute;
+    border: 1px solid #93bf1c;
+    border-radius: 50%;
+    height: 27px;
+    width: 27px !important;
+    margin: 0px !important;
+    padding: 0px !important;
+    color: white;
+    background: #93bf1c;
+}
+.lb-register{
+    border-radius: 0.9rem;
+    border-color: #939393;
+    border: 2px solid #939393;
+    font-weight: 900;
+    color: #939393;
+}
 .btn {
     @include transitions();
 }
@@ -78,4 +98,5 @@
         background: $danger !important;
     }
 }
+
 

@@ -1,19 +1,22 @@
 <?php $__env->startSection('content'); ?>
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-10">
-            <div class="card card-login">
-                <div class="card-header login-nav"><?php echo e(__('Register')); ?></div>
-
+        <div class="col-md-6">
+            <div class="card card-login background-login">
                 <div class="card-body">
+                    
                     <form method="POST" action="<?php echo e(route('register')); ?>">
                         <?php echo csrf_field(); ?>
-
+                        
                         <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right nav-font nav-font"><?php echo e(__('Nombre')); ?></label>
-
-                            <div class="col-md-6">
-                                <input id="name" type="text" class="form-control<?php echo e($errors->has('name') ? ' is-invalid' : ''); ?>" name="name" value="<?php echo e(old('name')); ?>" required autofocus>
+                            <div class="col-md-12 content-align">
+                                <button type="button" data-toggle="modal" data-target="#confirmSelectImg" data-title="Cambiar imagen" class="btn btn-camera-register" style="width: 10%;"><i aria-hidden="true" class="fas fa fa-camera"></i> <span class="hidden-xs hidden-sm"></button>
+                                <img id="data-img" name="image_progile" src="/images/Perfil.png" class="user-avatar-register">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-md-12 content-align">
+                                <input id="name" type="text" class="lb-register form-control col-md-7<?php echo e($errors->has('name') ? ' is-invalid' : ''); ?>" name="name" value="<?php echo e(old('name')); ?>" placeholder="XXXXX"required autofocus>
 
                                 <?php if($errors->has('name')): ?>
                                     <span class="invalid-feedback">
@@ -24,10 +27,8 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="first_name" class="col-md-4 col-form-label text-md-right nav-font"><?php echo e(__('Primer Nombre')); ?></label>
-
-                            <div class="col-md-6">
-                                <input id="first_name" type="text" class="form-control<?php echo e($errors->has('first_name') ? ' is-invalid' : ''); ?>" name="first_name" value="<?php echo e(old('first_name')); ?>" required autofocus>
+                            <div class="col-md-12 content-align">
+                                <input id="first_name" type="text" class="lb-register form-control col-md-7<?php echo e($errors->has('first_name') ? ' is-invalid' : ''); ?>" name="first_name" value="<?php echo e(old('first_name')); ?>" placeholder="XXXXX"required autofocus>
 
                                 <?php if($errors->has('first_name')): ?>
                                     <span class="invalid-feedback">
@@ -38,10 +39,8 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="last_name" class="col-md-4 col-form-label text-md-right nav-font"><?php echo e(__('Apellidos')); ?></label>
-
-                            <div class="col-md-6">
-                                <input id="last_name" type="text" class="form-control<?php echo e($errors->has('last_name') ? ' is-invalid' : ''); ?>" name="last_name" value="<?php echo e(old('last_name')); ?>" required autofocus>
+                            <div class="col-md-12 content-align">
+                                <input id="last_name" type="text" class="lb-register form-control col-md-7<?php echo e($errors->has('last_name') ? ' is-invalid' : ''); ?>" name="last_name" value="<?php echo e(old('last_name')); ?>" placeholder="XXXXX"required autofocus>
 
                                 <?php if($errors->has('last_name')): ?>
                                     <span class="invalid-feedback">
@@ -52,10 +51,8 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right nav-font"><?php echo e(__('Correo Electrónico')); ?></label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control<?php echo e($errors->has('email') ? ' is-invalid' : ''); ?>" name="email" value="<?php echo e(old('email')); ?>" required>
+                            <div class="col-md-12 content-align">
+                                <input id="email" type="email" class="lb-register form-control col-md-7<?php echo e($errors->has('email') ? ' is-invalid' : ''); ?>" name="email" value="<?php echo e(old('email')); ?>" placeholder="XXXXX"required>
 
                                 <?php if($errors->has('email')): ?>
                                     <span class="invalid-feedback">
@@ -66,10 +63,8 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right nav-font"><?php echo e(__('Contraseña')); ?></label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control<?php echo e($errors->has('password') ? ' is-invalid' : ''); ?>" name="password" required>
+                            <div class="col-md-12 content-align">
+                                <input id="password" type="password" class="lb-register form-control col-md-7<?php echo e($errors->has('password') ? ' is-invalid' : ''); ?>" name="password" placeholder="XXXXX"required>
 
                                 <?php if($errors->has('password')): ?>
                                     <span class="invalid-feedback">
@@ -80,26 +75,32 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right nav-font"><?php echo e(__('Confirme contraseña')); ?></label>
-
-                            <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
+                            <div class="col-md-12 content-align">
+                                <input id="password-confirm" type="password" class="lb-register form-control col-md-7" name="password_confirmation" placeholder="XXXXX"required>
                             </div>
                         </div>
                         <div class="form-group row mb-4">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn button-card">
-                                    <?php echo e(__('Register')); ?>
+                            <div class="col-md-4 content-align offset-md-4">
+                                <button type="submit" class="btn-login">
+                                    <?php echo e(__('Registrar')); ?>
 
                                 </button>
                             </div>
                         </div>
+                        <div class="col-md-12" style="text-align: -webkit-center;">
+                            <a class="btn btn-link login-nav">
+                                Tienes una cuenta? <a class="btn btn-link login-nav custom-link" href="<?php echo e(route('login')); ?>">
+                                    <?php echo e(__('Ingresar')); ?> </a>
+                                </div>
+                            </a>
                     </form>
                 </div>
             </div>
         </div>
     </div>
 </div>
+<?php echo $__env->make('modals.modal-img', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+<?php echo $__env->make('scripts.user-avatar-dz', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 <?php $__env->stopSection(); ?>
 
 

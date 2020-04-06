@@ -16333,6 +16333,28 @@ a.text-dark:focus {
   }
 }
 
+.btn-camera-register {
+  right: 41.5%;
+  top: 5%;
+  position: absolute;
+  border: 1px solid #93bf1c;
+  border-radius: 50%;
+  height: 27px;
+  width: 27px !important;
+  margin: 0px !important;
+  padding: 0px !important;
+  color: white;
+  background: #93bf1c;
+}
+
+.lb-register {
+  border-radius: 0.9rem;
+  border-color: #939393;
+  border: 2px solid #939393;
+  font-weight: 900;
+  color: #939393;
+}
+
 .btn {
   -webkit-transition: all 0.35s ease-in-out;
   transition: all 0.35s ease-in-out;
@@ -18327,6 +18349,24 @@ div[data-toggle=buttons] label.active {
   user-select: none;
 }
 
+.user-avatar-register {
+  width: 100px;
+  height: 100px;
+  margin: 0em auto;
+  display: block;
+  border-radius: 0;
+  -webkit-user-drag: none;
+  -moz-user-drag: none;
+  -ms-user-drag: none;
+  -o-user-drag: none;
+  user-drag: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+}
+
 .user-avatar-nav {
   margin-top: -3px;
   margin-right: 1em;
@@ -18844,8 +18884,11 @@ body {
 }
 
 .input-login {
-  border-radius: 1rem;
-  border-color: #afd370;
+  border-radius: 0.9rem;
+  border-color: #939393;
+  border: 2px solid #939393;
+  font-weight: 900;
+  color: #939393;
 }
 
 .button-card {
@@ -19313,12 +19356,13 @@ div#challenge-check_wrapper > div {
 .btn-login {
   background: transparent;
   border: transparent;
-  font-size: 19pt;
+  font-size: 18pt;
   font-weight: bold;
   color: #2cab66;
   -webkit-text-emphasis-color: #93bf1c;
   -webkit-text-emphasis-style: circle;
   -webkit-text-emphasis-position: under;
+  text-shadow: 0.5px 0px 0px #2CAB64;
 }
 
 .content-align {

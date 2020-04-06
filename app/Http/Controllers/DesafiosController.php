@@ -78,7 +78,7 @@ class DesafiosController extends Controller
     public function storeChallenge(Request $request){
        
         $dateconvert = $request->end_date; 
-        $newDate = date("Y-m-d , g:i a" , strtotime($dateconvert));
+        $newDate = date("Y-m-d  g:i " , strtotime($dateconvert));
         $jsonUsers = json_encode($request->check_user);
         $jsonBrands = json_encode($request->check_subcategory);
         $challenge = new Challenge;

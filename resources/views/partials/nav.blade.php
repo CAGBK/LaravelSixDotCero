@@ -5,10 +5,12 @@
                 <img id="nav-image" src="/images/logo.png" width="160px" height="80px" alt="">
             </a>
         </div>
+        @role('admin')
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
             <span class="sr-only">{!! trans('titles.toggleNav') !!}</span>
         </button>
+        @endrole
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             {{-- Left Side Of Navbar --}}
             <ul class="navbar-nav mr-auto">
@@ -139,7 +141,10 @@
     var URLactual = window.location;
     var host = location.hostname;
     var element = document.getElementById("main-nav");
-    if(URLactual=="http://"+host+"/login" || URLactual=="http://"+host+":8000/"){
+    if(URLactual=="http://"+host+"/login" || URLactual=="http://"+host+":8000/login" || URLactual=="http://"+host+":8000/"){
+        document.getElementById("nav-image").src = "/images/logoB.png";
+        document.getElementById("nav-image").style.display = "none";
+    } else if(URLactual=="http://"+host+"/register" || URLactual=="http://"+host+":8000/register"){
         document.getElementById("nav-image").src = "/images/logoB.png";
         document.getElementById("nav-image").style.display = "none";
     }else{

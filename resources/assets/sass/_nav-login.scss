@@ -20,12 +20,13 @@
   .btn-login{
     background: transparent;
     border: transparent;
-    font-size: 19pt;
+    font-size: 18pt;
     font-weight: bold;
     color: #2cab66;
     -webkit-text-emphasis-color: #93bf1c;
     -webkit-text-emphasis-style: circle;
     -webkit-text-emphasis-position: under;
+    text-shadow: 0.5px 0px 0px #2CAB64;
   }
   .content-align{
     text-align: -webkit-center;
