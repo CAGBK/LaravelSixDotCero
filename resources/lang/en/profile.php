@@ -21,6 +21,7 @@ return [
 
     // USER profile title
     'showProfileUsername'        => 'Usuario',
+    'profileCategory'               => 'Linea',
     'showProfileFirstName'       => 'Nombres',
     'showProfileLastName'        => 'Apellidos',
     'showProfileEmail'           => 'Email',

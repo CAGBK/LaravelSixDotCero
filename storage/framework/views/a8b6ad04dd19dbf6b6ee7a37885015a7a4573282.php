@@ -136,11 +136,9 @@
 $(document).ready(function() {
 $('.js-user').select2();
 });
-
 $(document).ready(function() {
 $('.js-example-basic-multiple').select2();
 });
 </script>
 <?php $__env->stopSection(); ?>
-
 <?php echo $__env->make('layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\dsgut\OneDrive\Escritorio\LaravelSixDotCero\resources\views/linebrand/new.blade.php ENDPATH**/ ?>

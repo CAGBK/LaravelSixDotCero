@@ -12,7 +12,6 @@
                         
                         <div class="form-group row">
                             <div class="col-md-12 content-align">
-                                <button type="button" data-toggle="modal" data-target="#confirmSelectImg" data-title="Cambiar imagen" class="btn btn-camera-register" style="width: 10%;"><i aria-hidden="true" class="fas fa fa-camera"></i> <span class="hidden-xs hidden-sm"></button>
                                 <img id="data-img" name="image_progile" src="/images/Perfil.png" class="user-avatar-register">
                             </div>
                         </div>
