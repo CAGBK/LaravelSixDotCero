@@ -66,7 +66,7 @@
 								<?php echo e($user->email); ?>
 
 							</dd>
-							<?php if($categories): ?>
+							<?php if(!$categories->isEmpty()): ?>
 								<dt>
 									<?php echo e(trans('profile.profileCategory')); ?>
 

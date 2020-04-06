@@ -59,7 +59,7 @@
 							<dd>
 								{{ $user->email }}
 							</dd>
-							@if ($categories)
+							@if(!$categories->isEmpty())
 								<dt>
 									{{ trans('profile.profileCategory') }}
 								</dt>

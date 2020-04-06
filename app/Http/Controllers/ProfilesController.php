@@ -73,7 +73,6 @@ class ProfilesController extends Controller
         ];
         $idUser = Auth::user()->id;
         $categories = Category::where('user','LIKE','%"'. $idUser .'"%')->get();
-        
 
         return view('profiles.show',compact('categories'))->with($data);
     }
