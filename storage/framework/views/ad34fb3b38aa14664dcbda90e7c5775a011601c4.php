@@ -11,12 +11,12 @@
                         <div class="form-group row">
                             <div class="col-md-12 content-align">
                                 <button type="button" data-toggle="modal" data-target="#confirmSelectImg" data-title="Cambiar imagen" class="btn btn-camera-register" style="width: 10%;"><i aria-hidden="true" class="fas fa fa-camera"></i> <span class="hidden-xs hidden-sm"></button>
-                                <img id="data-img" name="image_progile" src="/images/Perfil.png" class="user-avatar-register">
+                                <img id="data-img"  src="/images/Perfil.png" class="user-avatar-register">
                             </div>
                         </div>
                         <div class="form-group row">
                             <div class="col-md-12 content-align">
-                                <input id="name" type="text" class="lb-register form-control col-md-7<?php echo e($errors->has('name') ? ' is-invalid' : ''); ?>" name="name" value="<?php echo e(old('name')); ?>" placeholder="XXXXX"required autofocus>
+                                <input id="name" type="text" class="lb-register form-control col-md-7<?php echo e($errors->has('name') ? ' is-invalid' : ''); ?>" name="name" value="<?php echo e(old('name')); ?>" placeholder="Nombre de usuario"required autofocus>
 
                                 <?php if($errors->has('name')): ?>
                                     <span class="invalid-feedback">
@@ -28,7 +28,7 @@
 
                         <div class="form-group row">
                             <div class="col-md-12 content-align">
-                                <input id="first_name" type="text" class="lb-register form-control col-md-7<?php echo e($errors->has('first_name') ? ' is-invalid' : ''); ?>" name="first_name" value="<?php echo e(old('first_name')); ?>" placeholder="XXXXX"required autofocus>
+                                <input id="first_name" type="text" class="lb-register form-control col-md-7<?php echo e($errors->has('first_name') ? ' is-invalid' : ''); ?>" name="first_name" value="<?php echo e(old('first_name')); ?>" placeholder="Primer Nombre"required autofocus>
 
                                 <?php if($errors->has('first_name')): ?>
                                     <span class="invalid-feedback">
@@ -40,7 +40,7 @@
 
                         <div class="form-group row">
                             <div class="col-md-12 content-align">
-                                <input id="last_name" type="text" class="lb-register form-control col-md-7<?php echo e($errors->has('last_name') ? ' is-invalid' : ''); ?>" name="last_name" value="<?php echo e(old('last_name')); ?>" placeholder="XXXXX"required autofocus>
+                                <input id="last_name" type="text" class="lb-register form-control col-md-7<?php echo e($errors->has('last_name') ? ' is-invalid' : ''); ?>" name="last_name" value="<?php echo e(old('last_name')); ?>" placeholder="Apellidos"required autofocus>
 
                                 <?php if($errors->has('last_name')): ?>
                                     <span class="invalid-feedback">
@@ -52,7 +52,7 @@
 
                         <div class="form-group row">
                             <div class="col-md-12 content-align">
-                                <input id="email" type="email" class="lb-register form-control col-md-7<?php echo e($errors->has('email') ? ' is-invalid' : ''); ?>" name="email" value="<?php echo e(old('email')); ?>" placeholder="XXXXX"required>
+                                <input id="email" type="email" class="lb-register form-control col-md-7<?php echo e($errors->has('email') ? ' is-invalid' : ''); ?>" name="email" value="<?php echo e(old('email')); ?>" placeholder="Correo electrónico"required>
 
                                 <?php if($errors->has('email')): ?>
                                     <span class="invalid-feedback">
@@ -64,7 +64,7 @@
 
                         <div class="form-group row">
                             <div class="col-md-12 content-align">
-                                <input id="password" type="password" class="lb-register form-control col-md-7<?php echo e($errors->has('password') ? ' is-invalid' : ''); ?>" name="password" placeholder="XXXXX"required>
+                                <input id="password" type="password" class="lb-register form-control col-md-7<?php echo e($errors->has('password') ? ' is-invalid' : ''); ?>" name="password" placeholder="Contraseña"required>
 
                                 <?php if($errors->has('password')): ?>
                                     <span class="invalid-feedback">
@@ -76,7 +76,7 @@
 
                         <div class="form-group row">
                             <div class="col-md-12 content-align">
-                                <input id="password-confirm" type="password" class="lb-register form-control col-md-7" name="password_confirmation" placeholder="XXXXX"required>
+                                <input id="password-confirm" type="password" class="lb-register form-control col-md-7" name="password_confirmation" placeholder="Confirme contraseña"required>
                             </div>
                         </div>
                         <div class="form-group row mb-4">

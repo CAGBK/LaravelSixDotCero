@@ -58,6 +58,25 @@
 
             <div class="col-sm-5 col-6 text-larger">
               <strong>
+                Usuarios:
+              </strong>
+            </div>
+
+            <div class="col-sm-7">
+              <?php if($category->user): ?>
+              <?php $__currentLoopData = $users; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $user): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                <span class="badge badge-info text-white"><?php echo e($user->name); ?></span>
+              <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+              <?php else: ?>
+                No hay usuarios asignados
+              <?php endif; ?>
+            </div>
+
+            <div class="clearfix"></div>
+            <div class="border-bottom"></div>
+
+            <div class="col-sm-5 col-6 text-larger">
+              <strong>
                 Creado:
               </strong>
             </div>
