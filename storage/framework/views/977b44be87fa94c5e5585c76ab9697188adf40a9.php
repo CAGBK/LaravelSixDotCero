@@ -1,0 +1,1 @@
+<?php /**PATH C:\Users\dsgut\OneDrive\Escritorio\LaravelSixDotCero\resources\views/scripts/challenge-modal.blade.php ENDPATH**/ ?>

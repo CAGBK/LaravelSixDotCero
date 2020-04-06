@@ -23,4 +23,8 @@ class Challenge extends Model
     {
         return $this->belongsToMany('App\Models\User');
     }
+    public function state()
+    {
+        return $this->belongsTo('App\Models\State');
+    }
 }
