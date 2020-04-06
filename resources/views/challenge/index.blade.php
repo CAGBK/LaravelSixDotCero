@@ -91,7 +91,7 @@
 													@foreach($subcategories as $subcategory)
 														<tr class="tr-challenge-two">
 															<td>
-																<input id="{{ $subcategory->id }}" name="check-subcategory[]" type="checkbox" value="{{ $subcategory->id }}" >
+																<input id="{{ $subcategory->id }}" name="check_subcategory[]" type="checkbox" value="{{ $subcategory->id }}" >
 																@if ((Auth::User()->profile) && Auth::user()->profile->avatar_status == 1 )
 																<img name="img-subcategory" src="{{ $subcategory->profile->avatar}}" alt="{{ $subcategory->name}}" class="subcategory-avatar-nav subcategory-challenge">
 																@else

@@ -76,6 +76,7 @@ class DesafiosController extends Controller
         }
     }
     public function storeChallenge(Request $request){
+
        
         $dateconvert = $request->end_date; 
         $newDate = date("Y-m-d  g:i " , strtotime($dateconvert));

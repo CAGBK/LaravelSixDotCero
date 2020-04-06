@@ -89,7 +89,7 @@
 													<?php $__currentLoopData = $subcategories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $subcategory): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 														<tr class="tr-challenge-two">
 															<td>
-																<input id="<?php echo e($subcategory->id); ?>" name="check-subcategory[]" type="checkbox" value="<?php echo e($subcategory->id); ?>" >
+																<input id="<?php echo e($subcategory->id); ?>" name="check_subcategory[]" type="checkbox" value="<?php echo e($subcategory->id); ?>" >
 																<?php if((Auth::User()->profile) && Auth::user()->profile->avatar_status == 1 ): ?>
 																<img name="img-subcategory" src="<?php echo e($subcategory->profile->avatar); ?>" alt="<?php echo e($subcategory->name); ?>" class="subcategory-avatar-nav subcategory-challenge">
 																<?php else: ?>
