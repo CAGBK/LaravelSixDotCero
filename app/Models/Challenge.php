@@ -10,11 +10,6 @@ class Challenge extends Model
     protected $fillable = ['nombre', 'categorias', 'subcategorias', 'fecha_inicio', 'fecha_fin', 'estado'];
     protected $guarded = ['id'];
 
-    public function user()
-    {
-        return $this->belongsTo('App\Models\User');
-    }
-
     public function categories()
     {
         return $this->hasMany('App\Models\Category');
@@ -27,4 +22,5 @@ class Challenge extends Model
     {
         return $this->belongsTo('App\Models\State');
     }
+
 }
