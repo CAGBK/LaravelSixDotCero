@@ -14,6 +14,7 @@ use App\Models\Answer;
 use App\Models\CQuestion;
 use App\Models\User;
 use App\Models\State;
+use App\Models\ChallengeUser;
 use jeremykenedy\LaravelRoles\Models\Role;
 use Illuminate\Support\Facades\DB;
 
@@ -92,6 +93,17 @@ class DesafiosController extends Controller
         $start_date = new \DateTime();
         $challenge->start_date = $start_date;
         $challenge->save();
+        $challenge = Challenge::all();
+        $challengeid = $challenge->last(); 
+        $resultadoJson = json_decode($jsonUsers, true);
+        
+        foreach($resultadoJson as $value ){
+            $detail_ch = new ChallengeUser;
+            $detail_ch->user_id = $value;
+            $detail_ch->challenge_id = $challengeid->id;
+            $detail_ch->score = 0;
+            $detail_ch->save();
+        }
     
         return redirect('challenge-list');
     }
