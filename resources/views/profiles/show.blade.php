@@ -59,6 +59,17 @@
 							<dd>
 								{{ $user->email }}
 							</dd>
+							@if(!$categories->isEmpty())
+								<dt>
+									{{ trans('profile.profileCategory') }}
+								</dt>
+								<dd>
+									@foreach ($categories as $category)
+										<span class="badge badge-info">{{ $category->name }}</span>
+									@endforeach
+								</dd>
+							@endif
+
 
 							@if ($user->profile)
 
@@ -70,6 +81,7 @@
 										{{ $currentTheme->name }}
 									</dd>
 								@endif
+
 
 								@if ($user->profile->location)
 									<dt>

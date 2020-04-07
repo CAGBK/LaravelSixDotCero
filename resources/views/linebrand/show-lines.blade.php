@@ -47,11 +47,16 @@
             </div>
 
             <div class="col-sm-7">
-                @foreach ($category->subcategories as $subcategory)
-                  @if($subcategory)
-                  <span class="badge " >{{$subcategory->name}}</span>
-                  @endif
+              @if($category->subcategory)
+              <?php 
+              $arraySubcategory = json_decode($category->subcategory);
+              ?>
+              @foreach ($arraySubcategory as $value)
+                @foreach ($subcategories as $subcategory)
+                  <span class="badge badge-info">{{ $value == $subcategory->id ? $subcategory->name : ''  }}</span>
                 @endforeach
+              @endforeach 
+              @endif
             </div>
 
             <div class="clearfix"></div>
@@ -64,9 +69,14 @@
             </div>
 
             <div class="col-sm-7">
-              @if ($category->user)
-              @foreach($users as $user)
-                <span class="badge badge-info text-white">{{ $user->name }}</span>
+              @if($category->subcategory)
+              <?php 
+              $arrayUsers = json_decode($category->user);
+              ?>
+              @foreach ($arrayUsers as $value)
+                @foreach ($users as $user)
+                  <span class="badge badge-info">{{ $value == $user->id ? $user->name : ''  }}</span>
+                @endforeach
               @endforeach
               @else
                 No hay usuarios asignados

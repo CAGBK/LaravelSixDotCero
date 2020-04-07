@@ -28,7 +28,7 @@
             <div class="border-bottom"></div>
             <div class="col-sm-5 col-6 text-larger">
               <strong>
-                Pregunta:
+                Marcas:
               </strong>
             </div>
             <div class="col-sm-7">
@@ -41,14 +41,21 @@
 
             <div class="col-sm-5 col-6 text-larger">
               <strong>
-                Respuestas:
+                Preguntas:
               </strong>
             </div>
 
             <div class="col-sm-7">
-                <?php $__currentLoopData = $subcategory->questions; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $question): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                  <span class="badge text-white" style="background-color: <?php echo e($question->state->color); ?>"><?php echo e($question->question_name); ?></span>
+              <?php if($subcategory->question): ?>  
+              <?php 
+              $arrayQuestion = json_decode($subcategory->question);
+              ?>
+              <?php $__currentLoopData = $arrayQuestion; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $value): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                <?php $__currentLoopData = $questions; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $question): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                  <span class="badge text-white" style="background-color: <?php echo e($question->state->color); ?>"><?php echo e($value == $question->id ? $question->question_name : ''); ?></span>
                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+              <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?> 
+              <?php endif; ?>
             </div>
 
             <div class="clearfix"></div>

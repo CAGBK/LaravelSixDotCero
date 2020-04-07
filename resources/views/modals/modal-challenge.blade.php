@@ -16,7 +16,14 @@
               </strong>
             </div>
             <div class="col-sm-7">
-              {{ $challenge->users }}
+              <?php 
+              $arrayUsers = json_decode($challenge->users);
+              ?>
+              @foreach ($arrayUsers as $value)
+                @foreach ($users as $user)
+                  <span class="badge badge-info">{{ $value == $user->id ? $user->name : ''  }}</span>
+                @endforeach
+              @endforeach 
             </div>
 
             <div class="clearfix"></div>
@@ -29,8 +36,14 @@
             </div>
 
             <div class="col-sm-7">
-                
-              {{ $challenge->subcategories }}
+              <?php 
+              $arraySubcategories = json_decode($challenge->subcategories);
+              ?>
+              @foreach ($arraySubcategories as $value)
+                @foreach ($subcategories as $subcategory)
+                  <span class="badge badge-info">{{ $value == $subcategory->id ? $subcategory->name : ''  }}</span>
+                @endforeach
+              @endforeach 
 
             </div>
 
@@ -45,7 +58,7 @@
 
             <div class="col-sm-7">
               
-              {{ $challenge->state_id }}
+              {{ $challenge->state->state }}
               
             </div>
 

@@ -46,11 +46,16 @@
             </div>
 
             <div class="col-sm-7">
-                <?php $__currentLoopData = $category->subcategories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $subcategory): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                  <?php if($subcategory): ?>
-                  <span class="badge " ><?php echo e($subcategory->name); ?></span>
-                  <?php endif; ?>
+              <?php if($category->subcategory): ?>
+              <?php 
+              $arraySubcategory = json_decode($category->subcategory);
+              ?>
+              <?php $__currentLoopData = $arraySubcategory; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $value): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                <?php $__currentLoopData = $subcategories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $subcategory): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                  <span class="badge badge-info"><?php echo e($value == $subcategory->id ? $subcategory->name : ''); ?></span>
                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+              <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?> 
+              <?php endif; ?>
             </div>
 
             <div class="clearfix"></div>
@@ -63,9 +68,14 @@
             </div>
 
             <div class="col-sm-7">
-              <?php if($category->user): ?>
-              <?php $__currentLoopData = $users; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $user): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                <span class="badge badge-info text-white"><?php echo e($user->name); ?></span>
+              <?php if($category->subcategory): ?>
+              <?php 
+              $arrayUsers = json_decode($category->user);
+              ?>
+              <?php $__currentLoopData = $arrayUsers; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $value): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                <?php $__currentLoopData = $users; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $user): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                  <span class="badge badge-info"><?php echo e($value == $user->id ? $user->name : ''); ?></span>
+                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
               <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
               <?php else: ?>
                 No hay usuarios asignados

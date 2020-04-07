@@ -24,7 +24,9 @@ class DesafiosController extends Controller
     public function listChallenge()
     {
         $challenges = Challenge::all();
-        return View::make('challenge.list', compact('challenges'));
+        $users = User::all();
+        $subcategories = Subcategory::all();
+        return View::make('challenge.list', compact('challenges','users', 'subcategories'));
     }
     public function index()
     {
