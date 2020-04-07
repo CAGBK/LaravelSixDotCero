@@ -81,7 +81,15 @@
                           <tr>
                               <td><?php echo e($category->name); ?></td>
                               <td>
-                                <?php if($category): ?>
+                                <?php if($category->subcategory): ?>
+                                <?php 
+                                $arraySubcategory = json_decode($category->subcategory);
+                                ?>
+                                <?php $__currentLoopData = $arraySubcategory; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $value): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                  <?php $__currentLoopData = $subcategories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $subcategory): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                    <span class="badge badge-info"><?php echo e($value == $subcategory->id ? $subcategory->name : ''); ?></span>
+                                  <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?> 
                                 <?php endif; ?>
                               </td>
                               </td>
@@ -175,8 +183,16 @@
                           <tr>
                               <td><?php echo e($subcategory->name); ?></td>
                               <td>
-                                  <?php if($subcategory): ?>
-                                  <?php endif; ?>
+                                <?php if($subcategory->question): ?>  
+                                <?php 
+                                $arrayQuestion = json_decode($subcategory->question);
+                                ?>
+                                <?php $__currentLoopData = $arrayQuestion; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $value): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                  <?php $__currentLoopData = $questions; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $question): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                    <span class="badge text-white" style="background-color: <?php echo e($question->state->color); ?>"><?php echo e($value == $question->id ? $question->question_name : ''); ?></span>
+                                  <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?> 
+                                <?php endif; ?>
                               </td>
                               </td>
                               <td class="hidden-sm hidden-xs hidden-md"><?php echo e($subcategory->created_at); ?></td>

@@ -30,7 +30,7 @@
             <div class="border-bottom"></div>
             <div class="col-sm-5 col-6 text-larger">
               <strong>
-                Pregunta:
+                Marca:
               </strong>
             </div>
             <div class="col-sm-7">
@@ -42,14 +42,21 @@
 
             <div class="col-sm-5 col-6 text-larger">
               <strong>
-                Respuestas:
+                Preguntas:
               </strong>
             </div>
 
             <div class="col-sm-7">
-                @foreach($subcategory->questions as $question)
-                  <span class="badge text-white" style="background-color: {{$question->state->color}}">{{$question->question_name}}</span>
+              @if ($subcategory->question)  
+              <?php 
+              $arrayQuestion = json_decode($subcategory->question);
+              ?>
+              @foreach ($arrayQuestion as $value)
+                @foreach ($questions as $question)
+                  <span class="badge text-white" style="background-color: {{ $question->state->color }}">{{ $value == $question->id ? $question->question_name : ''  }}</span>
                 @endforeach
+              @endforeach 
+              @endif
             </div>
 
             <div class="clearfix"></div>

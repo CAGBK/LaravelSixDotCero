@@ -81,7 +81,15 @@
                           <tr>
                               <td>{{$category->name}}</td>
                               <td>
-                                @if($category)
+                                @if($category->subcategory)
+                                <?php 
+                                $arraySubcategory = json_decode($category->subcategory);
+                                ?>
+                                @foreach ($arraySubcategory as $value)
+                                  @foreach ($subcategories as $subcategory)
+                                    <span class="badge badge-info">{{ $value == $subcategory->id ? $subcategory->name : ''  }}</span>
+                                  @endforeach
+                                @endforeach 
                                 @endif
                               </td>
                               </td>
@@ -167,8 +175,16 @@
                           <tr>
                               <td>{{$subcategory->name}}</td>
                               <td>
-                                  @if($subcategory)
-                                  @endif
+                                @if ($subcategory->question)  
+                                <?php 
+                                $arrayQuestion = json_decode($subcategory->question);
+                                ?>
+                                @foreach ($arrayQuestion as $value)
+                                  @foreach ($questions as $question)
+                                    <span class="badge text-white" style="background-color: {{ $question->state->color }}">{{ $value == $question->id ? $question->question_name : ''  }}</span>
+                                  @endforeach
+                                @endforeach 
+                                @endif
                               </td>
                               </td>
                               <td class="hidden-sm hidden-xs hidden-md">{{$subcategory->created_at}}</td>

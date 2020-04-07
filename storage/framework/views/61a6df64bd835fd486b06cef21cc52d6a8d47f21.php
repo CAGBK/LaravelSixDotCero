@@ -71,7 +71,7 @@
                         <div class="col-md-9">
                             <div class="input-group">
                                 <select class="custom-select form-control js-example-basic-multiple" name="question[]" id="question"  multiple="multiple" >
-                                    <option value="">Seleccione Preguntas</option>
+                                    <option value="0">Seleccione Preguntas</option>
                                     <?php if($brand->question): ?>
                                          <?php $__currentLoopData = $questions; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $question): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                                 <option value="<?php echo e($question->id); ?>"><?php echo e($question->question_name); ?></option>
