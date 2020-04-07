@@ -14,6 +14,7 @@ use App\Models\Subcategory;
 
 use App\Models\Question;
 
+
 class LineasMarcasController extends Controller
 {
     /* Lista de Categorias y Subcategorias */
@@ -21,7 +22,8 @@ class LineasMarcasController extends Controller
     {
         $categories = Category::all();
         $subcategories = Subcategory::all();
-        return View::make('linebrand/list', compact('categories','subcategories'));
+        $questions = Question::all();
+        return View::make('linebrand/list', compact('categories','subcategories','questions'));
     }
 
     /* Cargar crear categoria */
@@ -99,7 +101,8 @@ class LineasMarcasController extends Controller
     {
         $category = Category::find($id);
         $users = User::all();
-        return \View::make('linebrand/show-lines',compact('category','users'));
+        $subcategories = Subcategory::all();
+        return \View::make('linebrand/show-lines',compact('category','users','subcategories'));
     }
 
     /* Mostrar subcategoria */
@@ -107,7 +110,8 @@ class LineasMarcasController extends Controller
     public function showBrand(Request $request, $id)
     {
         $subcategory = Subcategory::find($id);
-        return \View::make('linebrand/show-brands',compact('subcategory'));
+        $questions = Question::all();
+        return \View::make('linebrand/show-brands',compact('subcategory','questions'));
     }
 
     /* Cargar edición categoria */
