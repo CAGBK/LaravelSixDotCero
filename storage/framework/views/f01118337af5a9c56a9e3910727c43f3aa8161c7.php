@@ -146,7 +146,7 @@
 
                                     <div class="col-md-9">
                                         <div class="input-group">
-                                            <?php echo Form::text('number_questions', NULL, array('id' => 'number_questions', 'class' => 'form-control', 'placeholder' => 'Pregunta...')); ?>
+                                            <?php echo Form::number('number_questions', NULL, array('id' => 'number_questions', 'class' => 'form-control', 'placeholder' => 'Pregunta...')); ?>
 
                                             <div class="input-group-append">
                                                 <label for="number_questions" class="input-group-text">

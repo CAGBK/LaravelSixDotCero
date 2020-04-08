@@ -104,15 +104,16 @@
 
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <?php if (Auth::check() && Auth::user()->hasRole('admin')): ?>
                         <a class="dropdown-item nav-font <?php echo e(Request::is('lineas-marcas') ? 'active' : null); ?>" href="<?php echo e(url('lineas-marcas')); ?>">
                             <?php echo trans('titles.lines'); ?>
 
                         </a>
-                        
                         <a class="dropdown-item nav-font <?php echo e(Request::is('blocker') ? 'active' : null); ?>" href="<?php echo e(url('/preguntas-respuestas')); ?>">
                             <?php echo trans('titles.questions'); ?>
 
                         </a>
+                        <?php endif; ?>
                         
                         <a class="dropdown-item nav-font <?php echo e(Request::is('blocker') ? 'active' : null); ?>" href="<?php echo e(url('/challenge-list')); ?>">
                             <?php echo trans('titles.challenges'); ?>
@@ -128,8 +129,21 @@
                 <?php if(auth()->guard()->guest()): ?>
                     
                 <?php else: ?>
+                    <li class="nav-item dropdown" style="margin-right: 1rem;">
+                        <a id="navbarDropdown" class="dropdown-toggle text-white" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            <i class="fa fa-globe" aria-hidden="true"></i> Notificaciones <span class="badge badge-info"><?php echo e(count(Auth()->user()->unreadNotifications)); ?></span>
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <?php $__currentLoopData = Auth()->user()->unreadNotifications; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $notification): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            <a class="dropdown-item nav-font" href="#">
+                                <?php echo e($notification->type); ?>
+
+                            </a>
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                        </div>
+                    </li>
                     <li class="nav-item dropdown">
-                        <a id="navbarDropdown" class="nav-link dropdown-toggle text-white" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                        <a id="navbarDropdown" class="dropdown-toggle text-white" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                             <?php if((Auth::User()->profile) && Auth::user()->profile->avatar_status == 1): ?>
                                 <img src="<?php echo e(Auth::user()->profile->avatar); ?>" alt="<?php echo e(Auth::user()->name); ?>" class="user-avatar-nav">
                             <?php else: ?>

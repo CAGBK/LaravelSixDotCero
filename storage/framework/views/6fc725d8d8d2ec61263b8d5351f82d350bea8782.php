@@ -13,7 +13,7 @@
         </div>
         <div class="card-body">
           <?php $__currentLoopData = $questiona->answers; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $answer): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-          <div style="border-radius: 1rem;border: 1px <?php echo e($questiona->cquestion->color); ?> solid;opacity: .5; margin: 5px;" class="col-md-12 text-center"><a href="<?php echo e(URL::to('answer/' . $answer->id )); ?>" style="text-decoration:none;color:#000;">
+          <div style="border-radius: 1rem;border: 1px <?php echo e($questiona->cquestion->color); ?> solid;opacity: .5; margin: 5px;" class="col-md-12 text-center"><a href="<?php echo e(URL::to('answer/' . $answer->id . '/' . $challenge->id)); ?>" style="text-decoration:none;color:#000;">
             <p class="pregunta-text"><?php echo e($answer->name); ?></p>
           </a></div>
           <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
