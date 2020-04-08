@@ -117,9 +117,11 @@
                             @endif
                         </div>
                     </div>
+                    @permission('create.line')
                     <button type="submit" class="btn btn-success margin-bottom-1 mb-1 float-right">
                       Crear Nueva Linea
                     </button>
+                    @endpermission
                   </form>
               </div>
           </div>

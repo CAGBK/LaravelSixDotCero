@@ -95,9 +95,11 @@
                             <?php endif; ?>
                         </div>
                     </div>
+                    <?php if (Auth::check() && Auth::user()->hasPermission('edit.brand')): ?>
                     <button type="submit" class="btn btn-success margin-bottom-1 mb-1 float-right">
                       Actualizar Marca
                     </button>  
+                    <?php endif; ?>
                     <?php echo Form::close(); ?>
 
                 </div>

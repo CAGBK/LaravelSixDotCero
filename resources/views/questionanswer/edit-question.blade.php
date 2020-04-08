@@ -121,9 +121,11 @@
                                         @endif
                                     </div>
                                 </div>
+                                @permission('edit.question')
                                 <button type="submit" class="btn btn-success margin-bottom-1 mb-1 float-right">
                                     Actualizar Pregunta
                                 </button>  
+                                @endpermission
                             {!! Form::close() !!}
                         </div>        
                     </div>

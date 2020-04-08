@@ -1,19 +1,5 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-| Middleware options can be located in `app/Http/Kernel.php`
-|
-*/
-
-// Homepage Route
 Route::group(['middleware' => ['web', 'checkblocked']], function () {
     Route::get('/', 'WelcomeController@welcome')->name('welcome');
 });
@@ -95,35 +81,7 @@ Route::group(['middleware' => ['auth', 'activated', 'currentUser', 'activity', '
 
     // Route to upload user avatar.
     Route::post('avatar/upload', ['as' => 'avatar.upload', 'uses' => 'ProfilesController@upload']);
-    // Route to Linea and Brand
-    Route::get('lineas-marcas', 'LineasMarcasController@index')->name('lineas_marcas');
-    Route::get('challenge', 'DesafiosController@index')->name('challenge');
-    Route::post('crear/Desafio', 'DesafiosController@storeChallenge')->name('create_challenge');
-    Route::get('challenge-list', 'DesafiosController@listChallenge')->name('challenge_list');
-    Route::get('game/{id}', 'DesafiosController@ruleta')->name('game');
-    Route::get('answer/{id}/{challenge}', 'DesafiosController@anwers')->name('answers');
-    Route::get('question-game/{id}/{challenge}', 'DesafiosController@questionGame')->name('question_game');
-    Route::get('crear/Linea', 'LineasMarcasController@createLine')->name('create_line');
-    Route::get('crear/Marca', 'LineasMarcasController@createBrand')->name('create_brand');
-    Route::get('crear/pregunta-respuesta', 'PreguntasRespuestasController@createQuestionAnswer')->name('create_question_answer');
-    Route::post('new/Linea', 'LineasMarcasController@storeLinea')->name('ruta_new_line');
-    Route::post('new/Marca', 'LineasMarcasController@storeBrand')->name('ruta_new_brand');
-    Route::get('brand/{id}/edit', 'LineasMarcasController@editBrand')->name('edit_brand');
-    Route::get('line/{id}/edit', 'LineasMarcasController@editLine')->name('edit_line');
-    Route::put('brand/update/{id}', 'LineasMarcasController@updateBrand')->name('update_brand');
-    Route::put('line/update/{id}', 'LineasMarcasController@updateLine')->name('update_line');
-    // Route to Questions
-    Route::get('preguntas-respuestas', 'PreguntasRespuestasController@index')->name('preguntas_respuestas');
-    Route::get('crear/Pregunta', 'PreguntasRespuestasController@createQuestion')->name('create_question');
-    Route::post('new/Pregunta', 'PreguntasRespuestasController@storeQuestion')->name('ruta_new_question');
-    Route::get('question/{id}', 'PreguntasRespuestasController@showQuestion')->name('show_question');
-    Route::get('line/{id}', 'LineasMarcasController@showLine')->name('show_line');
-    Route::get('brand/{id}', 'LineasMarcasController@showBrand')->name('show_brand');
-    Route::get('question/{id}/edit', 'PreguntasRespuestasController@edit')->name('edit_question');
-    Route::put('question/update/{id}', 'PreguntasRespuestasController@updateQuestion')->name('update_question');
-    Route::get('brandByLinea/{id}', 'DesafiosController@byLinea');
-
-
+    
 });
 
 // Registered, activated, and is admin routes.
@@ -134,15 +92,6 @@ Route::group(['middleware' => ['auth', 'activated', 'role:admin', 'activity', 't
         ],
     ]);
 
-    Route::resource('users', 'UsersManagementController', [
-        'names' => [
-            'index'   => 'users',
-            'destroy' => 'user.destroy',
-        ],
-        'except' => [
-            'deleted',
-        ],
-    ]);
     Route::post('search-users', 'UsersManagementController@search')->name('search-users');
 
     Route::resource('themes', 'ThemesManagementController', [
@@ -152,21 +101,84 @@ Route::group(['middleware' => ['auth', 'activated', 'role:admin', 'activity', 't
         ],
     ]);
 
-    Route::resource('question', 'PreguntasRespuestasController', [
+    
+    Route::get('active-users', 'AdminDetailsController@activeUsers');
+
+    Route::resource('users', 'UsersManagementController', [
         'names' => [
-            'destroy' => 'question.destroy',
+            'destroy' => 'user.destroy',
+        ],
+        'except' => [
+            'deleted',
         ],
     ]);
 
-    Route::delete('line/{id}', 'LineasMarcasController@destroy')->name('line_destroy');
-
-    Route::delete('brand/{id}', 'LineasMarcasController@destroyBrand')->name('brand_destroy');
-
-
     Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
+
+    Route::get('users', 'UsersManagementController@index')->name('users');
+
     Route::get('routes', 'AdminDetailsController@listRoutes');
-    Route::get('active-users', 'AdminDetailsController@activeUsers');
 });
 
 Route::redirect('/php', '/phpinfo', 301);
+
+
+//Rutas pata gestion de lineas, marcas y desafios
+Route::middleware(['auth'])->group(function(){
+
+    //Rutas pata gestion de lineas y narcas
+
+    Route::get('lineas-marcas', 'LineasMarcasController@index')->name('lineas_marcas')->middleware('permission:view.lines');
+
+    //Exclusivo de lineas
+
+    Route::delete('line/{id}', 'LineasMarcasController@destroy')->name('line_destroy');
+
+    Route::get('crear/Linea', 'LineasMarcasController@createLine')->name('create_line')->middleware('permission:view.create.line');
+
+    Route::post('new/Linea', 'LineasMarcasController@storeLinea')->name('ruta_new_line')->middleware('permission:create.line');
+
+    Route::get('line/{id}/edit', 'LineasMarcasController@editLine')->name('edit_line')->middleware('permission:view.edit.line');
+
+    Route::put('line/update/{id}', 'LineasMarcasController@updateLine')->name('update_line')->middleware('permission:edit.line');
+
+    Route::get('line/{id}', 'LineasMarcasController@showLine')->name('show_line')->middleware('permission:detail.line');
+
+    //Exclusivo marcas
+
+    Route::delete('brand/{id}', 'LineasMarcasController@destroyBrand')->name('brand_destroy');
+
+    Route::get('crear/Marca', 'LineasMarcasController@createBrand')->name('create_brand')->middleware('permission:view.create.brand');
+
+    Route::put('brand/update/{id}', 'LineasMarcasController@updateBrand')->name('update_brand')->middleware('permission:edit.brand');
+
+    Route::post('new/Marca', 'LineasMarcasController@storeBrand')->name('ruta_new_brand')->middleware('permission:create.brand');
+
+    Route::get('brand/{id}/edit', 'LineasMarcasController@editBrand')->name('edit_brand')->middleware('permission:view.edit.brand');
+
+    Route::get('brand/{id}', 'LineasMarcasController@showBrand')->name('show_brand')->middleware('permission:detail.brand');
+
+    //Rutas para gestion de preguntas y respuestas
+
+    Route::get('preguntas-respuestas', 'PreguntasRespuestasController@index')->name('preguntas_respuestas');
+
+    Route::get('crear/Pregunta', 'PreguntasRespuestasController@createQuestion')->name('create_question')->middleware('permission:view.create.question');
+
+    Route::post('new/Pregunta', 'PreguntasRespuestasController@storeQuestion')->name('ruta_new_question')->middleware('permission:create.question');
+
+    Route::get('question/{id}', 'PreguntasRespuestasController@showQuestion')->name('show_question')->middleware('permission:detail.question');
+
+    Route::get('question/{id}/edit', 'PreguntasRespuestasController@edit')->name('edit_question')->middleware('permission:view.edit.question');
+
+    Route::put('question/update/{id}', 'PreguntasRespuestasController@updateQuestion')->name('update_question')->middleware('permission:edit.question');
+
+    //Exclusivo Desafios 
+
+    Route::get('challenge', 'DesafiosController@index')->name('challenge');
+    Route::post('crear/Desafio', 'DesafiosController@storeChallenge')->name('create_challenge');
+    Route::get('challenge-list', 'DesafiosController@listChallenge')->name('challenge_list');
+    Route::get('game/{id}', 'DesafiosController@ruleta')->name('game');
+    Route::get('answer/{id}/{challenge}', 'DesafiosController@anwers')->name('answers');
+    Route::get('question-game/{id}/{challenge}', 'DesafiosController@questionGame')->name('question_game');
+});
 

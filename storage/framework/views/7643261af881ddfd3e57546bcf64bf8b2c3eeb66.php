@@ -69,12 +69,12 @@
 
             <div class="col-sm-5 col-6 text-larger">
               <strong>
-                Categoria Respuesta:
+                Categoria de Pregunta:
               </strong>
             </div>
 
             <div class="col-sm-7">
-                  <span class="badge text-white" style="background-color: <?php echo e($question->cquestion->color); ?>"><?php echo e($question->cquestion->name); ?></span>
+              <span class="badge text-white" style="background-color: <?php echo e($question->cquestion->color); ?>"><?php echo e($question->cquestion->name); ?></span>
             </div>
 
             <div class="clearfix"></div>
@@ -103,7 +103,10 @@
             <div class="col-sm-7">
               <?php echo e($question->updated_at); ?>
 
-            </div>            
+            </div>
+
+            <div class="clearfix"></div>
+            <div class="border-bottom"></div>
           </div>
 
         </div>
