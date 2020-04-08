@@ -77,8 +77,8 @@
           </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary">Jugar</button>
-        <button type="button" class="btn btn-primary">Continuar Desafio</button>
+        <a href="{{ route('game',['id' => $challenge->id]) }}" type="button" class="btn btn-primary">Jugar</a>
+        <a href="{{ route('game',['id' => $challenge->id]) }}" type="button" class="btn btn-primary">Continuar Desafio</a>
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
       </div>
     </div>

@@ -19325,6 +19325,7 @@ div#challenge-check_wrapper > div {
   background-repeat: no-repeat;
   background-position: center;
   cursor: pointer;
+  margin-top: -3rem;
 }
 
 #Ruleta {

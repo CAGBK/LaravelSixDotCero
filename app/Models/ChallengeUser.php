@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class ChallengeUser extends Model
 {
     protected $table = "challenge_user";
-    protected $fillable = ['user_id', 'challenge_id', 'score'];
+    protected $fillable = ['user_id', 'challenge_id', 'score', 'number_question'];
     protected $guarded = ['id'];
 
     public function user()

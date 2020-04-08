@@ -29,7 +29,7 @@
 	function Mensaje() {
 	  segmentoSeleccionado = miRuleta.getIndicatedSegment();
 	  miRuleta.stopAnimation(false);
-	  window.location= "question-game/" + segmentoSeleccionado.id;
+	  window.location= "/question-game/" + segmentoSeleccionado.id + '/' + <?php echo e($challenge->id); ?>;
 	}
 
    function dibujarIndicador() {

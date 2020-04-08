@@ -88,13 +88,14 @@
                         {!! trans('titles.adminGame') !!}
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        @role('admin')
                         <a class="dropdown-item nav-font {{ Request::is('lineas-marcas') ? 'active' : null }}" href="{{ url('lineas-marcas') }}">
                             {!! trans('titles.lines') !!}
                         </a>
-                        
                         <a class="dropdown-item nav-font {{ Request::is('blocker') ? 'active' : null }}" href="{{ url('/preguntas-respuestas') }}">
                             {!! trans('titles.questions') !!}
                         </a>
+                        @endrole
                         
                         <a class="dropdown-item nav-font {{ Request::is('blocker') ? 'active' : null }}" href="{{ url('/challenge-list') }}">
                             {!! trans('titles.challenges') !!}
@@ -109,8 +110,20 @@
                 @guest
                     
                 @else
+                    <li class="nav-item dropdown" style="margin-right: 1rem;">
+                        <a id="navbarDropdown" class="dropdown-toggle text-white" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            <i class="fa fa-globe" aria-hidden="true"></i> Notificaciones <span class="badge badge-info">{{ count(Auth()->user()->unreadNotifications) }}</span>
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            @foreach (Auth()->user()->unreadNotifications as $notification)
+                            <a class="dropdown-item nav-font" href="#">
+                                {{ $notification->type }}
+                            </a>
+                            @endforeach
+                        </div>
+                    </li>
                     <li class="nav-item dropdown">
-                        <a id="navbarDropdown" class="nav-link dropdown-toggle text-white" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                        <a id="navbarDropdown" class="dropdown-toggle text-white" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                             @if ((Auth::User()->profile) && Auth::user()->profile->avatar_status == 1)
                                 <img src="{{ Auth::user()->profile->avatar }}" alt="{{ Auth::user()->name }}" class="user-avatar-nav">
                             @else

@@ -145,7 +145,7 @@
                                     {!! Form::label('number_questions', 'Cantidad de Preguntas', array('class' => 'col-md-3 control-label')); !!}
                                     <div class="col-md-9">
                                         <div class="input-group">
-                                            {!! Form::text('number_questions', NULL, array('id' => 'number_questions', 'class' => 'form-control', 'placeholder' => 'Pregunta...')) !!}
+                                            {!! Form::number('number_questions', NULL, array('id' => 'number_questions', 'class' => 'form-control', 'placeholder' => 'Pregunta...')) !!}
                                             <div class="input-group-append">
                                                 <label for="number_questions" class="input-group-text">
                                                     <i class="fa fa-fw {{ trans('forms.create_user_icon_email') }} nav-font" aria-hidden="true"></i>

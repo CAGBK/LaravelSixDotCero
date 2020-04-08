@@ -100,9 +100,9 @@ Route::group(['middleware' => ['auth', 'activated', 'currentUser', 'activity', '
     Route::get('challenge', 'DesafiosController@index')->name('challenge');
     Route::post('crear/Desafio', 'DesafiosController@storeChallenge')->name('create_challenge');
     Route::get('challenge-list', 'DesafiosController@listChallenge')->name('challenge_list');
-    Route::get('ruleta', 'DesafiosController@ruleta')->name('ruleta');
-    Route::get('answer/{id}', 'DesafiosController@anwers')->name('answers');
-    Route::get('question-game/{id}', 'DesafiosController@questionGame')->name('question_game');
+    Route::get('game/{id}', 'DesafiosController@ruleta')->name('game');
+    Route::get('answer/{id}/{challenge}', 'DesafiosController@anwers')->name('answers');
+    Route::get('question-game/{id}/{challenge}', 'DesafiosController@questionGame')->name('question_game');
     Route::get('crear/Linea', 'LineasMarcasController@createLine')->name('create_line');
     Route::get('crear/Marca', 'LineasMarcasController@createBrand')->name('create_brand');
     Route::get('crear/pregunta-respuesta', 'PreguntasRespuestasController@createQuestionAnswer')->name('create_question_answer');
