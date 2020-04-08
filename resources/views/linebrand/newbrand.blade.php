@@ -90,9 +90,11 @@
                             @endif
                         </div>
                     </div>
+                    @permission('create.brand')
                     <button type="submit" class="btn btn-success margin-bottom-1 mb-1 float-right">
                       Crear Nueva Marca
                     </button>  
+                    @endpermission
                   </form>
               </div>
           </div>

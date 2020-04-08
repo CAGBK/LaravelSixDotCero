@@ -192,9 +192,11 @@
                                         @endif
                                     </div>
                                 </div>
+                                @permission('create.question')
                                 <button type="submit" class="btn btn-success margin-bottom-1 mb-1 float-right">
                                     Crear Nueva Pregunta
                                 </button>  
+                                @endpermission
                             </form>
                         </div>        
                     </div>

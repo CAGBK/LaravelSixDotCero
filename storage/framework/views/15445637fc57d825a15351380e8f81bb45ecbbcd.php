@@ -28,7 +28,7 @@
             <div class="border-bottom"></div>
             <div class="col-sm-5 col-6 text-larger">
               <strong>
-                Marcas:
+                Marca:
               </strong>
             </div>
             <div class="col-sm-7">

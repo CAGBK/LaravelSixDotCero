@@ -1,4 +1,4 @@
-<nav id="main-nav" class="navbar navbar-expand-md navbar-light navbar-laravel nav-color">
+<nav id="main-nav" class="navbar navbar-expand-md navbar-light nav-color-home">
     <div class="container">
         <div style=" display: inline-block; text-align: center;">
             <a class=""  href="{{ url('/home') }}">
@@ -62,47 +62,28 @@
                         </div>
                     </li>
                 @endrole
-                @role('admin')
+                @permission('menu.juego')
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         {!! trans('titles.adminGame') !!}
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        @permission('view.lines')
                         <a class="dropdown-item nav-font {{ Request::is('lineas-marcas') ? 'active' : null }}" href="{{ url('lineas-marcas') }}">
                             {!! trans('titles.lines') !!}
                         </a>
-                        
-                        <a class="dropdown-item nav-font {{ Request::is('blocker') ? 'active' : null }}" href="{{ url('/preguntas-respuestas') }}">
-                            {!! trans('titles.questions') !!}
-                        </a>
-                        
+                        @endpermission
+                        @permission('view.questions')
+                            <a class="dropdown-item nav-font {{ Request::is('blocker') ? 'active' : null }}" href="{{ url('/preguntas-respuestas') }}">
+                                {!! trans('titles.questions') !!}
+                            </a>
+                        @endpermission
                         <a class="dropdown-item nav-font {{ Request::is('blocker') ? 'active' : null }}" href="{{ url('/challenge-list') }}">
                             {!! trans('titles.challenges') !!}
                         </a>
                     </div>
                 </li>
-                @endrole
-                @role('user')
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        {!! trans('titles.adminGame') !!}
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        @role('admin')
-                        <a class="dropdown-item nav-font {{ Request::is('lineas-marcas') ? 'active' : null }}" href="{{ url('lineas-marcas') }}">
-                            {!! trans('titles.lines') !!}
-                        </a>
-                        <a class="dropdown-item nav-font {{ Request::is('blocker') ? 'active' : null }}" href="{{ url('/preguntas-respuestas') }}">
-                            {!! trans('titles.questions') !!}
-                        </a>
-                        @endrole
-                        
-                        <a class="dropdown-item nav-font {{ Request::is('blocker') ? 'active' : null }}" href="{{ url('/challenge-list') }}">
-                            {!! trans('titles.challenges') !!}
-                        </a>
-                    </div>
-                </li>
-                @endrole
+                @endpermission
             </ul>
             {{-- Right Side Of Navbar --}}
             <ul class="navbar-nav ml-auto">
@@ -150,18 +131,3 @@
         </div>
     </div>
 </nav>
-<script type="application/javascript">
-    var URLactual = window.location;
-    var host = location.hostname;
-    var element = document.getElementById("main-nav");
-    if(URLactual=="http://"+host+"/login" || URLactual=="http://"+host+":8000/login" || URLactual=="http://"+host+":8000/"){
-        document.getElementById("nav-image").src = "/images/logoB.png";
-        document.getElementById("nav-image").style.display = "none";
-    } else if(URLactual=="http://"+host+"/register" || URLactual=="http://"+host+":8000/register"){
-        document.getElementById("nav-image").src = "/images/logoB.png";
-        document.getElementById("nav-image").style.display = "none";
-    }else{
-        document.getElementById("nav-image").src = "/images/logoB.png";
-        element.classList.add("nav-color-home");
-    }
-</script>

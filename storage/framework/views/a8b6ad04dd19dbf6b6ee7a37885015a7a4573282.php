@@ -121,9 +121,11 @@
                             <?php endif; ?>
                         </div>
                     </div>
+                    <?php if (Auth::check() && Auth::user()->hasPermission('create.line')): ?>
                     <button type="submit" class="btn btn-success margin-bottom-1 mb-1 float-right">
                       Crear Nueva Linea
                     </button>
+                    <?php endif; ?>
                   </form>
               </div>
           </div>

@@ -34,6 +34,7 @@
               Todas las Lineas
           </span>
           <div class="btn-group pull-right btn-group-xs">
+              <?php if (Auth::check() && Auth::user()->hasPermission('view.create.line')): ?>
               <button type="button" class="btn btn-default dropdown-toggle text-white" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <i class="fa fa-ellipsis-v fa-fw" aria-hidden="true"></i>
                   <span class="sr-only">
@@ -51,6 +52,7 @@
                       Lineas Inactivas
                   </a>
               </div>
+              <?php endif; ?>
           </div>
           </div>
         </div>
@@ -95,6 +97,7 @@
                               </td>
                               <td class="hidden-sm hidden-xs hidden-md"><?php echo e($category->created_at); ?></td>
                               <td class="hidden-sm hidden-xs hidden-md"><?php echo e($category->updated_at); ?></td>
+                              <?php if (Auth::check() && Auth::user()->hasRole('admin')): ?>
                               <td>
                                   <?php echo Form::open(array('url' => 'line/' . $category->id, 'class' => '', 'data-toggle' => 'tooltip', 'title' => 'Delete')); ?>
 
@@ -105,18 +108,23 @@
                                   <?php echo Form::close(); ?>
 
                               </td>
+                              <?php endif; ?>
+                              <?php if (Auth::check() && Auth::user()->hasPermission('detail.line')): ?>
                               <td>
                                   <a class="btn btn-sm btn-success btn-block" href="<?php echo e(route('show_line',['id' => $category->id])); ?>" data-toggle="tooltip" title="Show">
                                       <?php echo trans('linebrandmanagement.buttons.show'); ?>
 
                                   </a>
                               </td>
+                              <?php endif; ?>
+                              <?php if (Auth::check() && Auth::user()->hasPermission('view.edit.line')): ?>
                               <td>
                                   <a class="btn btn-sm btn-info btn-block" href="<?php echo e(URL::to('line/' . $category->id . '/edit')); ?>" data-toggle="tooltip" title="Edit">
                                       <?php echo trans('linebrandmanagement.buttons.edit'); ?>
 
                                   </a>
                               </td>
+                              <?php endif; ?>
                           </tr>
                       <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                   </tbody>
@@ -136,6 +144,7 @@
           </span>
 
           <div class="btn-group pull-right btn-group-xs">
+            <?php if (Auth::check() && Auth::user()->hasPermission('view.create.brand')): ?>
               <button type="button" class="btn btn-default dropdown-toggle text-white" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <i class="fa fa-ellipsis-v fa-fw" aria-hidden="true"></i>
                   <span class="sr-only">
@@ -153,6 +162,7 @@
                       Marcas Inactivas
                   </a>
               </div>
+            <?php endif; ?>
           </div>
           </div>
         </div>
@@ -197,6 +207,7 @@
                               </td>
                               <td class="hidden-sm hidden-xs hidden-md"><?php echo e($subcategory->created_at); ?></td>
                               <td class="hidden-sm hidden-xs hidden-md"><?php echo e($subcategory->updated_at); ?></td>
+                              <?php if (Auth::check() && Auth::user()->hasRole('admin')): ?>
                               <td>
                                   <?php echo Form::open(array('url' => 'brand/' . $subcategory->id, 'class' => '', 'data-toggle' => 'tooltip', 'title' => 'Delete')); ?>
 
@@ -207,18 +218,23 @@
                                   <?php echo Form::close(); ?>
 
                               </td>
+                              <?php endif; ?>
+                              <?php if (Auth::check() && Auth::user()->hasPermission('detail.brand')): ?>
                               <td>
                                   <a class="btn btn-sm btn-success btn-block" href="<?php echo e(route('show_brand',['id' => $subcategory->id])); ?>" data-toggle="tooltip" title="Show">
                                       <?php echo trans('linebrandmanagement.buttonsbrand.show'); ?>
 
                                   </a>
                               </td>
+                              <?php endif; ?>
+                              <?php if (Auth::check() && Auth::user()->hasPermission('view.edit.brand')): ?>
                               <td>
                                   <a class="btn btn-sm btn-info btn-block" href="<?php echo e(URL::to('brand/' . $subcategory->id . '/edit')); ?>" data-toggle="tooltip" title="Edit">
                                       <?php echo trans('linebrandmanagement.buttonsbrand.edit'); ?>
 
                                   </a>
                               </td>
+                              <?php endif; ?>
                           </tr>
                       <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                   </tbody>

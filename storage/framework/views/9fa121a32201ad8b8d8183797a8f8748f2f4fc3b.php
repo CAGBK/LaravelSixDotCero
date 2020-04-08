@@ -1,4 +1,4 @@
-<nav id="main-nav" class="navbar navbar-expand-md navbar-light navbar-laravel nav-color">
+<nav id="main-nav" class="navbar navbar-expand-md navbar-light nav-color-home">
     <div class="container">
         <div style=" display: inline-block; text-align: center;">
             <a class=""  href="<?php echo e(url('/home')); ?>">
@@ -73,48 +73,25 @@
                         </div>
                     </li>
                 <?php endif; ?>
-                <?php if (Auth::check() && Auth::user()->hasRole('admin')): ?>
+                <?php if (Auth::check() && Auth::user()->hasPermission('menu.juego')): ?>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <?php echo trans('titles.adminGame'); ?>
 
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <?php if (Auth::check() && Auth::user()->hasPermission('view.lines')): ?>
                         <a class="dropdown-item nav-font <?php echo e(Request::is('lineas-marcas') ? 'active' : null); ?>" href="<?php echo e(url('lineas-marcas')); ?>">
                             <?php echo trans('titles.lines'); ?>
-
-                        </a>
-                        
-                        <a class="dropdown-item nav-font <?php echo e(Request::is('blocker') ? 'active' : null); ?>" href="<?php echo e(url('/preguntas-respuestas')); ?>">
-                            <?php echo trans('titles.questions'); ?>
-
-                        </a>
-                        
-                        <a class="dropdown-item nav-font <?php echo e(Request::is('blocker') ? 'active' : null); ?>" href="<?php echo e(url('/challenge-list')); ?>">
-                            <?php echo trans('titles.challenges'); ?>
-
-                        </a>
-                    </div>
-                </li>
-                <?php endif; ?>
-                <?php if (Auth::check() && Auth::user()->hasRole('user')): ?>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <?php echo trans('titles.adminGame'); ?>
-
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <?php if (Auth::check() && Auth::user()->hasRole('admin')): ?>
-                        <a class="dropdown-item nav-font <?php echo e(Request::is('lineas-marcas') ? 'active' : null); ?>" href="<?php echo e(url('lineas-marcas')); ?>">
-                            <?php echo trans('titles.lines'); ?>
-
-                        </a>
-                        <a class="dropdown-item nav-font <?php echo e(Request::is('blocker') ? 'active' : null); ?>" href="<?php echo e(url('/preguntas-respuestas')); ?>">
-                            <?php echo trans('titles.questions'); ?>
 
                         </a>
                         <?php endif; ?>
-                        
+                        <?php if (Auth::check() && Auth::user()->hasPermission('view.questions')): ?>
+                            <a class="dropdown-item nav-font <?php echo e(Request::is('blocker') ? 'active' : null); ?>" href="<?php echo e(url('/preguntas-respuestas')); ?>">
+                                <?php echo trans('titles.questions'); ?>
+
+                            </a>
+                        <?php endif; ?>
                         <a class="dropdown-item nav-font <?php echo e(Request::is('blocker') ? 'active' : null); ?>" href="<?php echo e(url('/challenge-list')); ?>">
                             <?php echo trans('titles.challenges'); ?>
 
@@ -171,20 +148,4 @@
             </ul>
         </div>
     </div>
-</nav>
-<script type="application/javascript">
-    var URLactual = window.location;
-    var host = location.hostname;
-    var element = document.getElementById("main-nav");
-    if(URLactual=="http://"+host+"/login" || URLactual=="http://"+host+":8000/login" || URLactual=="http://"+host+":8000/"){
-        document.getElementById("nav-image").src = "/images/logoB.png";
-        document.getElementById("nav-image").style.display = "none";
-    } else if(URLactual=="http://"+host+"/register" || URLactual=="http://"+host+":8000/register"){
-        document.getElementById("nav-image").src = "/images/logoB.png";
-        document.getElementById("nav-image").style.display = "none";
-    }else{
-        document.getElementById("nav-image").src = "/images/logoB.png";
-        element.classList.add("nav-color-home");
-    }
-</script>
-<?php /**PATH C:\Users\dsgut\OneDrive\Escritorio\LaravelSixDotCero\resources\views/partials/nav.blade.php ENDPATH**/ ?>
+</nav><?php /**PATH C:\Users\dsgut\OneDrive\Escritorio\LaravelSixDotCero\resources\views/partials/nav.blade.php ENDPATH**/ ?>

@@ -126,9 +126,11 @@
                                         <?php endif; ?>
                                     </div>
                                 </div>
+                                <?php if (Auth::check() && Auth::user()->hasPermission('edit.question')): ?>
                                 <button type="submit" class="btn btn-success margin-bottom-1 mb-1 float-right">
                                     Actualizar Pregunta
                                 </button>  
+                                <?php endif; ?>
                             <?php echo Form::close(); ?>
 
                         </div>        

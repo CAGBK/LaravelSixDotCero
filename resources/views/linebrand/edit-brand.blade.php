@@ -91,9 +91,11 @@
                             @endif
                         </div>
                     </div>
+                    @permission('edit.brand')
                     <button type="submit" class="btn btn-success margin-bottom-1 mb-1 float-right">
                       Actualizar Marca
                     </button>  
+                    @endpermission
                     {!! Form::close() !!}
                 </div>
           </div>
