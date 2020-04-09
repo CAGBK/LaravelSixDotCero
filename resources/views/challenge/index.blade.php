@@ -35,7 +35,7 @@
 											<thead>
 												<tr>
 													<th>
-														a
+														Usuarios
 													</th>
 												</tr>
 											</thead>
@@ -44,7 +44,12 @@
 													@foreach($users as $user)
 														<tr class="tr-challenge">
 															<td>
-																<input id="{{ $user->id }}" name="check_user[]" type="checkbox" value="{{ $user->id }}" >
+																<label class="checkbox path">
+																	<input  id="{{ $user->id }}" name="check_user[]" type="checkbox" value="{{ $user->id }}" >
+																	<svg viewBox="0 0 21 21">
+																		<path d="M5,10.75 L8.5,14.25 L19.4,2.3 C18.8333333,1.43333333 18.0333333,1 17,1 L4,1 C2.35,1 1,2.35 1,4 L1,17 C1,18.65 2.35,20 4,20 L17,20 C18.65,20 20,18.65 20,17 L20,7.99769186"></path>
+																	</svg>
+																</label>	
 																@if ((Auth::User()->profile) && Auth::user()->profile->avatar_status == 1 )
 																<img name="img-user" src="{{ $user->profile->avatar}}" alt="{{ $user->name}}" class="user-avatar-nav user-challenge">
 																@else
@@ -66,7 +71,7 @@
 			                        </div>
 			                    </div>
 	                        </div> 
-	                        <input type="button" name="next" class="next action-button" value="Siguiente" />
+	                        <input type="button" name="next" class="next  btn-ch" value="Siguiente" />
 	                    </fieldset>
 	                    <fieldset>
 	                        <div class="form-card">
@@ -82,7 +87,7 @@
 											<thead>
 												<tr >
 													<th style="display:none;">
-														a
+														
 													</th>
 												</tr>
 											</thead>
@@ -113,7 +118,7 @@
 			                        </div>
 			                    </div>
 	                        </div> 
-	                        <input type="button" name="next" class="next action-button" value="Siguiente" /> <input type="button" name="previous" class="previous action-button-previous" value="Atras" />
+	                        <input type="button" name="next" class="next btn-ch-step-two" value="Siguiente" /> <input type="button" name="previous" class="previous action-button-previous" value="Atras" />
 	                    </fieldset>
 	                    <fieldset>
 	                        <div class="form-card">
