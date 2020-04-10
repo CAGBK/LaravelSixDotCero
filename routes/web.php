@@ -180,5 +180,8 @@ Route::middleware(['auth'])->group(function(){
     Route::get('game/{id}', 'DesafiosController@ruleta')->name('game');
     Route::get('answer/{id}/{challenge}', 'DesafiosController@anwers')->name('answers');
     Route::get('question-game/{id}/{challenge}', 'DesafiosController@questionGame')->name('question_game');
+    Route::get('markAsRead', function(){
+        Auth()->user()->unreadNotifications->markAsRead();
+    });
 });
 

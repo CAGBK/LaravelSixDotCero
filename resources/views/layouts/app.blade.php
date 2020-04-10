@@ -83,6 +83,7 @@
         @endif
 
         @yield('footer_scripts')
+        @include('scripts.main-script')
 
     </body>
 </html>

@@ -1,16 +1,14 @@
-<nav id="main-nav" class="navbar navbar-expand-md navbar-light nav-color-home">
+<nav id="main-nav" class="navbar navbar-expand-md navbar-dark nav-color-home">
     <div class="container">
         <div style=" display: inline-block; text-align: center;">
             <a class=""  href="<?php echo e(url('/home')); ?>">
                 <img id="nav-image" src="/images/logo.png" width="160px" height="80px" alt="">
             </a>
         </div>
-        <?php if (Auth::check() && Auth::user()->hasRole('admin')): ?>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
             <span class="sr-only"><?php echo trans('titles.toggleNav'); ?></span>
         </button>
-        <?php endif; ?>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             
             <ul class="navbar-nav mr-auto">
@@ -106,17 +104,18 @@
                 <?php if(auth()->guard()->guest()): ?>
                     
                 <?php else: ?>
-                    <li class="nav-item dropdown" style="margin-right: 1rem;">
+                    <li class="nav-item dropdown" onclick="markNotificationAsRead()" style="margin-right: 1rem;">
                         <a id="navbarDropdown" class="dropdown-toggle text-white" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                             <i class="fa fa-globe" aria-hidden="true"></i> Notificaciones <span class="badge badge-info"><?php echo e(count(Auth()->user()->unreadNotifications)); ?></span>
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <?php $__currentLoopData = Auth()->user()->unreadNotifications; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $notification): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                            <a class="dropdown-item nav-font" href="#">
-                                <?php echo e($notification->type); ?>
-
-                            </a>
-                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                            <?php $__empty_1 = true; $__currentLoopData = Auth()->user()->unreadNotifications; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $notification): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>                            
+                                <?php echo $__env->make('partials.notification.replied_to_thread', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
+                                <a class="dropdown-item nav-font" href="#">No hay notificaciones no leídas</a>
+                                <hr>
+                                <a href="/challenge-list" class="dropdown-item nav-font"><strong><center>ver todos los desafios</center></strong></a>
+                            <?php endif; ?>
                         </div>
                     </li>
                     <li class="nav-item dropdown">
