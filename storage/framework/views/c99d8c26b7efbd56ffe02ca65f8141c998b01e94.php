@@ -33,7 +33,7 @@
 											<thead>
 												<tr>
 													<th>
-														a
+														Usuarios
 													</th>
 												</tr>
 											</thead>
@@ -42,7 +42,12 @@
 													<?php $__currentLoopData = $users; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $user): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 														<tr class="tr-challenge">
 															<td>
-																<input id="<?php echo e($user->id); ?>" name="check_user[]" type="checkbox" value="<?php echo e($user->id); ?>" >
+																<label class="checkbox path">
+																	<input  id="<?php echo e($user->id); ?>" name="check_user[]" type="checkbox" value="<?php echo e($user->id); ?>" >
+																	<svg viewBox="0 0 21 21">
+																		<path d="M5,10.75 L8.5,14.25 L19.4,2.3 C18.8333333,1.43333333 18.0333333,1 17,1 L4,1 C2.35,1 1,2.35 1,4 L1,17 C1,18.65 2.35,20 4,20 L17,20 C18.65,20 20,18.65 20,17 L20,7.99769186"></path>
+																	</svg>
+																</label>	
 																<?php if((Auth::User()->profile) && Auth::user()->profile->avatar_status == 1 ): ?>
 																<img name="img-user" src="<?php echo e($user->profile->avatar); ?>" alt="<?php echo e($user->name); ?>" class="user-avatar-nav user-challenge">
 																<?php else: ?>
@@ -64,7 +69,7 @@
 			                        </div>
 			                    </div>
 	                        </div> 
-	                        <input type="button" name="next" class="next action-button" value="Siguiente" />
+	                        <input type="button" name="next" class="next  btn-ch" value="Siguiente" />
 	                    </fieldset>
 	                    <fieldset>
 	                        <div class="form-card">
@@ -80,7 +85,7 @@
 											<thead>
 												<tr >
 													<th style="display:none;">
-														a
+														
 													</th>
 												</tr>
 											</thead>

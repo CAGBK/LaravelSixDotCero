@@ -229,7 +229,7 @@
 #progressbar #confirm:before {
     font-family: FontAwesome;
     content: "\f00c";
-    margin-right:0px;
+    margin-right:-8px;
 }
 
 #progressbar li:before {
@@ -308,7 +308,16 @@ select + .select2-container {
 {
     font-size: 40px;
 }
+.check-ch{
+    border:1px solid red !important;
+}
 
+th.sorting_asc {
+    border: none !important;
+    font-size: 25pt;
+    font-weight: bold;
+    color: #2cab66;
+}
 .column-list-challenge{
     width: 156px;
     display: inline-flex;
@@ -333,14 +342,29 @@ input[type="search"] {
     height: 247px;
     margin-top: -24px;
 }
+.btn-ch {
+    background: #93bf1c;
+    border-radius: 15px;
+    font-size: 11pt;
+    color: white;
+    border: 1px solid #93bf1c;
+    width: 262px;
+    height: 41px;
+    font-weight: 900;
+    letter-spacing: -0.5px;
+}
 .ch-text-two{
     margin-left: 7rem;
 }
 .ch-text{
     margin-left: 7rem;
 }
+td.sorting_1 {
+    border: none;
+}
 .tr-challenge{
     width: 156px;
+    background:transparent !important   ;
     display: -webkit-inline-box;
     display: inline-flex;
     position: relative;
@@ -369,6 +393,82 @@ input[type="search"] {
 div#challenge-check_wrapper > div {
     border: 1px solid red;
     display: none;
+}
+label.label-challenge {
+    display: block;
+}
+label.checkbox.path {
+    top: 1rem;
+    left: 4.5rem;
+}
+/*css check*/
+
+.checkbox {
+    --background: #fff;
+    --border: #D1D6EE;
+    --border-hover: #BBC1E1;
+    --border-active: #1E2235;
+    --tick: #fff;
+    position: relative;
+    input,
+    svg {
+        width: 21px;
+        height: 21px;
+        display: block;
+    }
+    input {
+        -webkit-appearance: none;
+
+        -moz-appearance: none;
+        position: relative;
+        outline: none;
+        background: var(--background);
+        border: none;
+        margin: 0;
+        padding: 0;
+        cursor: pointer;
+        border-radius: 4px;
+        transition: box-shadow .3s;
+        box-shadow: inset 0 0 0 var(--s, 1px) var(--b, var(--border));
+        &:hover {
+            --s: 2px;
+            --b: var(--border-hover);
+        }
+        &:checked {
+            --b: var(--border-active);
+        }
+    }
+    svg {
+        pointer-events: none;
+        fill: none;
+        stroke-width: 2px;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke: var(--stroke, var(--border-active));
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 21px;
+        height: 21px;
+        transform: scale(var(--scale, 1)) translateZ(0);
+    }
+    &.path {
+        input {
+            &:checked {
+                --s: 2px;
+                transition-delay: .4s;
+                & + svg {
+                    --a: 16.1 86.12;
+                    --o: 102.22;
+                }
+            }
+        }
+        svg {
+            stroke-dasharray: var(--a, 86.12);
+            stroke-dashoffset: var(--o, 86.12);
+            transition: stroke-dasharray .6s, stroke-dashoffset .6s;
+        }
+    }
 }
 
 

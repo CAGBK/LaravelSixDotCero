@@ -16,8 +16,14 @@
               </strong>
             </div>
             <div class="col-sm-7">
-              <?php echo e($challenge->users); ?>
-
+              <?php 
+              $arrayUsers = json_decode($challenge->users);
+              ?>
+              <?php $__currentLoopData = $arrayUsers; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $value): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                <?php $__currentLoopData = $users; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $user): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                  <span class="badge badge-info"><?php echo e($value == $user->id ? $user->name : ''); ?></span>
+                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+              <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?> 
             </div>
 
             <div class="clearfix"></div>
@@ -30,9 +36,14 @@
             </div>
 
             <div class="col-sm-7">
-                
-              <?php echo e($challenge->subcategories); ?>
-
+              <?php 
+              $arraySubcategories = json_decode($challenge->subcategories);
+              ?>
+              <?php $__currentLoopData = $arraySubcategories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $value): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                <?php $__currentLoopData = $subcategories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $subcategory): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                  <span class="badge badge-info"><?php echo e($value == $subcategory->id ? $subcategory->name : ''); ?></span>
+                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+              <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?> 
 
             </div>
 
@@ -47,7 +58,7 @@
 
             <div class="col-sm-7">
               
-              <?php echo e($challenge->state_id); ?>
+              <?php echo e($challenge->state->state); ?>
 
               
             </div>

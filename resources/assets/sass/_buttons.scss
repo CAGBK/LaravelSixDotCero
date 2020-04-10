@@ -18,9 +18,22 @@
     font-weight: 900;
     color: #939393;
 }
+input[type=search] {
+    border-radius: 1rem;
+    padding-right: 6rem;
+    margin-right: 0rem !important;
+    height: 33px;
+    box-shadow: 939393;
+    border-radius: 0.9rem;
+    border-color: #939393;
+    border: 2px solid #939393;
+    font-weight: 900;
+    color: #939393;
+  }
 .btn {
     @include transitions();
 }
+
 
 // .btn-youtube {
 // 	@include btn-social(#e52d27);

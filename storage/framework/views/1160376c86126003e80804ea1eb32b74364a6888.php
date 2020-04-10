@@ -1,7 +1,7 @@
 <nav id="main-nav" class="navbar navbar-expand-md navbar-light navbar-laravel nav-color">
     <div class="container">
         <div style=" display: inline-block; text-align: center;">
-            <a class=""  href="<?php echo e(url('/')); ?>">
+            <a class=""  href="<?php echo e(url('/home')); ?>">
                 <img id="nav-image" src="/images/logo.png" width="160px" height="80px" alt="">
             </a>
         </div>
