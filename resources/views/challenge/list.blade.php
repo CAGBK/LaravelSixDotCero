@@ -10,14 +10,19 @@
     </div> 
 </div> 
 <div class="container">
+        <div style="margin-top: 2rem;">
+            <h2><strong>Creados por usted</strong></h2>
+        </div>
         <div class="row">
             @foreach ($challenges as $challenge)
+            @if ($challenge->user_id === Auth()->user()->id)
                 <div class="col-lg-3 col-sm-6">
                     <div class="card-box" style="background-color: {{ $challenge->state->color }}">
                         <div class="inner">
-                            <h3 class="text-center"> 1/5</h3>
                             <p>
-                                {{ $challenge->name }}
+                                <strong>
+                                    {{ $challenge->name }}
+                                </strong>
                             </p>
                         </div>
                         <div class="icon">
@@ -26,6 +31,38 @@
                         <a href="#" class="card-box-footer" data-toggle="modal" data-target="#challengeModal{{ $challenge->id }}">Ver Más <i class="fa fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
+            @endif
+            @endforeach
+        </div>
+        <div style="margin-top: 2rem;">
+            <h2><strong>Desafios en los que está invitado</strong></h2>
+        </div>
+        <div class="row">
+            @foreach ($challenges as $challenge)
+                @if($challenge->users)
+                <?php 
+                $arrayUsers = json_decode($challenge->users);
+                ?>
+                @foreach ($arrayUsers as $user)
+                    @if ($user == Auth()->user()->id)
+                        <div class="col-lg-3 col-sm-6">
+                            <div class="card-box" style="background-color: {{ $challenge->state->color }}">
+                                <div class="inner">
+                                    <p>
+                                        <strong>
+                                            {{ $challenge->name }}
+                                        </strong>
+                                    </p>
+                                </div>
+                                <div class="icon">
+                                    <i class="fa fa-gamepad" aria-hidden="true"></i>
+                                </div>
+                                <a href="#" class="card-box-footer" data-toggle="modal" data-target="#challengeModal{{ $challenge->id }}">Ver Más <i class="fa fa-arrow-circle-right"></i></a>
+                            </div>
+                        </div>
+                    @endif
+                @endforeach
+            @endif
             @endforeach
         </div>
     </div>

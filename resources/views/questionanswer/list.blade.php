@@ -39,6 +39,7 @@
                             </span>
 
                             <div class="btn-group pull-right btn-group-xs">
+                                @permission('view.create.question')
                                 <button type="button" class="btn btn-default dropdown-toggle text-white" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <i class="fa fa-ellipsis-v fa-fw" aria-hidden="true"></i>
                                     <span class="sr-only">
@@ -55,6 +56,7 @@
                                         Preguntas Inactivas
                                     </a>
                                 </div>
+                                @endpermission
                             </div>
                         </div>
                     </div>
@@ -73,7 +75,7 @@
                                         <th>Pregunta</th>
                                         <th>Estado</th>
                                         <th>Respuestas</th>
-                                        <th>Categoria de Pregunta</th>
+                                        <th>C.Preguntas</th>
                                         <th>Creado</th>
                                         <th>Modificado</th>
                                         <th>Acción</th>
@@ -104,16 +106,20 @@
                                                     {!! Form::button(trans('questionsmanagement.buttons.delete'), array('class' => 'btn btn-danger btn-sm','type' => 'button', 'style' =>'width: 100%;' ,'data-toggle' => 'modal', 'data-target' => '#confirmDelete', 'data-title' => 'Borrar Pregunta', 'data-message' => '¿Estás seguro de que deseas eliminar a esta pregunta?')) !!}
                                                 {!! Form::close() !!}
                                             </td>
+                                            @permission('detail.question')
                                             <td>
                                                 <a class="btn btn-sm btn-success btn-block" href="{{ route('show_question',['id' => $question->id]) }}" data-toggle="tooltip" title="Show">
                                                     {!! trans('questionsmanagement.buttons.show') !!}
                                                 </a>
                                             </td>
+                                            @endpermission
+                                            @permission('view.edit.question')
                                             <td>
                                                 <a class="btn btn-sm btn-info btn-block" href="{{ URL::to('question/' . $question->id . '/edit') }}" data-toggle="tooltip" title="Edit">
                                                     {!! trans('questionsmanagement.buttons.edit') !!}
                                                 </a>
                                             </td>
+                                            @endpermission
                                         </tr>
                                     @endforeach
                                 </tbody>

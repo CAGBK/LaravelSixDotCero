@@ -17,6 +17,11 @@ use App\Models\Question;
 
 class LineasMarcasController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /* Lista de Categorias y Subcategorias */
     public function index()
     {

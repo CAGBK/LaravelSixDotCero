@@ -118,9 +118,11 @@
                             @endif
                         </div>
                     </div>
+                    @permission('edit.line')
                     <button type="submit" class="btn btn-success margin-bottom-1 mb-1 float-right">
                       Actualizar Linea
                     </button>
+                    @endpermission
                     {!! Form::close() !!}
               </div>
           </div>

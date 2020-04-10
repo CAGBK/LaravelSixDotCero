@@ -18,6 +18,7 @@ class PreguntasRespuestasController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    
     public function index()
     {
         $questions = Question::all();
@@ -33,10 +34,8 @@ class PreguntasRespuestasController extends Controller
     {
 
        
-        $statesanswer = DB::table('states')
-        ->select('states.id','states.state','states.color')
-        ->where('states.id', [4])
-        ->get();
+        $statesanswer = State::where('id','=',4)->get();
+        $states = State::whereIn('id',[1,2])->get();
         $cquestions = CQuestion::all();
         return \View::make('questionanswer/new', compact('statesanswer', 'states','cquestions'));
     }

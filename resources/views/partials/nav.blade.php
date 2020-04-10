@@ -1,16 +1,14 @@
-<nav id="main-nav" class="navbar navbar-expand-md navbar-light navbar-laravel nav-color">
+<nav id="main-nav" class="navbar navbar-expand-md navbar-dark nav-color-home">
     <div class="container">
         <div style=" display: inline-block; text-align: center;">
             <a class=""  href="{{ url('/home') }}">
                 <img id="nav-image" src="/images/logo.png" width="160px" height="80px" alt="">
             </a>
         </div>
-        @role('admin')
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
             <span class="sr-only">{!! trans('titles.toggleNav') !!}</span>
         </button>
-        @endrole
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             {{-- Left Side Of Navbar --}}
             <ul class="navbar-nav mr-auto">
@@ -62,46 +60,28 @@
                         </div>
                     </li>
                 @endrole
-                @role('admin')
+                @permission('menu.juego')
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         {!! trans('titles.adminGame') !!}
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        @permission('view.lines')
                         <a class="dropdown-item nav-font {{ Request::is('lineas-marcas') ? 'active' : null }}" href="{{ url('lineas-marcas') }}">
                             {!! trans('titles.lines') !!}
                         </a>
-                        
-                        <a class="dropdown-item nav-font {{ Request::is('blocker') ? 'active' : null }}" href="{{ url('/preguntas-respuestas') }}">
-                            {!! trans('titles.questions') !!}
-                        </a>
-                        
+                        @endpermission
+                        @permission('view.questions')
+                            <a class="dropdown-item nav-font {{ Request::is('blocker') ? 'active' : null }}" href="{{ url('/preguntas-respuestas') }}">
+                                {!! trans('titles.questions') !!}
+                            </a>
+                        @endpermission
                         <a class="dropdown-item nav-font {{ Request::is('blocker') ? 'active' : null }}" href="{{ url('/challenge-list') }}">
                             {!! trans('titles.challenges') !!}
                         </a>
                     </div>
                 </li>
-                @endrole
-                @role('user')
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        {!! trans('titles.adminGame') !!}
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item nav-font {{ Request::is('lineas-marcas') ? 'active' : null }}" href="{{ url('lineas-marcas') }}">
-                            {!! trans('titles.lines') !!}
-                        </a>
-                        
-                        <a class="dropdown-item nav-font {{ Request::is('blocker') ? 'active' : null }}" href="{{ url('/preguntas-respuestas') }}">
-                            {!! trans('titles.questions') !!}
-                        </a>
-                        
-                        <a class="dropdown-item nav-font {{ Request::is('blocker') ? 'active' : null }}" href="{{ url('/challenge-list') }}">
-                            {!! trans('titles.challenges') !!}
-                        </a>
-                    </div>
-                </li>
-                @endrole
+                @endpermission
             </ul>
             {{-- Right Side Of Navbar --}}
             <ul class="navbar-nav ml-auto">
@@ -109,8 +89,22 @@
                 @guest
                     
                 @else
+                    <li class="nav-item dropdown" onclick="markNotificationAsRead()" style="margin-right: 1rem;">
+                        <a id="navbarDropdown" class="dropdown-toggle text-white" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            <i class="fa fa-globe" aria-hidden="true"></i> Notificaciones <span class="badge badge-info">{{ count(Auth()->user()->unreadNotifications) }}</span>
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            @forelse (Auth()->user()->unreadNotifications as $notification)                            
+                                @include('partials.notification.replied_to_thread')
+                                @empty
+                                <a class="dropdown-item nav-font" href="#">No hay notificaciones no leídas</a>
+                                <hr>
+                                <a href="/challenge-list" class="dropdown-item nav-font"><strong><center>ver todos los desafios</center></strong></a>
+                            @endforelse
+                        </div>
+                    </li>
                     <li class="nav-item dropdown">
-                        <a id="navbarDropdown" class="nav-link dropdown-toggle text-white" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                        <a id="navbarDropdown" class="dropdown-toggle text-white" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                             @if ((Auth::User()->profile) && Auth::user()->profile->avatar_status == 1)
                                 <img src="{{ Auth::user()->profile->avatar }}" alt="{{ Auth::user()->name }}" class="user-avatar-nav">
                             @else
@@ -137,18 +131,3 @@
         </div>
     </div>
 </nav>
-<script type="application/javascript">
-    var URLactual = window.location;
-    var host = location.hostname;
-    var element = document.getElementById("main-nav");
-    if(URLactual=="http://"+host+"/login" || URLactual=="http://"+host+":8000/login" || URLactual=="http://"+host+":8000/"){
-        document.getElementById("nav-image").src = "/images/logoB.png";
-        document.getElementById("nav-image").style.display = "none";
-    } else if(URLactual=="http://"+host+"/register" || URLactual=="http://"+host+":8000/register"){
-        document.getElementById("nav-image").src = "/images/logoB.png";
-        document.getElementById("nav-image").style.display = "none";
-    }else{
-        document.getElementById("nav-image").src = "/images/logoB.png";
-        element.classList.add("nav-color-home");
-    }
-</script>
