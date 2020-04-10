@@ -1,16 +1,14 @@
-<nav id="main-nav" class="navbar navbar-expand-md navbar-light nav-color-home">
+<nav id="main-nav" class="navbar navbar-expand-md navbar-dark nav-color-home">
     <div class="container">
         <div style=" display: inline-block; text-align: center;">
             <a class=""  href="{{ url('/home') }}">
                 <img id="nav-image" src="/images/logo.png" width="160px" height="80px" alt="">
             </a>
         </div>
-        @role('admin')
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
             <span class="sr-only">{!! trans('titles.toggleNav') !!}</span>
         </button>
-        @endrole
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             {{-- Left Side Of Navbar --}}
             <ul class="navbar-nav mr-auto">
@@ -91,16 +89,18 @@
                 @guest
                     
                 @else
-                    <li class="nav-item dropdown" style="margin-right: 1rem;">
+                    <li class="nav-item dropdown" onclick="markNotificationAsRead()" style="margin-right: 1rem;">
                         <a id="navbarDropdown" class="dropdown-toggle text-white" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                             <i class="fa fa-globe" aria-hidden="true"></i> Notificaciones <span class="badge badge-info">{{ count(Auth()->user()->unreadNotifications) }}</span>
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            @foreach (Auth()->user()->unreadNotifications as $notification)
-                            <a class="dropdown-item nav-font" href="#">
-                                {{ $notification->type }}
-                            </a>
-                            @endforeach
+                            @forelse (Auth()->user()->unreadNotifications as $notification)                            
+                                @include('partials.notification.replied_to_thread')
+                                @empty
+                                <a class="dropdown-item nav-font" href="#">No hay notificaciones no leídas</a>
+                                <hr>
+                                <a href="/challenge-list" class="dropdown-item nav-font"><strong><center>ver todos los desafios</center></strong></a>
+                            @endforelse
                         </div>
                     </li>
                     <li class="nav-item dropdown">

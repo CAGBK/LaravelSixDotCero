@@ -84,6 +84,7 @@
         <?php endif; ?>
 
         <?php echo $__env->yieldContent('footer_scripts'); ?>
+        <?php echo $__env->make('scripts.main-script', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 
     </body>
 </html>
