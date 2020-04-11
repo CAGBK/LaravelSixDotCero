@@ -58,7 +58,7 @@
 
             @include('partials.nav')
 
-            <main class="py-4 body-grunenthal">
+            <main class="py-5 body-grunenthal">
 
                 <div class="container">
                     <div class="row">

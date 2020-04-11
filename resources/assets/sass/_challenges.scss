@@ -132,18 +132,30 @@
 .banner-challenge{
     background: #272727;
     height: 245px;
-    margin-top: -44px;
+    margin-top: -68px;
     position: absolute;
     width: -webkit-fill-available;
 }
+.lb-img{
+        
+        background: #93bf1cc9;
+        border-radius: 50%;
+        border: 1px solid #f7f7f7;
+        height: 60px;
+        margin-left: 3rem;
+        width: 60px;
+}
+
 .card {
     z-index: 0;
     border: none;
     position: relative
 }
-
+.card-body{
+    border-bottom: 3px solid #2cab66;
+}
 .fs-title {
-    margin-top: 2rem;
+    margin-top: 0rem;
     font-size: 25px;
     color: #2cab66;
     font-weight: bolder;
@@ -255,6 +267,16 @@
     top: 15px;
     z-index: -1;
 }
+.dataTables_wrapper .dataTables_paginate .paginate_button.current, .dataTables_wrapper .dataTables_paginate .paginate_button.current:hover {
+    color: transparent !important;
+    border: 1px solid #8db81b;
+    background: #8db81b !important;
+    float: none !important; 
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    text-align: center;
+
+}
 
 #progressbar li.active:before,
 #progressbar li.active:after {
@@ -318,6 +340,12 @@ th.sorting_asc {
     font-weight: bold;
     color: #2cab66;
 }
+th.sorting_desc {
+    border: none !important;
+    font-size: 25pt;
+    font-weight: bold;
+    color: #2cab66;
+}
 .column-list-challenge{
     width: 156px;
     display: inline-flex;
@@ -361,6 +389,7 @@ input[type="search"] {
 }
 td.sorting_1 {
     border: none;
+    text-align: center;
 }
 .tr-challenge{
     width: 156px;
@@ -399,10 +428,214 @@ label.label-challenge {
 }
 label.checkbox.path {
     top: 1rem;
-    left: 4.5rem;
+    margin-left: 4rem;
+    
+}
+div#brands-check_length {
+    display: none;
+}
+div#brands-check_info {
+    display: none;
+}
+table#brands-check {
+    border: none;
+}
+.brand-img {
+    margin-top: 5px;
+    width: 45px;
+    height: 45px;
+    margin-left: 4px;
+}
+a#brands-check_previous {
+    display: none;
+}
+a#brands-check_next {
+    display: none;
+}
+a.paginate_button {
+    border: 1px solid #93bf1c !important;
+    background: #93bf1c;
+    border-radius: 44px !important;
+    content: none;
+}
+.dataTables_wrapper .dataTables_length, .dataTables_wrapper .dataTables_filter, .dataTables_wrapper .dataTables_info, .dataTables_wrapper .dataTables_processing, .dataTables_wrapper .dataTables_paginate {
+    color: transparent !important;
+}
+.sub-name{
+    font-size: 16pt;
+    font-weight: 800;
+    color: white;
+    padding-top: 0rem;
+    margin-top: 0rem;
 }
 /*css check*/
+.tr-challenge-two {
+    background: red;
+    width: 149px;
+    margin-left: 8%;
+    height: 150px;
+    border: 1px solid white;
+    border-radius: 14%;
+}
+img.subcategory-avatar-nav.subcategory-challenge {
+    width: 100px;
+    height: auto;
+}
+.subcategory-challenge{
+    margin-bottom: 0rem;
+    width: 91px;
+    height: auto;
+    margin-top: -0.5rem;
+    margin-left: 0.5rem;
+}
+.cs-check{
+    top: 1rem !important;
+    color: transparent !important;
+    background-color: transparent !important;
+    margin-left: 4rem;
+}
 
+.radio-b {
+    --background: #fff;
+    --border: #D1D6EE;
+    --border-hover: #BBC1E1;
+    --border-active: #fff;
+    --tick: #fff;
+    position: relative;
+    input,
+    svg {
+        width: 21px;
+        height: 21px;
+        display: block;
+    }
+    input {
+        -webkit-appearance: none;
+
+        -moz-appearance: none;
+        position: relative;
+        outline: none;
+        background: var(--background);
+        border: none;
+        margin: 0;
+        padding: 0;
+        top: -6px;
+        cursor: pointer;
+        border-radius: 20px;
+        transition: box-shadow .3s;
+        box-shadow: inset 0 0 0 var(--s, 1px) var(--b, var(--border));
+        &:hover {
+            --s: 2px;
+            --b: var(--border-hover);
+        }
+        &:checked {
+            --b: var(--border-active);
+            background: #93bf1c;
+        }
+    }
+    svg {
+        pointer-events: none;
+        fill: none;
+        stroke-width: 2px;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke: var(--stroke, var(--border-active));
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 21px;
+        height: 21px;
+        transform: scale(var(--scale, 1)) translateZ(0);
+    }
+    &.path {
+        input {
+            &:checked {
+                --s: 2px;
+                transition-delay: .4s;
+                & + svg {
+                    --a: 16.1 86.12;
+                    --o: 102.22;
+                }
+            }
+        }
+        svg {
+            stroke-dasharray: var(--a, 86.12);
+            stroke-dashoffset: var(--o, 86.12);
+            transition: stroke-dasharray .6s, stroke-dashoffset .6s;
+        }
+    }
+}
+
+.checkbox-two {
+    --background: #fff;
+    --border: #D1D6EE;
+    --border-hover: #BBC1E1;
+    --border-active: #1E2235;
+    --tick: #fff;
+    position: relative;
+    margin-left: -12px;
+    margin-top: -27px;
+    padding-bottom: 15px;
+    float: left;
+    input,
+    svg {
+        width: 21px;
+        height: 21px;
+        display: block;
+    }
+    input {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        position: relative;
+        outline: none;
+        background: #ffffff52;
+        border: none;
+        margin: 0;
+        padding: 0;
+        cursor: pointer;
+        border-radius: 4px;
+        -webkit-transition: box-shadow 0.3s;
+        transition: box-shadow 0.3s;
+        &:hover {
+            --s: 2px;
+            --b: var(--border-hover);
+        }
+        &:checked {
+            --b: var(--border-active);
+        }
+    }
+    svg {
+        pointer-events: none;
+        fill: none;
+        stroke-width: 2px;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke: var(--stroke, var(--border-active));
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 21px;
+        height: 21px;
+        transform: scale(var(--scale, 1)) translateZ(0);
+    }
+    &.path {
+        input {
+            &:checked {
+                --s: 2px;
+                transition-delay: .4s;
+                & + svg {
+                    --a: 16.1 86.12;
+                    --o: 102.22;
+                    filter: brightness(0) invert(1);
+                }
+            }
+        }
+        svg {
+            stroke-dasharray: var(--a, 86.12);
+            stroke-dashoffset: var(--o, 86.12);
+            transition: stroke-dasharray .6s, stroke-dashoffset .6s;
+        }
+    }
+}
 .checkbox {
     --background: #fff;
     --border: #D1D6EE;

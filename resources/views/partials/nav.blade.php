@@ -1,14 +1,14 @@
 <nav id="main-nav" class="navbar navbar-expand-md navbar-dark nav-color-home">
     <div class="container">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            <span class="sr-only">{!! trans('titles.toggleNav') !!}</span>
+        </button>
         <div style=" display: inline-block; text-align: center;">
             <a class=""  href="{{ url('/home') }}">
                 <img id="nav-image" src="/images/logo.png" width="160px" height="80px" alt="">
             </a>
         </div>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-            <span class="sr-only">{!! trans('titles.toggleNav') !!}</span>
-        </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             {{-- Left Side Of Navbar --}}
             <ul class="navbar-nav mr-auto">

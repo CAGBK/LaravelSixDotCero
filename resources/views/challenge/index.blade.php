@@ -50,12 +50,8 @@
 																		<path d="M5,10.75 L8.5,14.25 L19.4,2.3 C18.8333333,1.43333333 18.0333333,1 17,1 L4,1 C2.35,1 1,2.35 1,4 L1,17 C1,18.65 2.35,20 4,20 L17,20 C18.65,20 20,18.65 20,17 L20,7.99769186"></path>
 																	</svg>
 																</label>	
-																@if ((Auth::User()->profile) && Auth::user()->profile->avatar_status == 1 )
-																<img name="img-user" src="{{ $user->profile->avatar}}" alt="{{ $user->name}}" class="user-avatar-nav user-challenge">
-																@else
-																<img class="user-avatar-nav user-challenge">
-																@endif
-																<label name="name-user" class="label-challenge" for="">{{ $user->name }} </label>		
+																	<img src="@if ($user->profile->avatar_status == 1) {{ $user->profile->avatar }} @else {{ Gravatar::get($user->email) }} @endif" alt="{{ $user->name }}" class="user-avatar-nav user-challenge">
+																<label name="img-user" class="label-challenge" for="">{{ $user->name }} </label>		
 															</td>
 														</tr>
 													@endforeach
@@ -94,15 +90,16 @@
 											@if ($subcategories)
 												<tbody>
 													@foreach($subcategories as $subcategory)
-														<tr class="tr-challenge-two">
+													<tr class="tr-challenge-two" style="background-color:{{$subcategory->color_brand}};">
 															<td>
-																<input id="{{ $subcategory->id }}" name="check_subcategory[]" type="checkbox" value="{{ $subcategory->id }}" >
-																@if ((Auth::User()->profile) && Auth::user()->profile->avatar_status == 1 )
-																<img name="img-subcategory" src="{{ $subcategory->profile->avatar}}" alt="{{ $subcategory->name}}" class="subcategory-avatar-nav subcategory-challenge">
-																@else
-																<img class="subcategory-avatar-nav subcategory-challenge">
-																@endif
-																<label name="name-subcategory" class="label-challenge" for="">{{ $subcategory->name }} </label>		
+																<label class="checkbox-two path cs-check">
+																	<input  id="{{ $subcategory->id }}" name="check_subcategory[]" type="checkbox" value="{{ $subcategory->id }}" >
+																	<svg viewBox="0 0 21 21">
+																		<path d="M5,10.75 L8.5,14.25 L19.4,2.3 C18.8333333,1.43333333 18.0333333,1 17,1 L4,1 C2.35,1 1,2.35 1,4 L1,17 C1,18.65 2.35,20 4,20 L17,20 C18.65,20 20,18.65 20,17 L20,7.99769186"></path>
+																	</svg>
+																</label>
+																<img name="img-subcategory" src="{{ $subcategory->subcategory_image}}" alt="{{ $subcategory->subcategory_image}}" class=" subcategory-challenge">		
+																<label class="sub-name">{{$subcategory->name}}</label>
 															</td>
 														</tr>
 													@endforeach
@@ -118,7 +115,7 @@
 			                        </div>
 			                    </div>
 	                        </div> 
-	                        <input type="button" name="next" class="next btn-ch-step-two" value="Siguiente" /> <input type="button" name="previous" class="previous action-button-previous" value="Atras" />
+	                         <input type="button" name="previous" class="previous btn-ch " value="Atras" /><input type="button" name="next" class="next btn-ch" value="Siguiente" />
 	                    </fieldset>
 	                    <fieldset>
 	                        <div class="form-card">
@@ -221,27 +218,33 @@
 											</th>
 										</tr>
 									</thead>
-									@if ($subcategories)
+									@if ($users)
 										<tbody>
-											@foreach($subcategories as $subcategory)
-												<tr class="tr-challenge-three">
-													<td>
-														<input id="{{ $subcategory->id }}" name="check_subcategory" type="checkbox" value="{{ $subcategory->id }}" >
-														@if ((Auth::User()->profile) && Auth::user()->profile->avatar_status == 1 )
-														<img name="img-subcategory" src="{{ $subcategory->profile->avatar}}" alt="{{ $subcategory->name}}" class="subcategory-avatar-nav subcategory-challenge">
-														@else
-														<img class="subcategory-avatar-nav subcategory-challenge">
-														@endif
-														<label name="name-subcategory" class="label-challenge" for="">{{ $subcategory->name }} </label>		
-													</td>
-												</tr>
-											@endforeach
+											@foreach($users as $user)
+														<tr class="tr-challenge">
+															<td>
+																<label class="checkbox path">
+																	<input  id="{{ $user->id }}" name="check_user[]" type="checkbox" value="{{ $user->id }}" >
+																	<svg viewBox="0 0 21 21">
+																		<path d="M5,10.75 L8.5,14.25 L19.4,2.3 C18.8333333,1.43333333 18.0333333,1 17,1 L4,1 C2.35,1 1,2.35 1,4 L1,17 C1,18.65 2.35,20 4,20 L17,20 C18.65,20 20,18.65 20,17 L20,7.99769186"></path>
+																	</svg>
+																</label>	
+																
+																@if (($user->profile) && $user->profile->avatar_status == 1 )
+																<img name="img-user" src="{{ $user->profile->avatar}}" alt="{{ $user->name}}" class="user-avatar-nav user-challenge">
+																@else
+																<img class="user-avatar-nav user-challenge">
+																@endif
+																<label name="name-user" class="label-challenge" for="">{{ $user->name }} </label>		
+															</td>
+														</tr>
+													@endforeach
 										</tbody>
 											@endif
 										</label>
 									</table>
 	                        </div> 
-	                          <button type="submit" class="btn next action-button">Confirmar!</button> <input type="button" name="previous" class="previous action-button-previous" value="Atras" />
+							<input type="button" name="previous" class="previous btn-ch" value="Atras" /><button type="submit" class="btn next btn-ch">Confirmar!</button> 
 	                    </fieldset>
 					</div>
 	                </form>

@@ -37,6 +37,7 @@
                             </span>
 
                             <div class="btn-group pull-right btn-group-xs">
+                                <?php if (Auth::check() && Auth::user()->hasPermission('view.create.question')): ?>
                                 <button type="button" class="btn btn-default dropdown-toggle text-white" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <i class="fa fa-ellipsis-v fa-fw" aria-hidden="true"></i>
                                     <span class="sr-only">
@@ -54,6 +55,7 @@
                                         Preguntas Inactivas
                                     </a>
                                 </div>
+                                <?php endif; ?>
                             </div>
                         </div>
                     </div>
@@ -73,7 +75,7 @@
                                         <th>Pregunta</th>
                                         <th>Estado</th>
                                         <th>Respuestas</th>
-                                        <th>Categoria de Pregunta</th>
+                                        <th>C.Preguntas</th>
                                         <th>Creado</th>
                                         <th>Modificado</th>
                                         <th>Acción</th>
@@ -109,18 +111,22 @@
                                                 <?php echo Form::close(); ?>
 
                                             </td>
+                                            <?php if (Auth::check() && Auth::user()->hasPermission('detail.question')): ?>
                                             <td>
                                                 <a class="btn btn-sm btn-success btn-block" href="<?php echo e(route('show_question',['id' => $question->id])); ?>" data-toggle="tooltip" title="Show">
                                                     <?php echo trans('questionsmanagement.buttons.show'); ?>
 
                                                 </a>
                                             </td>
+                                            <?php endif; ?>
+                                            <?php if (Auth::check() && Auth::user()->hasPermission('view.edit.question')): ?>
                                             <td>
                                                 <a class="btn btn-sm btn-info btn-block" href="<?php echo e(URL::to('question/' . $question->id . '/edit')); ?>" data-toggle="tooltip" title="Edit">
                                                     <?php echo trans('questionsmanagement.buttons.edit'); ?>
 
                                                 </a>
                                             </td>
+                                            <?php endif; ?>
                                         </tr>
                                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                 </tbody>
