@@ -146,7 +146,6 @@ class LineasMarcasController extends Controller
 
     public function updateBrand(Request $request, $id )
     {
-        dd($request);
         $jsonQuestions = json_encode($request->question);
         $subcategory = Subcategory::find($id);
         $subcategory->name = $request->name;

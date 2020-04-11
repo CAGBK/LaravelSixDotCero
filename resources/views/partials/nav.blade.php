@@ -6,7 +6,7 @@
         </button>
         <div style=" display: inline-block; text-align: center;">
             <a class=""  href="{{ url('/home') }}">
-                <img id="nav-image" src="/images/logo.png" width="160px" height="80px" alt="">
+                <img id="nav-image " src="/images/logo.png" class="image-nav" width="160px" height="80px" alt="">
             </a>
         </div>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
