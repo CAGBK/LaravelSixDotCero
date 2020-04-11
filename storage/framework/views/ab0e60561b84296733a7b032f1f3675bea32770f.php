@@ -9,15 +9,20 @@
     </div> 
 </div> 
 <div class="container">
+        <div style="margin-top: 2rem;">
+            <h2><strong>Creados por usted</strong></h2>
+        </div>
         <div class="row">
             <?php $__currentLoopData = $challenges; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $challenge): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+            <?php if($challenge->user_id === Auth()->user()->id): ?>
                 <div class="col-lg-3 col-sm-6">
                     <div class="card-box" style="background-color: <?php echo e($challenge->state->color); ?>">
                         <div class="inner">
-                            <h3 class="text-center"> 1/5</h3>
                             <p>
-                                <?php echo e($challenge->name); ?>
+                                <strong>
+                                    <?php echo e($challenge->name); ?>
 
+                                </strong>
                             </p>
                         </div>
                         <div class="icon">
@@ -26,6 +31,39 @@
                         <a href="#" class="card-box-footer" data-toggle="modal" data-target="#challengeModal<?php echo e($challenge->id); ?>">Ver Más <i class="fa fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
+            <?php endif; ?>
+            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+        </div>
+        <div style="margin-top: 2rem;">
+            <h2><strong>Desafios en los que está invitado</strong></h2>
+        </div>
+        <div class="row">
+            <?php $__currentLoopData = $challenges; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $challenge): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                <?php if($challenge->users): ?>
+                <?php 
+                $arrayUsers = json_decode($challenge->users);
+                ?>
+                <?php $__currentLoopData = $arrayUsers; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $user): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                    <?php if($user == Auth()->user()->id): ?>
+                        <div class="col-lg-3 col-sm-6">
+                            <div class="card-box" style="background-color: <?php echo e($challenge->state->color); ?>">
+                                <div class="inner">
+                                    <p>
+                                        <strong>
+                                            <?php echo e($challenge->name); ?>
+
+                                        </strong>
+                                    </p>
+                                </div>
+                                <div class="icon">
+                                    <i class="fa fa-gamepad" aria-hidden="true"></i>
+                                </div>
+                                <a href="#" class="card-box-footer" data-toggle="modal" data-target="#challengeModal<?php echo e($challenge->id); ?>">Ver Más <i class="fa fa-arrow-circle-right"></i></a>
+                            </div>
+                        </div>
+                    <?php endif; ?>
+                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+            <?php endif; ?>
             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
         </div>
     </div>

@@ -1,0 +1,2 @@
+<a class="dropdown-item nav-font" href="/game/<?php echo e($notification->data['challenge_id']); ?>"><strong><?php echo e($notification->data['user_name']); ?></strong> te ha invitado a un desafio llamado <?php echo e($notification->data['challenge_name']); ?></a>
+<hr><?php /**PATH C:\Users\ca.gonzalezb1\Desktop\LaravelSixDotCero\resources\views/partials/notification/replied_to_thread.blade.php ENDPATH**/ ?>

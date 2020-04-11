@@ -18,6 +18,8 @@ class CreateSubcategoriesTable extends Migration
             $table->string('name');
             $table->string('description');
             $table->json('question');
+            $table->string('subcategory_image');
+            $table->string('color_brand');
             $table->timestamps();
         });
     }

@@ -28,13 +28,8 @@
 
                       <div class="col-md-9">
                           <div class="input-group">
-                              <?php echo Form::text('name', $brand->name, array('id' => 'name', 'class' => 'form-control', 'placeholder' => 'Nombre de Marca...')); ?>
+                              <?php echo Form::text('name', $brand->name, array('id' => 'name', 'class' => 'form-control general-input', 'placeholder' => 'Nombre de Marca...')); ?>
 
-                              <div class="input-group-append">
-                                  <label for="name" class="input-group-text">
-                                      <i class="fa fa-fw <?php echo e(trans('forms.create_user_icon_email')); ?> nav-font" aria-hidden="true"></i>
-                                  </label>
-                              </div>
                           </div>
                           <?php if($errors->has('name')): ?>
                               <span class="help-block">
@@ -49,13 +44,8 @@
 
                       <div class="col-md-9">
                           <div class="input-group">
-                              <?php echo Form::text('description', $brand->description, array('id' => 'description', 'class' => 'form-control', 'placeholder' => 'Descripción')); ?>
+                              <?php echo Form::text('description', $brand->description, array('id' => 'description', 'class' => 'form-control general-input', 'placeholder' => 'Descripción')); ?>
 
-                              <div class="input-group-append">
-                                  <label for="description" class="input-group-text">
-                                      <i class="fa fa-fw <?php echo e(trans('forms.create_user_icon_email')); ?> nav-font" aria-hidden="true"></i>
-                                  </label>
-                              </div>
                           </div>
                           <?php if($errors->has('description')): ?>
                               <span class="help-block">
@@ -82,11 +72,6 @@
                                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>    
                                     <?php endif; ?>
                                 </select>
-                                <div class="input-group-append">
-                                    <label class="input-group-text" for="question[]">
-                                        <i class="<?php echo e(trans('forms.create_user_icon_role')); ?> nav-font" aria-hidden="true"></i>
-                                    </label>
-                                </div>
                             </div>
                             <?php if($errors->has('question[]')): ?>
                                 <span class="help-block">
@@ -95,9 +80,45 @@
                             <?php endif; ?>
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-success margin-bottom-1 mb-1 float-right">
-                      Actualizar Marca
-                    </button>  
+                    <div class="form-group has-feedback row <?php echo e($errors->has('image_brand[]') ? ' has-error ' : ''); ?> nav-font">
+                        <?php echo Form::label('image_brand[]', 'Imagen de Marca', array('class' => 'col-md-3 control-label'));; ?>
+
+                        <div class="col-md-9">
+                            <div class="input-group">
+                                <label class="lb-img radio-b"  style="background-color: #6cbbcb;">
+                                    <img class="brand-img" src="/images/hospital.png" />
+                                    
+                                    <input type="radio" name="image" value="/images/hospital.png|#6cbbcb" <?php echo e($brand->subcategory_image == "/images/hospital.png" ? 'checked="checked"' : ''); ?>/>
+                                </label>
+                                <label class="lb-img radio-b"  style="background-color:#8db81b ;">
+                                    <img class="brand-img" src="/images/medicine.png" />
+                                    <input type="radio" name="image" value="/images/medicine.png|#8db81b"  <?php echo e($brand->subcategory_image == "/images/medicine.png" ? 'checked="checked"' : ''); ?>/>
+                                </label>
+                                <label class="lb-img radio-b"  style="background-color: #f51d3f;">
+                                    <img class="brand-img" src="/images/tablet.png" />
+                                    <input type="radio" name="image" value="/images/tablet.png|#8db81b"  <?php echo e($brand->subcategory_image == "/images/tablet.png" ? 'checked="checked"' : ''); ?>/>
+                                </label>
+                                <label class="lb-img radio-b"  style="background-color:#f7c100;">
+                                    <img class="brand-img" src="/images/drug.png" />
+                                    <input type="radio" name="image" value="/images/drug.png|#f7c100" <?php echo e($brand->subcategory_image == "/images/drug.png" ? 'checked="checked"' : ''); ?>/>
+                                </label>
+                            </div>
+                            <?php if($errors->has('image_brand[]')): ?>
+                                <span class="help-block">
+                                    <strong><?php echo e($errors->first('image_brand[]')); ?></strong>
+                                </span>
+                            <?php endif; ?>
+                        </div>
+                    </div>
+                    <?php if (Auth::check() && Auth::user()->hasPermission('edit.brand')): ?>
+                    <div class="form-group has-feedback row  nav-font">
+                        <div class="col-md-12 text-center"> 
+                            <button type="submit" class="btn btn-success ">
+                            Actualizar Marca
+                            </button>
+                        </div>
+                    </div>  
+                    <?php endif; ?>
                     <?php echo Form::close(); ?>
 
                 </div>

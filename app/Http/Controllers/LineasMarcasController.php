@@ -45,7 +45,8 @@ class LineasMarcasController extends Controller
     public function createBrand()
     {
         $questions = Question::where('state_id','=','1')->get();
-        return \View::make('linebrand/newbrand', compact('questions'));
+        $subcategories = Subcategory::all();
+        return \View::make('linebrand/newbrand', compact('questions','subcategories'));
     }
 
     /* Crear categoria */
@@ -66,12 +67,15 @@ class LineasMarcasController extends Controller
     /* Crear subcategoria */
 
     public function storeBrand(Request $request)
-    {
+    {   
+        list($image,$color) = explode('|', $request->image);
         $jsonQuestions = json_encode($request->question);
         $subcategory = new Subcategory;
         $subcategory->name = $request->name;
         $subcategory->description = $request->description;
         $subcategory->question = $jsonQuestions;
+        $subcategory->subcategory_image = $image;
+        $subcategory->color_brand = $color;
         $subcategory->save();
     
         return redirect('lineas-marcas');
@@ -142,11 +146,14 @@ class LineasMarcasController extends Controller
 
     public function updateBrand(Request $request, $id )
     {
+        dd($request);
         $jsonQuestions = json_encode($request->question);
         $subcategory = Subcategory::find($id);
         $subcategory->name = $request->name;
         $subcategory->description = $request->description;
         $subcategory->question = $jsonQuestions;
+        $subcategory->subcategory_image = $request->image;
+        $subcategory->color_brand = $request->color_brand;
         $subcategory->save();
         return redirect('lineas-marcas');
     }

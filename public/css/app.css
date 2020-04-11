@@ -16355,6 +16355,16 @@ a.text-dark:focus {
   color: #939393;
 }
 
+.general-input {
+  border-radius: 0.9rem;
+  border-color: #939393;
+  border: 2px solid #939393;
+  font-weight: 900;
+  color: #93bf1c;
+  width: 10px !important;
+  height: 32px;
+}
+
 input[type=search] {
   border-radius: 1rem;
   padding-right: 6rem;
@@ -16366,6 +16376,25 @@ input[type=search] {
   border: 2px solid #939393;
   font-weight: 900;
   color: #939393;
+}
+
+.select2-container--default .select2-selection--multiple {
+  background-color: white;
+  border: 2px solid #939393 !important;
+  border-radius: 25px !important;
+  /* cursor: text; */
+}
+
+.btn-cr-brand {
+  background: #2cab66;
+  border-radius: 15px;
+  font-size: 11pt;
+  color: white;
+  border: 1px solid #2cab66;
+  width: 262px;
+  height: 41px;
+  font-weight: 900;
+  letter-spacing: -0.5px;
 }
 
 .btn {
@@ -18869,7 +18898,7 @@ div[data-toggle=buttons] label.active {
 }
 
 .nav-font {
-  color: #009245 !important;
+  color: #93bf1c !important;
 }
 
 .nav-font.active,
@@ -18880,7 +18909,8 @@ div[data-toggle=buttons] label.active {
 }
 
 .header-card {
-  background-color: #009245;
+  background-color: #2cab66;
+  font-size: 16pt;
 }
 
 .login-nav {
@@ -18909,12 +18939,44 @@ body {
   color: #009245;
   background-color: #fff;
   border-color: #afd370;
+  font-size: 8pt;
 }
 
 .button-card:hover {
   color: #fff;
   background-color: #009245;
   border-color: #009245;
+}
+
+.card-header:first-child {
+  border-radius: calc(0.25rem - 1px) calc(0.25rem - 1px) 0 0;
+}
+
+main.py-4.body-grunenthal {
+  font-weight: 800;
+  font-size: 10pt;
+}
+
+.image-nav {
+  -webkit-filter: brightness(0) invert(1);
+          filter: brightness(0) invert(1);
+  position: absolute;
+  top: 4px;
+  margin-left: 34%;
+  height: 65px;
+}
+
+a#navbarDropdown {
+  font-weight: 800;
+}
+
+a.dropdown-item.nav-font {
+  font-weight: 800;
+}
+
+.dropdown-item.active,
+.dropdown-item:active {
+  background-color: #f7f7f7 !important;
 }
 
 /*Estilos de list de desafios*/
@@ -19061,9 +19123,18 @@ body {
 .banner-challenge {
   background: #272727;
   height: 245px;
-  margin-top: -44px;
+  margin-top: -68px;
   position: absolute;
   width: -webkit-fill-available;
+}
+
+.lb-img {
+  background: #93bf1cc9;
+  border-radius: 50%;
+  border: 1px solid #f7f7f7;
+  height: 60px;
+  margin-left: 3rem;
+  width: 60px;
 }
 
 .card {
@@ -19072,8 +19143,12 @@ body {
   position: relative;
 }
 
+.card-body {
+  border-bottom: 3px solid #2cab66;
+}
+
 .fs-title {
-  margin-top: 2rem;
+  margin-top: 0rem;
   font-size: 25px;
   color: #2cab66;
   font-weight: bolder;
@@ -19192,6 +19267,17 @@ body {
   z-index: -1;
 }
 
+.dataTables_wrapper .dataTables_paginate .paginate_button.current,
+.dataTables_wrapper .dataTables_paginate .paginate_button.current:hover {
+  color: transparent !important;
+  border: 1px solid #8db81b;
+  background: #8db81b !important;
+  float: none !important;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
 #progressbar li.active:before,
 #progressbar li.active:after {
   background: #93bf1c;
@@ -19258,6 +19344,13 @@ th.sorting_asc {
   color: #2cab66;
 }
 
+th.sorting_desc {
+  border: none !important;
+  font-size: 25pt;
+  font-weight: bold;
+  color: #2cab66;
+}
+
 .column-list-challenge {
   width: 156px;
   display: -webkit-inline-box;
@@ -19308,6 +19401,7 @@ input[type=search] {
 
 td.sorting_1 {
   border: none;
+  text-align: center;
 }
 
 .tr-challenge {
@@ -19352,10 +19446,246 @@ label.label-challenge {
 
 label.checkbox.path {
   top: 1rem;
-  left: 4.5rem;
+  margin-left: 4rem;
+}
+
+div#brands-check_length {
+  display: none;
+}
+
+div#brands-check_info {
+  display: none;
+}
+
+table#brands-check {
+  border: none;
+}
+
+.brand-img {
+  margin-top: 5px;
+  width: 45px;
+  height: 45px;
+  margin-left: 4px;
+}
+
+a#brands-check_previous {
+  display: none;
+}
+
+a#brands-check_next {
+  display: none;
+}
+
+a.paginate_button {
+  border: 1px solid #93bf1c !important;
+  background: #93bf1c;
+  border-radius: 44px !important;
+  content: none;
+}
+
+.dataTables_wrapper .dataTables_length,
+.dataTables_wrapper .dataTables_filter,
+.dataTables_wrapper .dataTables_info,
+.dataTables_wrapper .dataTables_processing,
+.dataTables_wrapper .dataTables_paginate {
+  color: transparent !important;
+}
+
+.sub-name {
+  font-size: 16pt;
+  font-weight: 800;
+  color: white;
+  padding-top: 0rem;
+  margin-top: 0rem;
 }
 
 /*css check*/
+
+.tr-challenge-two {
+  background: red;
+  width: 149px;
+  margin-left: 8%;
+  height: 150px;
+  border: 1px solid white;
+  border-radius: 14%;
+}
+
+img.subcategory-avatar-nav.subcategory-challenge {
+  width: 100px;
+  height: auto;
+}
+
+.subcategory-challenge {
+  margin-bottom: 0rem;
+  width: 91px;
+  height: auto;
+  margin-top: -0.5rem;
+  margin-left: 0.5rem;
+}
+
+.cs-check {
+  top: 1rem !important;
+  color: transparent !important;
+  background-color: transparent !important;
+  margin-left: 4rem;
+}
+
+.radio-b {
+  --background: #fff;
+  --border: #D1D6EE;
+  --border-hover: #BBC1E1;
+  --border-active: #fff;
+  --tick: #fff;
+  position: relative;
+}
+
+.radio-b input,
+.radio-b svg {
+  width: 21px;
+  height: 21px;
+  display: block;
+}
+
+.radio-b input {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  position: relative;
+  outline: none;
+  background: var(--background);
+  border: none;
+  margin: 0;
+  padding: 0;
+  top: -6px;
+  cursor: pointer;
+  border-radius: 20px;
+  -webkit-transition: box-shadow 0.3s;
+  transition: box-shadow 0.3s;
+  box-shadow: inset 0 0 0 var(--s, 1px) var(--b, var(--border));
+}
+
+.radio-b input:hover {
+  --s: 2px;
+  --b: var(--border-hover);
+}
+
+.radio-b input:checked {
+  --b: var(--border-active);
+  background: #93bf1c;
+}
+
+.radio-b svg {
+  pointer-events: none;
+  fill: none;
+  stroke-width: 2px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke: var(--stroke, var(--border-active));
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 21px;
+  height: 21px;
+  -webkit-transform: scale(var(--scale, 1)) translateZ(0);
+          transform: scale(var(--scale, 1)) translateZ(0);
+}
+
+.radio-b.path input:checked {
+  --s: 2px;
+  -webkit-transition-delay: 0.4s;
+          transition-delay: 0.4s;
+}
+
+.radio-b.path input:checked + svg {
+  --a: 16.1 86.12;
+  --o: 102.22;
+}
+
+.radio-b.path svg {
+  stroke-dasharray: var(--a, 86.12);
+  stroke-dashoffset: var(--o, 86.12);
+  -webkit-transition: stroke-dasharray 0.6s, stroke-dashoffset 0.6s;
+  transition: stroke-dasharray 0.6s, stroke-dashoffset 0.6s;
+}
+
+.checkbox-two {
+  --background: #fff;
+  --border: #D1D6EE;
+  --border-hover: #BBC1E1;
+  --border-active: #1E2235;
+  --tick: #fff;
+  position: relative;
+  margin-left: -12px;
+  margin-top: -27px;
+  padding-bottom: 15px;
+  float: left;
+}
+
+.checkbox-two input,
+.checkbox-two svg {
+  width: 21px;
+  height: 21px;
+  display: block;
+}
+
+.checkbox-two input {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  position: relative;
+  outline: none;
+  background: #ffffff52;
+  border: none;
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
+  border-radius: 4px;
+  -webkit-transition: box-shadow 0.3s;
+  transition: box-shadow 0.3s;
+}
+
+.checkbox-two input:hover {
+  --s: 2px;
+  --b: var(--border-hover);
+}
+
+.checkbox-two input:checked {
+  --b: var(--border-active);
+}
+
+.checkbox-two svg {
+  pointer-events: none;
+  fill: none;
+  stroke-width: 2px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke: var(--stroke, var(--border-active));
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 21px;
+  height: 21px;
+  -webkit-transform: scale(var(--scale, 1)) translateZ(0);
+          transform: scale(var(--scale, 1)) translateZ(0);
+}
+
+.checkbox-two.path input:checked {
+  --s: 2px;
+  -webkit-transition-delay: 0.4s;
+          transition-delay: 0.4s;
+}
+
+.checkbox-two.path input:checked + svg {
+  --a: 16.1 86.12;
+  --o: 102.22;
+  -webkit-filter: brightness(0) invert(1);
+          filter: brightness(0) invert(1);
+}
+
+.checkbox-two.path svg {
+  stroke-dasharray: var(--a, 86.12);
+  stroke-dashoffset: var(--o, 86.12);
+  -webkit-transition: stroke-dasharray 0.6s, stroke-dashoffset 0.6s;
+  transition: stroke-dasharray 0.6s, stroke-dashoffset 0.6s;
+}
 
 .checkbox {
   --background: #fff;
@@ -19523,5 +19853,6 @@ a.btn.btn-link.login-nav.custom-link {
 
 .nav-color-home {
   background-color: #93bf1c;
+  height: 80px;
 }
 

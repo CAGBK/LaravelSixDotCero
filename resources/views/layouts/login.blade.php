@@ -57,7 +57,7 @@
         <div id="app">
 
 
-            <main class="py-4 body-grunenthal">
+            <main class="py-6 body-grunenthal">
 
                 <div class="container">
                     <div class="row">

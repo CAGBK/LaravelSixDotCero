@@ -4,7 +4,7 @@
 }
 .nav-font
 {
-	color: #009245 !important;
+	color: #93bf1c !important;
 }
 .nav-font.active, .nav-fon:active {
     color: #ffffff !important;
@@ -13,7 +13,8 @@
 }
 .header-card
 {
-	background-color: #009245;
+	background-color: #2cab66;
+	font-size: 16pt;
 }
 .login-nav
 {
@@ -40,11 +41,38 @@ body
 {
 	color: #009245;
     background-color: #fff;
-    border-color: #afd370;
+	border-color: #afd370;
+	font-size:8pt;
 }
 .button-card:hover
 {
 	color: #fff;
     background-color: #009245;
     border-color: #009245;
+}
+
+.card-header:first-child {
+	border-radius: calc(0.25rem - 1px) calc(0.25rem - 1px) 0 0;
+  }
+main.py-4.body-grunenthal {
+
+	font-weight: 800;
+    font-size: 10pt;
+}
+.image-nav{
+	filter: brightness(0) invert(1);
+    position: absolute;
+    top: 4px;
+    margin-left: 34%;
+	height: 65px;
+	
+}
+a#navbarDropdown {
+    font-weight: 800;
+}
+a.dropdown-item.nav-font {
+    font-weight: 800;
+}
+.dropdown-item.active, .dropdown-item:active {
+    background-color: #f7f7f7 !important;
 }

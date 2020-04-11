@@ -1,16 +1,14 @@
-<nav id="main-nav" class="navbar navbar-expand-md navbar-light navbar-laravel nav-color">
+<nav id="main-nav" class="navbar navbar-expand-md navbar-dark nav-color-home">
     <div class="container">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            <span class="sr-only"><?php echo trans('titles.toggleNav'); ?></span>
+        </button>
         <div style=" display: inline-block; text-align: center;">
             <a class=""  href="<?php echo e(url('/home')); ?>">
                 <img id="nav-image" src="/images/logo.png" width="160px" height="80px" alt="">
             </a>
         </div>
-        <?php if (Auth::check() && Auth::user()->hasRole('admin')): ?>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-            <span class="sr-only"><?php echo trans('titles.toggleNav'); ?></span>
-        </button>
-        <?php endif; ?>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             
             <ul class="navbar-nav mr-auto">
@@ -73,47 +71,25 @@
                         </div>
                     </li>
                 <?php endif; ?>
-                <?php if (Auth::check() && Auth::user()->hasRole('admin')): ?>
+                <?php if (Auth::check() && Auth::user()->hasPermission('menu.juego')): ?>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <?php echo trans('titles.adminGame'); ?>
 
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <?php if (Auth::check() && Auth::user()->hasPermission('view.lines')): ?>
                         <a class="dropdown-item nav-font <?php echo e(Request::is('lineas-marcas') ? 'active' : null); ?>" href="<?php echo e(url('lineas-marcas')); ?>">
                             <?php echo trans('titles.lines'); ?>
 
                         </a>
-                        
-                        <a class="dropdown-item nav-font <?php echo e(Request::is('blocker') ? 'active' : null); ?>" href="<?php echo e(url('/preguntas-respuestas')); ?>">
-                            <?php echo trans('titles.questions'); ?>
+                        <?php endif; ?>
+                        <?php if (Auth::check() && Auth::user()->hasPermission('view.questions')): ?>
+                            <a class="dropdown-item nav-font <?php echo e(Request::is('blocker') ? 'active' : null); ?>" href="<?php echo e(url('/preguntas-respuestas')); ?>">
+                                <?php echo trans('titles.questions'); ?>
 
-                        </a>
-                        
-                        <a class="dropdown-item nav-font <?php echo e(Request::is('blocker') ? 'active' : null); ?>" href="<?php echo e(url('/challenge-list')); ?>">
-                            <?php echo trans('titles.challenges'); ?>
-
-                        </a>
-                    </div>
-                </li>
-                <?php endif; ?>
-                <?php if (Auth::check() && Auth::user()->hasRole('user')): ?>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <?php echo trans('titles.adminGame'); ?>
-
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item nav-font <?php echo e(Request::is('lineas-marcas') ? 'active' : null); ?>" href="<?php echo e(url('lineas-marcas')); ?>">
-                            <?php echo trans('titles.lines'); ?>
-
-                        </a>
-                        
-                        <a class="dropdown-item nav-font <?php echo e(Request::is('blocker') ? 'active' : null); ?>" href="<?php echo e(url('/preguntas-respuestas')); ?>">
-                            <?php echo trans('titles.questions'); ?>
-
-                        </a>
-                        
+                            </a>
+                        <?php endif; ?>
                         <a class="dropdown-item nav-font <?php echo e(Request::is('blocker') ? 'active' : null); ?>" href="<?php echo e(url('/challenge-list')); ?>">
                             <?php echo trans('titles.challenges'); ?>
 
@@ -128,8 +104,22 @@
                 <?php if(auth()->guard()->guest()): ?>
                     
                 <?php else: ?>
+                    <li class="nav-item dropdown" onclick="markNotificationAsRead()" style="margin-right: 1rem;">
+                        <a id="navbarDropdown" class="dropdown-toggle text-white" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            <i class="fa fa-globe" aria-hidden="true"></i> Notificaciones <span class="badge badge-info"><?php echo e(count(Auth()->user()->unreadNotifications)); ?></span>
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <?php $__empty_1 = true; $__currentLoopData = Auth()->user()->unreadNotifications; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $notification): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>                            
+                                <?php echo $__env->make('partials.notification.replied_to_thread', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
+                                <a class="dropdown-item nav-font" href="#">No hay notificaciones no leídas</a>
+                                <hr>
+                                <a href="/challenge-list" class="dropdown-item nav-font"><strong><center>ver todos los desafios</center></strong></a>
+                            <?php endif; ?>
+                        </div>
+                    </li>
                     <li class="nav-item dropdown">
-                        <a id="navbarDropdown" class="nav-link dropdown-toggle text-white" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                        <a id="navbarDropdown" class="dropdown-toggle text-white" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                             <?php if((Auth::User()->profile) && Auth::user()->profile->avatar_status == 1): ?>
                                 <img src="<?php echo e(Auth::user()->profile->avatar); ?>" alt="<?php echo e(Auth::user()->name); ?>" class="user-avatar-nav">
                             <?php else: ?>
@@ -157,20 +147,4 @@
             </ul>
         </div>
     </div>
-</nav>
-<script type="application/javascript">
-    var URLactual = window.location;
-    var host = location.hostname;
-    var element = document.getElementById("main-nav");
-    if(URLactual=="http://"+host+"/login" || URLactual=="http://"+host+":8000/login" || URLactual=="http://"+host+":8000/"){
-        document.getElementById("nav-image").src = "/images/logoB.png";
-        document.getElementById("nav-image").style.display = "none";
-    } else if(URLactual=="http://"+host+"/register" || URLactual=="http://"+host+":8000/register"){
-        document.getElementById("nav-image").src = "/images/logoB.png";
-        document.getElementById("nav-image").style.display = "none";
-    }else{
-        document.getElementById("nav-image").src = "/images/logoB.png";
-        element.classList.add("nav-color-home");
-    }
-</script>
-<?php /**PATH C:\Users\ca.gonzalezb1\Desktop\LaravelSixDotCero\resources\views/partials/nav.blade.php ENDPATH**/ ?>
+</nav><?php /**PATH C:\Users\ca.gonzalezb1\Desktop\LaravelSixDotCero\resources\views/partials/nav.blade.php ENDPATH**/ ?>

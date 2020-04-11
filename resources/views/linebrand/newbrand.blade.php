@@ -30,12 +30,8 @@
                       {!! Form::label('name', 'Marca', array('class' => 'col-md-3 control-label')); !!}
                       <div class="col-md-9">
                           <div class="input-group">
-                              {!! Form::text('name', NULL, array('id' => 'name', 'class' => 'form-control', 'placeholder' => 'Nombre de Marca...')) !!}
-                              <div class="input-group-append">
-                                  <label for="name" class="input-group-text">
-                                      <i class="fa fa-fw {{ trans('forms.create_user_icon_email') }} nav-font" aria-hidden="true"></i>
-                                  </label>
-                              </div>
+                              {!! Form::text('name', NULL, array('id' => 'name', 'class' => 'form-control general-input', 'placeholder' => 'Nombre de Marca...')) !!}
+                              
                           </div>
                           @if ($errors->has('name'))
                               <span class="help-block">
@@ -49,12 +45,8 @@
                       {!! Form::label('description', 'Descripción', array('class' => 'col-md-3 control-label')); !!}
                       <div class="col-md-9">
                           <div class="input-group">
-                              {!! Form::text('description', NULL, array('id' => 'description', 'class' => 'form-control', 'placeholder' => 'Descripción')) !!}
-                              <div class="input-group-append">
-                                  <label for="description" class="input-group-text">
-                                      <i class="fa fa-fw {{ trans('forms.create_user_icon_email') }} nav-font" aria-hidden="true"></i>
-                                  </label>
-                              </div>
+                              {!! Form::text('description', NULL, array('id' => 'description', 'class' => 'form-control general-input', 'placeholder' => 'Descripción')) !!}
+                              
                           </div>
                           @if ($errors->has('description'))
                               <span class="help-block">
@@ -68,7 +60,7 @@
                         {!! Form::label('question[]', 'Preguntas', array('class' => 'col-md-3 control-label')); !!}
                         <div class="col-md-9">
                             <div class="input-group">
-                                <select class="custom-select form-control js-example-basic-multiple" name="question[]" id="question"  multiple="multiple" >
+                                <select class="general-input custom-select form-control js-example-basic-multiple" name="question[]" id="question"  multiple="multiple" >
                                     <option value="" disabled="disabled">Seleccione Preguntas</option>
                                     
                                     @if ($questions)
@@ -77,11 +69,7 @@
                                         @endforeach
                                     @endif
                                 </select>
-                                <div class="input-group-append">
-                                    <label class="input-group-text" for="question[]">
-                                        <i class="{{ trans('forms.create_user_icon_role') }} nav-font" aria-hidden="true"></i>
-                                    </label>
-                                </div>
+                                
                             </div>
                             @if ($errors->has('question[]'))
                                 <span class="help-block">
@@ -90,10 +78,42 @@
                             @endif
                         </div>
                     </div>
+                    <div class="form-group has-feedback row {{ $errors->has('image_brand[]') ? ' has-error ' : '' }} nav-font">
+                        {!! Form::label('image_brand[]', 'Imagen de Marca', array('class' => 'col-md-3 control-label')); !!}
+                        <div class="col-md-9">
+                            <div class="input-group">
+                                <label class="lb-img radio-b" style="background-color: #6cbbcb;">
+                                    <img class="brand-img" src="/images/hospital.png" />
+                                    <input type="radio" name="image" value="/images/hospital.png|#6cbbcb"/>
+                                </label>
+                                <label class="lb-img radio-b" style="background-color:#8db81b ;">
+                                    <img class="brand-img" src="/images/medicine.png" />
+                                    <input type="radio" name="image" value="/images/medicine.png|#8db81b"/>
+                                </label>
+                                <label class="lb-img radio-b" style="background-color: #f51d3f;">
+                                    <img class="brand-img" src="/images/tablet.png" />
+                                    <input type="radio" name="image" value="/images/tablet.png|#f51d3f"/>
+                                </label>
+                                <label class="lb-img radio-b" style="background-color:#f7c100;">
+                                    <img class="brand-img" src="/images/drug.png" />
+                                    <input type="radio" name="image" value="/images/drug.png|#f7c100"/>
+                                </label>
+                            </div>
+                            @if ($errors->has('image_brand[]'))
+                                <span class="help-block">
+                                    <strong>{{ $errors->first('image_brand[]') }}</strong>
+                                </span>
+                            @endif
+                        </div>
+                    </div>
                     @permission('create.brand')
-                    <button type="submit" class="btn btn-success margin-bottom-1 mb-1 float-right">
-                      Crear Nueva Marca
-                    </button>  
+                    <div class="form-group has-feedback row  nav-font">
+                        <div class="col-md-12 text-center"> 
+                            <button type="submit" class="btn btn-success btn-cr-brand ">
+                            Crear Nueva Marca
+                            </button>  
+                        </div>
+                    </div>
                     @endpermission
                   </form>
               </div>
@@ -104,12 +124,18 @@
 <link href="https://cdn.jsdelivr.net/npm/select2@4.0.12/dist/css/select2.min.css" rel="stylesheet" />
 <script  type="application/javascript" src="https://cdn.jsdelivr.net/npm/select2@4.0.12/dist/js/select2.min.js"></script>
 <script type="application/javascript">
-$(document).ready(function() {
-$('.js-example-basic-single').select2();
-});
+    $(document).ready(function() {
+        $('.js-example-basic-single').select2();
+        $('.js-example-basic-multiple').select2();
 
-$(document).ready(function() {
-$('.js-example-basic-multiple').select2();
-});
+    
+    });
+    document.getElementsByClassName('lb-img').onclick = changeColor;   
+
+    function changeColor() {
+        document.body.style.color = "purple";
+        return false;
+    } 
+
 </script>
 @endsection

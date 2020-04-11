@@ -66,6 +66,18 @@
 								<?php echo e($user->email); ?>
 
 							</dd>
+							<?php if(!$categories->isEmpty()): ?>
+								<dt>
+									<?php echo e(trans('profile.profileCategory')); ?>
+
+								</dt>
+								<dd>
+									<?php $__currentLoopData = $categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+										<span class="badge badge-info"><?php echo e($category->name); ?></span>
+									<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+								</dd>
+							<?php endif; ?>
+
 
 							<?php if($user->profile): ?>
 
@@ -79,6 +91,7 @@
 
 									</dd>
 								<?php endif; ?>
+
 
 								<?php if($user->profile->location): ?>
 									<dt>
