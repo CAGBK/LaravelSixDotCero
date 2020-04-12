@@ -19,6 +19,7 @@ class CreateChallengeUserTable extends Migration
             $table->bigInteger('challenge_id');
             $table->integer('score');
             $table->integer('number_question');
+            $table->integer('state_id');
             $table->timestamps();
         });
     }

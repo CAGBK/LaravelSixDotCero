@@ -19,7 +19,7 @@ class ChallengeTableSeeder extends Seeder
             [
                 'name' => 'Lorem ipsum dolor sit amet consectetur',
                 'users' => '[2,3,4,5]',
-                'subcategories' => '[1,2,3,4]',
+                'subcategories' => '["1","2","3","4"]',
                 'number_questions' => '10',
                 'state_id' => '1',
                 'user_id' => '2'
@@ -29,7 +29,7 @@ class ChallengeTableSeeder extends Seeder
             [
                 'name' => 'Aliquam et facilisi dapibus',
                 'users' => '[2,3,4,5]',
-                'subcategories' => '[1,2,3,4]',
+                'subcategories' => '["1","2","3","4"]',
                 'number_questions' => '10',
                 'state_id' => '1',
                 'user_id' => '2'
@@ -38,7 +38,7 @@ class ChallengeTableSeeder extends Seeder
             [
                 'name' => 'vulputate pretium ante non lacus',
                 'users' => '[2,3,4,5]',
-                'subcategories' => '[1,2,3,4]',
+                'subcategories' => '["1","2","3","4"]',
                 'number_questions' => '10',
                 'state_id' => '1',
                 'user_id' => '2'
@@ -47,7 +47,7 @@ class ChallengeTableSeeder extends Seeder
             [
                'name' => 'condimentum senectus',
                 'users' => '[2,3,4,5]',
-                'subcategories' => '[1,2,3,4]',
+                'subcategories' => '["1","2","3","4"]',
                 'number_questions' => '10',
                 'state_id' => '1',
                 'user_id' => '2'

@@ -1,14 +1,14 @@
 <nav id="main-nav" class="navbar navbar-expand-md navbar-dark nav-color-home">
     <div class="container">
-        <div style=" display: inline-block; text-align: center;">
-            <a class=""  href="<?php echo e(url('/home')); ?>">
-                <img id="nav-image" src="/images/logo.png" width="160px" height="80px" alt="">
-            </a>
-        </div>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
             <span class="sr-only"><?php echo trans('titles.toggleNav'); ?></span>
         </button>
+        <div style=" display: inline-block; text-align: center;">
+            <a class=""  href="<?php echo e(url('/home')); ?>">
+                <img id="nav-image " src="/images/logo.png" class="image-nav" width="160px" height="80px" alt="">
+            </a>
+        </div>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             
             <ul class="navbar-nav mr-auto">
@@ -85,12 +85,12 @@
                         </a>
                         <?php endif; ?>
                         <?php if (Auth::check() && Auth::user()->hasPermission('view.questions')): ?>
-                            <a class="dropdown-item nav-font <?php echo e(Request::is('blocker') ? 'active' : null); ?>" href="<?php echo e(url('/preguntas-respuestas')); ?>">
+                            <a class="dropdown-item nav-font <?php echo e(Request::is('preguntas-respuestas') ? 'active' : null); ?>" href="<?php echo e(url('/preguntas-respuestas')); ?>">
                                 <?php echo trans('titles.questions'); ?>
 
                             </a>
                         <?php endif; ?>
-                        <a class="dropdown-item nav-font <?php echo e(Request::is('blocker') ? 'active' : null); ?>" href="<?php echo e(url('/challenge-list')); ?>">
+                        <a class="dropdown-item nav-font <?php echo e(Request::is('challenge-list') ? 'active' : null); ?>" href="<?php echo e(url('/challenge-list')); ?>">
                             <?php echo trans('titles.challenges'); ?>
 
                         </a>

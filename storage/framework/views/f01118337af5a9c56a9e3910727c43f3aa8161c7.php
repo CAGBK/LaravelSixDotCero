@@ -33,7 +33,7 @@
 											<thead>
 												<tr>
 													<th>
-														a
+														Usuarios
 													</th>
 												</tr>
 											</thead>
@@ -42,13 +42,14 @@
 													<?php $__currentLoopData = $users; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $user): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 														<tr class="tr-challenge">
 															<td>
-																<input id="<?php echo e($user->id); ?>" name="check_user[]" type="checkbox" value="<?php echo e($user->id); ?>" >
-																<?php if((Auth::User()->profile) && Auth::user()->profile->avatar_status == 1 ): ?>
-																<img name="img-user" src="<?php echo e($user->profile->avatar); ?>" alt="<?php echo e($user->name); ?>" class="user-avatar-nav user-challenge">
-																<?php else: ?>
-																<img class="user-avatar-nav user-challenge">
-																<?php endif; ?>
-																<label name="name-user" class="label-challenge" for=""><?php echo e($user->name); ?> </label>		
+																<label class="checkbox path">
+																	<input  id="<?php echo e($user->id); ?>" name="check_user[]" type="checkbox" value="<?php echo e($user->id); ?>" >
+																	<svg viewBox="0 0 21 21">
+																		<path d="M5,10.75 L8.5,14.25 L19.4,2.3 C18.8333333,1.43333333 18.0333333,1 17,1 L4,1 C2.35,1 1,2.35 1,4 L1,17 C1,18.65 2.35,20 4,20 L17,20 C18.65,20 20,18.65 20,17 L20,7.99769186"></path>
+																	</svg>
+																</label>	
+																	<img src="<?php if($user->profile->avatar_status == 1): ?> <?php echo e($user->profile->avatar); ?> <?php else: ?> <?php echo e(Gravatar::get($user->email)); ?> <?php endif; ?>" alt="<?php echo e($user->name); ?>" class="user-avatar-nav user-challenge">
+																<label name="img-user" class="label-challenge" for=""><?php echo e($user->name); ?> </label>		
 															</td>
 														</tr>
 													<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
@@ -64,7 +65,7 @@
 			                        </div>
 			                    </div>
 	                        </div> 
-	                        <input type="button" name="next" class="next action-button" value="Siguiente" />
+	                        <input type="button" name="next" class="next  btn-ch" value="Siguiente" />
 	                    </fieldset>
 	                    <fieldset>
 	                        <div class="form-card">
@@ -80,22 +81,23 @@
 											<thead>
 												<tr >
 													<th style="display:none;">
-														a
+														
 													</th>
 												</tr>
 											</thead>
 											<?php if($subcategories): ?>
 												<tbody>
 													<?php $__currentLoopData = $subcategories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $subcategory): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-														<tr class="tr-challenge-two">
+													<tr class="tr-challenge-two" style="background-color:<?php echo e($subcategory->color_brand); ?>;">
 															<td>
-																<input id="<?php echo e($subcategory->id); ?>" name="check_subcategory[]" type="checkbox" value="<?php echo e($subcategory->id); ?>" >
-																<?php if((Auth::User()->profile) && Auth::user()->profile->avatar_status == 1 ): ?>
-																<img name="img-subcategory" src="<?php echo e($subcategory->profile->avatar); ?>" alt="<?php echo e($subcategory->name); ?>" class="subcategory-avatar-nav subcategory-challenge">
-																<?php else: ?>
-																<img class="subcategory-avatar-nav subcategory-challenge">
-																<?php endif; ?>
-																<label name="name-subcategory" class="label-challenge" for=""><?php echo e($subcategory->name); ?> </label>		
+																<label class="checkbox-two path cs-check">
+																	<input  id="<?php echo e($subcategory->id); ?>" name="check_subcategory[]" type="checkbox" value="<?php echo e($subcategory->id); ?>" >
+																	<svg viewBox="0 0 21 21">
+																		<path d="M5,10.75 L8.5,14.25 L19.4,2.3 C18.8333333,1.43333333 18.0333333,1 17,1 L4,1 C2.35,1 1,2.35 1,4 L1,17 C1,18.65 2.35,20 4,20 L17,20 C18.65,20 20,18.65 20,17 L20,7.99769186"></path>
+																	</svg>
+																</label>
+																<img name="img-subcategory" src="<?php echo e($subcategory->subcategory_image); ?>" alt="<?php echo e($subcategory->subcategory_image); ?>" class=" subcategory-challenge">		
+																<label class="sub-name"><?php echo e($subcategory->name); ?></label>
 															</td>
 														</tr>
 													<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
@@ -111,7 +113,7 @@
 			                        </div>
 			                    </div>
 	                        </div> 
-	                        <input type="button" name="next" class="next action-button" value="Siguiente" /> <input type="button" name="previous" class="previous action-button-previous" value="Atras" />
+	                         <input type="button" name="previous" class="previous btn-ch " value="Atras" /><input type="button" name="next" class="next btn-ch" value="Siguiente" />
 	                    </fieldset>
 	                    <fieldset>
 	                        <div class="form-card">
@@ -211,36 +213,8 @@
 										<strong><?php echo e($errors->first('name')); ?></strong>
 									</span>
 								<?php endif; ?>
-
-	                            <table id="challenge-check" class="table ">
-									<thead>
-										<tr style="display:none;">
-											<th>
-												a
-											</th>
-										</tr>
-									</thead>
-									<?php if($subcategories): ?>
-										<tbody>
-											<?php $__currentLoopData = $subcategories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $subcategory): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-												<tr class="tr-challenge-three">
-													<td>
-														<input id="<?php echo e($subcategory->id); ?>" name="check_subcategory" type="checkbox" value="<?php echo e($subcategory->id); ?>" >
-														<?php if((Auth::User()->profile) && Auth::user()->profile->avatar_status == 1 ): ?>
-														<img name="img-subcategory" src="<?php echo e($subcategory->profile->avatar); ?>" alt="<?php echo e($subcategory->name); ?>" class="subcategory-avatar-nav subcategory-challenge">
-														<?php else: ?>
-														<img class="subcategory-avatar-nav subcategory-challenge">
-														<?php endif; ?>
-														<label name="name-subcategory" class="label-challenge" for=""><?php echo e($subcategory->name); ?> </label>		
-													</td>
-												</tr>
-											<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-										</tbody>
-											<?php endif; ?>
-										</label>
-									</table>
 	                        </div> 
-	                          <button type="submit" class="btn next action-button">Confirmar!</button> <input type="button" name="previous" class="previous action-button-previous" value="Atras" />
+							<input type="button" name="previous" class="previous btn-ch" value="Atras" /><button type="submit" class="btn next btn-ch">Confirmar!</button> 
 	                    </fieldset>
 					</div>
 	                </form>

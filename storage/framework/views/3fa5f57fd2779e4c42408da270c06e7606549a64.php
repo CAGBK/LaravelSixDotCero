@@ -58,7 +58,7 @@
 
             <?php echo $__env->make('partials.nav', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 
-            <main class="py-4 body-grunenthal">
+            <main class="py-5 body-grunenthal">
 
                 <div class="container">
                     <div class="row">

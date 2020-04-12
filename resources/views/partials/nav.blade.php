@@ -72,11 +72,11 @@
                         </a>
                         @endpermission
                         @permission('view.questions')
-                            <a class="dropdown-item nav-font {{ Request::is('blocker') ? 'active' : null }}" href="{{ url('/preguntas-respuestas') }}">
+                            <a class="dropdown-item nav-font {{ Request::is('preguntas-respuestas') ? 'active' : null }}" href="{{ url('/preguntas-respuestas') }}">
                                 {!! trans('titles.questions') !!}
                             </a>
                         @endpermission
-                        <a class="dropdown-item nav-font {{ Request::is('blocker') ? 'active' : null }}" href="{{ url('/challenge-list') }}">
+                        <a class="dropdown-item nav-font {{ Request::is('challenge-list') ? 'active' : null }}" href="{{ url('/challenge-list') }}">
                             {!! trans('titles.challenges') !!}
                         </a>
                     </div>

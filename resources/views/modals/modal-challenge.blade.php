@@ -77,8 +77,17 @@
           </div>
       </div>
       <div class="modal-footer">
-        <a href="{{ route('game',['id' => $challenge->id]) }}" type="button" class="btn btn-primary">Jugar</a>
-        <a href="{{ route('game',['id' => $challenge->id]) }}" type="button" class="btn btn-primary">Continuar Desafio</a>
+        @foreach ($challenge->challengeus as $element)
+        @if ($element->user_id == Auth()->user()->id && $element->state_id === 3)
+          <a href="{{ route('game',['id' => $challenge->id]) }}" type="button" class="btn btn-primary">Continuar Desafio</a>
+        @endif
+        @endforeach
+        @foreach ($challenge->challengeus as $element)
+        @if ($element->user_id == Auth()->user()->id && $element->state_id === 1)
+          <a href="{{ route('game',['id' => $challenge->id]) }}" type="button" class="btn btn-primary">Jugar</a>
+        @endif 
+        @endforeach
+        <a href="{{ route('game',['id' => $challenge->id]) }}" type="button" class="btn btn-primary">Ver detalle</a>
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
       </div>
     </div>
