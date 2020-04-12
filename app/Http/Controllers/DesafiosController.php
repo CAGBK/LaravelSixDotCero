@@ -31,7 +31,8 @@ class DesafiosController extends Controller
         $challenges = Challenge::all();
         $users = User::all();
         $subcategories = Subcategory::all();
-        return View::make('challenge.list', compact('challenges','users', 'subcategories'));
+        $user = Auth()->user()->id;
+        return View::make('challenge.list', compact('challenges','users', 'subcategories','user'));
     }
     public function index()
     {
@@ -61,15 +62,14 @@ class DesafiosController extends Controller
         $questions = Question::select('id')->where('cquestion_id','=',$id)->get();
         $points = ChallengeUser::select('id','number_question','challenge_id','user_id')->where('challenge_id','=',$challenge_id)->where('user_id','=', Auth()->user()->id)->first();
         $points->number_question = $points->number_question + 1;
+        if ($points->number_question === 1)
+        {
+            $points->state_id = 3;
+        }
         $points->save();
         $random_question = $faker->randomElement($questions);
         $question = Question::find($random_question);
         return View::make('challenge.preguntas', compact('question','challenge'));
-    }
-
-    public function byLinea($id)
-    {
-        dd(Category::find($id));		
     }
     
     public function anwers(Request $request, $id,$challenge_id)
@@ -88,7 +88,6 @@ class DesafiosController extends Controller
     }
     public function storeChallenge(Request $request){
 
-       
         $dateconvert = $request->end_date; 
         $newDate = date("Y-m-d  g:i " , strtotime($dateconvert));
         $jsonUsers = json_encode($request->check_user);
@@ -114,6 +113,7 @@ class DesafiosController extends Controller
             $detail_ch->challenge_id = $challengeid->id;
             $detail_ch->score = 0;
             $detail_ch->number_question = 0;
+            $detail_ch->state_id = 1;
             $detail_ch->save();
             $challengeNotify = Challenge::find($challengeid->id);
             $user = Auth::user();

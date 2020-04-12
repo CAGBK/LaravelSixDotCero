@@ -28,8 +28,8 @@ class State extends Model
     {
         return $this->hasMany('App\Models\Answer');
     }
-    public function challege_detail()
+    public function challengeus()
     {
-        return $this->hasMany('App\Models\ChallengeDetail');
+        return $this->hasMany('App\Models\ChallengeUser');
     }
 }

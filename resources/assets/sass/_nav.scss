@@ -59,20 +59,32 @@ main.py-4.body-grunenthal {
 	font-weight: 800;
     font-size: 10pt;
 }
-.image-nav{
-	filter: brightness(0) invert(1);
-    position: absolute;
-    top: 4px;
-    margin-left: 34%;
-	height: 65px;
-	
+/* Desktops and laptops ----------- */
+@media only screen 
+and (min-width : 1224px) {
+	.image-nav
+	{
+		filter: brightness(0) invert(1);
+	    position: absolute;
+	    top: 4px;
+	    margin-left: 34%;
+		height: 65px;
+	}
+}
+/* Smartphones (portrait and landscape) ----------- */
+@media only screen 
+and (min-device-width : 320px) 
+and (max-device-width : 736px) {
+	.image-nav
+	{
+		filter: brightness(0) invert(1);
+	    top: 4px;
+		height: 65px;
+	}
 }
 a#navbarDropdown {
     font-weight: 800;
 }
 a.dropdown-item.nav-font {
     font-weight: 800;
-}
-.dropdown-item.active, .dropdown-item:active {
-    background-color: #f7f7f7 !important;
 }

@@ -11,13 +11,19 @@
 </div> 
 <div class="container">
         <div style="margin-top: 2rem;">
-            <h2><strong>Creados por usted</strong></h2>
+            <h2><strong>Desafios creados por usted pero no participa</strong></h2>
         </div>
         <div class="row">
             @foreach ($challenges as $challenge)
+            <?php
+                $arrayUser = Auth()->user()->id;
+                $arrayUsers = json_decode($challenge->users);
+                $inGame = in_array($arrayUser, $arrayUsers);
+            ?>
+            @if ($inGame === false)
             @if ($challenge->user_id === Auth()->user()->id)
                 <div class="col-lg-3 col-sm-6">
-                    <div class="card-box" style="background-color: {{ $challenge->state->color }}">
+                    <div class="card-box" style="background-color: {{ $challenge->state->color }} ">
                         <div class="inner">
                             <p>
                                 <strong>
@@ -32,10 +38,11 @@
                     </div>
                 </div>
             @endif
+            @endif
             @endforeach
         </div>
         <div style="margin-top: 2rem;">
-            <h2><strong>Desafios en los que está invitado</strong></h2>
+            <h2><strong>Desafios en los que participa</strong></h2>
         </div>
         <div class="row">
             @foreach ($challenges as $challenge)
@@ -46,7 +53,7 @@
                 @foreach ($arrayUsers as $user)
                     @if ($user == Auth()->user()->id)
                         <div class="col-lg-3 col-sm-6">
-                            <div class="card-box" style="background-color: {{ $challenge->state->color }}">
+                            <div class="card-box" style="background-color: @foreach ($challenge->challengeus as $element)@if ($element->user_id == Auth()->user()->id){{ $element->state->color }}@endif @endforeach">
                                 <div class="inner">
                                     <p>
                                         <strong>

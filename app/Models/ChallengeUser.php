@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class ChallengeUser extends Model
 {
     protected $table = "challenge_user";
-    protected $fillable = ['user_id', 'challenge_id', 'score', 'number_question'];
+    protected $fillable = ['user_id', 'challenge_id', 'score', 'number_question','state_id'];
     protected $guarded = ['id'];
 
     public function user()
@@ -21,5 +21,9 @@ class ChallengeUser extends Model
     public function state()
     {
         return $this->belongsTo('App\Models\State');
+    }
+    public function challenge()
+    {
+        return $this->belongsTo('App\Models\Challenge');
     }
 }

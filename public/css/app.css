@@ -18957,13 +18957,28 @@ main.py-4.body-grunenthal {
   font-size: 10pt;
 }
 
-.image-nav {
-  -webkit-filter: brightness(0) invert(1);
-          filter: brightness(0) invert(1);
-  position: absolute;
-  top: 4px;
-  margin-left: 34%;
-  height: 65px;
+/* Desktops and laptops ----------- */
+
+@media only screen and (min-width: 1224px) {
+  .image-nav {
+    -webkit-filter: brightness(0) invert(1);
+            filter: brightness(0) invert(1);
+    position: absolute;
+    top: 4px;
+    margin-left: 34%;
+    height: 65px;
+  }
+}
+
+/* Smartphones (portrait and landscape) ----------- */
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 736px) {
+  .image-nav {
+    -webkit-filter: brightness(0) invert(1);
+            filter: brightness(0) invert(1);
+    top: 4px;
+    height: 65px;
+  }
 }
 
 a#navbarDropdown {
@@ -18972,11 +18987,6 @@ a#navbarDropdown {
 
 a.dropdown-item.nav-font {
   font-weight: 800;
-}
-
-.dropdown-item.active,
-.dropdown-item:active {
-  background-color: #f7f7f7 !important;
 }
 
 /*Estilos de list de desafios*/
@@ -19853,6 +19863,5 @@ a.btn.btn-link.login-nav.custom-link {
 
 .nav-color-home {
   background-color: #93bf1c;
-  height: 80px;
 }
 
