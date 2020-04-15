@@ -85,12 +85,12 @@
                         </a>
                         <?php endif; ?>
                         <?php if (Auth::check() && Auth::user()->hasPermission('view.questions')): ?>
-                            <a class="dropdown-item nav-font <?php echo e(Request::is('blocker') ? 'active' : null); ?>" href="<?php echo e(url('/preguntas-respuestas')); ?>">
+                            <a class="dropdown-item nav-font <?php echo e(Request::is('preguntas-respuestas') ? 'active' : null); ?>" href="<?php echo e(url('/preguntas-respuestas')); ?>">
                                 <?php echo trans('titles.questions'); ?>
 
                             </a>
                         <?php endif; ?>
-                        <a class="dropdown-item nav-font <?php echo e(Request::is('blocker') ? 'active' : null); ?>" href="<?php echo e(url('/challenge-list')); ?>">
+                        <a class="dropdown-item nav-font <?php echo e(Request::is('challenge-list') ? 'active' : null); ?>" href="<?php echo e(url('/challenge-list')); ?>">
                             <?php echo trans('titles.challenges'); ?>
 
                         </a>
