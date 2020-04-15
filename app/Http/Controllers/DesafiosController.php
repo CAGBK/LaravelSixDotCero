@@ -48,8 +48,8 @@ class DesafiosController extends Controller
     }
     public function ruleta(Request $request, $id)
     {
-        $points = ChallengeUser::select('id','number_question','challenge_id','user_id')->where('challenge_id','=',$id)->where('user_id','=', Auth()->user()->id)->first();
-        if ($points->state_id === 2) 
+        $points = ChallengeUser::select('id','number_question','challenge_id','user_id','state_id')->where('challenge_id','=',$id)->where('user_id','=', Auth()->user()->id)->first();
+        if ($points->state_id != 2) 
         {
             $challenge = Challenge::find($id);
             $cquestions = CQuestion::all();
@@ -64,8 +64,8 @@ class DesafiosController extends Controller
 
     public function questionGame(Request $request, $id, $challenge_id)
     {
-        $points = ChallengeUser::select('id','number_question','challenge_id','user_id')->where('challenge_id','=',$challenge_id)->where('user_id','=', Auth()->user()->id)->first();
-        if ($points->state_id === 2) {
+        $points = ChallengeUser::select('id','number_question','challenge_id','user_id','state_id')->where('challenge_id','=',$challenge_id)->where('user_id','=', Auth()->user()->id)->first();
+        if ($points->state_id != 2) {
             $faker = Faker::create();
             $challenge = Challenge::find($challenge_id);
             $questions = Question::select('id')->where('cquestion_id','=',$id)->get();
