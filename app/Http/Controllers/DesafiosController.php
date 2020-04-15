@@ -18,6 +18,7 @@ use jeremykenedy\LaravelRoles\Models\Role;
 use Illuminate\Support\Facades\DB;
 use App\Notifications\RepliedToThread;
 use Auth;
+use Carbon\Carbon;
 
 
 class DesafiosController extends Controller
@@ -60,6 +61,27 @@ class DesafiosController extends Controller
         $users = User::all();
         $subcategories = Subcategory::all();
         return View::make('challenge.list', compact('challenges','users', 'subcategories'));
+    }
+
+    public function prueba(Request $request, $id)
+    {
+        /*$challenges = Challenge::all();
+        $date = Carbon::now()->format('Y-m-d');
+        foreach ($challenges as $challenge) {
+            if($date === $challenge->end_date)
+            {
+                $stateChallenge = Challenge::find($challenge->id);
+                $stateChallenge->state_id = 2;
+                $stateChallenge->save();
+                $userChallenges = json_decode($stateChallenge->users);
+                foreach ($userChallenges as $userChallenge) 
+                {
+                    $stateChallengeDetail = ChallengeUser::where('challenge_id',$stateChallenge->id)->where('user_id', $userChallenge)->first();
+                    $stateChallengeDetail->state_id = 2;
+                    $stateChallengeDetail->save(); 
+                }
+            }
+        }*/
     }
 
     public function questionGame(Request $request, $id, $challenge_id)
@@ -105,8 +127,6 @@ class DesafiosController extends Controller
     }
     public function storeChallenge(Request $request){
 
-        $dateconvert = $request->end_date; 
-        $newDate = date("Y-m-d  g:i " , strtotime($dateconvert));
         $jsonUsers = json_encode($request->check_user);
         $jsonBrands = json_encode($request->check_subcategory);
         $challenge = new Challenge;
@@ -116,9 +136,8 @@ class DesafiosController extends Controller
         $challenge->number_questions = $request->number_questions;
         $challenge->state_id = $request->state_id;
         $challenge->user_id = Auth()->user()->id;
-        $challenge->end_date = $newDate;
-        $start_date = new \DateTime();
-        $challenge->start_date = $start_date;
+        $challenge->end_date = Carbon::parse($request->end_date)->format('Y-m-d');;
+        $challenge->start_date = Carbon::now()->format('Y-m-d');
         $challenge->save();
         $challenge = Challenge::all();
         $challengeid = $challenge->last(); 

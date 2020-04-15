@@ -3,6 +3,8 @@
 namespace App\Console;
 
 use Illuminate\Console\Scheduling\Schedule;
+use App\Console\Commands\DeleteExpiredActivations;
+use App\Console\Commands\FinishChallenge;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
 class Kernel extends ConsoleKernel
@@ -13,7 +15,8 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        Commands\DeleteExpiredActivations::class,
+        DeleteExpiredActivations::class,
+        FinishChallenge::class,
     ];
 
     /**
@@ -28,8 +31,8 @@ class Kernel extends ConsoleKernel
         // $schedule->command('inspire')
         //          ->hourly();
 
-        $schedule->command('activations:clean')
-                    ->daily();
+        $schedule->command('activations:clean')->daily();
+        $schedule->command('challenge:finish')->everyMinute();
     }
 
     /**

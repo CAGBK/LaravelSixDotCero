@@ -178,6 +178,7 @@ Route::middleware(['auth'])->group(function(){
     Route::post('crear/Desafio', 'DesafiosController@storeChallenge')->name('create_challenge');
     Route::get('challenge-list', 'DesafiosController@listChallenge')->name('challenge_list');
     Route::get('game/{id}', 'DesafiosController@ruleta')->name('game');
+    Route::get('prueba/{id}', 'DesafiosController@prueba')->name('prueba');
     Route::get('answer/{id}/{challenge}', 'DesafiosController@anwers')->name('answers');
     Route::get('question-game/{id}/{challenge}', 'DesafiosController@questionGame')->name('question_game');
     Route::get('markAsRead', function(){
