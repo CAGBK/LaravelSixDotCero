@@ -31,8 +31,7 @@ class DesafiosController extends Controller
         $challenges = Challenge::all();
         $users = User::all();
         $subcategories = Subcategory::all();
-        $user = Auth()->user()->id;
-        return View::make('challenge.list', compact('challenges','users', 'subcategories','user'));
+        return View::make('challenge.list', compact('challenges','users', 'subcategories'));
     }
     public function index()
     {
@@ -49,27 +48,45 @@ class DesafiosController extends Controller
     }
     public function ruleta(Request $request, $id)
     {
-        $challenge = Challenge::find($id);
-        $cquestions = CQuestion::all();
-        $points = ChallengeUser::where('challenge_id','=',$id)->where('user_id','=', Auth()->user()->id)->get();
-        return View::make('challenge/ruleta', compact('cquestions','challenge','points'));
+        $points = ChallengeUser::select('id','number_question','challenge_id','user_id','state_id')->where('challenge_id','=',$id)->where('user_id','=', Auth()->user()->id)->first();
+        if ($points->state_id != 2) 
+        {
+            $challenge = Challenge::find($id);
+            $cquestions = CQuestion::all();
+            $points = ChallengeUser::where('challenge_id','=',$id)->where('user_id','=', Auth()->user()->id)->get();
+            return View::make('challenge/ruleta', compact('cquestions','challenge','points'));
+        }
+        $challenges = Challenge::all();
+        $users = User::all();
+        $subcategories = Subcategory::all();
+        return View::make('challenge.list', compact('challenges','users', 'subcategories'));
     }
 
     public function questionGame(Request $request, $id, $challenge_id)
     {
-        $faker = Faker::create();
-        $challenge = Challenge::find($challenge_id);
-        $questions = Question::select('id')->where('cquestion_id','=',$id)->get();
-        $points = ChallengeUser::select('id','number_question','challenge_id','user_id')->where('challenge_id','=',$challenge_id)->where('user_id','=', Auth()->user()->id)->first();
-        $points->number_question = $points->number_question + 1;
-        if ($points->number_question === 1)
-        {
-            $points->state_id = 3;
+        $points = ChallengeUser::select('id','number_question','challenge_id','user_id','state_id')->where('challenge_id','=',$challenge_id)->where('user_id','=', Auth()->user()->id)->first();
+        if ($points->state_id != 2) {
+            $faker = Faker::create();
+            $challenge = Challenge::find($challenge_id);
+            $questions = Question::select('id')->where('cquestion_id','=',$id)->get();
+            $points->number_question = $points->number_question + 1;
+            if ($points->number_question === 1)
+            {
+                $points->state_id = 3;
+            }
+            if($challenge->number_questions == $points->number_question)
+            {
+                $points->state_id = 2;
+            }
+            $points->save();
+            $random_question = $faker->randomElement($questions);
+            $question = Question::find($random_question);
+            return View::make('challenge.preguntas', compact('question','challenge'));
         }
-        $points->save();
-        $random_question = $faker->randomElement($questions);
-        $question = Question::find($random_question);
-        return View::make('challenge.preguntas', compact('question','challenge'));
+        $challenges = Challenge::all();
+        $users = User::all();
+        $subcategories = Subcategory::all();
+        return View::make('challenge.list', compact('challenges','users', 'subcategories'));
     }
     
     public function anwers(Request $request, $id,$challenge_id)
