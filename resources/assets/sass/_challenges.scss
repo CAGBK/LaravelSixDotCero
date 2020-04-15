@@ -131,7 +131,7 @@
 }
 .banner-challenge{
     background: #272727;
-    height: 245px;
+    height: 230px;
     margin-top: -68px;
     position: absolute;
     width: -webkit-fill-available;
@@ -155,7 +155,7 @@
     border-bottom: 3px solid #2cab66;
 }
 .fs-title {
-    margin-top: 0rem;
+    margin-top: -2rem;
     font-size: 25px;
     color: #2cab66;
     font-weight: bolder;
@@ -166,7 +166,7 @@
 }
 
 .fs-title-text {
-    font-size: 25px;
+    font-size: 16pt;
     color: #fff;
     margin-left: 1.5rem;
     margin-bottom: 9rem;
@@ -193,7 +193,7 @@
 
 #progressbar {
     margin-bottom: 30px;
-    padding-top: 150px;
+    padding-top: 120px;
     overflow: hidden;
     margin-left: 5%;
     position: sticky;
@@ -267,7 +267,7 @@
     top: 15px;
     z-index: -1;
 }
-.dataTables_wrapper .dataTables_paginate .paginate_button.current, .dataTables_wrapper .dataTables_paginate .paginate_button.current:hover {
+.dataTables_wrapper .dataTables_paginate .paginate_button.current {
     color: transparent !important;
     border: 1px solid #8db81b;
     background: #8db81b !important;
@@ -277,6 +277,7 @@
     text-align: center;
 
 }
+
 
 #progressbar li.active:before,
 #progressbar li.active:after {
@@ -368,7 +369,7 @@ input[type="search"] {
 .nav-lchallenge{
     background-color: #272727;
     height: 247px;
-    margin-top: -24px;
+    margin-top: -48px;
 }
 .btn-ch {
     background: #93bf1c;
@@ -454,13 +455,14 @@ a#brands-check_next {
 }
 a.paginate_button {
     border: 1px solid #93bf1c !important;
-    background: #93bf1c;
-    border-radius: 44px !important;
-    content: none;
+    background: #93bf1c !important;
+    border-radius: 47% !important;
+    width: 0px;
+    height: 27px;
+    -webkit-text-security: disc;
+
 }
-.dataTables_wrapper .dataTables_length, .dataTables_wrapper .dataTables_filter, .dataTables_wrapper .dataTables_info, .dataTables_wrapper .dataTables_processing, .dataTables_wrapper .dataTables_paginate {
-    color: transparent !important;
-}
+
 .sub-name{
     font-size: 16pt;
     font-weight: 800;
@@ -702,6 +704,11 @@ img.subcategory-avatar-nav.subcategory-challenge {
             transition: stroke-dasharray .6s, stroke-dashoffset .6s;
         }
     }
+}
+.dataTables_wrapper .dataTables_info,
+.dataTables_wrapper .dataTables_paginate {
+  float: none !important;
+  text-align: center !important;
 }
 
 

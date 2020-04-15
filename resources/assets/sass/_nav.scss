@@ -64,11 +64,13 @@ main.py-4.body-grunenthal {
 and (min-width : 1224px) {
 	.image-nav
 	{
+		-webkit-filter: brightness(0) invert(1);
 		filter: brightness(0) invert(1);
-	    position: absolute;
-	    top: 4px;
-	    margin-left: 34%;
-		height: 65px;
+		position: absolute;
+		top: 4px;
+		margin-left: 34%;
+		height: 48px;
+		width: 114px;
 	}
 }
 /* Smartphones (portrait and landscape) ----------- */
