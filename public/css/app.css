@@ -18962,11 +18962,12 @@ main.py-4.body-grunenthal {
 @media only screen and (min-width: 1224px) {
   .image-nav {
     -webkit-filter: brightness(0) invert(1);
-            filter: brightness(0) invert(1);
+    filter: brightness(0) invert(1);
     position: absolute;
     top: 4px;
     margin-left: 34%;
-    height: 65px;
+    height: 48px;
+    width: 114px;
   }
 }
 
@@ -19132,7 +19133,7 @@ a.dropdown-item.nav-font {
 
 .banner-challenge {
   background: #272727;
-  height: 245px;
+  height: 230px;
   margin-top: -68px;
   position: absolute;
   width: -webkit-fill-available;
@@ -19158,7 +19159,7 @@ a.dropdown-item.nav-font {
 }
 
 .fs-title {
-  margin-top: 0rem;
+  margin-top: -2rem;
   font-size: 25px;
   color: #2cab66;
   font-weight: bolder;
@@ -19169,7 +19170,7 @@ a.dropdown-item.nav-font {
 }
 
 .fs-title-text {
-  font-size: 25px;
+  font-size: 16pt;
   color: #fff;
   margin-left: 1.5rem;
   margin-bottom: 9rem;
@@ -19197,7 +19198,7 @@ a.dropdown-item.nav-font {
 
 #progressbar {
   margin-bottom: 30px;
-  padding-top: 150px;
+  padding-top: 120px;
   overflow: hidden;
   margin-left: 5%;
   position: -webkit-sticky;
@@ -19277,8 +19278,7 @@ a.dropdown-item.nav-font {
   z-index: -1;
 }
 
-.dataTables_wrapper .dataTables_paginate .paginate_button.current,
-.dataTables_wrapper .dataTables_paginate .paginate_button.current:hover {
+.dataTables_wrapper .dataTables_paginate .paginate_button.current {
   color: transparent !important;
   border: 1px solid #8db81b;
   background: #8db81b !important;
@@ -19386,7 +19386,7 @@ input[type=search] {
 .nav-lchallenge {
   background-color: #272727;
   height: 247px;
-  margin-top: -24px;
+  margin-top: -48px;
 }
 
 .btn-ch {
@@ -19488,17 +19488,11 @@ a#brands-check_next {
 
 a.paginate_button {
   border: 1px solid #93bf1c !important;
-  background: #93bf1c;
-  border-radius: 44px !important;
-  content: none;
-}
-
-.dataTables_wrapper .dataTables_length,
-.dataTables_wrapper .dataTables_filter,
-.dataTables_wrapper .dataTables_info,
-.dataTables_wrapper .dataTables_processing,
-.dataTables_wrapper .dataTables_paginate {
-  color: transparent !important;
+  background: #93bf1c !important;
+  border-radius: 47% !important;
+  width: 0px;
+  height: 27px;
+  -webkit-text-security: disc;
 }
 
 .sub-name {
@@ -19770,6 +19764,12 @@ img.subcategory-avatar-nav.subcategory-challenge {
   stroke-dashoffset: var(--o, 86.12);
   -webkit-transition: stroke-dasharray 0.6s, stroke-dashoffset 0.6s;
   transition: stroke-dasharray 0.6s, stroke-dashoffset 0.6s;
+}
+
+.dataTables_wrapper .dataTables_info,
+.dataTables_wrapper .dataTables_paginate {
+  float: none !important;
+  text-align: center !important;
 }
 
 @media (max-width: 560px) {
