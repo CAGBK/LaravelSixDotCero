@@ -43,7 +43,9 @@ class RepliedToThread extends Notification
             'challenge_id'=>$this->challengeNotify->id,
             'challenge_name'=>$this->challengeNotify->name,
             'user_id'=>$this->user->id,
-            'user_name'=>$this->user->name
+            'user_name'=>$this->user->name,
+            'image'=>$this->user->profile->avatar,
+            'status'=>$this->user->profile->avatar_status
         ];
     }
 
