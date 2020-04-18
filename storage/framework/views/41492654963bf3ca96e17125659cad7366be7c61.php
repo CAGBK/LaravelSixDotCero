@@ -75,9 +75,7 @@
 	})
 
 	
-    $('#users-check').DataTable({
-
-		
+   	var table = $('#users-check').DataTable({
 		"columns": [
             { "data": "check-user" }
         ],
@@ -88,12 +86,18 @@
 			"search" : "Buscar Desafío",
 
 		},
+		
 		"scrollY":        "400px",
         "scrollCollapse": true,
         "paging":         false,
         "lengthMenu": [[8, 16, 24, -1], [8, 16, 24, "All"]]
 	});
-	$('#brands-check').DataTable({
+	$("#users-check	 td input").on('change', function() {
+    	var $td = $(this).parent();
+    	$td.find('input').attr('value', this.value);
+    	table.cell($td).invalidate().draw();
+	});
+	var tablebrand = $('#brands-check').DataTable({
 		"columns": [
             { "data": "check-user" }
         ],
@@ -104,6 +108,11 @@
 
         },
         "lengthMenu": [[8, 16, 24, -1], [8, 16, 24, "All"]]
+	});
+	$("#brands-check	 td input").on('change', function() {
+    	var $td = $(this).parent();
+    	$td.find('input').attr('value', this.value);
+    	tablebrand.cell($td).invalidate().draw();
 	});
 	$('#challenge-check').DataTable({
 	});

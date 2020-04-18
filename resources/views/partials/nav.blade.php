@@ -90,18 +90,25 @@
                     
                 @else
                     <li class="nav-item dropdown" onclick="markNotificationAsRead()" style="margin-right: 1rem;">
-                        <a id="navbarDropdown" class="dropdown-toggle text-white" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                            <i class="fa fa-globe" aria-hidden="true"></i> Notificaciones <span class="badge badge-info">{{ count(Auth()->user()->unreadNotifications) }}</span>
+                        <a id="navbarDropdown" class="text-white nav-notification" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            <i class="fa fa-bell"></i><span class="badge badge-info">{{ count(Auth()->user()->unreadNotifications) }}</span>
                         </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <ul class="notification-menu dropdown-menu">
+                            <li class="notification-head text-light bg-dark">
+                                <div class="row">
+                                    <div class="col-lg-12 col-sm-12 col-12">
+                                        <span>Notificaciones ({{ count(Auth()->user()->unreadNotifications) }})</span>
+                                    </div>
+                                </div>
+                            </li>
                             @forelse (Auth()->user()->unreadNotifications as $notification)                            
                                 @include('partials.notification.replied_to_thread')
                                 @empty
-                                <a class="dropdown-item nav-font" href="#">No hay notificaciones no leídas</a>
-                                <hr>
-                                <a href="/challenge-list" class="dropdown-item nav-font"><strong><center>ver todos los desafios</center></strong></a>
                             @endforelse
-                        </div>
+                            <li class="notification-footer bg-dark text-center">
+                                <a href="/challenge-list" class="text-light">Ver Todos</a>
+                            </li>
+                        </ul>
                     </li>
                     <li class="nav-item dropdown">
                         <a id="navbarDropdown" class="dropdown-toggle text-white" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
