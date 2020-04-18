@@ -146,13 +146,14 @@ class LineasMarcasController extends Controller
 
     public function updateBrand(Request $request, $id )
     {
+        list($image,$color) = explode('|', $request->image);
         $jsonQuestions = json_encode($request->question);
         $subcategory = Subcategory::find($id);
         $subcategory->name = $request->name;
         $subcategory->description = $request->description;
         $subcategory->question = $jsonQuestions;
-        $subcategory->subcategory_image = $request->image;
-        $subcategory->color_brand = $request->color_brand;
+        $subcategory->subcategory_image = $image;
+        $subcategory->color_brand = $color;
         $subcategory->save();
         return redirect('lineas-marcas');
     }

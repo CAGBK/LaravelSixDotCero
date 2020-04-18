@@ -86,8 +86,10 @@
 												</tr>
 											</thead>
 											<?php if($subcategories): ?>
+										
 												<tbody>
 													<?php $__currentLoopData = $subcategories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $subcategory): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+														
 													<tr class="tr-challenge-two" style="background-color:<?php echo e($subcategory->color_brand); ?>;">
 															<td>
 																<label class="checkbox-two path cs-check">
@@ -100,6 +102,7 @@
 																<label class="sub-name"><?php echo e($subcategory->name); ?></label>
 															</td>
 														</tr>
+														
 													<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 												</tbody>
 													<?php endif; ?>

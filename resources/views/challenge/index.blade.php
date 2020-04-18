@@ -88,8 +88,10 @@
 												</tr>
 											</thead>
 											@if ($subcategories)
+										
 												<tbody>
 													@foreach($subcategories as $subcategory)
+														
 													<tr class="tr-challenge-two" style="background-color:{{$subcategory->color_brand}};">
 															<td>
 																<label class="checkbox-two path cs-check">
@@ -102,6 +104,7 @@
 																<label class="sub-name">{{$subcategory->name}}</label>
 															</td>
 														</tr>
+														
 													@endforeach
 												</tbody>
 													@endif

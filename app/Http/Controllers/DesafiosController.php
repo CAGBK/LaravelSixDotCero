@@ -40,11 +40,25 @@ class DesafiosController extends Controller
         ->select('states.id','states.state','states.color')
         ->whereBetween('states.id', [1,2])
         ->get();
-        $roles = Role::all();
         $users= User::all();
         $data = User::paginate(8);
-    	$categories= Category::all();
-    	$subcategories= Subcategory::all();
+        $id = Auth::user()->id;
+        $categories= Category::all();
+        foreach ($categories as $key => $value) {
+            $struser = json_decode($value->user);
+            $strbrands = json_decode($value->subcategory);
+            if (in_array($id, $struser)) 
+                {   
+                    $linesbyuser[] = $value->id;
+                    $resultado = [];
+                    foreach($linesbyuser as $line){
+                        $categorylines = Category::find($line);
+                        $strbrandsusr = json_decode($categorylines->subcategory);
+                        $resultado = array_merge($resultado, $strbrandsusr); 
+                    }
+                    $subcategories = Subcategory::whereIn("id", $resultado)->get();
+                }
+            }
         return View::make('challenge/index', compact('users','categories','subcategories', 'data', 'states'));
     }
     public function ruleta(Request $request, $id)
