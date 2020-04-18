@@ -65,7 +65,7 @@
 			                        </div>
 			                    </div>
 	                        </div> 
-	                        <input type="button" name="next" class="next  btn-ch" value="Siguiente" />
+	                        <input id="btn-filter" type="button" name="next" class="next  btn-ch" value="Siguiente" />
 	                    </fieldset>
 	                    <fieldset>
 	                        <div class="form-card">
@@ -77,7 +77,7 @@
 	                            </div> 
 	                            <div class="form-group has-feedback row <?php echo e($errors->has('brand_id') ? ' has-error ' : ''); ?> nav-font">
 			                        <div class="col-md-12">
-										<table id="brands-check" class="table ">
+										<table id="brands-check" class="table">
 											<thead>
 												<tr >
 													<th style="display:none;">
@@ -116,7 +116,7 @@
 			                        </div>
 			                    </div>
 	                        </div> 
-	                         <input type="button" name="previous" class="previous btn-ch " value="Atras" /><input type="button" name="next" class="next btn-ch" value="Siguiente" />
+	                         <input type="button" name="previous" class="previous btn-ch " value="Atras" /><input  id="btn-filter-brands" type="button" name="next" class="next btn-ch" value="Siguiente" />
 	                    </fieldset>
 	                    <fieldset>
 	                        <div class="form-card">
