@@ -161,6 +161,8 @@ class DesafiosController extends Controller
     }
     public function storeChallenge(Request $request){
 
+        dd($request);
+
         $jsonUsers = json_encode($request->check_user);
         $jsonBrands = json_encode($request->check_subcategory);
         $challenge = new Challenge;
