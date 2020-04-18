@@ -79,7 +79,8 @@ class DesafiosController extends Controller
 
     public function prueba(Request $request, $id)
     {
-        /*$challenges = Challenge::all();
+        /*Termino el tiempo
+        $challenges = Challenge::all();
         $date = Carbon::now()->format('Y-m-d');
         foreach ($challenges as $challenge) {
             if($date === $challenge->end_date)
@@ -94,6 +95,25 @@ class DesafiosController extends Controller
                     $stateChallengeDetail->state_id = 2;
                     $stateChallengeDetail->save(); 
                 }
+            }
+        }*/
+        /*
+        Ya todos los usuarios terminaron
+        $challenges = Challenge::where('state_id','!=',2)->get();
+        foreach ($challenges as $challenge) 
+        {
+            $userChallenges = json_decode($challenge->users);
+            foreach ($userChallenges as $user) {
+                $stateChallengeDetail = ChallengeUser::where('challenge_id',$challenge->id)->where('user_id', $user)->first();
+                $array[] = $stateChallengeDetail->state_id;
+            }
+            $stateFinish[] = 2;
+            $challengeEnded = array_diff(array_unique($array),$stateFinish);         
+            if(empty($challengeEnded)) 
+            {
+                $challengeFinish = Challenge::find($challenge->id);
+                $challengeFinish->state_id = 2;
+                $challengeFinish->save();
             }
         }*/
     }
