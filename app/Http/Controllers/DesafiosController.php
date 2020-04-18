@@ -159,7 +159,8 @@ class DesafiosController extends Controller
             return redirect()->route('game',$challenge_id)->with('fallo','Su respuesta fue incorrecta!');
         }
     }
-    public function storeChallenge(Request $request){
+    public function storeChallenge(Request $request)
+    {
 
         $jsonUsers = json_encode($request->check_user);
         $jsonBrands = json_encode($request->check_subcategory);
