@@ -36,6 +36,7 @@ class DesafiosController extends Controller
     }
     public function index()
     {
+        $actually_date = Carbon::now()->format('Y-m-d');
         $states = DB::table('states')
         ->select('states.id','states.state','states.color')
         ->whereBetween('states.id', [1,2])
@@ -161,7 +162,6 @@ class DesafiosController extends Controller
     }
     public function storeChallenge(Request $request)
     {
-        dd($request);
         $jsonUsers = json_encode($request->check_user);
         $jsonBrands = json_encode($request->check_subcategory);
         $challenge = new Challenge;

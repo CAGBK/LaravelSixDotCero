@@ -67,7 +67,7 @@
 			                        </div>
 			                    </div>
 	                        </div> 
-	                        <input id="btn-filter" type="button" name="next" class="next  btn-ch" value="Siguiente" />
+	                        <input id="btn-filter" type="button" name="next" class="next  btn-ch" value="Siguiente" onclick="printChecked()"/>
 	                    </fieldset>
 	                    <fieldset>
 	                        <div class="form-card">
@@ -127,92 +127,107 @@
 										<h2 class="fs-title">Confirmación del Desafío</h2>
 										<h2 class="fs-title-text">Seleccione la marca.</h2>
 	                                </div>
-								</div> 
-								<div class="form-group has-feedback row {{ $errors->has('name') ? ' has-error ' : '' }} nav-font">
-                                    {!! Form::label('name', 'Nombre de Desafío', array('class' => 'col-md-3 control-label')); !!}
-                                    <div class="col-md-9">
-                                        <div class="input-group">
-                                            {!! Form::text('name', NULL, array('id' => 'name', 'class' => 'form-control', 'placeholder' => 'Pregunta...')) !!}
-                                            <div class="input-group-append">
-                                                <label for="name" class="input-group-text">
-                                                    <i class="fa fa-fw {{ trans('forms.create_user_icon_email') }} nav-font" aria-hidden="true"></i>
-                                                </label>
-                                            </div>
-                                        </div>
-                                        @if ($errors->has('name'))
-                                            <span class="help-block">
-                                                <strong>{{ $errors->first('name') }}</strong>
-                                            </span>
-                                        @endif
-                                    </div>
 								</div>
-								<div class="form-group has-feedback row {{ $errors->has('number_questions') ? ' has-error ' : '' }} nav-font">
-                                    {!! Form::label('number_questions', 'Cantidad de Preguntas', array('class' => 'col-md-3 control-label')); !!}
-                                    <div class="col-md-9">
-                                        <div class="input-group">
-                                            {!! Form::number('number_questions', NULL, array('id' => 'number_questions', 'class' => 'form-control', 'placeholder' => 'Pregunta...')) !!}
-                                            <div class="input-group-append">
-                                                <label for="number_questions" class="input-group-text">
-                                                    <i class="fa fa-fw {{ trans('forms.create_user_icon_email') }} nav-font" aria-hidden="true"></i>
-                                                </label>
-                                            </div>
-                                        </div>
-                                        @if ($errors->has('number_questions'))
-                                            <span class="help-block">
-                                                <strong>{{ $errors->first('number_questions') }}</strong>
-                                            </span>
-                                        @endif
-                                    </div>
-								</div>
-								<div class="form-group has-feedback row {{ $errors->has('challenge_time') ? ' has-error ' : '' }} nav-font">
-                                    {!! Form::label('challenge_time', 'Duración del Desafío', array('class' => 'col-md-3 date-time-ch control-label')); !!}
-                                    <div class="col-md-9">
-                                        <div class="input-group">
-                                            <div class="input-group date" id="datetimepicker1" data-target-input="nearest">
-												<input type="text" class="form-control datetimepicker-input" name="end_date" data-target="#datetimepicker1" required/>
-												<div class="input-group-append" data-target="#datetimepicker1" data-toggle="datetimepicker">
-													<div class="input-group-text"><i class="fa fa-calendar"></i></div>
+								<div class="container cn-confirm"> 
+									<div class="row"  style="display: flex;justify-content: center;align-items: center;">
+										<div class="form-group {{ $errors->has('name') ? ' has-error ' : '' }} nav-font">
+											<div class="col-md-12">
+												<div class="input-group">
+													{!! Form::text('name', NULL, array('id' => 'name', 'class' => 'form-control input-name-ch', 'placeholder' => 'Nombre del Desafío')) !!}
 												</div>
+												@if ($errors->has('name'))
+													<span class="help-block">
+														<strong>{{ $errors->first('name') }}</strong>
+													</span>
+												@endif
 											</div>
-                                        </div>
-                                        @if ($errors->has('challenge_time'))
-                                            <span class="help-block">
-                                                <strong>{{ $errors->first('challenge_time') }}</strong>
-                                            </span>
-                                        @endif
-                                    </div>
-                                </div>
-								<div class="form-group has-feedback row {{ $errors->has('state_id') ? ' has-error ' : '' }} nav-font">
-                                    {!! Form::label('state_id', 'Estado', array('class' => 'col-md-3 control-label')); !!}
-                                    <div class="col-md-9">
-                                        <div class="input-group">
-                                            <select class="custom-select form-control" name="state_id" id="state_id">
-                                                <option value="">Seleccione estado</option>
-                                                @if ($states)
-                                                    @foreach($states as $state)
-                                                        <option value="{{ $state->id }}">{{ $state->state }}</option>
-                                                    @endforeach
-                                                @endif
-                                            </select>
-                                            <div class="input-group-append">
-                                                <label class="input-group-text" for="state_id">
-                                                    <i class="{{ trans('forms.create_user_icon_role') }} nav-font" aria-hidden="true"></i>
-                                                </label>
-                                            </div>
-                                        </div>
-                                        @if ($errors->has('role'))
-                                            <span class="help-block">
-                                                <strong>{{ $errors->first('role') }}</strong>
-                                            </span>
-                                        @endif
-                                    </div>
-                                </div>
-								@if ($errors->has('name'))
-									<span class="help-block">
-										<strong>{{ $errors->first('name') }}</strong>
-									</span>
-								@endif
-	                        </div> 
+										</div>
+										<div class="form-group {{ $errors->has('number_questions') ? ' has-error ' : '' }} nav-font">
+											<div class="col-md-12">
+												<div class="input-group">
+													{!! Form::number('number_questions', NULL, array('id' => 'number_questions', 'class' => 'form-control input-c-questions', 'placeholder' => 'C/Preguntas')) !!}
+												</div>
+												@if ($errors->has('number_questions'))
+													<span class="help-block">
+														<strong>{{ $errors->first('number_questions') }}</strong>
+													</span>
+												@endif
+											</div>
+										</div>
+									</div>
+									<div class="row"  style="display: flex;justify-content: center;align-items: center;">
+										<div class="form-group {{ $errors->has('challenge_time') ? ' has-error ' : '' }} nav-font">
+											<div class="col-md-12">
+												<div class="input-group">
+													<div class="input-group date" id="datetimepicker1" data-target-input="nearest">
+														<input type="text" class="form-control input-confirm datetimepicker-input" name="end_date" data-target="#datetimepicker1" required/>
+														<div class="input-group-append" data-target="#datetimepicker1" data-toggle="datetimepicker">
+															<div class="input-group-text"><i class="fa fa-calendar"></i></div>
+														</div>
+													</div>
+												</div>
+												@if ($errors->has('challenge_time'))
+													<span class="help-block">
+														<strong>{{ $errors->first('challenge_time') }}</strong>
+													</span>
+												@endif
+											</div>
+										</div>
+										<div class="form-group {{ $errors->has('state_id') ? ' has-error ' : '' }} nav-font">
+											<div class="col-md-12">
+												<div class="input-group">
+													<select class="form-control input-confirm" name="state_id" id="state_id">
+														<option value="">Seleccione estado</option>
+														@if ($states)
+															@foreach($states as $state)
+																<option value="{{ $state->id }}">{{ $state->state }}</option>
+															@endforeach
+														@endif
+													</select>
+												</div>
+												@if ($errors->has('role'))
+													<span class="help-block">
+														<strong>{{ $errors->first('role') }}</strong>
+													</span>
+												@endif
+											</div>
+										</div>
+										@if ($errors->has('name'))
+											<span class="help-block">
+												<strong>{{ $errors->first('name') }}</strong>
+											</span>
+										@endif
+									</div> 
+									<table style="display:none;" id="users-checked" class="table">
+										<thead style="display: none;">
+											<tr>
+												<th>
+													
+												</th>
+											</tr>
+										</thead>
+										@if ($users)
+											<tbody>
+												@foreach($users as $user)
+													<tr class="tr-challenge">
+														<td>
+															<label class="checkbox path">
+																
+																<svg viewBox="0 0 21 21">
+																	<path d="M5,10.75 L8.5,14.25 L19.4,2.3 C18.8333333,1.43333333 18.0333333,1 17,1 L4,1 C2.35,1 1,2.35 1,4 L1,17 C1,18.65 2.35,20 4,20 L17,20 C18.65,20 20,18.65 20,17 L20,7.99769186"></path>
+																</svg>
+															</label>	
+																<img src="@if ($user->profile->avatar_status == 1) {{ $user->profile->avatar }} @else {{ Gravatar::get($user->email) }} @endif" alt="{{ $user->name }}" class="user-avatar-nav user-challenge">
+															<label name="img-user" class="label-challenge" for="">{{ $user->name }} </label>		
+														</td>
+													</tr>
+												@endforeach
+											</tbody>
+												@endif
+											</label>
+										</table>
+								</div> 
+							</div>
 							<input type="button" name="previous" class="previous btn-ch" value="Atras" /><button type="submit" class="btn next btn-ch">Confirmar!</button> 
 	                    </fieldset>
 					</div>
@@ -222,17 +237,7 @@
         </div>
     </div>
 </div>
-<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.20/datatables.min.css"/>
- 
 
-<link href="https://cdn.jsdelivr.net/npm/select2@4.0.12/dist/css/select2.min.css" rel="stylesheet" />
-<script  type="application/javascript" src="https://cdn.jsdelivr.net/npm/select2@4.0.12/dist/js/select2.min.js"></script>
-   <!-- jQuery -->
-   <script type="application/javascript"  src="//code.jquery.com/jquery.js"></script>
-   <!-- DataTables -->
-   <script   type="application/javascript" src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
-   <!-- Bootstrap JavaScript -->
-   <script  type="application/javascript"  src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 @endsection
 
 @section('footer_scripts')

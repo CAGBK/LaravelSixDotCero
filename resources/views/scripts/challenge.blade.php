@@ -75,8 +75,11 @@
 	})
 
 		var table = $('#users-check').DataTable({
+			"columns": [
+            { "data": "brands-user" }
+        	],
 			"language": {
-				"zeroRecords": "Nothing found - sorry",
+				"zeroRecords": "",
 				"infoEmpty": "No records available",
 				"infoFiltered": "(filtered from _MAX_ total records)",
 				"search" : "Buscar Desafío",
@@ -91,27 +94,23 @@
 			$('#users-check_filter').val('');
 				table.search('').draw(); //required after
 		});
-		
+	
 		var tablebrand = $('#brands-check').DataTable({
 			"columns": [
-            { "data": "check-user" }
+            { "data": "brands-user" }
         ],
 		"language": {
-            "zeroRecords": "Nothing found - sorry",
+            "zeroRecords": "No se ha encontrado nada, lo sentimos",
             "infoEmpty": "No records available",
-			"search" : "Buscar",
+			"search" : "Buscar Marcas",
         },
         "lengthMenu": [[8, 16, 24, -1], [8, 16, 24, "All"]]
 		});
-		$('#btn-filter-brands').click(function() {
-			$('#users-check_filter').val('');
-				tablebrand.search('').draw(); //required after
-		});
+			$('#btn-filter-brands').click(function() {
+				$('#users-check_filter').val('');
+					tablebrand.search('').draw(); //required after
+			});
+		
 	});
-	$(function () {
-    $('#datetime').datetimepicker({
-        inline: true,
-        sideBySide: true,
-    });
-});
+	
 </script>

@@ -2,7 +2,7 @@
 <div class="form-card">
     <div class="row">
         <div class="col-12 nav-lchallenge">
-            <h2 class="text ch-text fs-title">Desafíos</h2>
+            <h2 class="text ch-text fs-title-list">Desafíos</h2>
             <h3 class="text ch-text-two text-white">Te han invitado a un desafío :</h3>
             <input type="button" name="" class="nav-button-ch" value="Crear Desafío" onclick="location.href='challenge'"  /> 
         </div>
