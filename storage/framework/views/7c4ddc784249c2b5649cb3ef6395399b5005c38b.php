@@ -74,53 +74,43 @@
 	return false;
 	})
 
+		var table = $('#users-check').DataTable({
+			"columns": [
+            { "data": "brands-user" }
+        	],
+			"language": {
+				"zeroRecords": "",
+				"infoEmpty": "No records available",
+				"infoFiltered": "(filtered from _MAX_ total records)",
+				"search" : "Buscar Desafío",
+
+			},
+			"scrollY":        "400px",
+			"scrollCollapse": true,
+			"paging":         false,
+			"lengthMenu": [[8, 16, 24, -1], [8, 16, 24, "All"]]
+		});
+		$('#btn-filter').click(function() {
+			$('#users-check_filter').val('');
+				table.search('').draw(); //required after
+		});
 	
-   	var table = $('#users-check').DataTable({
-		"columns": [
-            { "data": "check-user" }
+		var tablebrand = $('#brands-check').DataTable({
+			"columns": [
+            { "data": "brands-user" }
         ],
 		"language": {
-            "zeroRecords": "Nothing found - sorry",
+            "zeroRecords": "No se ha encontrado nada, lo sentimos",
             "infoEmpty": "No records available",
-			"infoFiltered": "(filtered from _MAX_ total records)",
-			"search" : "Buscar Desafío",
-
-		},
-		
-		"scrollY":        "400px",
-        "scrollCollapse": true,
-        "paging":         false,
-        "lengthMenu": [[8, 16, 24, -1], [8, 16, 24, "All"]]
-	});
-	$("#users-check	 td input").on('change', function() {
-    	var $td = $(this).parent();
-    	$td.find('input').attr('value', this.value);
-    	table.cell($td).invalidate().draw();
-	});
-	var tablebrand = $('#brands-check').DataTable({
-		"columns": [
-            { "data": "check-user" }
-        ],
-		"language": {
-            "zeroRecords": "Nothing found - sorry",
-            "infoEmpty": "No records available",
-			"search" : "Buscar",
-
+			"search" : "Buscar Marcas",
         },
         "lengthMenu": [[8, 16, 24, -1], [8, 16, 24, "All"]]
+		});
+			$('#btn-filter-brands').click(function() {
+				$('#users-check_filter').val('');
+					tablebrand.search('').draw(); //required after
+			});
+		
 	});
-	$("#brands-check	 td input").on('change', function() {
-    	var $td = $(this).parent();
-    	$td.find('input').attr('value', this.value);
-    	tablebrand.cell($td).invalidate().draw();
-	});
-	$('#challenge-check').DataTable({
-	});
-	});
-	$(function () {
-    $('#datetime').datetimepicker({
-        inline: true,
-        sideBySide: true,
-    });
-});
+	
 </script><?php /**PATH C:\Users\ca.gonzalezb1\Desktop\LaravelSixDotCero\resources\views/scripts/challenge.blade.php ENDPATH**/ ?>

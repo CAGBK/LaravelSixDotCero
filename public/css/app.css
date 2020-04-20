@@ -18990,59 +18990,6 @@ a.dropdown-item.nav-font {
   font-weight: 800;
 }
 
-.notification-menu {
-  top: 40px;
-  right: -15px;
-  left: unset;
-  width: 456px;
-  box-shadow: 0px 5px 7px -1px #c1c1c1;
-  padding-bottom: 0px;
-  padding: 0px;
-}
-
-.notification-menu:before {
-  content: "";
-  position: absolute;
-  top: -20px;
-  right: 12px;
-  border: 10px solid #343A40;
-  border-color: transparent transparent #343A40 transparent;
-}
-
-.notification-head {
-  padding: 5px 15px;
-  border-radius: 3px 3px 0px 0px;
-}
-
-.notification-footer {
-  padding: 5px 15px;
-  border-radius: 0px 0px 3px 3px;
-}
-
-.notification-box {
-  padding: 10px 0px;
-}
-
-.bg-gray {
-  background-color: #eee;
-}
-
-@media (max-width: 640px) {
-  .notification-menu {
-    content: none;
-    width: 456px !important;
-  }
-
-  .notification-menu:before {
-    content: none !important;
-  }
-
-  .nav-notification {
-    display: block;
-    padding: 0.5rem 1rem;
-  }
-}
-
 /*Estilos de list de desafios*/
 
 .card-box {
