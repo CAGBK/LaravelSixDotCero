@@ -18990,6 +18990,59 @@ a.dropdown-item.nav-font {
   font-weight: 800;
 }
 
+.notification-menu {
+  top: 40px;
+  right: -15px;
+  left: unset;
+  width: 456px;
+  box-shadow: 0px 5px 7px -1px #c1c1c1;
+  padding-bottom: 0px;
+  padding: 0px;
+}
+
+.notification-menu:before {
+  content: "";
+  position: absolute;
+  top: -20px;
+  right: 12px;
+  border: 10px solid #343A40;
+  border-color: transparent transparent #343A40 transparent;
+}
+
+.notification-head {
+  padding: 5px 15px;
+  border-radius: 3px 3px 0px 0px;
+}
+
+.notification-footer {
+  padding: 5px 15px;
+  border-radius: 0px 0px 3px 3px;
+}
+
+.notification-box {
+  padding: 10px 0px;
+}
+
+.bg-gray {
+  background-color: #eee;
+}
+
+@media (max-width: 640px) {
+  .notification-menu {
+    content: none;
+    width: 456px !important;
+  }
+
+  .notification-menu:before {
+    content: none !important;
+  }
+
+  .nav-notification {
+    display: block;
+    padding: 0.5rem 1rem;
+  }
+}
+
 /*Estilos de list de desafios*/
 
 .card-box {
@@ -19299,7 +19352,9 @@ div#users-check_info {
 }
 
 div#users-check_filter {
-  margin-top: 1rem;
+  margin-top: 0rem;
+  -moz-text-align-last: end;
+       text-align-last: end;
 }
 
 .nav-button-ch {
@@ -19309,7 +19364,7 @@ div#users-check_filter {
   margin-left: 15%;
   z-index: auto;
   font-size: 15pt;
-  color: #272727;
+  color: #fff;
   background-color: #93bf1c;
   border-radius: 5px;
   border: none;
@@ -19347,14 +19402,14 @@ select + .select2-container {
   border: 1px solid red !important;
 }
 
-th.sorting_asc {
+.sorting_asc {
   border: none !important;
   font-size: 25pt;
   font-weight: bold;
   color: #2cab66;
 }
 
-th.sorting_desc {
+.sorting_desc {
   border: none !important;
   font-size: 25pt;
   font-weight: bold;
@@ -19379,14 +19434,21 @@ input[type=search] {
   box-shadow: darkkhaki;
 }
 
-.dataTables_scrollBody {
-  border: none !important;
-}
-
 .nav-lchallenge {
   background-color: #272727;
-  height: 247px;
+  height: 230px;
   margin-top: -48px;
+}
+
+.fs-title-list {
+  margin-top: 1rem;
+  font-size: 25px;
+  color: #2cab66;
+  font-weight: bolder;
+  margin-left: 1.5rem;
+  font-size: 22pt;
+  text-align: left;
+  margin-bottom: 2px;
 }
 
 .btn-ch {
@@ -19409,8 +19471,8 @@ input[type=search] {
   margin-left: 7rem;
 }
 
-td.sorting_1 {
-  border: none;
+.sorting {
+  border: none !important;
   text-align: center;
 }
 
@@ -19420,7 +19482,7 @@ td.sorting_1 {
   display: -webkit-inline-box;
   display: inline-flex;
   position: relative;
-  margin-left: 14%;
+  margin-left: 7%;
   margin-top: 2%;
   padding: 1%;
 }
@@ -19452,6 +19514,9 @@ div#challenge-check_wrapper > div {
 
 label.label-challenge {
   display: block;
+  font-size: 11pt;
+  font-weight: 800;
+  margin-right: 1rem !important;
 }
 
 label.checkbox.path {
@@ -19495,6 +19560,15 @@ a.paginate_button {
   -webkit-text-security: disc;
 }
 
+.input-confirm {
+  border-radius: 0.9rem;
+  border-color: #939393;
+  border: 2px solid #939393;
+  font-weight: 900;
+  color: #93bf1c;
+  width: 204px;
+}
+
 .sub-name {
   font-size: 16pt;
   font-weight: 800;
@@ -19512,6 +19586,26 @@ a.paginate_button {
   height: 150px;
   border: 1px solid white;
   border-radius: 14%;
+}
+
+div#users-check_filter {
+  color: #2cab66;
+  font-size: 11pt;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+div#brands-check_filter {
+  color: #2cab66;
+  font-size: 11pt;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  -moz-text-align-last: end;
+       text-align-last: end;
+}
+
+div#brands-check_paginate {
+  display: none;
 }
 
 img.subcategory-avatar-nav.subcategory-challenge {
@@ -19532,6 +19626,31 @@ img.subcategory-avatar-nav.subcategory-challenge {
   color: transparent !important;
   background-color: transparent !important;
   margin-left: 4rem;
+}
+
+.cn-confirm {
+  margin-top: 1rem;
+  border: 3px solid #93bf1c;
+  border-radius: 10px;
+  padding: 1rem;
+}
+
+.input-name-ch {
+  border-radius: 0.9rem;
+  border-color: #939393;
+  border: 2px solid #939393;
+  width: 20rem;
+  font-weight: 900;
+  color: #93bf1c;
+}
+
+.input-c-questions {
+  border-radius: 0.9rem;
+  border-color: #939393;
+  border: 2px solid #939393;
+  font-weight: 900;
+  width: 8rem;
+  color: #93bf1c;
 }
 
 .radio-b {

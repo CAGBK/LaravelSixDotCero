@@ -1,4 +1,4 @@
-<script>
+<script  type="text/javascript">
 	$(document).ready(function(){
 
 	var current_fs, next_fs, previous_fs; //fieldsets
@@ -112,5 +112,7 @@
 			});
 		
 	});
-	
+	$(function () {
+        $('#datetimepicker10').datetimepicker();
+    });
 </script>

@@ -336,13 +336,13 @@ select + .select2-container {
     border:1px solid red !important;
 }
 
-th.sorting_asc {
+.sorting_asc {
     border: none !important;
     font-size: 25pt;
     font-weight: bold;
     color: #2cab66;
 }
-th.sorting_desc {
+.sorting_desc {
     border: none !important;
     font-size: 25pt;
     font-weight: bold;
@@ -364,9 +364,6 @@ input[type="search"] {
     box-shadow: darkkhaki;
 }
 
-.dataTables_scrollBody{
-    border: none !important;
-}
 .nav-lchallenge {
     background-color: #272727;
     height: 230px;
@@ -399,8 +396,8 @@ input[type="search"] {
 .ch-text{
     margin-left: 7rem;
 }
-td.sorting_1 {
-    border: none;
+.sorting {
+    border: none !important;
     text-align: center;
 }
 .tr-challenge{

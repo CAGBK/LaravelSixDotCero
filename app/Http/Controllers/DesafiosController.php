@@ -49,17 +49,21 @@ class DesafiosController extends Controller
             $struser = json_decode($value->user);
             $strbrands = json_decode($value->subcategory);
             if (in_array($id, $struser)) 
-                {   
-                    $linesbyuser[] = $value->id;
-                    $resultado = [];
-                    foreach($linesbyuser as $line){
-                        $categorylines = Category::find($line);
-                        $strbrandsusr = json_decode($categorylines->subcategory);
-                        $resultado = array_merge($resultado, $strbrandsusr); 
-                    }
-                    $subcategories = Subcategory::whereIn("id", $resultado)->get();
+            {   
+                $linesbyuser[] = $value->id;
+                $resultado = [];
+                foreach($linesbyuser as $line){
+                    $categorylines = Category::find($line);
+                    $strbrandsusr = json_decode($categorylines->subcategory);
+                    $resultado = array_merge($resultado, $strbrandsusr); 
                 }
+                $subcategories = Subcategory::whereIn("id", $resultado)->get();
             }
+            else
+            {
+                return redirect()->route('challenge_list')->with('fallo','Para crear un desafio es necesario tener una Linea asignada!');
+            }
+        }
         return View::make('challenge/index', compact('users','categories','subcategories', 'data', 'states'));
     }
     public function ruleta(Request $request, $id)

@@ -2,12 +2,21 @@
 <div class="form-card">
     <div class="row">
         <div class="col-12 nav-lchallenge">
-            <h2 class="text ch-text fs-title">Desafíos</h2>
+            <h2 class="text ch-text fs-title-list">Desafíos</h2>
             <h3 class="text ch-text-two text-white">Te han invitado a un desafío :</h3>
             <input type="button" name="" class="nav-button-ch" value="Crear Desafío" onclick="location.href='challenge'"  /> 
         </div>
     </div> 
-</div> 
+</div>
+<?php if(session()->has('fallo')): ?>
+    <div class="alert alert-info alert-dismissible fade show" role="alert">
+      <strong>Advertencia!</strong> <?php echo e(session('fallo')); ?>
+
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+<?php endif; ?> 
 <div class="container">
         <div style="margin-top: 2rem;">
             <h2><strong>Desafios creados por usted pero no participa</strong></h2>

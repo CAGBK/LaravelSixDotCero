@@ -8,7 +8,15 @@
             <input type="button" name="" class="nav-button-ch" value="Crear Desafío" onclick="location.href='challenge'"  /> 
         </div>
     </div> 
-</div> 
+</div>
+@if (session()->has('fallo'))
+    <div class="alert alert-info alert-dismissible fade show" role="alert">
+      <strong>Advertencia!</strong> {{ session('fallo') }}
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+@endif 
 <div class="container">
         <div style="margin-top: 2rem;">
             <h2><strong>Desafios creados por usted pero no participa</strong></h2>
