@@ -59,6 +59,10 @@ class DesafiosController extends Controller
                     }
                     $subcategories = Subcategory::whereIn("id", $resultado)->get();
                 }
+                else
+                {
+                    return redirect()->route('challenge_list')->with('fallo','Para crear un desafio es necesario tener una Linea asignada!');
+                }
             }
         return View::make('challenge/index', compact('users','categories','subcategories', 'data', 'states'));
     }
