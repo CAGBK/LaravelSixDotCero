@@ -76,10 +76,7 @@ class DesafiosController extends Controller
             $points = ChallengeUser::where('challenge_id','=',$id)->where('user_id','=', Auth()->user()->id)->get();
             return View::make('challenge/ruleta', compact('cquestions','challenge','points'));
         }
-        $challenges = Challenge::all();
-        $users = User::all();
-        $subcategories = Subcategory::all();
-        return View::make('challenge.list', compact('challenges','users', 'subcategories'));
+        return redirect()->route('challenge_list');
     }
 
     public function prueba(Request $request, $id)
