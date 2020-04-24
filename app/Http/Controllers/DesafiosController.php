@@ -37,7 +37,6 @@ class DesafiosController extends Controller
     }
     public function index()
     {
-        $actually_date = Carbon::now()->format('Y-m-d');
         $states = DB::table('states')
         ->select('states.id','states.state','states.color')
         ->whereBetween('states.id', [1,2])
@@ -127,7 +126,21 @@ class DesafiosController extends Controller
         if ($points->state_id != 2) {
             $faker = Faker::create();
             $challenge = Challenge::find($challenge_id);
-            $questions = Question::select('id')->where('cquestion_id','=',$id)->get();
+            $subca = json_decode($challenge->subcategories);
+            $qsubcategories = Subcategory::select('question')->whereIn('id',$subca)->get();
+            $resultado = [];
+            foreach ($qsubcategories as $value) 
+            {
+                $squestions = json_decode($value->question);
+                $resultado = array_merge($resultado, $squestions); 
+            }
+            $questions = Question::select('id')->whereIn('id',$resultado)->where('cquestion_id','=',$id)->get();
+            $qresultado = [];
+            $quresultado = [];
+            foreach ($questions as $question) {
+                $qresultado = array($question->id);
+                $quresultado = array_merge($quresultado, $qresultado); 
+            }
             $points->number_question = $points->number_question + 1;
             if ($points->number_question === 1)
             {
@@ -138,7 +151,7 @@ class DesafiosController extends Controller
                 $points->state_id = 2;
             }
             $points->save();
-            $random_question = $faker->randomElement($questions);
+            $random_question = $faker->randomElement($quresultado);
             $question = Question::find($random_question);
             return View::make('challenge.preguntas', compact('question','challenge'));
         }

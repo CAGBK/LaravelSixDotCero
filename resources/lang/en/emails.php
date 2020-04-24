@@ -18,20 +18,20 @@ return [
      *
      */
 
-    'activationSubject'  => 'Activation required',
-    'activationGreeting' => 'Welcome!',
-    'activationMessage'  => 'You need to activate your email before you can start using all of our services.',
-    'activationButton'   => 'Activate',
-    'activationThanks'   => 'Thank you for using our application!',
+    'activationSubject'  => 'Activación necesaria',
+    'activationGreeting' => 'Bienvenidos!',
+    'activationMessage'  => 'Debe activar su correo electrónico antes de poder comenzar a utilizar todos nuestros servicios.',
+    'activationButton'   => 'Activar',
+    'activationThanks'   => 'Gracias por usar nuestra aplicación!',
 
     /*
      * Goobye email.
      *
      */
-    'goodbyeSubject'  => 'Sorry to see you go...',
-    'goodbyeGreeting' => 'Hello :username,',
-    'goodbyeMessage'  => 'We are very sorry to see you go. We wanted to let you know that your account has been deleted. Thank for the time we shared. You have '.config('settings.restoreUserCutoff').' days to restore your account.',
-    'goodbyeButton'   => 'Restore Account',
-    'goodbyeThanks'   => 'We hope to see you again!',
+    'goodbyeSubject'  => 'Siento verte ir...',
+    'goodbyeGreeting' => 'Hola :username,',
+    'goodbyeMessage'  => 'Lamentamos verte partir. Queremos informarle que su cuenta ha sido eliminada. Gracias por el tiempo que compartimos. Tienes '.config('settings.restoreUserCutoff').' días para restaurar su cuenta.',
+    'goodbyeButton'   => 'Restaurar cuenta',
+    'goodbyeThanks'   => '¡Esperamos verte de nuevo!',
 
 ];
