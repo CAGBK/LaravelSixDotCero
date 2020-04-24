@@ -165,20 +165,6 @@ class DesafiosController extends Controller
             return redirect()->route('game',$challenge_id)->with('fallo','Su respuesta fue incorrecta!');
         }
     }
-
-    public function messages()
-    {   
-        return [
-            'check_user.required' => 'A title is required',
-            'check_subcategory.required'  => 'A message is required',
-            'name.required' => 'A title is required',
-            'number_questions.required'  => 'A message is required',
-            'end_date.required' => 'A title is required',
-            'state_id.required'  => 'A message is required',
-            
-        ];
-    }
-    
     public function storeChallenge(ChallengePost $request)
     {
         $jsonUsers = json_encode($request->check_user);
