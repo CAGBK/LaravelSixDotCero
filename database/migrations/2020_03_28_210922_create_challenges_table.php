@@ -21,8 +21,8 @@ class CreateChallengesTable extends Migration
             $table->string('number_questions');
             $table->integer('state_id')->unsigned();
             $table->integer('user_id');
-            $table->date('start_date');
-            $table->date('end_date');
+            $table->dateTime('start_date');
+            $table->dateTime('end_date');
             $table->timestamps();
         });
     }

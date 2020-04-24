@@ -18410,8 +18410,9 @@ div[data-toggle=buttons] label.active {
 }
 
 .user-avatar-nav {
-  margin-top: -3px;
-  margin-right: 1em;
+  margin-top: 3px;
+  margin-bottom: 0rem;
+  margin-right: 1rem;
   float: left;
   width: 30px;
   height: 30px;
@@ -19357,9 +19358,23 @@ div#users-check_filter {
        text-align-last: end;
 }
 
+.label-info {
+  position: absolute;
+  top: 21%;
+  left: 6%;
+  border: 1px solid #93bf1c;
+  padding: 6px;
+  border-radius: 11px;
+  background: #93bf1c;
+  font-size: 10pt;
+  font-weight: 700;
+  color: white;
+  opacity: 0.9;
+}
+
 .nav-button-ch {
   padding-bottom: 0px;
-  margin-top: 123px;
+  margin-top: 52px;
   margin-bottom: 0rem;
   margin-left: 15%;
   z-index: auto;
@@ -19436,7 +19451,7 @@ input[type=search] {
 
 .nav-lchallenge {
   background-color: #272727;
-  height: 230px;
+  height: 160px;
   margin-top: -48px;
 }
 
@@ -19977,10 +19992,22 @@ a.btn.btn-link.login-nav.custom-link {
 .background-login {
   background-image: url(/images/fondo.png);
   background-size: cover;
+  margin-top: 2rem;
   background-position-y: bottom;
 }
 
 .nav-color-home {
   background-color: #93bf1c;
+}
+
+.dropdown-item.active,
+.dropdown-item:active {
+  text-decoration: none;
+  background-color: #93bf1c;
+  color: #fff;
+}
+
+i.fa.fa-bell {
+  margin-top: 0.5rem !important;
 }
 

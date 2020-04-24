@@ -48,8 +48,18 @@
   .background-login{
     background-image: url(/images/fondo.png);
       background-size: cover;
+      margin-top: 2rem;
       background-position-y: bottom;
   }
   .nav-color-home{
     background-color: #93bf1c;
   }
+  .dropdown-item.active, .dropdown-item:active {
+    text-decoration: none;
+    background-color: #93bf1c;
+    color:#fff;
+  }
+
+  i.fa.fa-bell {
+    margin-top: 0.5rem !important;
+}

@@ -20,7 +20,6 @@
                 </div>
 
               </div>
-
               <div class="card-body">
                   <form action="{{ route('ruta_new_line') }}" method="POST" enctype="multipart/form-data">
                       @csrf

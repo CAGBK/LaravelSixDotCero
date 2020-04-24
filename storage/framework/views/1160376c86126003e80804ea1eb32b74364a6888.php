@@ -6,7 +6,7 @@
         </button>
         <div style=" display: inline-block; text-align: center;">
             <a class=""  href="<?php echo e(url('/home')); ?>">
-                <img id="nav-image " src="/images/logo.png" class="image-nav" width="160px" height="80px" alt="">
+                <img id="nav-image " src="/images/logoB.png" class="image-nav" width="160px" height="80px" alt="">
             </a>
         </div>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -99,24 +99,32 @@
                 <?php endif; ?>
             </ul>
             
+            
             <ul class="navbar-nav ml-auto">
                 
                 <?php if(auth()->guard()->guest()): ?>
                     
                 <?php else: ?>
                     <li class="nav-item dropdown" onclick="markNotificationAsRead()" style="margin-right: 1rem;">
-                        <a id="navbarDropdown" class="dropdown-toggle text-white" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                            <i class="fa fa-globe" aria-hidden="true"></i> Notificaciones <span class="badge badge-info"><?php echo e(count(Auth()->user()->unreadNotifications)); ?></span>
+                        <a id="navbarDropdown" class="text-white nav-notification" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            <i class="fa fa-bell"></i><span class="badge badge-info"><?php echo e(count(Auth()->user()->unreadNotifications)); ?></span>
                         </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <ul class="notification-menu dropdown-menu">
+                            <li class="notification-head text-light bg-dark">
+                                <div class="row">
+                                    <div class="col-lg-12 col-sm-12 col-12">
+                                        <span>Notificaciones (<?php echo e(count(Auth()->user()->unreadNotifications)); ?>)</span>
+                                    </div>
+                                </div>
+                            </li>
                             <?php $__empty_1 = true; $__currentLoopData = Auth()->user()->unreadNotifications; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $notification): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>                            
                                 <?php echo $__env->make('partials.notification.replied_to_thread', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
-                                <a class="dropdown-item nav-font" href="#">No hay notificaciones no leídas</a>
-                                <hr>
-                                <a href="/challenge-list" class="dropdown-item nav-font"><strong><center>ver todos los desafios</center></strong></a>
                             <?php endif; ?>
-                        </div>
+                            <li class="notification-footer bg-dark text-center">
+                                <a href="/challenge-list" class="text-light">Ver Todos</a>
+                            </li>
+                        </ul>
                     </li>
                     <li class="nav-item dropdown">
                         <a id="navbarDropdown" class="dropdown-toggle text-white" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
