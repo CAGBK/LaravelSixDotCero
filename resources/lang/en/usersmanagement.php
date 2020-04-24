@@ -107,7 +107,7 @@ return [
     ],
 
     'show-user' => [
-        'id'                => 'User ID',
+        'id'                => 'ID de usuario',
         'name'              => 'Usuario',
         'email'             => '<span class="hidden-xs">Usuario </span>Email',
         'role'              => 'Rol de Usuario',

@@ -2,14 +2,14 @@
 
 return [
 
-    'app'               => 'Laravel',
-    'app2'              => 'Auth :version',
+    'app'               => 'Grunenthal',
+    'app2'              => 'Autenticación :version',
     'home'              => 'Inicio',
     'login'             => 'Ingresar',
     'logout'            => 'Salir',
     'register'          => 'Registrar',
-    'resetPword'        => 'Reset Password',
-    'toggleNav'         => 'Toggle Navigation',
+    'resetPword'        => 'Restablecer la contraseña',
+    'toggleNav'         => 'Navegación de palanca',
     'profile'           => 'Perfil',
     'editProfile'       => 'Editar Perfil',
     'createProfile'     => 'Crear Perfil',
@@ -19,8 +19,8 @@ return [
     'questions'  => 'Preguntas - Respuestas',
     'challenges'  => 'Desafios',
 
-    'activation'        => 'Registration Started  | Activation Required',
-    'exceeded'          => 'Activation Error',
+    'activation'        => 'Registro iniciado | Activación necesaria',
+    'exceeded'          => 'Error de activación',
 
     'editProfile'       => 'Editar Peril',
     'createProfile'     => 'Create Peril',
@@ -33,7 +33,7 @@ return [
 
     'adminLogs'         => 'Logs',
     'adminActivity'     => 'Registro de actividades',
-    'adminPHP'          => 'PHP Information',
+    'adminPHP'          => 'Información PHP',
     'adminRoutes'       => 'Detalles de Rutas',
 
     'activeUsers'       => 'Usuarios activos',

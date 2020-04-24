@@ -202,9 +202,11 @@
                                         <?php endif; ?>
                                     </div>
                                 </div>
+                                <?php if (Auth::check() && Auth::user()->hasPermission('create.question')): ?>
                                 <button type="submit" class="btn btn-success margin-bottom-1 mb-1 float-right">
                                     Crear Nueva Pregunta
                                 </button>  
+                                <?php endif; ?>
                             </form>
                         </div>        
                     </div>
