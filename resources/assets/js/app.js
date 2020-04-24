@@ -14,7 +14,7 @@ window.Vue = require('vue');
 
 require('./imports/Winwheel.min.js');
 require('./imports/TweenMax.min.js');
-require('./imports/bootstrap.min.js');
+//require('./imports/bootstrap.min.js');
 require('./imports/datatables.min.js');
 require('./imports/Jquery.min.js');
 

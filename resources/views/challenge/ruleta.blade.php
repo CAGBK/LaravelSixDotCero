@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.challenge')
 
 @section('template_title')
   Crear Desafio

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\ChallengePost;
 use Illuminate\Support\Facades\View;
 use App\Models\Category;
 use App\Models\Question;
@@ -161,7 +162,7 @@ class DesafiosController extends Controller
             return redirect()->route('game',$challenge_id)->with('fallo','Su respuesta fue incorrecta!');
         }
     }
-    public function storeChallenge(Request $request)
+    public function storeChallenge(ChallengePost $request)
     {
         $jsonUsers = json_encode($request->check_user);
         $jsonBrands = json_encode($request->check_subcategory);
@@ -172,8 +173,8 @@ class DesafiosController extends Controller
         $challenge->number_questions = $request->number_questions;
         $challenge->state_id = $request->state_id;
         $challenge->user_id = Auth()->user()->id;
-        $challenge->end_date = Carbon::parse($request->end_date)->format('Y-m-d');;
-        $challenge->start_date = Carbon::now()->format('Y-m-d');
+        $challenge->end_date = Carbon::parse($request->end_date)->format('Y-m-d  h:i');
+        $challenge->start_date = Carbon::now()->format('Y-m-d h:i');
         $challenge->save();
         $challenge = Challenge::all();
         $challengeid = $challenge->last(); 

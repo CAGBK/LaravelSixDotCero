@@ -291,9 +291,22 @@ div#users-check_filter {
     margin-top: 0rem;
     text-align-last: end;
 }
+.label-info{
+    position: absolute;
+    top: 21%;
+    left: 6%;
+    border: 1px solid #93bf1c;
+    padding: 6px;
+    border-radius: 11px;
+    background: #93bf1c;
+    font-size: 10pt;
+    font-weight: 700;
+    color: white;
+    opacity: 0.9;
+}
 .nav-button-ch{
     padding-bottom: 0px;
-    margin-top: 123px;
+    margin-top: 52px;
     margin-bottom: 0rem;
     margin-left: 15%;
     z-index: auto;
@@ -366,7 +379,7 @@ input[type="search"] {
 
 .nav-lchallenge {
     background-color: #272727;
-    height: 230px;
+    height: 160px;
     margin-top: -48px;
 }
 .fs-title-list {
