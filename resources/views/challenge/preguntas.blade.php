@@ -6,6 +6,9 @@
 
 @section('content')
 <section class="container">
+  <div class="banner-challenge ">
+    
+</div>
   <div class="row">
     <div class="col-sm-12">
       <div class="card card-question">
