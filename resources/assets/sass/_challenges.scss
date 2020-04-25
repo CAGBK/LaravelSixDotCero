@@ -318,7 +318,18 @@ div#users-check_filter {
     height: 34px;
     font-weight: 700;
 }
-
+.nav-ruleta{
+    padding-top: 3rem !important;
+    margin-top: -48px;
+    background-color: rgb(39, 39, 39);
+}
+.banner-ruleta{
+    background: #272727;
+    height: 129px;
+    /* margin-top: -68px; */
+    /* position: absolute; */
+    width: -webkit-fill-available;
+}
 .progress {
     height: 20px
 }

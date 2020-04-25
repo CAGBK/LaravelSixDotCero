@@ -1,14 +1,12 @@
 <?php $__env->startSection('template_title'); ?>
-  Crear Desafio
+  Jugar Desafío
 <?php $__env->stopSection(); ?>
-
-
 <?php $__env->startSection('content'); ?>
-<div style="background-color:#272727" class="md-12">
-  <h1 style="color:#2cab66; margin: -24px 0px -15px 45px;" class="font-weight-bold"><?php echo e($challenge->name); ?></h1>
+<div class="nav-ruleta"  class="md-12">
+  <h2 style="color:#2cab66; margin: -24px 0px -15px 45px;" class="font-weight-bold"><?php echo e($challenge->name); ?></h2>
   <br>
   <?php $__currentLoopData = $points; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $point): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-    <h1 style="color:#2cab66; margin: 0px 0px 0px 45px;" class="font-weight-bold text-white">Puntos: <?php echo e($point->score); ?></h1>
+    <h2 style="color:#2cab66; margin: 0px 0px 0px 45px;" class="font-weight-bold text-white">Puntos: <?php echo e($point->score); ?></h2>
   <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
   <br>
 </div>
