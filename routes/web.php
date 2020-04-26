@@ -175,12 +175,23 @@ Route::middleware(['auth'])->group(function(){
     //Exclusivo Desafios 
 
     Route::get('challenge', 'DesafiosController@index')->name('challenge');
+
     Route::post('crear/Desafio', 'DesafiosController@storeChallenge')->name('create_challenge');
+
     Route::get('challenge-list', 'DesafiosController@listChallenge')->name('challenge_list');
+
     Route::get('game/{id}', 'DesafiosController@ruleta')->name('game');
+
+     Route::get('game/{id}/edit', 'DesafiosController@editChallenge')->name('edit_challenge');
+
+    Route::put('gane/update/{id}', 'DesafiosController@updateChallenge')->name('update_challenge');
+
     Route::get('prueba/{id}', 'DesafiosController@prueba')->name('prueba');
+
     Route::get('answer/{id}/{challenge}', 'DesafiosController@anwers')->name('answers');
+
     Route::get('question-game/{id}/{challenge}', 'DesafiosController@questionGame')->name('question_game');
+
     Route::get('markAsRead', function(){
         Auth()->user()->unreadNotifications->markAsRead();
     });

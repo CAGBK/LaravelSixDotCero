@@ -80,16 +80,20 @@
       <div class="modal-footer">
         <?php $__currentLoopData = $challenge->challengeus; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $element): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
         <?php if($element->user_id == Auth()->user()->id && $element->state_id === 3): ?>
-          <a href="<?php echo e(route('game',['id' => $challenge->id])); ?>" type="button" class="btn btn-primary">Continuar Desafio</a>
+          <a href="<?php echo e(route('game',['id' => $challenge->id])); ?>" type="button" class="btn btn-primary">Continuar Desafío</a>
         <?php endif; ?>
         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
         <?php $__currentLoopData = $challenge->challengeus; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $element): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
         <?php if($element->user_id == Auth()->user()->id && $element->state_id === 1): ?>
           <a href="<?php echo e(route('game',['id' => $challenge->id])); ?>" type="button" class="btn btn-primary">Jugar</a>
         <?php endif; ?> 
+        
+        <?php if($element->user_id == Auth()->user()->id && $element->state_id != 2): ?>
+          <a href="<?php echo e(route('edit_challenge',['id' => $challenge->id])); ?>" type="button" class="btn btn-success">Editar Desafío</a>
+        <?php endif; ?> 
         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
         <a href="<?php echo e(route('game',['id' => $challenge->id])); ?>" type="button" class="btn btn-primary">Ver detalle</a>
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        
       </div>
     </div>
   </div>

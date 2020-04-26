@@ -209,4 +209,50 @@ class DesafiosController extends Controller
     
         return redirect('challenge-list');
     }
+    public function editChallenge($id)
+    {
+        $users = User::all();
+        $challenge = Challenge::find($id);
+        $usersChallenge = json_decode($challenge->users);
+        $subcategoriesChallenge = json_decode($challenge->subcategories);
+        $categories= Category::all();
+        foreach ($categories as $key => $value) {
+            $struser = json_decode($value->user);
+            $strbrands = json_decode($value->subcategory);
+            if (in_array($id, $struser)) 
+            {   
+                $linesbyuser[] = $value->id;
+                $resultado = [];
+                foreach($linesbyuser as $line){
+                    $categorylines = Category::find($line);
+                    $strbrandsusr = json_decode($categorylines->subcategory);
+                    $resultado = array_merge($resultado, $strbrandsusr); 
+                }
+                $subcategories = Subcategory::whereIn("id", $resultado)->get();
+            }
+            else
+            {
+                return redirect()->route('challenge_list')->with('fallo','Para crear un desafio es necesario tener una Linea asignada!');
+            }
+        }
+        $states = State::whereBetween('states.id',[1,2])->get();
+        
+        return \View::make('challenge/edit',compact('states', 'users', 'subcategories', 'usersChallenge', 'subcategoriesChallenge'));
+    }
+    public function updateChallenge(Request $request, $id){
+        
+        /*foreach($userChallenge as $id_user ){
+            $detail_ch = ChallengeUser::find($id_user);
+            $detail_ch->user_id = $id_user;
+            $detail_ch->challenge_id = $challenge->id;
+            $detail_ch->score = 0;
+            $detail_ch->number_question = 0;
+            $detail_ch->state_id = 1;
+            $detail_ch->save();
+            $challengeNotify = Challenge::find($challenge->id);
+            $user = Auth::user();
+            User::find($id_user)->notify(new RepliedToThread($challengeNotify,$user));
+        } */
+        return redirect('challenge-list');
+    }
 }

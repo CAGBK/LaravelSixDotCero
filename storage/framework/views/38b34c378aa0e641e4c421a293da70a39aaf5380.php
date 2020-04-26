@@ -18,7 +18,7 @@
 	  'textAlignment'  : 'outer',
 	  'textMargin' : 50, 
 	  'textFontSize' : 30,
-	  'lineWidth'   : 4,
+	  'lineWidth'   : 4 	,
 	  'textFontWeight' : 'bold',
 	  'imageOverlay' : true, 
 	  'strokeStyle'  : '#2cab66',
