@@ -162,7 +162,7 @@
                             <div class="col-md-12">
                                 <div class="input-group">
                                     <div class="input-group date" id="datetimepicker" data-target-input="nearest">
-                                        <input type="text" data-format="yyyy-MM-dd" class="form-control input-confirm datetimepicker-input" name="end_date" data-target="#datetimepicker" required/>
+                                        <input type="text" data-format="yyyy-MM-dd" class="form-control input-confirm datetimepicker-input" name="end_date" placeholder="El Desafío termina"  data-target="#datetimepicker" required/>
                                         <div class="input-group-append" data-target="#datetimepicker" data-toggle="datetimepicker">
                                             <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                                         </div>

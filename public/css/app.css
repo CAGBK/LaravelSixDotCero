@@ -18966,7 +18966,7 @@ main.py-4.body-grunenthal {
     filter: brightness(0) invert(1);
     position: absolute;
     top: 4px;
-    margin-left: 34%;
+    margin-left: 38%;
     height: 48px;
     width: 114px;
   }
@@ -19190,6 +19190,29 @@ a.dropdown-item.nav-font {
   height: 230px;
   margin-top: -68px;
   position: absolute;
+  width: -webkit-fill-available;
+}
+
+.question-label-name {
+  display: inline-block;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  font-size: 25pt;
+}
+
+.question-lb {
+  font-size: 25pt;
+  display: inline-block;
+  margin-left: 3%;
+  margin-bottom: 0.5rem;
+  font-weight: 800;
+}
+
+.banner-challenge-questions {
+  background: #272727;
+  height: 150px;
+  margin-top: -48px;
+  /* position: absolute; */
   width: -webkit-fill-available;
 }
 
@@ -19423,8 +19446,9 @@ select + .select2-container {
   border-radius: 1rem;
 }
 
-.pregunta-text {
-  font-size: 40px;
+.answer-text {
+  font-size: 16pt;
+  font-weight: 700;
 }
 
 .check-ch {
