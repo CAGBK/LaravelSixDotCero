@@ -1308,16 +1308,16 @@
         },
         {
             "name": "jeremykenedy/laravel-https",
-            "version": "v1.1.0",
+            "version": "v1.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/jeremykenedy/laravel-https.git",
-                "reference": "be1a77be62392011bf5f0c459b8848bd079c8d93"
+                "reference": "6f0efcb645ee48ac8d7cc3748e4cc84f664adb22"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jeremykenedy/laravel-https/zipball/be1a77be62392011bf5f0c459b8848bd079c8d93",
-                "reference": "be1a77be62392011bf5f0c459b8848bd079c8d93",
+                "url": "https://api.github.com/repos/jeremykenedy/laravel-https/zipball/6f0efcb645ee48ac8d7cc3748e4cc84f664adb22",
+                "reference": "6f0efcb645ee48ac8d7cc3748e4cc84f664adb22",
                 "shasum": ""
             },
             "require": {
@@ -1353,25 +1353,25 @@
                 "Secure Http",
                 "https"
             ],
-            "time": "2017-11-12T11:29:09+00:00"
+            "time": "2020-04-26T07:21:24+00:00"
         },
         {
             "name": "jeremykenedy/laravel-logger",
-            "version": "v3.2.1",
+            "version": "v3.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/jeremykenedy/laravel-logger.git",
-                "reference": "7dffca9f0a08787f8e48ca825fc4925b0dbc058e"
+                "reference": "eff56b3b7b33bd3066c12af88ef937d0130b343e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jeremykenedy/laravel-logger/zipball/7dffca9f0a08787f8e48ca825fc4925b0dbc058e",
-                "reference": "7dffca9f0a08787f8e48ca825fc4925b0dbc058e",
+                "url": "https://api.github.com/repos/jeremykenedy/laravel-logger/zipball/eff56b3b7b33bd3066c12af88ef937d0130b343e",
+                "reference": "eff56b3b7b33bd3066c12af88ef937d0130b343e",
                 "shasum": ""
             },
             "require": {
                 "jaybizzle/laravel-crawler-detect": "1.*",
-                "laravelcollective/html": "^5.4|^5.5|^5.6|^5.7|^5.8|^6.0",
+                "laravelcollective/html": "^5.4|^5.5|^5.6|^5.7|^5.8|^6.0|^7.0",
                 "php": ">=7.0.0"
             },
             "type": "package",
@@ -1408,20 +1408,20 @@
                 "Laravel log",
                 "laravel logger"
             ],
-            "time": "2020-04-16T22:27:50+00:00"
+            "time": "2020-04-26T07:01:26+00:00"
         },
         {
             "name": "jeremykenedy/laravel-phpinfo",
-            "version": "v1.2.0",
+            "version": "v1.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/jeremykenedy/laravel-phpinfo.git",
-                "reference": "ca0b73c3415730b6ec771ce1f43848623df1b431"
+                "reference": "1b56c76045587ae6afcd416cab6e6a9d8ce2479a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jeremykenedy/laravel-phpinfo/zipball/ca0b73c3415730b6ec771ce1f43848623df1b431",
-                "reference": "ca0b73c3415730b6ec771ce1f43848623df1b431",
+                "url": "https://api.github.com/repos/jeremykenedy/laravel-phpinfo/zipball/1b56c76045587ae6afcd416cab6e6a9d8ce2479a",
+                "reference": "1b56c76045587ae6afcd416cab6e6a9d8ce2479a",
                 "shasum": ""
             },
             "require": {
@@ -1452,11 +1452,11 @@
             ],
             "description": "phpinfo() in a pretty Laravel blade template",
             "keywords": [
-                "Laravel php indo",
+                "Laravel php info",
                 "Laravel phpinfo",
                 "phpinfo"
             ],
-            "time": "2018-03-15T04:53:38+00:00"
+            "time": "2020-04-26T07:19:19+00:00"
         },
         {
             "name": "jeremykenedy/laravel-roles",
@@ -3150,16 +3150,16 @@
         },
         {
             "name": "rap2hpoutre/laravel-log-viewer",
-            "version": "v1.5.2",
+            "version": "v1.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/rap2hpoutre/laravel-log-viewer.git",
-                "reference": "337bb72d2af6b0de9b3128e77f13c1ff262bc962"
+                "reference": "02023f590b84d11be8716a8c07146c128f9e7b42"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/rap2hpoutre/laravel-log-viewer/zipball/337bb72d2af6b0de9b3128e77f13c1ff262bc962",
-                "reference": "337bb72d2af6b0de9b3128e77f13c1ff262bc962",
+                "url": "https://api.github.com/repos/rap2hpoutre/laravel-log-viewer/zipball/02023f590b84d11be8716a8c07146c128f9e7b42",
+                "reference": "02023f590b84d11be8716a8c07146c128f9e7b42",
                 "shasum": ""
             },
             "require": {
@@ -3205,7 +3205,7 @@
                 "logging",
                 "lumen"
             ],
-            "time": "2020-04-23T19:44:47+00:00"
+            "time": "2020-04-27T06:40:08+00:00"
         },
         {
             "name": "socialiteproviders/37signals",
@@ -5992,23 +5992,20 @@
         },
         {
             "name": "phpdocumentor/reflection-common",
-            "version": "2.0.0",
+            "version": "2.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpDocumentor/ReflectionCommon.git",
-                "reference": "63a995caa1ca9e5590304cd845c15ad6d482a62a"
+                "reference": "6568f4687e5b41b054365f9ae03fcb1ed5f2069b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpDocumentor/ReflectionCommon/zipball/63a995caa1ca9e5590304cd845c15ad6d482a62a",
-                "reference": "63a995caa1ca9e5590304cd845c15ad6d482a62a",
+                "url": "https://api.github.com/repos/phpDocumentor/ReflectionCommon/zipball/6568f4687e5b41b054365f9ae03fcb1ed5f2069b",
+                "reference": "6568f4687e5b41b054365f9ae03fcb1ed5f2069b",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.1"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "~6"
             },
             "type": "library",
             "extra": {
@@ -6040,7 +6037,7 @@
                 "reflection",
                 "static analysis"
             ],
-            "time": "2018-08-07T13:53:10+00:00"
+            "time": "2020-04-27T09:25:28+00:00"
         },
         {
             "name": "phpdocumentor/reflection-docblock",
