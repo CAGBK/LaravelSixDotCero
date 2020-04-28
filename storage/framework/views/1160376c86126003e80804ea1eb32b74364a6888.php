@@ -110,7 +110,7 @@
                             <i class="fa fa-bell"></i><span class="badge badge-info"><?php echo e(count(Auth()->user()->unreadNotifications)); ?></span>
                         </a>
                         <ul class="notification-menu dropdown-menu">
-                            <li class="notification-head text-light bg-dark">
+                            <li class="notification-head text-light bg-not">
                                 <div class="row">
                                     <div class="col-lg-12 col-sm-12 col-12">
                                         <span>Notificaciones (<?php echo e(count(Auth()->user()->unreadNotifications)); ?>)</span>
@@ -121,7 +121,7 @@
                                 <?php echo $__env->make('partials.notification.replied_to_thread', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
                             <?php endif; ?>
-                            <li class="notification-footer bg-dark text-center">
+                            <li class="notification-footer bg-not text-center">
                                 <a href="/challenge-list" class="text-light">Ver Todos</a>
                             </li>
                         </ul>

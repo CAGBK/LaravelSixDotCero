@@ -16,7 +16,7 @@ class StatesTableSeeder extends Seeder
         $states = array(
             [
                 'state' => 'Activo',
-                'color' => '#008f39'
+                'color' => '#93bf1c'
             ],
             [
                 'state' => 'Inactivo',

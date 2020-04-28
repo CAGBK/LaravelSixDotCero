@@ -95,7 +95,7 @@
                             <i class="fa fa-bell"></i><span class="badge badge-info">{{ count(Auth()->user()->unreadNotifications) }}</span>
                         </a>
                         <ul class="notification-menu dropdown-menu">
-                            <li class="notification-head text-light bg-dark">
+                            <li class="notification-head text-light bg-not">
                                 <div class="row">
                                     <div class="col-lg-12 col-sm-12 col-12">
                                         <span>Notificaciones ({{ count(Auth()->user()->unreadNotifications) }})</span>
@@ -106,7 +106,7 @@
                                 @include('partials.notification.replied_to_thread')
                                 @empty
                             @endforelse
-                            <li class="notification-footer bg-dark text-center">
+                            <li class="notification-footer bg-not text-center">
                                 <a href="/challenge-list" class="text-light">Ver Todos</a>
                             </li>
                         </ul>

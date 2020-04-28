@@ -26,19 +26,13 @@
                 ?>
                 @foreach ($arrayUsers as $user)
                     @if ($user == Auth()->user()->id)
-                        <div class="col-lg-3 col-sm-6">
-                            <div class="card-box" style="background-color: @foreach ($challenge->challengeus as $element)@if ($element->user_id == Auth()->user()->id){{ $element->state->color }}@endif @endforeach">
-                                <div class="inner">
-                                    <p>
-                                        <strong>
-                                            {{ $challenge->name }}
-                                        </strong>
-                                    </p>
+                        <div class="" data-toggle="modal" data-target="#challengeModal{{ $challenge->id }}">
+                            <div class="card-challenge-list" style="background-color: @foreach ($challenge->challengeus as $element)@if ($element->user_id == Auth()->user()->id){{ $element->state->color }}@endif @endforeach">
+                                <div class="col-sm-7">
+                                    <label  class="lb-list-challenge" for="xx"><i class="fa fa-trophy text-white ctrophy" aria-hidden="true"></i>Puesto 0/0</label>
+                                    <hr class="text-white hr-challenge" >
+                                    <img src="/images/hospital.png" class="list-img-challenge" alt="">
                                 </div>
-                                <div class="icon">
-                                    <i class="fa fa-gamepad" aria-hidden="true"></i>
-                                </div>
-                                <a href="#" class="card-box-footer" data-toggle="modal" data-target="#challengeModal{{ $challenge->id }}">Ver Más <i class="fa fa-arrow-circle-right"></i></a>
                             </div>
                         </div>
                     @endif
@@ -48,6 +42,7 @@
         </div>
         <div style="margin-top: 2rem;">
             <h3><strong>Desafios creados por usted pero no participa</strong></h3>
+            <hr class="line-style" >
         </div>
         <div class="row">
             @foreach ($challenges as $challenge)
@@ -58,21 +53,15 @@
             ?>
             @if ($inGame === false)
             @if ($challenge->user_id === Auth()->user()->id)
-                <div class="col-lg-3 col-sm-6">
-                    <div class="card-box" style="background-color: {{ $challenge->state->color }} ">
-                        <div class="inner">
-                            <p>
-                                <strong>
-                                    {{ $challenge->name }}
-                                </strong>
-                            </p>
-                        </div>
-                        <div class="icon">
-                            <i class="fa fa-gamepad" aria-hidden="true"></i>
-                        </div>
-                        <a href="#" class="card-box-footer" data-toggle="modal" data-target="#challengeModal{{ $challenge->id }}">Ver Más <i class="fa fa-arrow-circle-right"></i></a>
+            <div class="" data-toggle="modal" data-target="#challengeModal{{ $challenge->id }}">
+                <div class="card-challenge-list" style="background-color:{{ $challenge->state->color }}">
+                    <div class="col-sm-7">
+                    <label  class="lb-list-challenge" for="xx"><i class="fa fa-trophy text-white ctrophy" aria-hidden="true"></i>Puesto 0/10</label>
+                        <hr class="text-white hr-challenge" >
+                        <img src="/images/hospital.png" class="list-img-challenge" alt="">
                     </div>
                 </div>
+            </div>
             @endif
             @endif
             @endforeach
