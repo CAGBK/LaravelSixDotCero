@@ -108374,8 +108374,8 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\ca.gonzalezb1\Desktop\LaravelSixDotCero\resources\assets\js\app.js */"./resources/assets/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\ca.gonzalezb1\Desktop\LaravelSixDotCero\resources\assets\sass\app.scss */"./resources/assets/sass/app.scss");
+__webpack_require__(/*! C:\laragon\www\LaravelSixDotCero\resources\assets\js\app.js */"./resources/assets/js/app.js");
+module.exports = __webpack_require__(/*! C:\laragon\www\LaravelSixDotCero\resources\assets\sass\app.scss */"./resources/assets/sass/app.scss");
 
 
 /***/ })
