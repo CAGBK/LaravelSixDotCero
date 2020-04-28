@@ -5,7 +5,17 @@
 <?php $__env->startSection('content'); ?>
 
 <div class="banner-challenge-questions">
-
+  <div class="col-sm-7">
+    <?php 
+    $arrayUsers = json_decode($challenge->users);
+    ?>
+    
+    <?php $__currentLoopData = $arrayUsers; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $value): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+      <?php $__currentLoopData = $users; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $user): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+        <span class="badge badge-info"><?php echo e($value == $user->id ? $user->name : ''); ?></span>
+      <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?> 
+  </div>
 </div>
   <div class="row">
     <div class="col-sm-12">

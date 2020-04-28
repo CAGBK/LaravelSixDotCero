@@ -4,7 +4,7 @@
   Editar Desafío
 @endsection
 @section('content')
-<form action="{{ route('edit_challenge') }}" method="put" id="msform">
+{!! Form::model($challenge,['route' => ['edit_challenge', $challenge->id], 'method' => 'put', 'id' => 'msform' ]) !!}
     @csrf
     <!-- progressbar -->
     <div class="banner-challenge ">
@@ -49,7 +49,7 @@
                                 <tr class="tr-challenge">
                                     <td class="sorting">
                                         <label class="checkbox path">
-                                            <input id="value-{{ $user->id }}" name="check_user[]" class="check_users" type="checkbox" value="{{ $user->id }}">
+                                            <input id="value-{{ $user->id }}" name="check_user[]" class="check_users" type="checkbox" value="{{ $user->id }} {{$user->id == "$usersChallenge" ? 'checked="checked"' : '' ">
                                             <svg viewBox="0 0 21 21">
                                                 <path d="M5,10.75 L8.5,14.25 L19.4,2.3 C18.8333333,1.43333333 18.0333333,1 17,1 L4,1 C2.35,1 1,2.35 1,4 L1,17 C1,18.65 2.35,20 4,20 L17,20 C18.65,20 20,18.65 20,17 L20,7.99769186"></path>
                                             </svg>
@@ -199,9 +199,8 @@
             <button type="submit" class="btn btn-ch">Confirmar!</button>
         </fieldset>
     </div>
-</form>
+{!! Form::close() !!}
 @endsection
-
 @section('footer_scripts')
 
     @include('scripts.challenge')

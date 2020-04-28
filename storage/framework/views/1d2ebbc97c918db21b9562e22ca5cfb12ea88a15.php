@@ -87,13 +87,11 @@
         <?php if($element->user_id == Auth()->user()->id && $element->state_id === 1): ?>
           <a href="<?php echo e(route('game',['id' => $challenge->id])); ?>" type="button" class="btn btn-primary">Jugar</a>
         <?php endif; ?> 
-        
-        <?php if($element->user_id == Auth()->user()->id && $element->state_id != 2): ?>
+        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+        <?php if($challenge->user_id === Auth()->user()->id && $element->state_id != 2): ?>
           <a href="<?php echo e(route('edit_challenge',['id' => $challenge->id])); ?>" type="button" class="btn btn-success">Editar Desafío</a>
         <?php endif; ?> 
-        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
         <a href="<?php echo e(route('game',['id' => $challenge->id])); ?>" type="button" class="btn btn-primary">Ver detalle</a>
-        
       </div>
     </div>
   </div>

@@ -2,7 +2,8 @@
   Editar Desafío
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('content'); ?>
-<form action="<?php echo e(route('create_challenge')); ?>" method="POST" id="msform">
+<?php echo Form::model($challenge,['route' => ['edit_challenge', $challenge->id], 'method' => 'put', 'id' => 'msform' ]); ?>
+
     <?php echo csrf_field(); ?>
     <!-- progressbar -->
     <div class="banner-challenge ">
@@ -47,11 +48,6 @@
                                 <tr class="tr-challenge">
                                     <td class="sorting">
                                         <label class="checkbox path">
-                                            <?php if($usersChallenge): ?>
-                                                <?php $__currentLoopData = $usersChallenge; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $usercheked): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                                    
-                                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                                            <?php endif; ?>
                                             <input id="value-<?php echo e($user->id); ?>" name="check_user[]" class="check_users" type="checkbox" value="<?php echo e($user->id); ?>">
                                             <svg viewBox="0 0 21 21">
                                                 <path d="M5,10.75 L8.5,14.25 L19.4,2.3 C18.8333333,1.43333333 18.0333333,1 17,1 L4,1 C2.35,1 1,2.35 1,4 L1,17 C1,18.65 2.35,20 4,20 L17,20 C18.65,20 20,18.65 20,17 L20,7.99769186"></path>
@@ -204,9 +200,9 @@
             <button type="submit" class="btn btn-ch">Confirmar!</button>
         </fieldset>
     </div>
-</form>
-<?php $__env->stopSection(); ?>
+<?php echo Form::close(); ?>
 
+<?php $__env->stopSection(); ?>
 <?php $__env->startSection('footer_scripts'); ?>
 
     <?php echo $__env->make('scripts.challenge', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>

@@ -126,6 +126,7 @@ class DesafiosController extends Controller
         if ($points->state_id != 2) {
             $faker = Faker::create();
             $challenge = Challenge::find($challenge_id);
+            $users = User::all();
             $subca = json_decode($challenge->subcategories);
             $qsubcategories = Subcategory::select('question')->whereIn('id',$subca)->get();
             $resultado = [];
@@ -153,7 +154,7 @@ class DesafiosController extends Controller
             $points->save();
             $random_question = $faker->randomElement($quresultado);
             $question = Question::find($random_question);
-            return View::make('challenge.preguntas', compact('question','challenge'));
+            return View::make('challenge.preguntas', compact('question','challenge', 'users'));
         }
         $challenges = Challenge::all();
         $users = User::all();
@@ -237,7 +238,7 @@ class DesafiosController extends Controller
         }
         $states = State::whereBetween('states.id',[1,2])->get();
         
-        return \View::make('challenge/edit',compact('states', 'users', 'subcategories', 'usersChallenge', 'subcategoriesChallenge'));
+        return \View::make('challenge/edit',compact('states', 'users', 'subcategories', 'usersChallenge', 'subcategoriesChallenge', 'challenge'));
     }
     public function updateChallenge(Request $request, $id){
         

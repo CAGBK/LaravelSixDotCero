@@ -7,7 +7,16 @@
 @section('content')
 
 <div class="banner-challenge-questions">
-
+  <div class="col-sm-7">
+    <?php 
+    $arrayUsers = json_decode($challenge->users);
+    ?>
+    @foreach ($arrayUsers as $value)
+      @foreach ($users as $user)
+        <span class="badge badge-info">{{ $value == $user->id ? $user->name : ''  }}</span>
+      @endforeach
+    @endforeach 
+  </div>
 </div>
   <div class="row">
     <div class="col-sm-12">
