@@ -26,20 +26,13 @@
                 ?>
                 <?php $__currentLoopData = $arrayUsers; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $user): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                     <?php if($user == Auth()->user()->id): ?>
-                        <div class="col-lg-3 col-sm-6">
-                            <div class="card-box" style="background-color: <?php $__currentLoopData = $challenge->challengeus; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $element): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?><?php if($element->user_id == Auth()->user()->id): ?><?php echo e($element->state->color); ?><?php endif; ?> <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>">
-                                <div class="inner">
-                                    <p>
-                                        <strong>
-                                            <?php echo e($challenge->name); ?>
-
-                                        </strong>
-                                    </p>
+                        <div class="" data-toggle="modal" data-target="#challengeModal<?php echo e($challenge->id); ?>">
+                            <div class="card-challenge-list" style="background-color: <?php $__currentLoopData = $challenge->challengeus; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $element): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?><?php if($element->user_id == Auth()->user()->id): ?><?php echo e($element->state->color); ?><?php endif; ?> <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>">
+                                <div class="col-sm-7">
+                                    <label  class="lb-list-challenge" for="xx"><i class="fa fa-trophy text-white ctrophy" aria-hidden="true"></i>Puesto 0/0</label>
+                                    <hr class="text-white hr-challenge" >
+                                    <img src="/images/hospital.png" class="list-img-challenge" alt="">
                                 </div>
-                                <div class="icon">
-                                    <i class="fa fa-gamepad" aria-hidden="true"></i>
-                                </div>
-                                <a href="#" class="card-box-footer" data-toggle="modal" data-target="#challengeModal<?php echo e($challenge->id); ?>">Ver Más <i class="fa fa-arrow-circle-right"></i></a>
                             </div>
                         </div>
                     <?php endif; ?>
@@ -49,6 +42,7 @@
         </div>
         <div style="margin-top: 2rem;">
             <h3><strong>Desafios creados por usted pero no participa</strong></h3>
+            <hr class="line-style" >
         </div>
         <div class="row">
             <?php $__currentLoopData = $challenges; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $challenge): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
@@ -59,22 +53,15 @@
             ?>
             <?php if($inGame === false): ?>
             <?php if($challenge->user_id === Auth()->user()->id): ?>
-                <div class="col-lg-3 col-sm-6">
-                    <div class="card-box" style="background-color: <?php echo e($challenge->state->color); ?> ">
-                        <div class="inner">
-                            <p>
-                                <strong>
-                                    <?php echo e($challenge->name); ?>
-
-                                </strong>
-                            </p>
-                        </div>
-                        <div class="icon">
-                            <i class="fa fa-gamepad" aria-hidden="true"></i>
-                        </div>
-                        <a href="#" class="card-box-footer" data-toggle="modal" data-target="#challengeModal<?php echo e($challenge->id); ?>">Ver Más <i class="fa fa-arrow-circle-right"></i></a>
+            <div class="" data-toggle="modal" data-target="#challengeModal<?php echo e($challenge->id); ?>">
+                <div class="card-challenge-list" style="background-color:<?php echo e($challenge->state->color); ?>">
+                    <div class="col-sm-7">
+                    <label  class="lb-list-challenge" for="xx"><i class="fa fa-trophy text-white ctrophy" aria-hidden="true"></i>Puesto 0/10</label>
+                        <hr class="text-white hr-challenge" >
+                        <img src="/images/hospital.png" class="list-img-challenge" alt="">
                     </div>
                 </div>
+            </div>
             <?php endif; ?>
             <?php endif; ?>
             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>

@@ -4,9 +4,9 @@
         	<img src="@if ($notification->data['status'] == 1) {{ $notification->data['image'] }} @else {{ Gravatar::get(Auth()->user()->email) }}  @endif" alt="{{ $notification->data['user_name'] }}" class="user-avatar-nav user-challenge">
         </div>    
         <div class="col-lg-8 col-sm-8 col-8">
-            <strong class="text-info">{{ $notification->data['user_name'] }}</strong>
-            <div>
-                Te ha invitado a un desafio llamado <a href="/game/{{ $notification->data['challenge_id']}}">{{ $notification->data['challenge_name'] }}</a>
+            <strong class="text-white">{{ $notification->data['user_name'] }}</strong>
+            <div class="text-white">
+                Te ha invitado a un desafio llamado <a class="nama-ch" href="/game/{{ $notification->data['challenge_id']}}">{{ $notification->data['challenge_name'] }}</a>
             </div>
             <small class="text-warning">{{ $notification->created_at }}</small>
         </div>    
