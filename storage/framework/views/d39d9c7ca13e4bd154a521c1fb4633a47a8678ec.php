@@ -123,6 +123,7 @@
 				var MinDate = Date.now();
 				dateMin = moment(MinDate);
 				$("#datetimepicker").datetimepicker({
+					format: 'YYYY-MM-DD HH:mm:ss',
 					minDate: dateMin,
 				});
 			

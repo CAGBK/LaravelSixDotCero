@@ -81,12 +81,14 @@ class DesafiosController extends Controller
 
     public function prueba(Request $request, $id)
     {
-        /*Termino el tiempo
+        /* Se termino el tiempo
         $challenges = Challenge::all();
-        $date = Carbon::now()->format('Y-m-d');
+        $date = Carbon::now()->format('Y-m-d  h:i');
         foreach ($challenges as $challenge) {
-            if($date === $challenge->end_date)
+            $resultado =Carbon::parse($challenge->end_date)->format('Y-m-d  h:i');
+            if($date === $resultado)
             {
+            dd('hola');
                 $stateChallenge = Challenge::find($challenge->id);
                 $stateChallenge->state_id = 2;
                 $stateChallenge->save();

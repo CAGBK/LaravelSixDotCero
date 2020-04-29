@@ -42,9 +42,10 @@ class FinishChallenge extends Command
     public function handle()
     {
         $challenges = Challenge::all();
-        $date = Carbon::now()->format('Y-m-d');
+        $date = Carbon::now()->format('Y-m-d  h:i');
         foreach ($challenges as $challenge) {
-            if($date === $challenge->end_date)
+            $resultado =Carbon::parse($challenge->end_date)->format('Y-m-d  h:i');
+            if($date === $resultado)
             {
                 $stateChallenge = Challenge::find($challenge->id);
                 $stateChallenge->state_id = 2;
@@ -52,7 +53,7 @@ class FinishChallenge extends Command
                 $userChallenges = json_decode($stateChallenge->users);
                 foreach ($userChallenges as $userChallenge) 
                 {
-                    $stateChallengeDetail = ChallengeUser::where('challenge_id','=',$stateChallenge->id)->where('user_id','=', $userChallenge)->first();
+                    $stateChallengeDetail = ChallengeUser::where('challenge_id',$stateChallenge->id)->where('user_id', $userChallenge)->first();
                     $stateChallengeDetail->state_id = 2;
                     $stateChallengeDetail->save(); 
                 }

@@ -18,5 +18,6 @@
     </div>
 
 <?php $__env->stopSection(); ?>
-
+<?php $__env->startSection('footer_scripts'); ?>
+<?php $__env->stopSection(); ?>
 <?php echo $__env->make('layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\laragon\www\LaravelSixDotCero\resources\views/pages/admin/home.blade.php ENDPATH**/ ?>

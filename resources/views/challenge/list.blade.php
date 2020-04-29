@@ -23,13 +23,14 @@
                 @if($challenge->users)
                 <?php 
                 $arrayUsers = json_decode($challenge->users);
+                $participants = count($arrayUsers);
                 ?>
                 @foreach ($arrayUsers as $user)
                     @if ($user == Auth()->user()->id)
                         <div class="" data-toggle="modal" data-target="#challengeModal{{ $challenge->id }}">
                             <div class="card-challenge-list" style="background-color: @foreach ($challenge->challengeus as $element)@if ($element->user_id == Auth()->user()->id){{ $element->state->color }}@endif @endforeach">
                                 <div class="col-sm-7">
-                                    <label  class="lb-list-challenge" for="xx"><i class="fa fa-trophy text-white ctrophy" aria-hidden="true"></i>Puesto 0/0</label>
+                                    <label  class="lb-list-challenge" for="xx"><i class="fa fa-trophy text-white ctrophy" aria-hidden="true"></i>Puesto 0/{{ $participants }}</label>
                                     <hr class="text-white hr-challenge" >
                                     <img src="/images/hospital.png" class="list-img-challenge" alt="">
                                 </div>
@@ -49,6 +50,7 @@
             <?php
                 $arrayUser = Auth()->user()->id;
                 $arrayUsers = json_decode($challenge->users);
+                $participants = count($arrayUsers);
                 $inGame = in_array($arrayUser, $arrayUsers);
             ?>
             @if ($inGame === false)
@@ -56,7 +58,7 @@
             <div class="" data-toggle="modal" data-target="#challengeModal{{ $challenge->id }}">
                 <div class="card-challenge-list" style="background-color:{{ $challenge->state->color }}">
                     <div class="col-sm-7">
-                    <label  class="lb-list-challenge" for="xx"><i class="fa fa-trophy text-white ctrophy" aria-hidden="true"></i>Puesto 0/10</label>
+                    <label  class="lb-list-challenge" for="xx"><i class="fa fa-trophy text-white ctrophy" aria-hidden="true"></i>Puesto 0/{{ $participants }}</label>
                         <hr class="text-white hr-challenge" >
                         <img src="/images/hospital.png" class="list-img-challenge" alt="">
                     </div>
