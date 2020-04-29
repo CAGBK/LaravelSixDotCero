@@ -2,7 +2,7 @@
   Editar Desafío
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('content'); ?>
-<?php echo Form::model($challenge,['route' => ['edit_challenge', $challenge->id], 'method' => 'put', 'id' => 'msform' ]); ?>
+<?php echo Form::model($challenge,['route' => ['update_challenge', $challenge->id], 'method' => 'put', 'id' => 'msform' ]); ?>
 
     <?php echo csrf_field(); ?>
     <!-- progressbar -->
@@ -48,7 +48,7 @@
                                 <tr class="tr-challenge">
                                     <td class="sorting">
                                         <label class="checkbox path">
-                                            <input id="value-<?php echo e($user->id); ?>" name="check_user[]" class="check_users" type="checkbox" value="<?php echo e($user->id); ?>">
+                                            <input id="user-<?php echo e($user->id); ?>"  class="check_users" name="check_user[]"  type="checkbox"  value="<?php echo e($user->id); ?>" <?php echo e(in_array($user->id, $usersChallenge) ? 'checked="checked"' : ''); ?>>
                                             <svg viewBox="0 0 21 21">
                                                 <path d="M5,10.75 L8.5,14.25 L19.4,2.3 C18.8333333,1.43333333 18.0333333,1 17,1 L4,1 C2.35,1 1,2.35 1,4 L1,17 C1,18.65 2.35,20 4,20 L17,20 C18.65,20 20,18.65 20,17 L20,7.99769186"></path>
                                             </svg>
@@ -94,11 +94,10 @@
 
                             <tbody>
                                 <?php $__currentLoopData = $subcategories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $subcategory): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-
                                 <tr class="tr-challenge-two" style="background-color:<?php echo e($subcategory->color_brand); ?>;">
                                     <td class="sorting">
                                         <label class="checkbox-two path cs-check">
-                                            <input id="subcategory-<?php echo e($subcategory->id); ?>" class="check_brands" name="check_subcategory[]" type="checkbox" value="<?php echo e($subcategory->id); ?>">
+                                            <input id="subcategory-<?php echo e($subcategory->id); ?>" class="check_brands" name="check_subcategory[]" type="checkbox" value="<?php echo e($subcategory->id); ?>" <?php echo e(in_array($subcategory->id, $subcategoriesChallenge) ? 'checked="checked"' : ''); ?>>
                                             <svg viewBox="0 0 21 21">
                                                 <path d="M5,10.75 L8.5,14.25 L19.4,2.3 C18.8333333,1.43333333 18.0333333,1 17,1 L4,1 C2.35,1 1,2.35 1,4 L1,17 C1,18.65 2.35,20 4,20 L17,20 C18.65,20 20,18.65 20,17 L20,7.99769186"></path>
                                             </svg>
@@ -163,7 +162,8 @@
                             <div class="col-md-12">
                                 <div class="input-group">
                                     <div class="input-group date" id="datetimepicker" data-target-input="nearest">
-                                        <input type="text" data-format="yyyy-MM-dd" class="form-control input-confirm datetimepicker-input" name="end_date" placeholder="El Desafío termina"  data-target="#datetimepicker" required/>
+                                        <?php echo Form::text('end_date', NULL, array('id' => 'end_date', 'class' => 'form-control input-confirm datetimepicker-input', 'placeholder' => 'El Desafío termina', 'required')); ?>
+
                                         <div class="input-group-append" data-target="#datetimepicker" data-toggle="datetimepicker">
                                             <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                                         </div>
@@ -181,9 +181,11 @@
                                 <div class="input-group">
                                     <select class="form-control input-confirm" name="state_id" id="state_id" required>
                                         <option value="">Seleccione estado</option>
-                                        <?php if($states): ?> <?php $__currentLoopData = $states; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $state): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                        <option value="<?php echo e($state->id); ?>"><?php echo e($state->state); ?></option>
-                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?> <?php endif; ?>
+                                        <?php if($states): ?>
+                                            <?php $__currentLoopData = $states; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $state): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                <option value="<?php echo e($state->id); ?>" <?php echo e($challenge->state_id == $state->id ? 'selected="selected"' : ''); ?>><?php echo e($state->state); ?></option>
+                                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                        <?php endif; ?>
                                     </select>
                                 </div>
                             </div>

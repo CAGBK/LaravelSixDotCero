@@ -240,20 +240,54 @@ class DesafiosController extends Controller
         
         return \View::make('challenge/edit',compact('states', 'users', 'subcategories', 'usersChallenge', 'subcategoriesChallenge', 'challenge'));
     }
-    public function updateChallenge(Request $request, $id){
-        
-        /*foreach($userChallenge as $id_user ){
-            $detail_ch = ChallengeUser::find($id_user);
-            $detail_ch->user_id = $id_user;
-            $detail_ch->challenge_id = $challenge->id;
-            $detail_ch->score = 0;
-            $detail_ch->number_question = 0;
-            $detail_ch->state_id = 1;
-            $detail_ch->save();
-            $challengeNotify = Challenge::find($challenge->id);
-            $user = Auth::user();
-            User::find($id_user)->notify(new RepliedToThread($challengeNotify,$user));
-        } */
+    public function updateChallenge(Request $request, $id)
+    {
+
+        $jsonUsers = json_encode($request->check_user);
+        $jsonBrands = json_encode($request->check_subcategory);
+        $challenge = Challenge::find($id);
+        $jsonUsersDatabase = json_decode($challenge->users);
+        $resultado = array_diff($jsonUsersDatabase,$request->check_user);
+        $resultado2 = array_diff($request->check_user, $jsonUsersDatabase);
+        $challenge->name = $request->name;
+        $challenge->users = $jsonUsers;
+        $challenge->subcategories = $jsonBrands;
+        $challenge->number_questions = $request->number_questions;
+        $challenge->state_id = $request->state_id;
+        $challenge->user_id = Auth()->user()->id;
+        $challenge->end_date = Carbon::parse($request->end_date)->format('Y-m-d  h:i');
+        $challenge->start_date = Carbon::now()->format('Y-m-d h:i');
+        $challenge->save();
+        $resultadoJson = json_decode($jsonUsers, true);
+        foreach($resultado as $usersDelete){
+            $detail_ch = ChallengeUser::where('user_id' , $usersDelete )->where('challenge_id', $id);
+            $detail_ch->delete();
+        }
+        if(isset($resultado2)){
+            foreach($resultado2 as $userNew){
+                $detail_ch = new ChallengeUser;
+                $detail_ch->user_id = $userNew;
+                $detail_ch->challenge_id = $id;
+                $detail_ch->score = 0;
+                $detail_ch->number_question = 0;
+                $detail_ch->state_id = 1;
+                $detail_ch->save();
+                $challengeNotify = Challenge::find($id);
+                $user = Auth::user();
+                User::find($userNew)->notify(new RepliedToThread($challengeNotify,$user));
+            } 
+        }else{
+            foreach($resultadoJson as $id_user ){
+                $detail_ch = ChallengeUser::where('user_id' , $id_user )->where('challenge_id', $id)->get();
+                $detail_ch->user_id = $id_user;
+                $detail_ch->challenge_id = $id;
+                $detail_ch->save();
+                $challengeNotify = Challenge::find($id);
+                $user = Auth::user();
+                User::find($id_user)->notify(new RepliedToThread($challengeNotify,$user));
+            }
+        }
+       
         return redirect('challenge-list');
     }
 }

@@ -9,7 +9,6 @@
     <?php 
     $arrayUsers = json_decode($challenge->users);
     ?>
-    
     <?php $__currentLoopData = $arrayUsers; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $value): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
       <?php $__currentLoopData = $users; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $user): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
         <span class="badge badge-info"><?php echo e($value == $user->id ? $user->name : ''); ?></span>

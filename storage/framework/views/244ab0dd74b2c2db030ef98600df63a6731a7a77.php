@@ -6,7 +6,7 @@
         <div class="col-lg-8 col-sm-8 col-8">
             <strong class="text-white"><?php echo e($notification->data['user_name']); ?></strong>
             <div class="text-white">
-                Te ha invitado a un desafio llamado <a href="/game/<?php echo e($notification->data['challenge_id']); ?>"><?php echo e($notification->data['challenge_name']); ?></a>
+                Te ha invitado a un desafio llamado <a class="nama-ch" href="/game/<?php echo e($notification->data['challenge_id']); ?>"><?php echo e($notification->data['challenge_name']); ?></a>
             </div>
             <small class="text-warning"><?php echo e($notification->created_at); ?></small>
         </div>    

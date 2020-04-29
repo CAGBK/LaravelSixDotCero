@@ -28,7 +28,6 @@ class ChallengePost extends FormRequest
             'check_subcategory' => 'required|present|array',
             'name' => 'required|max:255',
             'number_questions' => 'required',
-            'end_date' => 'required|date|after_or_equal:now',
             'state_id' => 'required',   
         ];
     }

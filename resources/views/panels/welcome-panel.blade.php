@@ -11,17 +11,17 @@
 
 <div class="card card-login">
 
-    <div class="card-header @role('admin', true) header-card text-white @endrole">
+    <div class="card-header header-card   text-white">
 
         Bienvenido {{ Auth::user()->name }}
 
         @role('admin', true)
             <span class="pull-right badge badge-primary" style="margin-top:4px">
-                Acceso de Admin
+                Acceso de Administrador
             </span>
         @else
-            <span class="pull-right badge badge-warning" style="margin-top:4px">
-                Acceso de Access
+            <span class="pull-right badge text-white" style="margin-top:4px ; background-color: #ffc107;">
+                Acceso de Usuario
             </span>
         @endrole
 

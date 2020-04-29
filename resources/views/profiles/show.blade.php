@@ -19,7 +19,7 @@
 		<div class="row">
 			<div class="col-12 col-md-10 offset-md-1 col-lg-8 offset-lg-2">
 				<div class="card">
-					<div class="card-header">
+					<div class="card-header header-card text-white">
 
 						{{ trans('profile.showProfileTitle',['username' => $user->name]) }}
 
@@ -36,6 +36,8 @@
 							<dd>
 								{{ $user->name }}
 							</dd>
+							<div class="clearfix"></div>
+            				<div class="border-bottom"></div>
 
 							<dt>
 								{{ trans('profile.showProfileFirstName') }}
@@ -43,7 +45,8 @@
 							<dd>
 								{{ $user->first_name }}
 							</dd>
-
+							<div class="clearfix"></div>
+            				<div class="border-bottom"></div>
 							@if ($user->last_name)
 								<dt>
 									{{ trans('profile.showProfileLastName') }}
@@ -52,13 +55,16 @@
 									{{ $user->last_name }}
 								</dd>
 							@endif
-
+							<div class="clearfix"></div>
+            				<div class="border-bottom"></div>
 							<dt>
 								{{ trans('profile.showProfileEmail') }}
 							</dt>
 							<dd>
 								{{ $user->email }}
 							</dd>
+							<div class="clearfix"></div>
+            				<div class="border-bottom"></div>
 							@if(!$categories->isEmpty())
 								<dt>
 									{{ trans('profile.profileCategory') }}
@@ -68,8 +74,10 @@
 										<span class="badge badge-info">{{ $category->name }}</span>
 									@endforeach
 								</dd>
+								<div class="clearfix"></div>
+            					<div class="border-bottom"></div>
 							@endif
-
+								
 
 							@if ($user->profile)
 
@@ -80,6 +88,8 @@
 									<dd>
 										{{ $currentTheme->name }}
 									</dd>
+									<div class="clearfix"></div>
+            						<div class="border-bottom"></div>
 								@endif
 
 

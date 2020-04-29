@@ -11,18 +11,18 @@
 
 <div class="card card-login">
 
-    <div class="card-header <?php if (Auth::check() && Auth::user()->hasRole('admin', true)): ?> header-card text-white <?php endif; ?>">
+    <div class="card-header header-card   text-white">
 
         Bienvenido <?php echo e(Auth::user()->name); ?>
 
 
         <?php if (Auth::check() && Auth::user()->hasRole('admin', true)): ?>
             <span class="pull-right badge badge-primary" style="margin-top:4px">
-                Acceso de Admin
+                Acceso de Administrador
             </span>
         <?php else: ?>
-            <span class="pull-right badge badge-warning" style="margin-top:4px">
-                Acceso de Access
+            <span class="pull-right badge text-white" style="margin-top:4px ; background-color: #ffc107;">
+                Acceso de Usuario
             </span>
         <?php endif; ?>
 

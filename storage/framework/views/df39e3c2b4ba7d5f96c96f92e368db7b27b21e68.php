@@ -17,7 +17,7 @@
 		<div class="row">
 			<div class="col-12 col-md-10 offset-md-1 col-lg-8 offset-lg-2">
 				<div class="card">
-					<div class="card-header">
+					<div class="card-header header-card text-white">
 
 						<?php echo e(trans('profile.showProfileTitle',['username' => $user->name])); ?>
 
@@ -37,6 +37,8 @@
 								<?php echo e($user->name); ?>
 
 							</dd>
+							<div class="clearfix"></div>
+            				<div class="border-bottom"></div>
 
 							<dt>
 								<?php echo e(trans('profile.showProfileFirstName')); ?>
@@ -46,7 +48,8 @@
 								<?php echo e($user->first_name); ?>
 
 							</dd>
-
+							<div class="clearfix"></div>
+            				<div class="border-bottom"></div>
 							<?php if($user->last_name): ?>
 								<dt>
 									<?php echo e(trans('profile.showProfileLastName')); ?>
@@ -57,7 +60,8 @@
 
 								</dd>
 							<?php endif; ?>
-
+							<div class="clearfix"></div>
+            				<div class="border-bottom"></div>
 							<dt>
 								<?php echo e(trans('profile.showProfileEmail')); ?>
 
@@ -66,6 +70,8 @@
 								<?php echo e($user->email); ?>
 
 							</dd>
+							<div class="clearfix"></div>
+            				<div class="border-bottom"></div>
 							<?php if(!$categories->isEmpty()): ?>
 								<dt>
 									<?php echo e(trans('profile.profileCategory')); ?>
@@ -76,8 +82,10 @@
 										<span class="badge badge-info"><?php echo e($category->name); ?></span>
 									<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 								</dd>
+								<div class="clearfix"></div>
+            					<div class="border-bottom"></div>
 							<?php endif; ?>
-
+								
 
 							<?php if($user->profile): ?>
 
@@ -90,6 +98,8 @@
 										<?php echo e($currentTheme->name); ?>
 
 									</dd>
+									<div class="clearfix"></div>
+            						<div class="border-bottom"></div>
 								<?php endif; ?>
 
 

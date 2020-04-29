@@ -4,7 +4,7 @@
   Editar Desafío
 @endsection
 @section('content')
-{!! Form::model($challenge,['route' => ['edit_challenge', $challenge->id], 'method' => 'put', 'id' => 'msform' ]) !!}
+{!! Form::model($challenge,['route' => ['update_challenge', $challenge->id], 'method' => 'put', 'id' => 'msform' ]) !!}
     @csrf
     <!-- progressbar -->
     <div class="banner-challenge ">
@@ -49,7 +49,7 @@
                                 <tr class="tr-challenge">
                                     <td class="sorting">
                                         <label class="checkbox path">
-                                            <input id="value-{{ $user->id }}" name="check_user[]" class="check_users" type="checkbox" value="{{ $user->id }} {{$user->id == "$usersChallenge" ? 'checked="checked"' : '' ">
+                                            <input id="user-{{ $user->id }}"  class="check_users" name="check_user[]"  type="checkbox"  value="{{ $user->id }}" {{in_array($user->id, $usersChallenge) ? 'checked="checked"' : '' }}>
                                             <svg viewBox="0 0 21 21">
                                                 <path d="M5,10.75 L8.5,14.25 L19.4,2.3 C18.8333333,1.43333333 18.0333333,1 17,1 L4,1 C2.35,1 1,2.35 1,4 L1,17 C1,18.65 2.35,20 4,20 L17,20 C18.65,20 20,18.65 20,17 L20,7.99769186"></path>
                                             </svg>
@@ -95,11 +95,10 @@
 
                             <tbody>
                                 @foreach($subcategories as $subcategory)
-
                                 <tr class="tr-challenge-two" style="background-color:{{$subcategory->color_brand}};">
                                     <td class="sorting">
                                         <label class="checkbox-two path cs-check">
-                                            <input id="subcategory-{{ $subcategory->id }}" class="check_brands" name="check_subcategory[]" type="checkbox" value="{{ $subcategory->id }}">
+                                            <input id="subcategory-{{ $subcategory->id }}" class="check_brands" name="check_subcategory[]" type="checkbox" value="{{ $subcategory->id }}" {{in_array($subcategory->id, $subcategoriesChallenge) ? 'checked="checked"' : '' }}>
                                             <svg viewBox="0 0 21 21">
                                                 <path d="M5,10.75 L8.5,14.25 L19.4,2.3 C18.8333333,1.43333333 18.0333333,1 17,1 L4,1 C2.35,1 1,2.35 1,4 L1,17 C1,18.65 2.35,20 4,20 L17,20 C18.65,20 20,18.65 20,17 L20,7.99769186"></path>
                                             </svg>
@@ -162,7 +161,7 @@
                             <div class="col-md-12">
                                 <div class="input-group">
                                     <div class="input-group date" id="datetimepicker" data-target-input="nearest">
-                                        <input type="text" data-format="yyyy-MM-dd" class="form-control input-confirm datetimepicker-input" name="end_date" placeholder="El Desafío termina"  data-target="#datetimepicker" required/>
+                                        {!! Form::text('end_date', NULL, array('id' => 'end_date', 'class' => 'form-control input-confirm datetimepicker-input', 'placeholder' => 'El Desafío termina', 'required')) !!}
                                         <div class="input-group-append" data-target="#datetimepicker" data-toggle="datetimepicker">
                                             <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                                         </div>
@@ -180,9 +179,11 @@
                                 <div class="input-group">
                                     <select class="form-control input-confirm" name="state_id" id="state_id" required>
                                         <option value="">Seleccione estado</option>
-                                        @if ($states) @foreach($states as $state)
-                                        <option value="{{ $state->id }}">{{ $state->state }}</option>
-                                        @endforeach @endif
+                                        @if ($states)
+                                            @foreach($states as $state)
+                                                <option value="{{ $state->id }}" {{ $challenge->state_id == $state->id ? 'selected="selected"' : '' }}>{{ $state->state }}</option>
+                                            @endforeach
+                                        @endif
                                     </select>
                                 </div>
                             </div>
