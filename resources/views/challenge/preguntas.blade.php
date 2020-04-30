@@ -11,10 +11,13 @@
     <?php 
     $arrayUsers = json_decode($challenge->users);
     ?>
-    @foreach ($arrayUsers as $value)
       @foreach ($users as $user)
-        <span class="badge badge-info">{{ $value == $user->id ? $user->name : ''  }}</span>
-      @endforeach
+        @foreach ($arrayUsers as $value)
+          @if($value == $user->id)
+            <!--img src="{{ Gravatar::get($user->email)}}" class="user-avatar-nav user-challenge"-->
+            <span class="badge badge-info">{{  $user->name }}</span>
+            @endif
+        @endforeach
     @endforeach 
   </div>
 </div>

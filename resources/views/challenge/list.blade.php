@@ -58,7 +58,7 @@
             <div class="" data-toggle="modal" data-target="#challengeModal{{ $challenge->id }}">
                 <div class="card-challenge-list" style="background-color:{{ $challenge->state->color }}">
                     <div class="col-sm-7">
-                    <label  class="lb-list-challenge" for="xx"><i class="fa fa-trophy text-white ctrophy" aria-hidden="true"></i>Participantes/{{ $participants }}</label>
+                    <label  class="lb-list-challenge" for="xx"><i class="fa fa-trophy text-white ctrophy" aria-hidden="true"></i>Jugadores/{{ $participants }}</label>
                         <hr class="text-white hr-challenge" >
                         <img src="/images/hospital.png" class="list-img-challenge" alt="">
                     </div>

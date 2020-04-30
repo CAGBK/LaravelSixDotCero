@@ -129,6 +129,7 @@ class DesafiosController extends Controller
             $faker = Faker::create();
             $challenge = Challenge::find($challenge_id);
             $users = User::all();
+            $arrayUsers = json_decode($challenge->users);
             $subca = json_decode($challenge->subcategories);
             $qsubcategories = Subcategory::select('question')->whereIn('id',$subca)->get();
             $resultado = [];
@@ -158,6 +159,7 @@ class DesafiosController extends Controller
             $question = Question::find($random_question);
             return View::make('challenge.preguntas', compact('question','challenge', 'users'));
         }
+
         $challenges = Challenge::all();
         $users = User::all();
         $subcategories = Subcategory::all();

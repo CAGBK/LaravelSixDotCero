@@ -18,9 +18,7 @@
 	  'segments': [
 		  @foreach($cquestions as $question)
 			{
-			'image' : '/images/sarah.png', 
-			'textStrokeStyle' : '#fff',
-			'text': '{{ $question->name }}', 
+			'image' : '{{$question->image}}', 
 			'id': '{{ $question->id }}'
 			},
 		  @endforeach

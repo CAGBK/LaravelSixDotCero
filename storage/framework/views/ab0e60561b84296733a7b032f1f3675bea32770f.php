@@ -23,13 +23,14 @@
                 <?php if($challenge->users): ?>
                 <?php 
                 $arrayUsers = json_decode($challenge->users);
+                $participants = count($arrayUsers);
                 ?>
                 <?php $__currentLoopData = $arrayUsers; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $user): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                     <?php if($user == Auth()->user()->id): ?>
                         <div class="" data-toggle="modal" data-target="#challengeModal<?php echo e($challenge->id); ?>">
                             <div class="card-challenge-list" style="background-color: <?php $__currentLoopData = $challenge->challengeus; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $element): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?><?php if($element->user_id == Auth()->user()->id): ?><?php echo e($element->state->color); ?><?php endif; ?> <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>">
                                 <div class="col-sm-7">
-                                    <label  class="lb-list-challenge" for="xx"><i class="fa fa-trophy text-white ctrophy" aria-hidden="true"></i>Puesto 0/0</label>
+                                    <label  class="lb-list-challenge" for="xx"><i class="fa fa-trophy text-white ctrophy" aria-hidden="true"></i>Puesto 0/<?php echo e($participants); ?></label>
                                     <hr class="text-white hr-challenge" >
                                     <img src="/images/hospital.png" class="list-img-challenge" alt="">
                                 </div>
@@ -49,6 +50,7 @@
             <?php
                 $arrayUser = Auth()->user()->id;
                 $arrayUsers = json_decode($challenge->users);
+                $participants = count($arrayUsers);
                 $inGame = in_array($arrayUser, $arrayUsers);
             ?>
             <?php if($inGame === false): ?>
@@ -56,7 +58,7 @@
             <div class="" data-toggle="modal" data-target="#challengeModal<?php echo e($challenge->id); ?>">
                 <div class="card-challenge-list" style="background-color:<?php echo e($challenge->state->color); ?>">
                     <div class="col-sm-7">
-                    <label  class="lb-list-challenge" for="xx"><i class="fa fa-trophy text-white ctrophy" aria-hidden="true"></i>Puesto 0/10</label>
+                    <label  class="lb-list-challenge" for="xx"><i class="fa fa-trophy text-white ctrophy" aria-hidden="true"></i>Jugadores/<?php echo e($participants); ?></label>
                         <hr class="text-white hr-challenge" >
                         <img src="/images/hospital.png" class="list-img-challenge" alt="">
                     </div>
