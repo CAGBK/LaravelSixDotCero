@@ -26,7 +26,7 @@ return [
     // Form Modal
     'form_modal_default_title'      => 'Confirmar',
     'form_modal_default_message'    => 'Por favor confirmar',
-    'form_modal_default_btn_cancel' => 'Cancelat',
+    'form_modal_default_btn_cancel' => 'Cancelar',
     'form_modal_default_btn_submit' => 'Confirmar Enviar',
 
 ];

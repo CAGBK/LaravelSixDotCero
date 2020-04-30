@@ -133,6 +133,7 @@ Route::middleware(['auth'])->group(function(){
     //Exclusivo de lineas
 
     Route::delete('line/{id}', 'LineasMarcasController@destroy')->name('line_destroy');
+    Route::delete('question/{id}', 'PreguntasRespuestasController@destroy')->name('question_destroy');
 
     Route::get('crear/Linea', 'LineasMarcasController@createLine')->name('create_line')->middleware('permission:view.create.line');
 
