@@ -100,7 +100,7 @@ return [
     */
 
     'sendmail' => '/usr/sbin/sendmail -bs',
-
+    
     'stream' => [
         'ssl' => [
             'verify_peer' => false,

@@ -18,9 +18,7 @@
 	  'segments': [
 		  @foreach($cquestions as $question)
 			{
-			'image' : '/images/sarah.png', 
-			'textStrokeStyle' : '#fff',
-			'text': '{{ $question->name }}', 
+			'image' : '{{$question->image}}', 
 			'id': '{{ $question->id }}'
 			},
 		  @endforeach
@@ -28,8 +26,9 @@
         'animation' :           // Specify the animation to use.
         {
             'type'     : 'spinToStop',
-            'duration' : 5,     // Duration in seconds.
-            'spins'    : 8,     // Number of complete spins.
+            'duration' : 7,     // Duration in seconds.
+			'spins'    : 9,     // Number of complete spins.
+			'callbackSound' : playSound, 
 			'callbackFinished': 'Mensaje()',
         }
     });
@@ -38,4 +37,16 @@
 	  miRuleta.stopAnimation(false);
 	  window.location= "/question-game/" + segmentoSeleccionado.id + '/' + {{ $challenge->id }};
 	}
+	
+    let audio = new Audio('/images/tick.mp3');  // Create audio object and load desired file.
+ 
+    function playSound()
+    {
+        // Stop and rewind the sound (stops it if already playing).
+        audio.pause();
+        audio.currentTime = 0;
+ 
+        // Play the sound.
+        audio.play();
+    }
 </script>

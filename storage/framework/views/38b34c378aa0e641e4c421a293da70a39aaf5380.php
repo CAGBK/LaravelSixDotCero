@@ -18,9 +18,7 @@
 	  'segments': [
 		  <?php $__currentLoopData = $cquestions; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $question): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 			{
-			'image' : '/images/sarah.png', 
-			'textStrokeStyle' : '#fff',
-			'text': '<?php echo e($question->name); ?>', 
+			'image' : '<?php echo e($question->image); ?>', 
 			'id': '<?php echo e($question->id); ?>'
 			},
 		  <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>

@@ -30,7 +30,7 @@
     </div>
   <?php endif; ?>
   <div align="center" onclick="miRuleta.startAnimation()">
-    <canvas id="canvas" width="420" height="420">
+    <canvas id="canvas" width="600" height="600">
       <p align="center">Sorry, your browser doesn't support canvas. Please try another.</p>
     </canvas>
   </div>

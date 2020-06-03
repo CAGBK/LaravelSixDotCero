@@ -16,6 +16,7 @@ class CreateCaquestionsTable extends Migration
         Schema::create('cquestions', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
+            $table->string('image');
             $table->string('color');
             $table->timestamps();
         });

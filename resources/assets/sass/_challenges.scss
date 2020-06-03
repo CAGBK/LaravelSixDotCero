@@ -134,6 +134,7 @@
     height: 230px;
     margin-top: -68px;
     position: absolute;
+    width: -moz-available;
     width: -webkit-fill-available;
 }
 .question-label-name{
@@ -626,6 +627,7 @@ img.subcategory-avatar-nav.subcategory-challenge {
     border: 3px solid #93bf1c;
     border-radius: 10px;
     padding: 1rem;
+    margin-bottom: 1rem;
 }
 .input-name-ch{
     border-radius: 0.9rem;

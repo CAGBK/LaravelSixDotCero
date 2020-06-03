@@ -12,7 +12,7 @@
                         
                         <div class="form-group row">
                             <div class="col-md-12 content-align">
-                                <img id="data-img" name="image_progile" src="/images/Perfil.png" class="user-avatar-register">
+                                <img id="data-img" name="image_progile" src="/images/perfil.png" class="user-avatar-register">
                             </div>
                         </div>
                         <div class="form-group row">
@@ -87,7 +87,7 @@
                                 </button>
                             </div>
                         </div>
-                        <div class="col-md-12" style="text-align: -webkit-center;">
+                        <div class="col-md-12 center-text-login">
                             <a class="btn btn-link login-nav">
                                 Tienes una cuenta? <a class="btn btn-link login-nav custom-link" href="{{ route('login') }}">
                                     {{ __('Ingresar') }} </a>

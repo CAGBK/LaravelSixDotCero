@@ -14,6 +14,10 @@ use App\Models\Subcategory;
 
 use App\Models\Question;
 
+use App\Models\CQuestion;
+
+
+
 
 class LineasMarcasController extends Controller
 {
@@ -70,15 +74,25 @@ class LineasMarcasController extends Controller
     {   
         list($image,$color) = explode('|', $request->image);
         $jsonQuestions = json_encode($request->question);
-        $subcategory = new Subcategory;
-        $subcategory->name = $request->name;
-        $subcategory->description = $request->description;
-        $subcategory->question = $jsonQuestions;
-        $subcategory->subcategory_image = $image;
-        $subcategory->color_brand = $color;
-        $subcategory->save();
-    
-        return redirect('lineas-marcas');
+        foreach($request->question as $question_id){
+            $question_db = Question::find($question_id);
+            $array_category_questions [] = $question_db->cquestion_id;
+        }
+        $cquestion_q = [1,2,3,4];
+        $cquestion_diff =  array_diff($cquestion_q, $array_category_questions ) ;
+        if(empty($cquestion_diff)){
+            $subcategory = new Subcategory;
+            $subcategory->name = $request->name;
+            $subcategory->description = $request->description;
+            $subcategory->question = $jsonQuestions;
+            $subcategory->subcategory_image = $image;
+            $subcategory->color_brand = $color;
+            $subcategory->save();
+            
+            return redirect('lineas-marcas');
+        }else {
+            return back()->with('error', 'Para crear una marca es necesario asignar minimo 1 pregunta por categoria!');
+        }
     }
 
     /* Eliminar categoria */
@@ -148,6 +162,13 @@ class LineasMarcasController extends Controller
     {
         list($image,$color) = explode('|', $request->image);
         $jsonQuestions = json_encode($request->question);
+        foreach ($request->question as $question_id) {
+            $question_db = Question::find($question_id);
+            $array_category_questions[] = $question_db->cquestion_id;
+        }
+        $cquestion_q = [1,2,3,4];
+        $cquestion_diff =  array_diff($cquestion_q, $array_category_questions ) ;
+        if(empty($cquestion_diff)){
         $subcategory = Subcategory::find($id);
         $subcategory->name = $request->name;
         $subcategory->description = $request->description;
@@ -156,6 +177,9 @@ class LineasMarcasController extends Controller
         $subcategory->color_brand = $color;
         $subcategory->save();
         return redirect('lineas-marcas');
+        } else {
+            return back()->with('error', 'Para crear una marca es necesario asignar minimo 1 pregunta por categoria!');
+        }
     }
 
     /* Modificar categoria */

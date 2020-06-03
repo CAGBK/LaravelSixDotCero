@@ -147,7 +147,7 @@
                         <div class="form-group {{ $errors->has('number_questions') ? ' has-error ' : '' }} nav-font">
                             <div class="col-md-12">
                                 <div class="input-group">
-                                    {!! Form::number('number_questions', NULL, array('id' => 'number_questions', 'class' => 'form-control input-c-questions', 'placeholder' => 'C/Preguntas', 'min' => "1", 'max'=>"100" , 'required')) !!}
+                                    {!! Form::number('number_questions', NULL, array('id' => 'number_questions', 'class' => 'form-control input-c-questions', 'placeholder' => 'C/Preguntas', 'min' => "1", 'max'=>"100" , 'required',  'readonly' )) !!}
                                 </div>
                                 @if ($errors->has('number_questions'))
                                 <span class="help-block">

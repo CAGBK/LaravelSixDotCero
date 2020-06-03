@@ -9,10 +9,13 @@
     <?php 
     $arrayUsers = json_decode($challenge->users);
     ?>
-    <?php $__currentLoopData = $arrayUsers; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $value): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
       <?php $__currentLoopData = $users; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $user): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-        <span class="badge badge-info"><?php echo e($value == $user->id ? $user->name : ''); ?></span>
-      <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+        <?php $__currentLoopData = $arrayUsers; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $value): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+          <?php if($value == $user->id): ?>
+            <!--img src="<?php echo e(Gravatar::get($user->email)); ?>" class="user-avatar-nav user-challenge"-->
+            <span class="badge badge-info"><?php echo e($user->name); ?></span>
+            <?php endif; ?>
+        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?> 
   </div>
 </div>

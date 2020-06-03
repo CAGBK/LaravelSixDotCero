@@ -31,7 +31,7 @@ class DesafiosController extends Controller
     public function listChallenge()
     {
         $challenges = Challenge::all();
-        $users = User::all();
+        $users = User::where('activated','!=',0)->get();
         $subcategories = Subcategory::all();
         return View::make('challenge.list', compact('challenges','users', 'subcategories'));
     }
@@ -41,8 +41,7 @@ class DesafiosController extends Controller
         ->select('states.id','states.state','states.color')
         ->whereBetween('states.id', [1,2])
         ->get();
-        $users= User::all();
-        $data = User::paginate(8);
+        $users= User::where('activated','!=',0)->get();
         $id = Auth::user()->id;
         $categories= Category::all();
         foreach ($categories as $key => $value) {
@@ -64,7 +63,7 @@ class DesafiosController extends Controller
                 return redirect()->route('challenge_list')->with('fallo','Para crear un desafio es necesario tener una Linea asignada!');
             }
         }
-        return View::make('challenge/index', compact('users','categories','subcategories', 'data', 'states'));
+        return View::make('challenge/index', compact('users','categories','subcategories', 'states'));
     }
     public function ruleta(Request $request, $id)
     {
@@ -124,11 +123,12 @@ class DesafiosController extends Controller
 
     public function questionGame(Request $request, $id, $challenge_id)
     {
-        $points = ChallengeUser::select('id','number_question','challenge_id','user_id','state_id')->where('challenge_id','=',$challenge_id)->where('user_id','=', Auth()->user()->id)->first();
+        $points = ChallengeUser::select('id','number_question','challenge_id','user_id','state_id')->where('challenge_id','=',$challenge_id)->where('user_id','=', Auth()->user()->id)->first(); 
         if ($points->state_id != 2) {
             $faker = Faker::create();
             $challenge = Challenge::find($challenge_id);
-            $users = User::all();
+            $users = User::where('activated', '!=', 0)->get();
+            $arrayUsers = json_decode($challenge->users);
             $subca = json_decode($challenge->subcategories);
             $qsubcategories = Subcategory::select('question')->whereIn('id',$subca)->get();
             $resultado = [];
@@ -158,8 +158,9 @@ class DesafiosController extends Controller
             $question = Question::find($random_question);
             return View::make('challenge.preguntas', compact('question','challenge', 'users'));
         }
+
         $challenges = Challenge::all();
-        $users = User::all();
+        $users = User::where('activated', '!=', 0)->get();
         $subcategories = Subcategory::all();
         return View::make('challenge.list', compact('challenges','users', 'subcategories'));
     }
@@ -170,10 +171,10 @@ class DesafiosController extends Controller
         $points = ChallengeUser::select('id','score')->where('challenge_id','=',$challenge_id)->where('user_id','=', Auth()->user()->id)->first(); 
         $points->score = $points->score + $ansnwer->puntos;
         $points->save();
-        if ($ansnwer->state_id === 4) {
+        if ($ansnwer->state_id == 4) {
             return redirect()->route('game',$challenge_id)->with('correcto','Su respuesta fue correta!');
         }
-        elseif ($ansnwer->state_id === 5)
+        elseif ($ansnwer->state_id == 5)
         {
             return redirect()->route('game',$challenge_id)->with('fallo','Su respuesta fue incorrecta!');
         }
@@ -214,7 +215,7 @@ class DesafiosController extends Controller
     }
     public function editChallenge($id)
     {
-        $users = User::all();
+        $users = User::where('activated', '!=', 0)->get();
         $challenge = Challenge::find($id);
         $usersChallenge = json_decode($challenge->users);
         $subcategoriesChallenge = json_decode($challenge->subcategories);
@@ -244,7 +245,6 @@ class DesafiosController extends Controller
     }
     public function updateChallenge(Request $request, $id)
     {
-
         $jsonUsers = json_encode($request->check_user);
         $jsonBrands = json_encode($request->check_subcategory);
         $challenge = Challenge::find($id);
