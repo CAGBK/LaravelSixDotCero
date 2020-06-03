@@ -16385,6 +16385,40 @@ input[type=search] {
   /* cursor: text; */
 }
 
+.btn-gravatar {
+  color: #ffffff;
+  background-color: #2baa65;
+  border-color: #2baa65;
+}
+
+.btn-gravatar:hover {
+  color: #ffffff !important;
+  background-color: #2baa65 !important;
+  border-color: #2baa65 !important;
+}
+
+.profile-sidebar-gru .nav-pills a.active {
+  background: #288653 !important;
+}
+
+.nav-link-gru {
+  color: grey;
+  font-weight: 600;
+}
+
+.nav-link-gru:hover {
+  color: #288653;
+  font-weight: 600;
+}
+
+.btn-gravatar:not(:disabled):not(.disabled):active,
+.btn-gravatar:not(:disabled):not(.disabled).active,
+.show > .btn-gravatar.dropdown-toggle {
+  color: #ffffff;
+  background-color: #288653;
+  border-color: #227548;
+}
+
 .btn-cr-brand {
   background: #2cab66;
   border-radius: 15px;
@@ -18921,6 +18955,11 @@ div[data-toggle=buttons] label.active {
   color: #009245 !important;
 }
 
+.center-text-login {
+  text-align: -webkit-center;
+  text-align: -moz-center;
+}
+
 body {
   background-color: #f3f3f3a6;
 }
@@ -19205,6 +19244,7 @@ a.dropdown-item.nav-font {
   height: 230px;
   margin-top: -68px;
   position: absolute;
+  width: -moz-available;
   width: -webkit-fill-available;
 }
 
@@ -19754,6 +19794,7 @@ img.subcategory-avatar-nav.subcategory-challenge {
   border: 3px solid #93bf1c;
   border-radius: 10px;
   padding: 1rem;
+  margin-bottom: 1rem;
 }
 
 .input-name-ch {
@@ -20023,21 +20064,62 @@ img.subcategory-avatar-nav.subcategory-challenge {
   }
 }
 
-.container-canvas {
-  margin-left: auto;
-  margin-right: auto;
+#container-canvas {
+  position: relative;
 }
 
-#canvasContainer {
-  background-image: url(/images/ruleta.png);
+#canvas {
   background-repeat: no-repeat;
   background-position: center;
   cursor: pointer;
-  margin-top: -3rem;
+  z-index: 1;
 }
 
-#Ruleta {
-  width: 100%;
+#prizePointer {
+  position: absolute;
+  left: 44%;
+  top: 36%;
+  z-index: 999;
+}
+
+/* Smartphones (portrait and landscape) ----------- */
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+  #prizePointer {
+    position: absolute;
+    left: 41%;
+    top: 17%;
+    z-index: 999;
+    width: 65px;
+  }
+}
+
+/* Desktops and laptops ----------- */
+
+@media only screen and (min-width: 1224px) {
+  /* Styles */
+}
+
+/* iPhone 4 ----------- */
+
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5) {
+  #prizePointer {
+    position: absolute;
+    left: 41%;
+    top: 17%;
+    z-index: 999;
+    width: 65px;
+  }
+}
+
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+  #prizePointer {
+    position: absolute;
+    left: 42%;
+    top: 38%;
+    z-index: 999;
+    width: 130px;
+  }
 }
 
 .text-login {
@@ -20076,6 +20158,7 @@ img.subcategory-avatar-nav.subcategory-challenge {
 
 .content-align {
   text-align: -webkit-center;
+  text-align: -moz-center;
 }
 
 a.btn.btn-link.login-nav {

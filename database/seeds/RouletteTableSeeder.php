@@ -15,19 +15,23 @@ class RouletteTableSeeder extends Seeder
         $names = array(
             [
                 'name' => 'Patología',
-                'color' => '#6cbbcb'
+                'color' => '#6cbbcb',
+                'imagen' => '/images/patologia.png'
             ],
             [
                 'name' => 'Producto',
-                'color' => '#8db81b'
+                'color' => '#8db81b',
+                'imagen' => '/images/producto.png'
             ],
             [
                 'name' => 'Competencia',
-                'color' => '#f51d3f'
+                'color' => '#f51d3f',
+                'imagen' => '/images/competencia.png'
             ], 
             [
                 'name' => 'POA',
-                'color' => '#f7c100'
+                'color' => '#f7c100',
+                'imagen' => '/images/poa.png'
             ]
         );
        
@@ -36,6 +40,7 @@ class RouletteTableSeeder extends Seeder
             $cquestion = new CQuestion;
             $cquestion->name = $value['name'];            
             $cquestion->color = $value['color'];
+            $cquestion->image = $value['imagen'];
             $cquestion->save();
             
         }

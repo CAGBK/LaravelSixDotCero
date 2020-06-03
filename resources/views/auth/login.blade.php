@@ -43,13 +43,13 @@
                         </div>
 
                         <div class="form-group">
-                            <div class="col-md-12 " style="text-align: -webkit-center;">
+                            <div class="col-md-12 center-text-login" >
                                 <button type="submit" class="btn-login">
                                     {{ __('Ingresar') }}
                                 </button>
 
                             </div>
-                            <div class="col-md-12" style="text-align: -webkit-center;">
+                            <div class="col-md-12 center-text-login" >
                             <a class="btn btn-link login-nav">
                                 Tienes una cuenta? <a class="btn btn-link login-nav custom-link" href="{{ route('register') }}">
                                     {{ __('Registrarse') }} </a>

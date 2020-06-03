@@ -196,7 +196,7 @@
                 </div>
             </div>
             <input type="button" name="previous" class="previous btn-ch" value="Atras" />
-            <button type="submit" class="btn btn-ch">Confirmar!</button>
+            <button type="submit" class="btn-ch">Confirmar!</button>
         </fieldset>
     </div>
 </form>

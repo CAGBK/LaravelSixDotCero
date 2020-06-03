@@ -18,7 +18,7 @@ return [
      *
      */
 
-    'activationSubject'  => 'Activación necesaria',
+    'activationSubject'  => 'Activa tu cuenta Grunenthal',
     'activationGreeting' => 'Bienvenidos!',
     'activationMessage'  => 'Debe activar su correo electrónico antes de poder comenzar a utilizar todos nuestros servicios.',
     'activationButton'   => 'Activar',

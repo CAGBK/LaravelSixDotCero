@@ -29,7 +29,7 @@ return [
     'showProfileBio'             => 'Biografia',
     'showProfileTheme'           => 'Tema',
     'showProfileTwitterUsername' => 'Twitter',
-    'showProfileGitHubUsername'  => 'Github Username',
+    'showProfileGitHubUsername'  => 'Usuario Facebook',
 
     // USER profile page
     'showProfileTitle' => ':username\'s Perfil',
@@ -47,8 +47,8 @@ return [
     'label-bio' => 'Su biografia:',
     'ph-bio'    => 'Ingrese su biogradfia',
 
-    'label-github_username' => 'GitHub:',
-    'ph-github_username'    => 'Ingrese su usuario GitHub',
+    'label-github_username' => 'Facebook:',
+    'ph-github_username'    => 'Ingrese su usuario de Facebook',
 
     'label-twitter_username' => 'Twitter:',
     'ph-twitter_username'    => 'Ingrese su usuario Twitter',
@@ -65,7 +65,7 @@ return [
     'changePwTitle'     => 'Cambiar Contraseña',
     'changePwPill'      => 'Cambiar Contraseña',
     'deleteAccountPill' => 'Eliminar la cuenta',
-    'updatePWSuccess'   => 'Your password has been successfully updated',
+    'updatePWSuccess'   => 'Tu contraseña ha sido actualizada exitosamente',
 
     // Delete Account Tab
     'deleteAccountTitle'        => 'Eliminar Cuentat',

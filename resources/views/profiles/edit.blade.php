@@ -14,15 +14,15 @@
                             @if (Auth::user()->id == $user->id)
                             <div class="container">
                                 <div class="row">
-                                    <div class="col-12 col-sm-4 col-md-3 profile-sidebar text-white rounded-left-sm-up">
+                                    <div class="col-12 col-sm-4 col-md-3 profile-sidebar profile-sidebar-gru text-white rounded-left-sm-up">
                                         <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                                            <a class="nav-link active " data-toggle="pill" href=".edit-profile-tab" role="tab" aria-controls="edit-profile-tab" aria-selected="true">
+                                            <a class="nav-link nav-link-gru active " data-toggle="pill" href=".edit-profile-tab" role="tab" aria-controls="edit-profile-tab" aria-selected="true">
                                                 {{ trans('profile.editProfileTitle') }}
                                             </a>
-                                            <a class="nav-link" data-toggle="pill" href=".edit-settings-tab" role="tab" aria-controls="edit-settings-tab" aria-selected="false">
+                                            <a class="nav-link nav-link-gru" data-toggle="pill" href=".edit-settings-tab" role="tab" aria-controls="edit-settings-tab" aria-selected="false">
                                                 {{ trans('profile.editAccountTitle') }}
                                             </a>
-                                            <a class="nav-link" data-toggle="pill" href=".edit-account-tab" role="tab" aria-controls="edit-settings-tab" aria-selected="false">
+                                            <a class="nav-link nav-link-gru" data-toggle="pill" href=".edit-account-tab" role="tab" aria-controls="edit-settings-tab" aria-selected="false">
                                                 {{ trans('profile.editAccountAdminTitle') }}
                                             </a>
                                         </div>
@@ -55,12 +55,12 @@
                                                         <div class="col-10 offset-1 col-sm-10 offset-sm-1 mb-1">
                                                             <div class="row" data-toggle="buttons">
                                                                 <div class="col-6 col-xs-6 right-btn-container">
-                                                                    <label class="btn btn-primary @if($user->profile->avatar_status == 0) active @endif btn-block btn-sm" data-toggle="collapse" data-target=".collapseOne:not(.show), .collapseTwo.show">
+                                                                    <label class="btn btn-gravatar @if($user->profile->avatar_status == 0) active @endif btn-block btn-sm" data-toggle="collapse" data-target=".collapseOne:not(.show), .collapseTwo.show">
                                                                         <input type="radio" name="avatar_status" id="option1" autocomplete="off" value="0" @if($user->profile->avatar_status == 0) checked @endif> Usar Grunenvatar
                                                                     </label>
                                                                 </div>
                                                                 <div class="col-6 col-xs-6 left-btn-container">
-                                                                    <label class="btn btn-primary @if($user->profile->avatar_status == 1) active @endif btn-block btn-sm" data-toggle="collapse" data-target=".collapseOne.show, .collapseTwo:not(.show)">
+                                                                    <label class="btn  btn-gravatar @if($user->profile->avatar_status == 1) active @endif btn-block btn-sm" data-toggle="collapse" data-target=".collapseOne.show, .collapseTwo:not(.show)">
                                                                         <input type="radio" name="avatar_status" id="option2" autocomplete="off" value="1" @if($user->profile->avatar_status == 1) checked @endif> Usar Mi Imagen
                                                                     </label>
                                                                 </div>

@@ -9,6 +9,7 @@
   <br>
   @foreach ($points as $point)
     <h2 style="color:#2cab66; margin: 0px 0px 0px 45px;" class="font-weight-bold text-white">Puntos: {{$point->score}}</h2>
+    <h2 style="color: rgb(44, 171, 102); text-align: right;margin: -33px 33px -16px 165px;" class="font-weight-bold">Pregunta {{$point->number_question}}/{{$challenge->number_questions}}</h2>
   @endforeach
   <br>
 </div>
@@ -29,10 +30,12 @@
       </button>
     </div>
   @endif
-  <div align="center" onclick="miRuleta.startAnimation()">
-    <canvas id="canvas" width="420" height="420">
+  <div id="container-canvas" align="center" onclick="miRuleta.startAnimation()">
+    <canvas id="canvas" width="700" height="700">
       <p align="center">Sorry, your browser doesn't support canvas. Please try another.</p>
+
     </canvas>
+    <img id="prizePointer" src="/images/girar.png" alt="V" />
   </div>
 </section>
 

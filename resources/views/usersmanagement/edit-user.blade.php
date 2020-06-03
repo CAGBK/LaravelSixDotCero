@@ -19,15 +19,15 @@
         <div class="row">
             <div class="col-lg-10 offset-lg-1">
                 <div class="card">
-                    <div class="card-header">
+                    <div class="card-header header-card text-white">
                         <div style="display: flex; justify-content: space-between; align-items: center;">
                             {!! trans('usersmanagement.editing-user', ['name' => $user->name]) !!}
                             <div class="pull-right">
-                                <a href="{{ route('users') }}" class="btn btn-light btn-sm float-right" data-toggle="tooltip" data-placement="top" title="{{ trans('usersmanagement.tooltips.back-users') }}">
+                                <a href="{{ route('users') }}" class="btn button-card" data-toggle="tooltip" data-placement="top" title="{{ trans('usersmanagement.tooltips.back-users') }}">
                                     <i class="fa fa-fw fa-reply-all" aria-hidden="true"></i>
                                     {!! trans('usersmanagement.buttons.back-to-users') !!}
                                 </a>
-                                <a href="{{ url('/users/' . $user->id) }}" class="btn btn-light btn-sm float-right" data-toggle="tooltip" data-placement="left" title="{{ trans('usersmanagement.tooltips.back-users') }}">
+                                <a href="{{ url('/users/' . $user->id) }}" class="btn button-card" data-toggle="tooltip" data-placement="left" title="{{ trans('usersmanagement.tooltips.back-users') }}">
                                     <i class="fa fa-fw fa-reply" aria-hidden="true"></i>
                                     {!! trans('usersmanagement.buttons.back-to-user') !!}
                                 </a>
@@ -192,7 +192,7 @@
                                         <span></span> {!! trans('forms.change-pw') !!}
                                     </a>
                                 </div>
-                                <div class="col-12 col-sm-6">
+                                <div class="col-12 col-sm-6 text-align-center">
                                     {!! Form::button(trans('forms.save-changes'), array('class' => 'btn btn-success btn-block margin-bottom-1 mt-3 mb-2 btn-save','type' => 'button', 'data-toggle' => 'modal', 'data-target' => '#confirmSave', 'data-title' => trans('modals.edit_user__modal_text_confirm_title'), 'data-message' => trans('modals.edit_user__modal_text_confirm_message'))) !!}
                                 </div>
                             </div>
