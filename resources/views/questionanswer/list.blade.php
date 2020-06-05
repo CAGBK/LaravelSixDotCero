@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('template_title')
-    Todas las preguntas
+    Preguntas
 @endsection
 
 @section('template_linked_css')
@@ -50,10 +50,6 @@
                                     <a class="dropdown-item nav-font" href="{{ route('create_question')}}">
                                         <i class="fa fa-fw fa-user-plus" aria-hidden="true"></i>
                                         Crear Pregunta
-                                    </a>
-                                    <a class="dropdown-item nav-font" href="/users/deleted">
-                                        <i class="fa fa-fw fa-group" aria-hidden="true"></i>
-                                        Preguntas Inactivas
                                     </a>
                                 </div>
                                 @endpermission

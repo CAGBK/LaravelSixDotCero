@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('template_title')
-    Welcome {{ Auth::user()->name }}
+    Binvenido {{ Auth::user()->name }}
 @endsection
 
 @section('head')

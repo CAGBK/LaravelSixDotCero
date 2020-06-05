@@ -72,26 +72,33 @@ class LineasMarcasController extends Controller
 
     public function storeBrand(Request $request)
     {   
-        list($image,$color) = explode('|', $request->image);
-        $jsonQuestions = json_encode($request->question);
-        foreach($request->question as $question_id){
-            $question_db = Question::find($question_id);
-            $array_category_questions [] = $question_db->cquestion_id;
+        if($request->image != null)
+        {
+            list($image,$color) = explode('|', $request->image);
+            $jsonQuestions = json_encode($request->question);
+            foreach($request->question as $question_id){
+                $question_db = Question::find($question_id);
+                $array_category_questions [] = $question_db->cquestion_id;
+            }
+            $cquestion_q = [1,2,3,4];
+            $cquestion_diff =  array_diff($cquestion_q, $array_category_questions ) ;
+            if(empty($cquestion_diff)){
+                $subcategory = new Subcategory;
+                $subcategory->name = $request->name;
+                $subcategory->description = $request->description;
+                $subcategory->question = $jsonQuestions;
+                $subcategory->subcategory_image = $image;
+                $subcategory->color_brand = $color;
+                $subcategory->save();
+                
+                return redirect('lineas-marcas');
+            }else {
+                return back()->with('error', 'Para crear una marca es necesario asignar minimo 1 pregunta por categoria!');
+            }
         }
-        $cquestion_q = [1,2,3,4];
-        $cquestion_diff =  array_diff($cquestion_q, $array_category_questions ) ;
-        if(empty($cquestion_diff)){
-            $subcategory = new Subcategory;
-            $subcategory->name = $request->name;
-            $subcategory->description = $request->description;
-            $subcategory->question = $jsonQuestions;
-            $subcategory->subcategory_image = $image;
-            $subcategory->color_brand = $color;
-            $subcategory->save();
-            
-            return redirect('lineas-marcas');
-        }else {
-            return back()->with('error', 'Para crear una marca es necesario asignar minimo 1 pregunta por categoria!');
+        else
+        {
+            return back()->with('error', 'Para crear una marca es necesario asignar una imagen!');
         }
     }
 

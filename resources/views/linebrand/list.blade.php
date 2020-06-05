@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('template_title')
-    Todas las Lineas y Marcas
+    Lineas & Marcas
 @endsection
 
 @section('template_linked_css')
@@ -48,10 +48,6 @@
                       <i class="fa fa-fw fa-user-plus" aria-hidden="true"></i>
                       Crear Linea
                   </a>
-                  <a class="dropdown-item nav-font" href="/users/deleted">
-                      <i class="fa fa-fw fa-group" aria-hidden="true"></i>
-                      Lineas Inactivas
-                  </a>
               </div>
               @endpermission
           </div>
@@ -87,11 +83,15 @@
                                 <?php 
                                 $arraySubcategory = json_decode($category->subcategory);
                                 ?>
+                                @if (!empty($arraySubcategory))
                                 @foreach ($arraySubcategory as $value)
                                   @foreach ($subcategories as $subcategory)
                                     <span class="badge badge-info">{{ $value == $subcategory->id ? $subcategory->name : ''  }}</span>
                                   @endforeach
                                 @endforeach 
+                                @else
+                                    <span class="badge badge-info">No hay marcas asignadas</span>
+                                @endif
                                 @endif
                               </td>
                               </td>
@@ -149,10 +149,6 @@
                   <a class="dropdown-item nav-font" href="{{ route('create_brand')}}">
                       <i class="fa fa-fw fa-user-plus" aria-hidden="true"></i>
                       Crear Marca
-                  </a>
-                  <a class="dropdown-item nav-font" href="/users/deleted">
-                      <i class="fa fa-fw fa-group" aria-hidden="true"></i>
-                      Marcas Inactivas
                   </a>
               </div>
             @endpermission

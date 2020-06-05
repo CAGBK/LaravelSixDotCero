@@ -45,7 +45,7 @@ class FinishChallenge extends Command
         $date = Carbon::now()->format('Y-m-d  h:i');
         foreach ($challenges as $challenge) {
             $resultado =Carbon::parse($challenge->end_date)->format('Y-m-d  h:i');
-            if($date == $resultado)
+            if($date = $resultado)
             {
                 $stateChallenge = Challenge::find($challenge->id);
                 $stateChallenge->state_id = 2;
@@ -59,6 +59,5 @@ class FinishChallenge extends Command
                 }
             }
         }
-        Log::info('Cambio de estado ok');
     }
 }

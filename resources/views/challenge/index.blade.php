@@ -20,8 +20,9 @@
                 <div class="row">
                     <div class="col-12">
                         <h2 class="fs-title">Crear Desafío</h2>
-                        <h2 class="fs-title-text">Selecciona participantes a los que invitar</h2>
+                        <h2 class="fs-title-text">Selecciona participantes a los que invitar!</h2>
                     </div>
+                    
                 </div>
                 <div class="container">
                     <div class="row">

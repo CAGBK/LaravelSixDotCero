@@ -32,7 +32,7 @@
                                     {!! Form::label('question', 'Pregunta', array('class' => 'col-md-3 control-label')); !!}
                                     <div class="col-md-9">
                                         <div class="input-group">
-                                            {!! Form::text('question', $question->question_name, array('id' => 'question', 'class' => 'form-control')) !!}
+                                            {!! Form::text('question', $question->question_name, array('id' => 'question', 'class' => 'form-control', 'required'=>'required')) !!}
                                             <div class="input-group-append">
                                                 <label for="question" class="input-group-text">
                                                     <i class="fa fa-fw {{ trans('forms.create_user_icon_email') }} nav-font" aria-hidden="true"></i>
@@ -50,7 +50,7 @@
                                     {!! Form::label('state_id', 'Estado', array('class' => 'col-md-3 control-label')); !!}
                                     <div class="col-md-9">
                                         <div class="input-group">
-                                            <select class="custom-select form-control" name="state_id" id="state_id">
+                                            <select class="custom-select form-control" name="state_id" id="state_id" required="required">
                                                 <option value="">Seleccione estado</option>
                                                 @if ($states)
                                                 @foreach($states as $state)
@@ -77,7 +77,7 @@
                                     <div class="col-md-9">
                                         <div class="input-group">
                                             <input type="hidden" name="id[]" value="{{$answer->id}}" placeholder="">
-                                            {!! Form::text('answer[]', $answer->name, array('id' => 'answer[]', 'class' => 'form-control')) !!}
+                                            {!! Form::text('answer[]', $answer->name, array('id' => 'answer[]', 'class' => 'form-control', 'required'=>'required')) !!}
                                             <div class="input-group-append">
                                                 <label for="answer[]" class="input-group-text">
                                                     <i class="fa fa-fw {{ trans('forms.create_user_icon_email') }} nav-font" aria-hidden="true"></i>
@@ -101,7 +101,7 @@
                                     <div class="col-md-9">
                                         <div class="input-group">
                                             <select class="custom-select form-control" name="cquestion_id" id="cquestion_id">
-                                                <option value="">Seleccione Categoria de Pregunta</option>
+                                                <option value="" required="required">Seleccione Categoria de Pregunta</option>
                                                 @if ($cquestions)
                                                 @foreach($cquestions as $cquestion)
                                                     <option value="{{ $cquestion->id }}" {{ $question->cquestion_id == $cquestion->id ? 'selected="selected"' : '' }}>{{ $cquestion->name }}</option>

@@ -28,7 +28,7 @@
                       {!! Form::label('brand', 'Linea', array('class' => 'col-md-3 control-label')); !!}
                       <div class="col-md-9">
                           <div class="input-group">
-                              {!! Form::text('brand', NULL, array('id' => 'brand', 'class' => 'form-control', 'placeholder' => 'Nombre de Linea...')) !!}
+                              {!! Form::text('brand', NULL, array('id' => 'brand', 'class' => 'form-control', 'placeholder' => 'Nombre de Linea...', 'required'=>'required')) !!}
                               <div class="input-group-append">
                                   <label for="brand" class="input-group-text">
                                       <i class="fa fa-fw {{ trans('forms.create_user_icon_email') }} nav-font" aria-hidden="true"></i>
@@ -46,7 +46,7 @@
                         {!! Form::label('description', 'Descripción', array('class' => 'col-md-3 control-label')); !!}
                         <div class="col-md-9">
                             <div class="input-group">
-                                {!! Form::text('description', NULL, array('id' => 'description', 'class' => 'form-control', 'placeholder' => 'Descripción de Linea...')) !!}
+                                {!! Form::text('description', NULL, array('id' => 'description', 'class' => 'form-control', 'placeholder' => 'Descripción de Linea...', 'required'=>'required')) !!}
                                 <div class="input-group-append">
                                     <label for="description" class="input-group-text">
                                         <i class="fa fa-fw {{ trans('forms.create_user_icon_email') }} nav-font" aria-hidden="true"></i>
@@ -64,7 +64,7 @@
                         {!! Form::label('state_id', 'Marca', array('class' => 'col-md-3 control-label')); !!}
                         <div class="col-md-9">
                             <div class="input-group">
-                                <select class="custom-select form-control js-example-basic-multiple" name="subcategories[]" id="subcategories"  multiple="multiple" >
+                                <select class="custom-select form-control js-example-basic-multiple" name="subcategories[]" id="subcategories"  multiple="multiple" required="required">
                                     <option value="" disabled="disabled">Seleccione una Marca</option>
                                     
                                     @if ($subcategories)
@@ -92,7 +92,7 @@
                         {!! Form::label('users_id', 'Usuarios', array('class' => 'col-md-3 control-label')); !!}
                         <div class="col-md-9">
                             <div class="input-group">
-                                <select class="custom-select form-control js-user" name="users[]" id="users"  multiple="multiple" >
+                                <select class="custom-select form-control js-user" name="users[]" id="users"  multiple="multiple" required="required">
                                     <option value="" disabled="disabled">Seleccione Usuarios</option>
                                     
                                     @if ($users)

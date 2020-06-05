@@ -28,7 +28,7 @@
                       {!! Form::label('name', 'Marca', array('class' => 'col-md-3 control-label')); !!}
                       <div class="col-md-9">
                           <div class="input-group">
-                              {!! Form::text('name', $brand->name, array('id' => 'name', 'class' => 'form-control general-input', 'placeholder' => 'Nombre de Marca...')) !!}
+                              {!! Form::text('name', $brand->name, array('id' => 'name', 'class' => 'form-control general-input', 'placeholder' => 'Nombre de Marca...', 'required'=>'required')) !!}
                           </div>
                           @if ($errors->has('name'))
                               <span class="help-block">
@@ -42,7 +42,7 @@
                       {!! Form::label('description', 'Descripción', array('class' => 'col-md-3 control-label')); !!}
                       <div class="col-md-9">
                           <div class="input-group">
-                              {!! Form::text('description', $brand->description, array('id' => 'description', 'class' => 'form-control general-input', 'placeholder' => 'Descripción')) !!}
+                              {!! Form::text('description', $brand->description, array('id' => 'description', 'class' => 'form-control general-input', 'placeholder' => 'Descripción', 'required'=>'required')) !!}
                           </div>
                           @if ($errors->has('description'))
                               <span class="help-block">
@@ -56,8 +56,8 @@
                         {!! Form::label('question[]', 'Preguntas', array('class' => 'col-md-3 control-label')); !!}
                         <div class="col-md-9">
                             <div class="input-group">
-                                <select class="custom-select form-control js-example-basic-multiple" name="question[]" id="question"  multiple="multiple" >
-                                    <option value="0">Seleccione Preguntas</option>
+                                <select class="custom-select form-control js-example-basic-multiple" name="question[]" id="question"  multiple="multiple" required="required">
+                                    <option value="0" disabled="disbled">Seleccione Preguntas</option>
                                     @if ($brand->question)
                                          @foreach($questions as $question)
                                                 <option value="{{ $question->id }}">{{ $question->question_name }}</option>

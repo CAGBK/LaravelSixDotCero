@@ -69,40 +69,9 @@
                 <span class="badge badge-default margin-half">1</span>
             @endlevel
         </p>
-
-        @role('admin')
-
             <hr>
-
             <p>
-                Tienes permisos:
-                @permission('view.users')
-                    <span class="badge badge-primary margin-half margin-left-0">
-                        {{ trans('permsandroles.permissionView') }}
-                    </span>
-                @endpermission
-
-                @permission('create.users')
-                    <span class="badge badge-info margin-half margin-left-0">
-                        {{ trans('permsandroles.permissionCreate') }}
-                    </span>
-                @endpermission
-
-                @permission('edit.users')
-                    <span class="badge badge-warning margin-half margin-left-0">
-                        {{ trans('permsandroles.permissionEdit') }}
-                    </span>
-                @endpermission
-
-                @permission('delete.users')
-                    <span class="badge badge-danger margin-half margin-left-0">
-                        {{ trans('permsandroles.permissionDelete') }}
-                    </span>
-                @endpermission
-
+                <center><a href="{{ url('/challenge-list') }}" class="btn text-white" style="background-color: #2cab66;">¡Crea un Desafio!</a></center>
             </p>
-
-        @endrole
-
     </div>
 </div>
