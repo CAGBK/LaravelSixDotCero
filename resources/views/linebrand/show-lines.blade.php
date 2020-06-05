@@ -51,14 +51,17 @@
               <?php 
               $arraySubcategory = json_decode($category->subcategory);
               ?>
-              @foreach ($arraySubcategory as $value)
-                @foreach ($subcategories as $subcategory)
-                  <span class="badge badge-info">{{ $value == $subcategory->id ? $subcategory->name : ''  }}</span>
-                @endforeach
-              @endforeach 
+              @if (!empty($arraySubcategory))
+                @foreach ($arraySubcategory as $value)
+                  @foreach ($subcategories as $subcategory)
+                    <span class="badge badge-info">{{ $value == $subcategory->id ? $subcategory->name : ''  }}</span>
+                  @endforeach
+                @endforeach 
+                @else
+                  <span class="badge badge-info">No hay marcas asignadas</span>
+              @endif
               @endif
             </div>
-
             <div class="clearfix"></div>
             <div class="border-bottom"></div>
 
@@ -69,17 +72,19 @@
             </div>
 
             <div class="col-sm-7">
-              @if($category->subcategory)
+              @if($category->user)
               <?php 
               $arrayUsers = json_decode($category->user);
               ?>
+              @if (!empty($arrayUsers))
               @foreach ($arrayUsers as $value)
                 @foreach ($users as $user)
                   <span class="badge badge-info">{{ $value == $user->id ? $user->name : ''  }}</span>
                 @endforeach
               @endforeach
               @else
-                No hay usuarios asignados
+                <span class="badge badge-info">No hay usuarios asignados</span>
+              @endif
               @endif
             </div>
 

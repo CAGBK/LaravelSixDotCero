@@ -58,6 +58,5 @@ class UserFinish extends Command
                 $challengeFinish->save();
             }
         }
-        Log::info('Finalización de estado ok');
     }
 }

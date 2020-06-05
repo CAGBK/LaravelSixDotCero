@@ -82,7 +82,7 @@
 				"zeroRecords": "",
 				"infoEmpty": "No records available",
 				"infoFiltered": "(filtered from _MAX_ total records)",
-				"search" : "Buscar Desafío",
+				"search" : "Buscar participante:",
 
 			},
 			"scrollY":        "400px",

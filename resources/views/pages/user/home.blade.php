@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('template_title')
-    {{ Auth::user()->name }}'s' Homepage
+    Bienvenido {{ Auth::user()->name }}
 @endsection
 
 @section('template_fastload_css')

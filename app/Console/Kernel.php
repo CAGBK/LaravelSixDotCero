@@ -34,8 +34,8 @@ class Kernel extends ConsoleKernel
         //          ->hourly();
 
         $schedule->command('activations:clean')->daily();
-        //$schedule->command('challenge:finish')->everyMinute();
-        //$schedule->command('users:finish')->everyMinute();
+        $schedule->command('challenge:finish')->everyMinute();
+        $schedule->command('users:finish')->everyMinute();
     }
 
     /**

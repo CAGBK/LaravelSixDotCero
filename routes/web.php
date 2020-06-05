@@ -135,9 +135,9 @@ Route::middleware(['auth'])->group(function(){
     Route::delete('line/{id}', 'LineasMarcasController@destroy')->name('line_destroy');
     Route::delete('question/{id}', 'PreguntasRespuestasController@destroy')->name('question_destroy');
 
-    Route::get('crear/Linea', 'LineasMarcasController@createLine')->name('create_line')->middleware('permission:view.create.line');
+    Route::get('crear/line', 'LineasMarcasController@createLine')->name('create_line')->middleware('permission:view.create.line');
 
-    Route::post('new/Linea', 'LineasMarcasController@storeLinea')->name('ruta_new_line')->middleware('permission:create.line');
+    Route::post('new/linea', 'LineasMarcasController@storeLinea')->name('ruta_new_line')->middleware('permission:create.line');
 
     Route::get('line/{id}/edit', 'LineasMarcasController@editLine')->name('edit_line')->middleware('permission:view.edit.line');
 
@@ -149,11 +149,11 @@ Route::middleware(['auth'])->group(function(){
 
     Route::delete('brand/{id}', 'LineasMarcasController@destroyBrand')->name('brand_destroy');
 
-    Route::get('crear/Marca', 'LineasMarcasController@createBrand')->name('create_brand')->middleware('permission:view.create.brand');
+    Route::get('crear/marca', 'LineasMarcasController@createBrand')->name('create_brand')->middleware('permission:view.create.brand');
 
     Route::put('brand/update/{id}', 'LineasMarcasController@updateBrand')->name('update_brand')->middleware('permission:edit.brand');
 
-    Route::post('new/Marca', 'LineasMarcasController@storeBrand')->name('ruta_new_brand')->middleware('permission:create.brand');
+    Route::post('new/marca', 'LineasMarcasController@storeBrand')->name('ruta_new_brand')->middleware('permission:create.brand');
 
     Route::get('brand/{id}/edit', 'LineasMarcasController@editBrand')->name('edit_brand')->middleware('permission:view.edit.brand');
 

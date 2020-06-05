@@ -30,7 +30,7 @@
                       {!! Form::label('name', 'Marca', array('class' => 'col-md-3 control-label')); !!}
                       <div class="col-md-9">
                           <div class="input-group">
-                              {!! Form::text('name', NULL, array('id' => 'name', 'class' => 'form-control general-input', 'placeholder' => 'Nombre de Marca...')) !!}
+                              {!! Form::text('name', NULL, array('id' => 'name', 'class' => 'form-control general-input', 'placeholder' => 'Nombre de Marca...', 'required'=>'required')) !!}
                               
                           </div>
                           @if ($errors->has('name'))
@@ -45,7 +45,7 @@
                       {!! Form::label('description', 'Descripción', array('class' => 'col-md-3 control-label')); !!}
                       <div class="col-md-9">
                           <div class="input-group">
-                              {!! Form::text('description', NULL, array('id' => 'description', 'class' => 'form-control general-input', 'placeholder' => 'Descripción')) !!}
+                              {!! Form::text('description', NULL, array('id' => 'description', 'class' => 'form-control general-input', 'placeholder' => 'Descripción', 'required'=>'required')) !!}
                               
                           </div>
                           @if ($errors->has('description'))
@@ -60,9 +60,8 @@
                         {!! Form::label('question[]', 'Preguntas', array('class' => 'col-md-3 control-label')); !!}
                         <div class="col-md-9">
                             <div class="input-group">
-                                <select class="general-input custom-select form-control js-example-basic-multiple" name="question[]" id="question"  multiple="multiple" >
+                                <select class="general-input custom-select form-control js-example-basic-multiple" name="question[]" id="question"  multiple="multiple" required="required">
                                     <option value="" disabled="disabled">Seleccione Preguntas</option>
-                                    
                                     @if ($questions)
                                         @foreach($questions as $question)
                                             <option value="{{ $question->id }}">{{ $question->question_name }}</option>
