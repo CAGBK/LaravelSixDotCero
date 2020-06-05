@@ -84,7 +84,7 @@
               <a href="<?php echo e(route('game',['id' => $challenge->id])); ?>" type="button" class="btn btn-primary">Continuar Desafío</a>
             <?php elseif($element->state_id == 1): ?>
               <a href="<?php echo e(route('game',['id' => $challenge->id])); ?>" type="button" class="btn btn-primary">Jugar</a>
-              <?php if($challenge->user_id = Auth()->user()->id): ?>
+              <?php if($challenge->user_id == Auth()->user()->id): ?>
                 <a href="<?php echo e(route('edit_challenge',['id' => $challenge->id])); ?>" type="button" class="btn btn-success">Editar Desafío</a>
               <?php endif; ?>
             <?php endif; ?>

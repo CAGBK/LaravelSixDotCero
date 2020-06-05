@@ -83,7 +83,7 @@
               <a href="{{ route('game',['id' => $challenge->id]) }}" type="button" class="btn btn-primary">Continuar Desafío</a>
             @elseif ($element->state_id == 1)
               <a href="{{ route('game',['id' => $challenge->id]) }}" type="button" class="btn btn-primary">Jugar</a>
-              @if($challenge->user_id = Auth()->user()->id)
+              @if($challenge->user_id == Auth()->user()->id)
                 <a href="{{ route('edit_challenge',['id' => $challenge->id]) }}" type="button" class="btn btn-success">Editar Desafío</a>
               @endif
             @endif
