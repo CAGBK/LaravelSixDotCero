@@ -174,6 +174,9 @@ Route::middleware(['auth'])->group(function(){
     Route::put('question/update/{id}', 'PreguntasRespuestasController@updateQuestion')->name('update_question')->middleware('permission:edit.question');
 
     //Exclusivo Desafios 
+    Route::get('report/challenge/{id}', 'DesafiosController@reportChallenge')->name('report_challenge');
+
+    Route::get('report/user/{id}', 'DesafiosController@reportUser')->name('report_user');
 
     Route::get('challenge', 'DesafiosController@index')->name('challenge');
 

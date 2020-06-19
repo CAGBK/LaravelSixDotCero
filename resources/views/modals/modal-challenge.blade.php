@@ -175,7 +175,7 @@
         @if($challenge->state_id = 1)
           <a href="{{ route('edit_challenge',['id' => $challenge->id]) }}" type="button" class="btn btn-success">Editar Desafío</a>
         @endif
-        <a href="{{ route('game',['id' => $challenge->id]) }}" type="button" class="btn btn-primary">Ver detalle</a>
+        <a href="{{ route('report_challenge',['id' => $challenge->id]) }}" type="button" class="btn btn-primary">Ver detalle</a>
       </div>
     </div>
   </div>

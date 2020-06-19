@@ -33,7 +33,7 @@
                 </div>
                 <div class="form-group has-feedback row {{ $errors->has('check_user') ? ' has-error ' : '' }} ">
                     <div class="col-md-12">
-                        
+                        <input type="checkbox" id="selectAll" name="selectAll" value="all"> Select All
                         <table id="users-check" class="table">
                             <thead>
                                 <tr>

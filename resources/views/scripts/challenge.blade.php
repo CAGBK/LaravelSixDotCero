@@ -94,8 +94,10 @@
 			$('#users-check_filter').val('');
 				table.search('').draw(); //required after
 		});
-		
-	
+		$("#selectAll").on("click", function() {  
+			$(".check_users").prop("checked", this.checked);  
+		});
+
 		var tablebrand = $('#brands-check').DataTable({
 				"columns": [
 				{ "data": "brands-user" }

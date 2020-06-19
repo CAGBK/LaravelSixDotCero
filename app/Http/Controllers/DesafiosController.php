@@ -275,4 +275,20 @@ class DesafiosController extends Controller
        
         return redirect('challenge-list');
     }
+    public function reportChallenge(Request $request, $id)
+    {
+        $challenge = Challenge::find($id);
+        $Arrayusers = json_decode($challenge->users);
+        $users = User::whereIn('users.id', $Arrayusers)
+                        ->join('challenge_user', 'users.id', '=', 'challenge_user.user_id')
+                        ->orderBy('challenge_user.score' , 'DESC')
+                        ->get();
+
+        return View::make('challenge.reports.challenge', compact('challenge', 'users'));
+    }
+    public function reportUser(Request $request, $id)
+    {
+
+        return View::make('challenge.reports.user');
+    }
 }
