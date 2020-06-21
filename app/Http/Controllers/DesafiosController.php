@@ -279,12 +279,16 @@ class DesafiosController extends Controller
     {
         $challenge = Challenge::find($id);
         $Arrayusers = json_decode($challenge->users);
-        $users = User::whereIn('users.id', $Arrayusers)
-                        ->join('challenge_user', 'users.id', '=', 'challenge_user.user_id')
+        $arraySub = json_decode($challenge->subcategories);
+        $users = User::select('users.id','users.email','challenge_user.score','users.name')
+                        ->join('challenge_user', 'challenge_user.user_id', '=', 'users.id')
+                        ->whereIn('users.id', $Arrayusers)
+                        ->where('challenge_user.challenge_id','=',$id)
                         ->orderBy('challenge_user.score' , 'DESC')
                         ->get();
+        $subcategories = Subcategory::find($arraySub);
 
-        return View::make('challenge.reports.challenge', compact('challenge', 'users'));
+        return View::make('challenge.reports.challenge', compact('challenge', 'users','subcategories'));
     }
     public function reportUser(Request $request, $id)
     {

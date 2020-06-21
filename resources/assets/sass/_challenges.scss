@@ -474,12 +474,14 @@ input[type="search"] {
 .nav-lchallenge {
     background-color: #272727;
     height: 160px;
-    margin-top: -48px;
+    margin-top: -54px;
+    margin-bottom: 1rem;
 }
 .nav-report-challenge {
-    background-color: #272727;
-    height: 100px;
-    margin-top: -48px;
+   background-color: #272727;
+    height: 160px;
+    margin-top: -54px;
+    margin-bottom: 1rem;
 }
 .fs-title-list {
     margin-top: 1rem;
@@ -886,4 +888,8 @@ img.subcategory-avatar-nav.subcategory-challenge {
     font-weight: normal;
     text-align: left;
 } 
+}
+.space-bottom
+{
+    margin-bottom: 1rem;
 }

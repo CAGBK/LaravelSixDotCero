@@ -4,13 +4,11 @@
 @endsection
 @section('content')
 <div class="form-card">
-    <div class="row">
-        <div class="col-12 nav-lchallenge">
-            <h2 class="text ch-text fs-title-list">Desafíos</h2>
-            <h3 class="text ch-text-two text-white">Te han Desafiado:</h3>
-            <input type="button" name="" class="nav-button-ch" value="Crear Desafío" onclick="location.href='challenge'"  /> 
-        </div>
-    </div> 
+    <div class="col-12 nav-lchallenge">
+        <h2 class="text ch-text fs-title-list">Desafíos</h2>
+        <h3 class="text ch-text-two text-white">Te han Desafiado</h3>
+        <input type="button" name="" class="nav-button-ch" value="Crear Desafío" onclick="location.href='challenge'"  /> 
+    </div>
 </div>
 @if (session()->has('fallo'))
     <div class="alert alert-info alert-dismissible fade show" role="alert">
@@ -21,7 +19,7 @@
     </div>
 @endif 
 <div class="container">
-        <div class="row " style="margin-top: 2rem;">
+        <div class="row">
             @foreach ($challenges as $challenge)
                 @if($challenge->users)
                 <?php 
@@ -32,7 +30,7 @@
                     @if ($user == Auth()->user()->id)
                         <div class="" data-toggle="modal" data-target="#challengeModal{{ $challenge->id }}">
                             <div class="card-challenge-list" style="background-color: @foreach ($challenge->challengeus as $element)@if ($element->user_id == Auth()->user()->id){{ $element->state->color }}@endif @endforeach">
-                                <div class="col-sm-7">
+                                <div class="col-sm-7 space-bottom">
                                     <label  class="lb-list-challenge" for="xx"><i class="fa fa-trophy text-white ctrophy" aria-hidden="true"></i>Puesto 0/{{ $participants }}</label>
                                     <hr class="text-white hr-challenge" >
                                     <label class="lb-list-challenge text-center font-weight-bold" for="xx">{{$challenge->name}}</label>
@@ -61,7 +59,7 @@
         <div class="row">
             <div class="" data-toggle="modal" data-target="#challengenModal{{ $challenge->id }}">
                 <div class="card-challenge-list" style="background-color:{{ $challenge->state->color }}">
-                    <div class="col-sm-7">
+                    <div class="col-sm-7 space-bottom">
                     <label  class="lb-list-challenge" for="xx"><i class="fa fa-trophy text-white ctrophy" aria-hidden="true"></i>Jugadores:{{ $participants }}</label>
                         <hr class="text-white hr-challenge" >
                         <label class="lb-list-challenge text-center font-weight-bold" for="xx">{{$challenge->name}}</label>
