@@ -30,28 +30,47 @@
         </div>
         <div class="form-group has-feedback row {{ $errors->has('check_user') ? ' has-error ' : '' }} ">
                     <div class="col-md-12">
-                        <table id="challenge-check" class="table">
+                        <table id="challenge-report" class="table-report">
                             <thead style="display:none;">
                                 <tr>
                                     <th class="sorting_asc">
-                                        Usuarios
+                                        Number
                                     </th>
-                                    
+                                    <th class="sorting_asc">
+                                        Image
+                                    </th>
+                                    <th class="sorting_asc">
+                                        Name
+                                    </th>
+                                    <th class="sorting_asc">
+                                        Poin
+                                    </th>
                                 </tr>
                             </thead>
                             @if ($users)
-                            <tbody>
+                            <tbody >
                                 @foreach($users as $user)
-                                <tr class="tr-challenge">
+                                <tr class="tr-challenge-report">
                                     <td class="sorting">
-                                        <label class="checkbox path">
-                                            <input id="value-{{ $user->id }}" name="check_user[]" class="check_users" type="checkbox" value="{{ $user->id }}">
-                                            <svg viewBox="0 0 21 21">
-                                                <path d="M5,10.75 L8.5,14.25 L19.4,2.3 C18.8333333,1.43333333 18.0333333,1 17,1 L4,1 C2.35,1 1,2.35 1,4 L1,17 C1,18.65 2.35,20 4,20 L17,20 C18.65,20 20,18.65 20,17 L20,7.99769186"></path>
-                                            </svg>
-                                        </label>
-                                        <img src="@if ($user->profile->avatar_status == 1) {{ $user->profile->avatar }} @else {{ Gravatar::get($user->email) }} @endif" alt="{{ $user->name }}" class="user-avatar-nav user-challenge">
-                                        <label name="img-user" class="label-challenge" for="">{{ $user->name }} </label>
+                                        <label name="img-user" class="label-challenge-iteration" for="">{{ $loop->iteration }} </label>
+                                    </td>
+                                    <td>
+                                        <img src="@if ($user->profile->avatar_status == 1) {{ $user->profile->avatar }} @else {{ Gravatar::get($user->email) }} @endif" alt="{{ $user->name }}" class="user-avatar-nav user-challenge-report">
+                                    </td>
+                                    <td class="trophy-report" >
+                                        <label name="img-user" class="label-challenge-name" for="">{{ $user->name }} </label>  
+                                        @if($loop->first)
+                                            <i class="fa fa-trophy insigts-gold" aria-hidden="true"></i>
+                                        @endif 
+                                        @if($loop->iteration == 2)
+                                            <i class="fa fa-trophy insigts-silver" aria-hidden="true"></i>
+                                        @endif
+                                        @if($loop->iteration == 3)
+                                            <i class="fa fa-trophy insigts-bronze" aria-hidden="true"></i>
+                                        @endif
+                                    </td>
+                                    <td class="tr-challenge-points">
+                                        <label name="img-user" onmouseover="this.style.color='#93bf1c'"  onmouseout="this.style.color='#272727'"  class="label-challenge-points" for="">{{ $user->score }} Puntos</label>
                                     </td>
                                 </tr>
                                 @endforeach
@@ -67,4 +86,9 @@
                     @endif
                 </div>
     </div>
+@endsection
+@section('footer_scripts')
+
+    @include('scripts.reports')
+
 @endsection

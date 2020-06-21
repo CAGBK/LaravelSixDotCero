@@ -1,11 +1,9 @@
-@extends('layouts.challenge')
-
-@section('template_title')
+<?php $__env->startSection('template_title'); ?>
   Crear Desafio
-@endsection
-@section('content')
-<form action="{{ route('create_challenge') }}" method="POST" id="msform">
-    @csrf
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('content'); ?>
+<form action="<?php echo e(route('create_challenge')); ?>" method="POST" id="msform">
+    <?php echo csrf_field(); ?>
     <!-- progressbar -->
     <div class="banner-challenge ">
         <ul id="progressbar">
@@ -27,11 +25,11 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-12">
-                            @include('partials.form-status')
+                            <?php echo $__env->make('partials.form-status', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
                         </div>
                     </div>
                 </div>
-                <div class="form-group has-feedback row {{ $errors->has('check_user') ? ' has-error ' : '' }} ">
+                <div class="form-group has-feedback row <?php echo e($errors->has('check_user') ? ' has-error ' : ''); ?> ">
                     <div class="col-md-12">
                         
                         <table id="users-check" class="table">
@@ -52,32 +50,32 @@
                                 <label class="label-all" for="">Seleccionar todos los usuarios</label>
                                 </label>
                             </div>
-                            @if ($users)
+                            <?php if($users): ?>
                             <tbody>
-                                @foreach($users as $user)
+                                <?php $__currentLoopData = $users; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $user): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                 <tr class="tr-challenge">
                                     <td class="sorting">
                                         <label class="checkbox path">
-                                            <input id="value-{{ $user->id }}" name="check_user[]" class="check_users" type="checkbox" value="{{ $user->id }}">
+                                            <input id="value-<?php echo e($user->id); ?>" name="check_user[]" class="check_users" type="checkbox" value="<?php echo e($user->id); ?>">
                                             <svg viewBox="0 0 21 21">
                                                 <path d="M5,10.75 L8.5,14.25 L19.4,2.3 C18.8333333,1.43333333 18.0333333,1 17,1 L4,1 C2.35,1 1,2.35 1,4 L1,17 C1,18.65 2.35,20 4,20 L17,20 C18.65,20 20,18.65 20,17 L20,7.99769186"></path>
                                             </svg>
                                         </label>
-                                        <img src="@if ($user->profile->avatar_status == 1) {{ $user->profile->avatar }} @else {{ Gravatar::get($user->email) }} @endif" alt="{{ $user->name }}" class="user-avatar-nav user-challenge">
-                                        <label name="img-user" class="label-challenge" for="">{{ $user->name }} </label>
+                                        <img src="<?php if($user->profile->avatar_status == 1): ?> <?php echo e($user->profile->avatar); ?> <?php else: ?> <?php echo e(Gravatar::get($user->email)); ?> <?php endif; ?>" alt="<?php echo e($user->name); ?>" class="user-avatar-nav user-challenge">
+                                        <label name="img-user" class="label-challenge" for=""><?php echo e($user->name); ?> </label>
                                     </td>
                                 </tr>
-                                @endforeach
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                             </tbody>
-                            @endif
+                            <?php endif; ?>
                             </label>
                         </table>
                     </div>
-                    @if ($errors->has('check_user'))
+                    <?php if($errors->has('check_user')): ?>
                         <span class="help-block ">
-                            <strong >{{ $errors->first('check_user') }}</strong>
+                            <strong ><?php echo e($errors->first('check_user')); ?></strong>
                         </span> 
-                    @endif
+                    <?php endif; ?>
                 </div>
             </div>
             <input id="btn-filter" type="button" name="next" class="next  btn-ch" value="Siguiente"/>
@@ -90,7 +88,7 @@
                         <h2 class="challenge-subtitle">Seleccione la marca</h2>
                     </div>
                 </div>
-                <div class="form-group has-feedback row {{ $errors->has('check_subcategory') ? ' has-error ' : '' }} nav-font">
+                <div class="form-group has-feedback row <?php echo e($errors->has('check_subcategory') ? ' has-error ' : ''); ?> nav-font">
                     <div class="col-md-12">
                         <table id="brands-check" class="table">
                             <thead>
@@ -100,33 +98,33 @@
                                     </th>
                                 </tr>
                             </thead>
-                            @if ($subcategories)
+                            <?php if($subcategories): ?>
 
                             <tbody>
-                                @foreach($subcategories as $subcategory)
+                                <?php $__currentLoopData = $subcategories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $subcategory): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 
-                                <tr class="tr-challenge-two" style="background-color:{{$subcategory->color_brand}};">
+                                <tr class="tr-challenge-two" style="background-color:<?php echo e($subcategory->color_brand); ?>;">
                                     <td class="sorting">
                                         <label class="checkbox-two path cs-check">
-                                            <input id="subcategory-{{ $subcategory->id }}" class="check_brands" name="check_subcategory[]" type="checkbox" value="{{ $subcategory->id }}">
+                                            <input id="subcategory-<?php echo e($subcategory->id); ?>" class="check_brands" name="check_subcategory[]" type="checkbox" value="<?php echo e($subcategory->id); ?>">
                                             <svg viewBox="0 0 21 21">
                                                 <path d="M5,10.75 L8.5,14.25 L19.4,2.3 C18.8333333,1.43333333 18.0333333,1 17,1 L4,1 C2.35,1 1,2.35 1,4 L1,17 C1,18.65 2.35,20 4,20 L17,20 C18.65,20 20,18.65 20,17 L20,7.99769186"></path>
                                             </svg>
                                         </label>
-                                        <img name="img-subcategory" src="{{ $subcategory->subcategory_image}}" alt="{{ $subcategory->subcategory_image}}" class=" subcategory-challenge">
-                                        <label class="sub-name">{{$subcategory->name}}</label>
+                                        <img name="img-subcategory" src="<?php echo e($subcategory->subcategory_image); ?>" alt="<?php echo e($subcategory->subcategory_image); ?>" class=" subcategory-challenge">
+                                        <label class="sub-name"><?php echo e($subcategory->name); ?></label>
                                     </td>
                                 </tr>
 
-                                @endforeach
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                             </tbody>
-                            @endif
+                            <?php endif; ?>
                             </label>
                         </table>
-                        @if ($errors->has('check_subcategory'))
+                        <?php if($errors->has('check_subcategory')): ?>
                         <span class="help-block">
-	                            <strong>{{ $errors->first('check_subcategory') }}</strong>
-	                        </span> @endif
+	                            <strong><?php echo e($errors->first('check_subcategory')); ?></strong>
+	                        </span> <?php endif; ?>
                     </div>
                 </div>
             </div>
@@ -143,31 +141,33 @@
                 </div>
                 <div class="container cn-confirm">
                     <div class="row" style="display: flex;justify-content: center;align-items: center;">
-                        <div class="form-group {{ $errors->has('name') ? ' has-error ' : '' }} nav-font">
+                        <div class="form-group <?php echo e($errors->has('name') ? ' has-error ' : ''); ?> nav-font">
                             <div class="col-md-12">
                                 <div class="input-group">
-                                    {!! Form::text('name', NULL, array('id' => 'name', 'class' => 'form-control input-name-ch', 'placeholder' => 'Nombre del Desafío', 'required')) !!}
+                                    <?php echo Form::text('name', NULL, array('id' => 'name', 'class' => 'form-control input-name-ch', 'placeholder' => 'Nombre del Desafío', 'required')); ?>
+
                                 </div>
-                                @if ($errors->has('name'))
+                                <?php if($errors->has('name')): ?>
                                 <span class="help-block">
-										<strong>{{ $errors->first('name') }}</strong>
-									</span> @endif
+										<strong><?php echo e($errors->first('name')); ?></strong>
+									</span> <?php endif; ?>
                             </div>
                         </div>
-                        <div class="form-group {{ $errors->has('number_questions') ? ' has-error ' : '' }} nav-font">
+                        <div class="form-group <?php echo e($errors->has('number_questions') ? ' has-error ' : ''); ?> nav-font">
                             <div class="col-md-12">
                                 <div class="input-group">
-                                    {!! Form::number('number_questions', NULL, array('id' => 'number_questions', 'class' => 'form-control input-c-questions', 'placeholder' => 'C/Preguntas', 'min' => "1", 'max'=>"100" , 'required')) !!}
+                                    <?php echo Form::number('number_questions', NULL, array('id' => 'number_questions', 'class' => 'form-control input-c-questions', 'placeholder' => 'C/Preguntas', 'min' => "1", 'max'=>"100" , 'required')); ?>
+
                                 </div>
-                                @if ($errors->has('number_questions'))
+                                <?php if($errors->has('number_questions')): ?>
                                 <span class="help-block">
-										<strong>{{ $errors->first('number_questions') }}</strong>
-									</span> @endif
+										<strong><?php echo e($errors->first('number_questions')); ?></strong>
+									</span> <?php endif; ?>
                             </div>
                         </div>
                     </div>
                     <div class="row" style="display: flex;justify-content: center;align-items: center;">
-                        <div class="form-group {{ $errors->has('end_date') ? ' has-error ' : '' }} nav-font">
+                        <div class="form-group <?php echo e($errors->has('end_date') ? ' has-error ' : ''); ?> nav-font">
                             <div class="col-md-12">
                                 <div class="input-group">
                                     <div class="input-group date" id="datetimepicker" data-target-input="nearest">
@@ -177,29 +177,29 @@
                                         </div>
                                     </div>
                                 </div>
-                                @if ($errors->has('end_date'))
+                                <?php if($errors->has('end_date')): ?>
                                 <span class="help-block">
 									<strong>La fecha debe ser mayor o igual al dia actual</strong>
 								</span> 
-                                @endif
+                                <?php endif; ?>
                             </div>
                         </div>
-                        <div class="form-group {{ $errors->has('state_id') ? ' has-error ' : '' }} nav-font">
+                        <div class="form-group <?php echo e($errors->has('state_id') ? ' has-error ' : ''); ?> nav-font">
                             <div class="col-md-12">
                                 <div class="input-group">
                                     <select class="form-control input-confirm" name="state_id" id="state_id" required>
                                         <option value="">Seleccione estado</option>
-                                        @if ($states) @foreach($states as $state)
-                                        <option value="{{ $state->id }}">{{ $state->state }}</option>
-                                        @endforeach @endif
+                                        <?php if($states): ?> <?php $__currentLoopData = $states; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $state): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                        <option value="<?php echo e($state->id); ?>"><?php echo e($state->state); ?></option>
+                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?> <?php endif; ?>
                                     </select>
                                 </div>
                             </div>
-                            @if ($errors->has('state_id'))
+                            <?php if($errors->has('state_id')): ?>
                             <span class="help-block">
-                                    <strong>{{ $errors->first('state_id') }}</strong>
+                                    <strong><?php echo e($errors->first('state_id')); ?></strong>
                             </span> 
-                            @endif
+                            <?php endif; ?>
                         </div>
                     </div>
                 </div>
@@ -209,10 +209,11 @@
         </fieldset>
     </div>
 </form>
-@endsection
+<?php $__env->stopSection(); ?>
 
-@section('footer_scripts')
+<?php $__env->startSection('footer_scripts'); ?>
 
-    @include('scripts.challenge')
+    <?php echo $__env->make('scripts.challenge', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.challenge', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\DSIT-Saturno-5689A\Documents\LaravelSixDotCero\resources\views/challenge/index.blade.php ENDPATH**/ ?>

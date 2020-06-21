@@ -89,7 +89,7 @@
             @endif
           @endif
         @endforeach
-        <a href="{{ route('game',['id' => $challenge->id]) }}" type="button" class="btn btn-primary">Ver detalle</a>
+        <a href="{{ route('report_challenge',['id' => $challenge->id]) }}" type="button" class="btn btn-primary">Ver detalle</a>
       </div>
     </div>
   </div>

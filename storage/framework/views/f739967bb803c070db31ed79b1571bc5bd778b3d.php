@@ -23,4 +23,4 @@
 			$(".check_users").prop("checked", this.checked);  
 		});
 
-</script>
+</script><?php /**PATH C:\Users\DSIT-Saturno-5689A\Documents\LaravelSixDotCero\resources\views/scripts/reports.blade.php ENDPATH**/ ?>

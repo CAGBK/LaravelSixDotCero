@@ -1,0 +1,51 @@
+.card-question
+{
+	border-radius: 1rem;
+}
+
+.answer-text {
+    font-size: 16pt;
+    font-weight: 700;
+}
+
+.tr-challenge-question {
+    display: inline-flex;
+    height: 90px;
+    width: 90px;
+}
+.banner-challenge-question{
+    background: #272727;
+    height: 150px;
+    margin-top: -48px;
+    width: -webkit-fill-available;
+}
+.table-question {
+    width: 100%;
+    margin-bottom: 1rem;
+    margin-left: 25%;
+    color: #212529;
+}
+.user-challenge-question {
+    width: 70px;
+    height: 70px;
+    border: 3px solid #2CAF66;
+}
+a.paginate_button {
+    background: #93bf1c !important;
+    border-radius: 1%;
+    height: 17px;
+    padding-top: 0rem;
+    padding-bottom: 0rem;
+    padding-left: 10px;
+    margin-left: 6px;
+}
+.label-challenge-question {
+    color: #fff;
+    font-size: 10pt;
+    font-weight: 700;
+}
+div#users-question_paginate {
+    color: #93bf1c;
+}
+
+

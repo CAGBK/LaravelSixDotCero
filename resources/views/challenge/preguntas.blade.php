@@ -5,20 +5,35 @@
 @endsection
 
 @section('content')
-
-<div class="banner-challenge-questions">
-  <div class="col-sm-7">
-    <?php 
-    $arrayUsers = json_decode($challenge->users);
-    ?>
-      @foreach ($users as $user)
-        @foreach ($arrayUsers as $value)
-          @if($value == $user->id)
-            <!--img src="{{ Gravatar::get($user->email)}}" class="user-avatar-nav user-challenge"-->
-            <span class="badge badge-info">{{  $user->name }}</span>
-            @endif
-        @endforeach
-    @endforeach 
+<div class="container-fluid">
+<div class="row">
+  <div class="banner-challenge-question">
+    <div class="col-sm-12">
+      <?php 
+      $arrayUsers = json_decode($challenge->users);
+      ?>
+      <table id="users-question" class="table">
+        <thead>
+            <tr style="display:none" >
+              <th class="sorting_asc">
+                  Usuarios
+              </th>
+            </tr>
+        </thead>
+        @if ($users)
+        <tbody>
+            @foreach($users as $user)
+            <tr class="tr-challenge-question">
+              <td class="sorting">
+                  <img src="@if ($user->profile->avatar_status == 1) {{ $user->profile->avatar }} @else {{ Gravatar::get($user->email) }} @endif" alt="{{ $user->name }}" class="user-avatar-nav user-challenge-question">
+                  <label name="img-user" class="label-challenge-question" for="">{{ $user->name }} </label>
+              </td>
+            </tr>
+            @endforeach
+        </tbody>
+        @endif
+      </table>
+    </div>
   </div>
 </div>
   <div class="row">
@@ -44,5 +59,10 @@
       </div>
     </div>
   </div>
+</div>
+@endsection
+@section('footer_scripts')
+
+    @include('scripts.questions')
 
 @endsection

@@ -158,13 +158,13 @@ class DesafiosController extends Controller
             $points->save();
             $random_question = $faker->randomElement($quresultado);
             $question = Question::find($random_question);
-            return View::make('challenge.preguntas', compact('question','challenge', 'users'));
+            return View::make('challenge.preguntas', compact('question','challenge', 'users', 'data'));
         }
 
         $challenges = Challenge::all();
         $users = User::where('activated', '!=', 0)->get();
         $subcategories = Subcategory::all();
-        return View::make('challenge.list', compact('challenges','users', 'subcategories'));
+        return View::make('challenge.list', compact('challenges','users', 'subcategories', 'data'));
     }
     
     public function anwers(Request $request, $id,$challenge_id)
